@@ -187,18 +187,36 @@ def is_symlink_or_reparse(path_obj: Union[str, Path]) -> bool:
     """
     Check if a path component is a symbolic link or Windows reparse point (NTFS junction).
     Handles POSIX symlinks, Windows symlinks, and Windows directory junctions.
+
+    Fail-closed policy:
+    If path inspection fails due to PermissionError, EIO, or other unexpected OSError,
+    it raises SourcePathSecurityError so that uninspectable paths are never assumed safe.
+    Only FileNotFoundError (indicating the path genuinely does not exist) returns False.
     """
     p = Path(path_obj)
-    if p.is_symlink() or os.path.islink(p):
-        return True
+    try:
+        if p.is_symlink() or os.path.islink(p):
+            return True
+    except PermissionError as e:
+        raise SourcePathSecurityError(f"Permission denied inspecting symlink status: {p}") from e
+    except OSError as e:
+        if not isinstance(e, FileNotFoundError):
+            raise SourcePathSecurityError(f"I/O error inspecting symlink status: {p}") from e
+        return False
+
     try:
         st = os.lstat(p)
         attrs = getattr(st, "st_file_attributes", 0)
         reparse_flag = getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x0400)
         if attrs & reparse_flag:
             return True
-    except (OSError, ValueError):
-        pass
+    except FileNotFoundError:
+        return False
+    except PermissionError as e:
+        raise SourcePathSecurityError(f"Permission denied inspecting path attributes: {p}") from e
+    except (OSError, ValueError) as e:
+        raise SourcePathSecurityError(f"Failed to inspect path attributes for security verification: {p} ({e})") from e
+
     return False
 
 
@@ -229,7 +247,7 @@ def validate_path_safety(
     # Check ancestors of path_obj before resolution
     curr = path_obj.parent
     while curr != curr.parent:
-        if curr.exists() and is_symlink_or_reparse(curr):
+        if is_symlink_or_reparse(curr):
             raise SourcePathSecurityError(f"Symlink or reparse point detected in ancestor path: {curr}")
         if base_obj is not None:
             try:
@@ -239,7 +257,10 @@ def validate_path_safety(
                 pass
         curr = curr.parent
 
-    resolved_path = path_obj.resolve()
+    try:
+        resolved_path = path_obj.resolve()
+    except (OSError, ValueError) as e:
+        raise SourcePathSecurityError(f"Failed to resolve path: {path_obj} ({e})") from e
 
     # Double-check resolved path and its ancestors
     if is_symlink_or_reparse(resolved_path):
@@ -247,7 +268,7 @@ def validate_path_safety(
 
     curr_res = resolved_path.parent
     while curr_res != curr_res.parent:
-        if curr_res.exists() and is_symlink_or_reparse(curr_res):
+        if is_symlink_or_reparse(curr_res):
             raise SourcePathSecurityError(f"Symlink or reparse point detected in resolved ancestor: {curr_res}")
         if base_obj is not None and curr_res == base_obj:
             break
@@ -405,16 +426,20 @@ class SourceValidator:
         """
         path_obj = validate_path_safety(file_path, base_dir=self.base_dir)
 
-        if not path_obj.exists():
-            raise SourceNotFoundError(f"Source file not found: {file_path}")
-
-        if not path_obj.is_file():
-            raise SourceIntegrityError(f"Source path is not a regular file: {file_path}")
-
         try:
             stat_before = os.stat(path_obj)
+        except FileNotFoundError as e:
+            raise SourceNotFoundError(f"Source file not found: {file_path}") from e
         except PermissionError as e:
             raise SourcePermissionError(f"Permission denied reading file stats: {file_path}") from e
+        except OSError as e:
+            raise SourceIntegrityError(f"I/O error reading file stats: {file_path}") from e
+
+        st_mode = getattr(stat_before, "st_mode", None)
+        if isinstance(st_mode, int) and not stat.S_ISREG(st_mode):
+            raise SourceIntegrityError(f"Source path is not a regular file: {file_path}")
+        elif not isinstance(st_mode, int) and not path_obj.is_file():
+            raise SourceIntegrityError(f"Source path is not a regular file: {file_path}")
 
         hasher = hashlib.sha256()
         bytes_read = 0
@@ -487,7 +512,9 @@ class SourceValidator:
                 error_message=str(e),
             )
 
-        if not path_obj.exists():
+        try:
+            st = os.stat(path_obj)
+        except FileNotFoundError:
             err = f"Source file does not exist: {path_obj}"
             if fail_fast:
                 raise SourceNotFoundError(err)
@@ -498,8 +525,31 @@ class SourceValidator:
                 expected_byte_size=entry.audited_byte_size,
                 error_message=err,
             )
+        except PermissionError as e:
+            if fail_fast:
+                raise SourcePermissionError(str(e)) from e
+            return SourceVerificationResult(
+                year=year,
+                path=str(path_obj),
+                state=VerificationState.SOURCE_READ_ERROR,
+                expected_byte_size=entry.audited_byte_size,
+                error_message=str(e),
+            )
+        except OSError as e:
+            err = f"I/O error reading metadata for {path_obj}: {e}"
+            if fail_fast:
+                raise SourceIntegrityError(err) from e
+            return SourceVerificationResult(
+                year=year,
+                path=str(path_obj),
+                state=VerificationState.SOURCE_READ_ERROR,
+                expected_byte_size=entry.audited_byte_size,
+                error_message=err,
+            )
 
-        if not path_obj.is_file():
+        st_mode = getattr(st, "st_mode", None)
+        is_regular = stat.S_ISREG(st_mode) if isinstance(st_mode, int) else path_obj.is_file()
+        if not is_regular:
             err = f"Source path is not a regular file: {path_obj}"
             if fail_fast:
                 raise SourceIntegrityError(err)
@@ -511,18 +561,7 @@ class SourceValidator:
                 error_message=err,
             )
 
-        try:
-            actual_size = os.path.getsize(path_obj)
-        except PermissionError as e:
-            if fail_fast:
-                raise SourcePermissionError(str(e)) from e
-            return SourceVerificationResult(
-                year=year,
-                path=str(path_obj),
-                state=VerificationState.SOURCE_READ_ERROR,
-                expected_byte_size=entry.audited_byte_size,
-                error_message=str(e),
-            )
+        actual_size = st.st_size
 
         if actual_size != entry.audited_byte_size:
             err = (

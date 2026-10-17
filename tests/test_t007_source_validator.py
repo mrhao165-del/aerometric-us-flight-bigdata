@@ -7,6 +7,8 @@ CRITICAL SCOPE BOUNDARY:
 - ZERO read or stat access to real 15.2 GB CSV files in data/raw/.
 """
 
+import ast
+import errno
 import hashlib
 import json
 import os
@@ -20,6 +22,45 @@ from unittest.mock import MagicMock, patch
 SRC_DIR = Path(__file__).resolve().parent.parent / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
+
+
+def _check_ast_for_forbidden_ingestion_or_publication(source_code: str) -> list:
+    """
+    Static AST inspection to verify SourceValidator does not contain forbidden
+    Spark CSV reader, classifier, or publication orchestration calls.
+    """
+    tree = ast.parse(source_code)
+    violations = []
+    forbidden_modules = {"pyspark", "pandas", "csv"}
+    forbidden_funcs = {"SafePublisher", "publish_atomic", "classify_records", "quarantine_records"}
+
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                root_pkg = alias.name.split(".")[0]
+                if root_pkg in forbidden_modules:
+                    violations.append(f"Forbidden import: {alias.name} (line {node.lineno})")
+        elif isinstance(node, ast.ImportFrom):
+            if node.module:
+                root_pkg = node.module.split(".")[0]
+                if root_pkg in forbidden_modules:
+                    violations.append(f"Forbidden import from: {node.module} (line {node.lineno})")
+                if "publication" in node.module:
+                    violations.append(f"Forbidden publication import: {node.module} (line {node.lineno})")
+        elif isinstance(node, ast.Call):
+            if isinstance(node.func, ast.Name):
+                if node.func.id in forbidden_funcs:
+                    violations.append(f"Forbidden call: {node.func.id}() (line {node.lineno})")
+            elif isinstance(node.func, ast.Attribute):
+                if node.func.attr in forbidden_funcs:
+                    violations.append(f"Forbidden attribute call: .{node.func.attr}() (line {node.lineno})")
+                if (
+                    node.func.attr == "csv"
+                    and isinstance(node.func.value, ast.Attribute)
+                    and node.func.value.attr == "read"
+                ):
+                    violations.append(f"Forbidden Spark CSV read call: .read.csv() (line {node.lineno})")
+    return violations
 
 from flight_pipeline.ingestion.source_validator import (
     AUDITED_SOURCE_INVENTORY,
@@ -496,6 +537,26 @@ class TestT007SourceValidatorSynthetic(unittest.TestCase):
         import inspect
         import flight_pipeline.ingestion.source_validator as sv_module
         source_code = inspect.getsource(sv_module)
+        violations = _check_ast_for_forbidden_ingestion_or_publication(source_code)
+        self.assertEqual(violations, [], f"Forbidden constructs found in source_validator.py: {violations}")
+
+    def test_scope_02_mutation_detection_fails_on_forbidden_constructs(self):
+        """SCOPE-02 Negative/Mutation: Verifier detects forbidden imports and calls on mutant snippet."""
+        mutant_snippet = """
+import csv
+from flight_pipeline.publication import SafePublisher
+def forbidden_logic(spark):
+    sp = SafePublisher()
+    df = spark.read.csv("data/raw/sample.csv")
+    classify_records(df)
+"""
+        violations = _check_ast_for_forbidden_ingestion_or_publication(mutant_snippet)
+        self.assertGreaterEqual(len(violations), 4, f"Expected at least 4 violations, got: {violations}")
+        violation_text = "\n".join(violations)
+        self.assertIn("csv", violation_text)
+        self.assertIn("SafePublisher", violation_text)
+        self.assertIn("read.csv", violation_text)
+        self.assertIn("classify_records", violation_text)
 
     # -------------------------------------------------------------------------
     # Final Closure Regression Tests (FIX-A01 .. FIX-A04)
@@ -684,6 +745,150 @@ class TestT007SourceValidatorSynthetic(unittest.TestCase):
         self.assertEqual(report["rejected_count"], 1)
         self.assertEqual(len(report["rejected_details"]), 1)
         self.assertEqual(report["rejected_details"][0]["year"], 2017)
+
+    # -------------------------------------------------------------------------
+    # Security Delta Regression Tests (FIX-SEC01, FIX-SEC03)
+    # -------------------------------------------------------------------------
+
+    def test_secdelta_fix_sec01_lstat_permission_error_raises_security_error(self):
+        """FIX-SEC01: PermissionError during os.lstat fails closed with SourcePathSecurityError."""
+        from flight_pipeline.ingestion.source_validator import is_symlink_or_reparse
+        test_file = self.base_path / "inaccessible.csv"
+        test_file.write_bytes(b"data")
+        with patch("os.lstat", side_effect=PermissionError("Permission denied inspecting attributes")):
+            with self.assertRaises(SourcePathSecurityError):
+                is_symlink_or_reparse(test_file)
+
+    def test_secdelta_fix_sec01_lstat_eio_error_raises_security_error(self):
+        """FIX-SEC01: EIO during os.lstat fails closed with SourcePathSecurityError."""
+        from flight_pipeline.ingestion.source_validator import is_symlink_or_reparse
+        test_file = self.base_path / "eio.csv"
+        test_file.write_bytes(b"data")
+        with patch("os.lstat", side_effect=OSError(errno.EIO, "I/O error")):
+            with self.assertRaises(SourcePathSecurityError):
+                is_symlink_or_reparse(test_file)
+
+    def test_secdelta_fix_sec01_missing_file_differentiated_and_returns_source_missing(self):
+        """FIX-SEC01: Genuine non-existent source file is not a security error; returns SOURCE_MISSING."""
+        from flight_pipeline.ingestion.source_validator import is_symlink_or_reparse
+        missing_file = self.base_path / "non_existent_flight.csv"
+        self.assertFalse(is_symlink_or_reparse(missing_file))
+
+        inv = {
+            2016: SourceEntry(
+                year=2016,
+                relative_path="non_existent_flight.csv",
+                audited_row_count=1,
+                audited_byte_size=10,
+                audited_column_count=34,
+            )
+        }
+        val = SourceValidator(base_dir=self.base_path, inventory=inv)
+        res = val.verify_source(2016, fail_fast=False)
+        self.assertEqual(res.state, VerificationState.SOURCE_MISSING)
+
+    def test_secdelta_fix_sec01_inaccessible_intermediate_path_fails_closed(self):
+        """FIX-SEC01: Inaccessible intermediate ancestor directory fails closed."""
+        sub = self.base_path / "sub"
+        sub.mkdir(exist_ok=True)
+        target = sub / "file.csv"
+        target.write_bytes(b"data")
+
+        orig_lstat = os.lstat
+        def fake_lstat(path, *args, **kwargs):
+            if str(sub) in str(path) and "file.csv" not in str(path):
+                raise PermissionError("Access denied to intermediate directory")
+            return orig_lstat(path, *args, **kwargs)
+
+        with patch("os.lstat", side_effect=fake_lstat):
+            with self.assertRaises(SourcePathSecurityError):
+                validate_path_safety(target, base_dir=self.base_path)
+
+    def test_secdelta_fix_sec03_metadata_io_error_returns_source_read_error(self):
+        """FIX-SEC03: Non-PermissionError OSError during stat/getsize returns SOURCE_READ_ERROR."""
+        test_file = self.base_path / "io_error.csv"
+        test_file.write_bytes(b"data")
+        inv = {
+            2016: SourceEntry(
+                year=2016,
+                relative_path="io_error.csv",
+                audited_row_count=1,
+                audited_byte_size=4,
+                audited_column_count=34,
+            )
+        }
+        val = SourceValidator(base_dir=self.base_path, inventory=inv)
+        orig_stat = os.stat
+        def fake_stat(p, *args, **kwargs):
+            if "io_error.csv" in str(p):
+                raise OSError(errno.EIO, "Simulated disk I/O failure")
+            return orig_stat(p, *args, **kwargs)
+
+        with patch("os.stat", side_effect=fake_stat):
+            res = val.verify_source(2016, fail_fast=False)
+            self.assertEqual(res.state, VerificationState.SOURCE_READ_ERROR)
+            self.assertIn("I/O error", res.error_message)
+
+    def test_secdelta_fix_sec03_metadata_io_error_fail_fast_raises_source_integrity_error(self):
+        """FIX-SEC03: Fail-fast mode raises SourceIntegrityError on metadata I/O failure."""
+        test_file = self.base_path / "io_error_ff.csv"
+        test_file.write_bytes(b"data")
+        inv = {
+            2016: SourceEntry(
+                year=2016,
+                relative_path="io_error_ff.csv",
+                audited_row_count=1,
+                audited_byte_size=4,
+                audited_column_count=34,
+            )
+        }
+        val = SourceValidator(base_dir=self.base_path, inventory=inv)
+        orig_stat = os.stat
+        def fake_stat(p, *args, **kwargs):
+            if "io_error_ff.csv" in str(p):
+                raise OSError(errno.EIO, "Simulated disk I/O failure")
+            return orig_stat(p, *args, **kwargs)
+
+        with patch("os.stat", side_effect=fake_stat):
+            with self.assertRaises(SourceIntegrityError):
+                val.verify_source(2016, fail_fast=True)
+
+    def test_secdelta_fix_sec03_batch_aggregation_fail_closed_on_io_error(self):
+        """FIX-SEC03: Batch aggregation sets all flags False when metadata I/O failure occurs."""
+        good_file = self.base_path / "good.csv"
+        good_file.write_bytes(b"data")
+        bad_file = self.base_path / "bad_io.csv"
+        bad_file.write_bytes(b"data")
+
+        inv = {
+            2016: SourceEntry(
+                year=2016,
+                relative_path="good.csv",
+                audited_row_count=1,
+                audited_byte_size=4,
+                audited_column_count=34,
+            ),
+            2017: SourceEntry(
+                year=2017,
+                relative_path="bad_io.csv",
+                audited_row_count=1,
+                audited_byte_size=4,
+                audited_column_count=34,
+            ),
+        }
+        val = SourceValidator(base_dir=self.base_path, inventory=inv)
+        orig_stat = os.stat
+        def fake_stat(p, *args, **kwargs):
+            if "bad_io.csv" in str(p):
+                raise OSError(errno.EIO, "Simulated disk read error")
+            return orig_stat(p, *args, **kwargs)
+
+        with patch("os.stat", side_effect=fake_stat):
+            batch = val.verify_all_sources(compute_hash=False)
+            self.assertFalse(batch.all_present)
+            self.assertFalse(batch.all_sizes_match)
+            self.assertFalse(batch.all_hashes_verified)
+            self.assertEqual(batch.results[2017].state, VerificationState.SOURCE_READ_ERROR)
 
 
 if __name__ == "__main__":

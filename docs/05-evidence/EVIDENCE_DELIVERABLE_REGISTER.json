@@ -2,7 +2,7 @@
   "registry_version": "1.0",
   "task_id": "T-007",
   "updated_at": "2026-10-17",
-  "description": "Evidence Deliverable Register updated for T007-02A-FINAL-CLOSURE fail-closed source integrity remediation",
+  "description": "Evidence Deliverable Register updated for T007-02A-SECURITY-DELTA final fail-closed path validation",
   "governed_living_docs": [
     {
       "path": "docs/01-planning/BACKLOG.md",
@@ -3018,17 +3018,17 @@
       "path": "src/flight_pipeline/ingestion/source_validator.py",
       "task_id": "T-007",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 30980,
-      "sha256": "dbc744f1ea23f68ff98974cc5ac1f16718fc6cbda29e310c42365571822d3ddb",
-      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+      "bytes": 32991,
+      "sha256": "eb7dd184d8e8cd5ced890ec4039ee29c2de6b8465bbb852232780693dbbd02e7",
+      "authorization_ref": "Project Lead T007-02A-SECURITY-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md"
     },
     {
       "path": "tests/test_t007_source_validator.py",
       "task_id": "T-007",
       "artifact_type": "TEST_MODULE",
-      "bytes": 29895,
-      "sha256": "c44d4c84d405b1f2846c276568ef802042f8a495cc1c08137e43852fff1fdfba",
-      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+      "bytes": 39553,
+      "sha256": "7d3d6c6f0886ae2106d0144e3ead7dccdd7d448fce039645a2b2f206a3ea9f75",
+      "authorization_ref": "Project Lead T007-02A-SECURITY-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md"
     },
     {
       "path": "docs/05-evidence/T007_02A_HANDOFF_ERRATA.md",
@@ -3213,6 +3213,70 @@
       "bytes": 77,
       "sha256": "06dccd1da7bb97ad0b5bb722cf09943d0551afd09419a1e4d0a3c1e80d6d359d",
       "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SECDELTA_SOURCE_FIXES.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7723,
+      "sha256": "c81a13a1408ce64f10a628c33bcbef99679f7a40ffee11afd7d42955ec4e23ad",
+      "authorization_ref": "Project Lead T007-02A-SECURITY-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SECDELTA_REGRESSION_TESTS.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4549,
+      "sha256": "5c449797da1c7c70502a71b7081150c1b4d8fac74f25a6241589a5f3f460922f",
+      "authorization_ref": "Project Lead T007-02A-SECURITY-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SECDELTA_EVIDENCE_ERRATA.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5802,
+      "sha256": "7dacc64a76a596e5beb20b5c8b501356d76d6c80e53ac16bb9eed31e7b21978a",
+      "authorization_ref": "Project Lead T007-02A-SECURITY-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3301,
+      "sha256": "bb5cd224cee09c67fb3112e82a6959774090516cf038e32e8e93015d1fd92503",
+      "authorization_ref": "Project Lead T007-02A-SECURITY-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SECDELTA_LOG_TESTS.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 4580,
+      "sha256": "abd47b3c4756af9a7757aeb3e5f4aa2484fe72086f7ef55e1d7797811c3b6341",
+      "authorization_ref": "Project Lead T007-02A-SECURITY-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SECDELTA_LOG_T006_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6812,
+      "sha256": "7577a9adcc254291e81a21c74a70ea0188200df741af6ae19a03a19f0978d85a",
+      "authorization_ref": "Project Lead T007-02A-SECURITY-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SECDELTA_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2063,
+      "sha256": "ec219c8fbcd4826365e5f1b1438e1147e6f3df202f6cd38fcd1a5c87eae75166",
+      "authorization_ref": "Project Lead T007-02A-SECURITY-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SECDELTA_LOG_CONSISTENCY.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 77,
+      "sha256": "645d7a40ab8d6e4b9427195638aadecf54ec8b4b8b92743cc757a4641a69bc84",
+      "authorization_ref": "Project Lead T007-02A-SECURITY-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_SECDELTA_FINAL_VERDICT.md"
     }
   ]
 }
