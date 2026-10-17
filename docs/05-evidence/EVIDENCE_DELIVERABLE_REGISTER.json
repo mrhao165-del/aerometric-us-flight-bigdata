@@ -1709,6 +1709,54 @@
       "bytes": 77,
       "sha256": "11e5cebc706518260443ddf2db3725ba11801aa246dc89d0079d1be312fe84e4",
       "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_PRESIGNOFF_SOURCE_CODE_AUDIT.md",
+      "bytes": 11147,
+      "sha256": "04c2d301d01999b9de768c9b113f6e151853aa16e733d52e233b87e8151db0b5",
+      "artifact_type": "AUDIT_REPORT",
+      "task_id": "T-009",
+      "authorization_ref": "Project Lead T009-PRESIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_PRESIGNOFF_TEST_COVERAGE_MATRIX.md",
+      "bytes": 7374,
+      "sha256": "bd670f99f55edc3ef8da9b2d4a1e8328763e851fb281cf74fa06c2769506a810",
+      "artifact_type": "AUDIT_REPORT",
+      "task_id": "T-009",
+      "authorization_ref": "Project Lead T009-PRESIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_PRESIGNOFF_PUBLICATION_RISK_REVIEW.md",
+      "bytes": 7184,
+      "sha256": "2f3dcf29fd749d133e1a55e42e495010b8f74fc2b892e1744845df4c3703874b",
+      "artifact_type": "AUDIT_REPORT",
+      "task_id": "T-009",
+      "authorization_ref": "Project Lead T009-PRESIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_PRESIGNOFF_MANIFEST_AND_EVIDENCE_AUDIT.md",
+      "bytes": 6446,
+      "sha256": "1585658e487a6569221dacaf0ed6efeb001a81803abf417f4c67a3f06ae4b5b7",
+      "artifact_type": "AUDIT_REPORT",
+      "task_id": "T-009",
+      "authorization_ref": "Project Lead T009-PRESIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_PRESIGNOFF_ROLLBACK_AND_GATE_REVIEW.md",
+      "bytes": 4846,
+      "sha256": "6e5e422c8c610a64000dde7217e82d018f0cd057f489679e98c5dd12d2d445c4",
+      "artifact_type": "AUDIT_REPORT",
+      "task_id": "T-009",
+      "authorization_ref": "Project Lead T009-PRESIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_PRESIGNOFF_FINAL_VERDICT.md",
+      "bytes": 5268,
+      "sha256": "956a46e493788ac6802789689b3573abb1842d4e03e3065dd32a56dffe76aa8f",
+      "artifact_type": "AUDIT_REPORT",
+      "task_id": "T-009",
+      "authorization_ref": "Project Lead T009-PRESIGNOFF instruction"
     }
   ]
 }
