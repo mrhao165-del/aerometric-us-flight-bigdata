@@ -15,6 +15,7 @@ from enum import Enum
 import hashlib
 import os
 from pathlib import Path
+import stat
 from typing import Any, Dict, List, Mapping, Optional, Set, Tuple, Union
 
 # Upstream identity invariant (OR-08 / TS-019)
@@ -182,6 +183,25 @@ TOTAL_AUDITED_BYTES: int = 15196366173
 EXPECTED_ANNUAL_SOURCES_COUNT: int = 9
 
 
+def is_symlink_or_reparse(path_obj: Union[str, Path]) -> bool:
+    """
+    Check if a path component is a symbolic link or Windows reparse point (NTFS junction).
+    Handles POSIX symlinks, Windows symlinks, and Windows directory junctions.
+    """
+    p = Path(path_obj)
+    if p.is_symlink() or os.path.islink(p):
+        return True
+    try:
+        st = os.lstat(p)
+        attrs = getattr(st, "st_file_attributes", 0)
+        reparse_flag = getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x0400)
+        if attrs & reparse_flag:
+            return True
+    except (OSError, ValueError):
+        pass
+    return False
+
+
 def validate_path_safety(
     file_path: Union[str, Path],
     base_dir: Optional[Union[str, Path]] = None,
@@ -189,7 +209,7 @@ def validate_path_safety(
     """
     Enforce filesystem security boundaries:
     1. Reject path traversal sequences ('..').
-    2. Reject symlinks and reparse points.
+    2. Reject symlinks and reparse points (NTFS junctions) across all path components.
     3. If base_dir is supplied, enforce that the resolved path is contained within base_dir.
     4. Must refer to a regular file if it exists.
     """
@@ -200,23 +220,45 @@ def validate_path_safety(
 
     path_obj = Path(file_path)
 
-    # Check for symlink before resolving
-    if path_obj.is_symlink() or os.path.islink(path_obj):
+    # Check the leaf path component
+    if is_symlink_or_reparse(path_obj):
         raise SourcePathSecurityError(f"Symlinks and reparse points are forbidden: {file_path}")
+
+    base_obj = Path(base_dir).resolve() if base_dir is not None else None
+
+    # Check ancestors of path_obj before resolution
+    curr = path_obj.parent
+    while curr != curr.parent:
+        if curr.exists() and is_symlink_or_reparse(curr):
+            raise SourcePathSecurityError(f"Symlink or reparse point detected in ancestor path: {curr}")
+        if base_obj is not None:
+            try:
+                if curr.resolve() == base_obj:
+                    break
+            except (OSError, ValueError):
+                pass
+        curr = curr.parent
 
     resolved_path = path_obj.resolve()
 
-    # Double-check resolved path is not a symlink
-    if os.path.islink(resolved_path) or resolved_path.is_symlink():
+    # Double-check resolved path and its ancestors
+    if is_symlink_or_reparse(resolved_path):
         raise SourcePathSecurityError(f"Symlinks and reparse points are forbidden: {resolved_path}")
 
+    curr_res = resolved_path.parent
+    while curr_res != curr_res.parent:
+        if curr_res.exists() and is_symlink_or_reparse(curr_res):
+            raise SourcePathSecurityError(f"Symlink or reparse point detected in resolved ancestor: {curr_res}")
+        if base_obj is not None and curr_res == base_obj:
+            break
+        curr_res = curr_res.parent
+
     if base_dir is not None:
-        resolved_base = Path(base_dir).resolve()
         try:
-            resolved_path.relative_to(resolved_base)
+            resolved_path.relative_to(base_obj)
         except ValueError:
             raise SourcePathSecurityError(
-                f"Path {resolved_path} escapes the allowed base directory {resolved_base}"
+                f"Path {resolved_path} escapes the allowed base directory {base_obj}"
             )
 
     return path_obj
@@ -277,11 +319,29 @@ class SourceValidator:
         inventory: Optional[Mapping[int, SourceEntry]] = None,
         approved_baseline_hashes: Optional[Mapping[int, str]] = None,
         chunk_size: int = DEFAULT_HASH_CHUNK_SIZE,
+        enforce_production_inventory: bool = False,
     ):
         self.base_dir = Path(base_dir).resolve() if base_dir is not None else Path.cwd().resolve()
-        self.inventory: Dict[int, SourceEntry] = (
-            dict(inventory) if inventory is not None else dict(AUDITED_SOURCE_INVENTORY)
-        )
+
+        if inventory is not None:
+            if len(inventory) == 0:
+                raise SourceConfigurationError("Configured inventory cannot be empty")
+            self.inventory: Dict[int, SourceEntry] = dict(inventory)
+        else:
+            self.inventory = dict(AUDITED_SOURCE_INVENTORY)
+
+        self.enforce_production_inventory = enforce_production_inventory
+        if self.enforce_production_inventory:
+            expected_years = set(range(2016, 2025))
+            actual_years = set(self.inventory.keys())
+            if actual_years != expected_years:
+                missing = sorted(expected_years - actual_years)
+                extra = sorted(actual_years - expected_years)
+                raise SourceConfigurationError(
+                    f"Production inventory must contain exactly all 9 annual sources (2016-2024). "
+                    f"Missing years: {missing}, extra years: {extra}"
+                )
+
         self.approved_baseline_hashes: Optional[Dict[int, str]] = (
             dict(approved_baseline_hashes) if approved_baseline_hashes is not None else None
         )
@@ -589,8 +649,19 @@ class SourceValidator:
         fail_fast: bool = False,
     ) -> BatchVerificationResult:
         """
-        Verify all configured inventory sources.
+        Verify all configured inventory sources with fail-closed batch semantics.
         """
+        if len(self.inventory) == 0:
+            return BatchVerificationResult(
+                results={},
+                all_present=False,
+                all_sizes_match=False,
+                all_hashes_verified=False,
+                total_actual_bytes=0,
+                upstream_identity_status=UPSTREAM_IDENTITY_STATUS_UNVERIFIED,
+                has_unapproved_candidate_hashes=False,
+            )
+
         results: Dict[int, SourceVerificationResult] = {}
         all_present = True
         all_sizes_match = True
@@ -602,7 +673,12 @@ class SourceValidator:
             res = self.verify_source(year, compute_hash=compute_hash, fail_fast=fail_fast)
             results[year] = res
 
-            if res.state == VerificationState.SOURCE_MISSING:
+            # Check presence: file must exist as a verified regular file without read/stability/security errors
+            if res.state in (
+                VerificationState.SOURCE_MISSING,
+                VerificationState.SOURCE_READ_ERROR,
+                VerificationState.SOURCE_CHANGED_DURING_READ,
+            ):
                 all_present = False
                 all_sizes_match = False
                 all_hashes_verified = False
@@ -614,6 +690,10 @@ class SourceValidator:
                 all_hashes_verified = False
             elif res.state == VerificationState.LOCAL_HASH_VERIFIED:
                 pass
+            elif res.state == VerificationState.HASH_MISMATCH:
+                all_hashes_verified = False
+            elif res.state == VerificationState.SOURCE_PRESENT_METADATA_MATCH:
+                all_hashes_verified = False
             else:
                 all_hashes_verified = False
 
@@ -638,14 +718,18 @@ class SourceValidator:
         manifest: Any,
         batch_result: BatchVerificationResult,
         record_only_verified_hashes: bool = True,
-    ) -> None:
+        allow_partial: bool = False,
+    ) -> Dict[str, Any]:
         """
         Record verified sources into a RunManifest instance per DOC-F02:
         Calls manifest.record_input(path=..., bytes_count=..., sha256_hash=...).
 
-        If record_only_verified_hashes is True (default), sha256_hash is supplied
-        only for sources that achieved LOCAL_HASH_VERIFIED; otherwise None is passed
-        (which RunManifest records as 'UNVERIFIED').
+        By default (allow_partial=False), if any source in the batch failed validation
+        (not all_present or not all_sizes_match), raises SourceIntegrityError (fail-closed).
+
+        If allow_partial=True is explicitly set, records only the sources that passed
+        structural validation (state in SOURCE_PRESENT_METADATA_MATCH, LOCAL_HASH_COMPUTED_UNAPPROVED,
+        LOCAL_HASH_VERIFIED), excludes failed sources, and returns a structured audit report.
         """
         if not hasattr(manifest, "record_input"):
             raise SourceConfigurationError(
@@ -653,8 +737,37 @@ class SourceValidator:
                 "per DOC-F02"
             )
 
+        if len(batch_result.results) == 0:
+            raise SourceIntegrityError("Cannot record empty verification batch into RunManifest")
+
+        valid_states = {
+            VerificationState.SOURCE_PRESENT_METADATA_MATCH,
+            VerificationState.LOCAL_HASH_COMPUTED_UNAPPROVED,
+            VerificationState.LOCAL_HASH_VERIFIED,
+        }
+
+        recorded = []
+        rejected = []
+
         for year in sorted(batch_result.results.keys()):
             res = batch_result.results[year]
+            if res.state not in valid_states:
+                rejected.append({
+                    "year": year,
+                    "path": res.path,
+                    "state": res.state.value if isinstance(res.state, VerificationState) else str(res.state),
+                    "error_message": res.error_message or "Integrity validation failed",
+                })
+            else:
+                recorded.append(res)
+
+        if rejected and not allow_partial:
+            rej_summary = "; ".join([f"Year {r['year']}: {r['state']} ({r['error_message']})" for r in rejected])
+            raise SourceIntegrityError(
+                f"Cannot record failed verification batch into RunManifest (allow_partial=False): {rej_summary}"
+            )
+
+        for res in recorded:
             path_str = res.path
             bytes_count = res.actual_byte_size if res.actual_byte_size is not None else 0
 
@@ -666,3 +779,11 @@ class SourceValidator:
                 hash_to_record = None
 
             manifest.record_input(path=path_str, bytes_count=bytes_count, sha256_hash=hash_to_record)
+
+        return {
+            "recorded_count": len(recorded),
+            "rejected_count": len(rejected),
+            "all_verified": batch_result.all_hashes_verified,
+            "recorded_paths": [r.path for r in recorded],
+            "rejected_details": rejected,
+        }

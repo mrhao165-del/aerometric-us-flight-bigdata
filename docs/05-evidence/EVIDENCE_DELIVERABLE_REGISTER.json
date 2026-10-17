@@ -2,7 +2,7 @@
   "registry_version": "1.0",
   "task_id": "T-007",
   "updated_at": "2026-10-17",
-  "description": "Evidence Deliverable Register updated for T007-01-HUMAN-SIGNOFF and T007-02 Entry Preparation",
+  "description": "Evidence Deliverable Register updated for T007-02A-FINAL-CLOSURE fail-closed source integrity remediation",
   "governed_living_docs": [
     {
       "path": "docs/01-planning/BACKLOG.md",
@@ -3018,17 +3018,17 @@
       "path": "src/flight_pipeline/ingestion/source_validator.py",
       "task_id": "T-007",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 25955,
-      "sha256": "9e403314c685815b9d887c76e12d357e534266ae85e3d2bfe7a989edd7d5d412",
-      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+      "bytes": 30980,
+      "sha256": "dbc744f1ea23f68ff98974cc5ac1f16718fc6cbda29e310c42365571822d3ddb",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
     },
     {
       "path": "tests/test_t007_source_validator.py",
       "task_id": "T-007",
       "artifact_type": "TEST_MODULE",
-      "bytes": 21787,
-      "sha256": "f9849bf6ca68e3f7cdd6ebf2af28fa2185cdc0c87e009ef6ac69e218971bf3ad",
-      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+      "bytes": 29895,
+      "sha256": "c44d4c84d405b1f2846c276568ef802042f8a495cc1c08137e43852fff1fdfba",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
     },
     {
       "path": "docs/05-evidence/T007_02A_HANDOFF_ERRATA.md",
@@ -3133,6 +3133,86 @@
       "bytes": 77,
       "sha256": "e56183939234051e1aae671876d7cbcb21309e5680c496bd7b971ff23edbe758",
       "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_CLOSURE_SOURCE_REVIEW.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5765,
+      "sha256": "c640bf051265c403e406521a8c4610f2657fe11202e4d7c3cd63c0c185773a47",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_CLOSURE_BATCH_INVARIANTS.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7387,
+      "sha256": "99a7caadda4ed807b8db34a3d9a0b3e6f59ca1a6833318ac726969068f22dd40",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_CLOSURE_PATH_SECURITY.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6522,
+      "sha256": "7a637a6316dbf8c73634763f3a13da2bb4c7306516ab05ed54e8e3ee5c1f2f9d",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_CLOSURE_MANIFEST_BOUNDARY.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5368,
+      "sha256": "4bf491074cf9e332e38abc986c96804ad4c4fb067398ce66f610aba1123baa13",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_CLOSURE_TEST_RESULTS.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6594,
+      "sha256": "9878b81c48bf60ab7e8cb23d747f737a595bc8fd5a964ec982f1d4d5fb6519ac",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4244,
+      "sha256": "250925c6f2dc9d886fb4ceddf9181b65d04806eef1c5d84bb62f373a0ff43035",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_CLOSURE_LOG_TESTS.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 4920,
+      "sha256": "3431abe2be49a033d247dc769c85a4cf95ba6e295a814e2954048e732c572fda",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_CLOSURE_LOG_T006_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6746,
+      "sha256": "28bc2a7a6c7f55e351ebda86e2644d0bbebd7eab4150b79e6f922286e141c7ad",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_CLOSURE_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2063,
+      "sha256": "ec219c8fbcd4826365e5f1b1438e1147e6f3df202f6cd38fcd1a5c87eae75166",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_CLOSURE_LOG_CONSISTENCY.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 77,
+      "sha256": "06dccd1da7bb97ad0b5bb722cf09943d0551afd09419a1e4d0a3c1e80d6d359d",
+      "authorization_ref": "Project Lead T007-02A-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_CLOSURE_FINAL_VERDICT.md"
     }
   ]
 }

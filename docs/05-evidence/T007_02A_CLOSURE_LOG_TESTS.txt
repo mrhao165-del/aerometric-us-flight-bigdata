@@ -1,0 +1,87 @@
+﻿python : ......WARNING: Using incubator modules: jdk.incubator.vector
+At line:1 char:1
++ python -m unittest discover tests 2>&1 | Out-File -FilePath "docs/05- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (......WARNING: ...ncubator.vector:String) [], Re 
+   moteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+26/10/17 18:23:53 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: 
+java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see 
+https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/17 18:23:54 WARN NativeCodeLoader: Unable to load native-hadoop library for your 
+platform... using builtin-java classes where applicable
+26/10/17 18:23:54 WARN SparkConf: Note that spark.local.dir will be overridden by the value 
+set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in 
+YARN).
+
+[Stage 0:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2152, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 50498), raddr=('127.0.0.1', 50497)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 1:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2184, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 50508), raddr=('127.0.0.1', 50507)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 2:>                                                          (0 + 4) / 4]
+
+[Stage 2:============================================>              (3 + 1) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2188, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 50521), raddr=('127.0.0.1', 50520)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 3:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2160, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 50531), raddr=('127.0.0.1', 50530)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+......................26/10/17 18:24:10 WARN SparkConf: Note that spark.local.dir will be 
+overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in 
+standalone/kubernetes and LOCAL_DIRS in YARN).
+
+[Stage 0:>                                                          (0 + 2) / 4]
+
+[Stage 0:==============>                                            (1 + 2) / 4]
+
+[Stage 0:=============================>                             (2 + 2) / 4]
+
+[Stage 0:============================================>              (3 + 1) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1936, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 50545), raddr=('127.0.0.1', 50544)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 1:>                                                          (0 + 2) / 2]
+
+                                                                                
+.........................................................
+----------------------------------------------------------------------
+Ran 88 tests in 28.368s
+
+OK
+SUCCESS: The process with PID 13880 (child process of PID 3748) has been terminated.
+SUCCESS: The process with PID 3748 (child process of PID 14548) has been terminated.
+SUCCESS: The process with PID 14548 (child process of PID 22504) has been terminated.

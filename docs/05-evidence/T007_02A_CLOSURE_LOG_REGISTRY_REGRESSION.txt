@@ -1,0 +1,22 @@
+================================================================================
+RUNNING WORKING-TREE DELIVERABLE REGISTRY REGRESSION TEST SUITE (POS-01..02, NEG-01..08)
+================================================================================
+[PASS] POS-02: Historical immutable evidence (SOURCE_MANIFEST.json, PACKAGE_MANIFEST.json) and registered baseline accepted with 0 failures
+[PASS] POS-01: Correctly registered new evidence artifact with matching size and SHA-256 is accepted
+[PASS] NEG-01: Unregistered arbitrary Markdown file is rejected
+[PASS] NEG-02: File with valid-looking T005_ prefix but absent from registry is rejected
+[PASS] NEG-03: Registered artifact with modified content or incorrect SHA-256 is rejected
+[PASS] NEG-04: Registered artifact with missing file or size mismatch is rejected
+[PASS] NEG-05: Malformed registry JSON and duplicate registry entries are both rejected
+[PASS] NEG-06: Path traversal (../) or unsafe path in registry is rejected
+[PASS] NEG-07: Unexpected .pt extension in evidence directory and forged task identifier (T-999) are both rejected
+[PASS] NEG-08: Tampering with SOURCE_MANIFEST.json inputs or unapproved PACKAGE_MANIFEST.json files cannot be bypassed via the registry
+[PASS] NEG-09: Tampering with pinned PACKAGE_MANIFEST/SOURCE_MANIFEST or registering unapproved living doc is rejected
+[PASS] NEG-10A: Unapproved artifact_type is strictly rejected
+[PASS] NEG-10B: Symlink injection into working tree is strictly rejected by checker and path validator
+[PASS] MUT-NEG10-01: Mutation test proves unconditional false-PASS fallback ('or True') is identified and rejected
+[PASS] MUT-NEG10-02: Path helper _is_safe_rel_path strictly rejects traversal (../), absolute, backslash, and empty paths
+[PASS] MUT-NEG10-03: Unauthorized artifact_type allowlist strictly enforces approved enum members
+REGRESSION SUITE SUMMARY: 16 PASS, 0 FAIL, 0 SKIP
+================================================================================
+ALL POSITIVE AND NEGATIVE REGISTRY REGRESSION TESTS PASSED.
