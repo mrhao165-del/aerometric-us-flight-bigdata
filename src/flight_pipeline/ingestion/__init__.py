@@ -1,6 +1,8 @@
 """
 Ingestion package for US Flight Performance Analysis (2016-2024).
-Provides canonical schema definitions, field mappings, source inventory, and streaming hash verifier.
+Provides canonical schema definitions, field mappings, source inventory, streaming hash verifier,
+physical CSV header validation, independent logical record scanning, record classification,
+forensic persistence, and end-to-end ingestion coordination.
 """
 
 from flight_pipeline.ingestion.schema import (
@@ -44,6 +46,42 @@ from flight_pipeline.ingestion.source_validator import (
     validate_path_safety,
 )
 
+from flight_pipeline.ingestion.reader import (
+    ANOMALY_FLAGS_COLUMN,
+    AccountingUnverifiedError,
+    AnomalyReason,
+    CsvReadOptions,
+    HeaderValidationError,
+    IngestionRecordClassifier,
+    IngestionTransformer,
+    LINEAGE_ID_COLUMN,
+    REASON_COLUMN,
+    RawCsvReader,
+    RecordStatus,
+    SOURCE_FILE_COLUMN,
+    SOURCE_YEAR_COLUMN,
+    STATUS_COLUMN,
+    SourceScanResult,
+    compute_per_year_accounting,
+    compute_row_accounting,
+    scan_csv_logical_records,
+    validate_physical_csv_header,
+)
+
+from flight_pipeline.ingestion.coordinator import (
+    ExecutionReceipt,
+    ForensicPersistenceResult,
+    IngestionCoordinator,
+    PipelineRunOutcome,
+    PipelineState,
+    persist_forensic_records,
+    read_parquet_safe,
+    verify_parquet_directory_integrity,
+    write_dataframe_parquet_safe,
+    write_json_atomic,
+    write_json_atomic_with_retry,
+)
+
 __all__ = [
     # Schema definitions
     "CANONICAL_COLUMNS_COUNT",
@@ -82,4 +120,36 @@ __all__ = [
     "SourceValidatorError",
     "VerificationState",
     "validate_path_safety",
+    # Reader, Header Validator, Logical Scanner & Classifier definitions
+    "ANOMALY_FLAGS_COLUMN",
+    "AccountingUnverifiedError",
+    "AnomalyReason",
+    "CsvReadOptions",
+    "HeaderValidationError",
+    "IngestionRecordClassifier",
+    "IngestionTransformer",
+    "LINEAGE_ID_COLUMN",
+    "REASON_COLUMN",
+    "RawCsvReader",
+    "RecordStatus",
+    "SOURCE_FILE_COLUMN",
+    "SOURCE_YEAR_COLUMN",
+    "STATUS_COLUMN",
+    "SourceScanResult",
+    "compute_per_year_accounting",
+    "compute_row_accounting",
+    "scan_csv_logical_records",
+    "validate_physical_csv_header",
+    # Coordinator, Forensic Persistence & Safe Parquet Writer definitions
+    "ExecutionReceipt",
+    "ForensicPersistenceResult",
+    "IngestionCoordinator",
+    "PipelineRunOutcome",
+    "PipelineState",
+    "persist_forensic_records",
+    "read_parquet_safe",
+    "verify_parquet_directory_integrity",
+    "write_dataframe_parquet_safe",
+    "write_json_atomic",
+    "write_json_atomic_with_retry",
 ]

@@ -2810,9 +2810,9 @@
       "path": "src/flight_pipeline/ingestion/__init__.py",
       "task_id": "T-007",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 2369,
-      "sha256": "53ab52bd58b57ea5ea003992e4814a0977267e6e8d73ef88e861a512135daed1",
-      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+      "bytes": 4386,
+      "sha256": "cd0683c0340205f0c429e8f3dfe4d597cd73d5679ac9c0338a1d895c32968ed8",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
       "path": "src/flight_pipeline/ingestion/schema.py",
@@ -3282,17 +3282,17 @@
       "path": "src/flight_pipeline/ingestion/reader.py",
       "task_id": "T-007",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 9187,
-      "sha256": "f53dd5607c5b640501b201605e069411979bcd3002c9f9d480a2a1fa0c4f0336",
-      "authorization_ref": "Project Lead MASTER-T007 instruction (2026-10-17); recorded in docs/05-evidence/T007_FULL_FINAL_INDEPENDENT_REVIEW.md"
+      "bytes": 40558,
+      "sha256": "56268bfd2b1339236b62400014c820858447d53b81239aa99c72f535366b1694",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
       "path": "src/flight_pipeline/ingestion/coordinator.py",
       "task_id": "T-007",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 24200,
-      "sha256": "5a75633ad57f744e4888903441fbc132fda2da3cb81e9a6b38fd9b9d511b8756",
-      "authorization_ref": "Project Lead MASTER-T007 instruction (2026-10-17); recorded in docs/05-evidence/T007_FULL_FINAL_INDEPENDENT_REVIEW.md"
+      "bytes": 52716,
+      "sha256": "de9c57a77ed6eb828449fef2c04ebf1b0cc4c7c979af398311513fc243eee941",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
       "path": "src/flight_pipeline/storage/locking.py",
@@ -3306,9 +3306,9 @@
       "path": "tests/test_t007_reader.py",
       "task_id": "T-007",
       "artifact_type": "TEST_MODULE",
-      "bytes": 16195,
-      "sha256": "38e5d208f73bb7474337cd57b384198808ec5aff2dc3cc75b798e1129451b2d4",
-      "authorization_ref": "Project Lead MASTER-T007 instruction (2026-10-17); recorded in docs/05-evidence/T007_FULL_FINAL_INDEPENDENT_REVIEW.md"
+      "bytes": 30937,
+      "sha256": "fe74c475e3e0d8e128c67e56e2b549c57d56a6af7c9b94eb743de4efc3d6e138",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
       "path": "tests/test_t007_locking.py",
@@ -3322,9 +3322,9 @@
       "path": "tests/test_t007_pipeline_integration.py",
       "task_id": "T-007",
       "artifact_type": "TEST_MODULE",
-      "bytes": 20246,
-      "sha256": "c656c8ae02d733349350a135b0589b6c8c168a012854060a53d9442fc67039ef",
-      "authorization_ref": "Project Lead MASTER-T007 instruction (2026-10-17); recorded in docs/05-evidence/T007_FULL_FINAL_INDEPENDENT_REVIEW.md"
+      "bytes": 31106,
+      "sha256": "df1c4492a386db14c1b11680889a3c4d68219605a2ae3ec6b93d3973537893c3",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
       "path": "docs/05-evidence/T007_LOCAL_RAW_SHA256_CANDIDATE.json",
@@ -3445,6 +3445,86 @@
       "bytes": 2079,
       "sha256": "23f065b2740cb803fd350b380da0f98a33dca3e784d29812a53dcfcf491df604",
       "authorization_ref": "Project Lead MASTER-T007 instruction (2026-10-17); recorded in docs/05-evidence/T007_FULL_FINAL_INDEPENDENT_REVIEW.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_REMEDIATION_SOURCE_AND_DIFF_AUDIT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8378,
+      "sha256": "1a1d006ca562c6c068a405db174b053c00450bd3e96e575e03a731f283b812a4",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_REMEDIATION_CSV_HEADER_AND_ACCOUNTING_REVIEW.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6010,
+      "sha256": "dfb7b1375f0d8ed80ebd0d7a3ed7738e13e62d0f49ac93317c312672e02ce34c",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_REMEDIATION_CLASSIFICATION_AND_FORENSIC_REVIEW.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6461,
+      "sha256": "b5b21ef1f3bfc3b4b5f03404055e5f63e16abca51278b3e977a65ba2e4591bf0",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_REMEDIATION_PARQUET_WRITE_RETRY_AUDIT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4708,
+      "sha256": "49ac556637c343fb26e98da62df8da548d1373e3df789b43ac1418710b304129",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_REMEDIATION_PUBLICATION_RECEIPT_RECOVERY_AUDIT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4388,
+      "sha256": "d026ffb6c6bb0bedeaacb29855da37a6c3da98841b9e85d05a2d5fe904a7cdd7",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_REMEDIATION_TEST_EXECUTION_RECONCILIATION.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8522,
+      "sha256": "b5747af65cffb99f70c7cbf944b52c49ecbc0b30e765b6aa6f8afcac913a50bb",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_REMEDIATION_CONTRACT_TRACEABILITY.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6892,
+      "sha256": "d23a7cf155d0a3a040ba52bc6282079db7c357837ef0ce9bfc4060a9a2b0c002",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6112,
+      "sha256": "5f777914815bc01fe3e9324544749eccb29f799e39689575ad63a3e59663ad05",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_REMEDIATION_LOG_UNITTEST_SUITE.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 60669,
+      "sha256": "dd1da5f4a9bd4abb928be2ae2c08987b727450553f919781a9553b8b712a6bea",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_REMEDIATION_LOG_QA_VERIFIERS.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 11415,
+      "sha256": "6098c9eb4c2b7482beb14777b8d2ff5da20725b46f6631566b37356428ff02d4",
+      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
     }
   ]
 }
