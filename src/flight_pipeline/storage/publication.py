@@ -186,7 +186,18 @@ class SafePublisher:
         Execute the 7-step publication sequence.
         Supports fault injection at Step 5 to verify TS-013 non-destructive rollback behavior.
         """
-        previous_pointer = self.get_current_pointer()
+        # Step 0: Initial pointer resolution with transient retry & persistent failure trapping (PUB-01)
+        try:
+            previous_pointer = self.get_current_pointer()
+        except OSError as exc:
+            return PublicationResult(
+                success=False,
+                status="FAILED_INITIAL_POINTER_READ",
+                run_id=run_id,
+                previous_pointer=None,
+                error_message=f"Initial pointer read failed before publication: {exc}",
+                aborted_step=0,
+            )
 
         # Step 0: Path confinement validation (F-03)
         try:

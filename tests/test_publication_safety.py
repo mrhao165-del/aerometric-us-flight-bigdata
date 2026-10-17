@@ -442,8 +442,77 @@ class TestPublicationSafety(unittest.TestCase):
             with self.assertRaises(FileNotFoundError):
                 compute_file_sha256(base / "nonexistent.bin")
 
+    def test_initial_pointer_read_persistent_exception(self):
+        """PUB-01: When get_current_pointer raises persistent OSError, publish aborts at step 0 without side effects."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base = Path(tmp_dir)
+            publisher = SafePublisher(str(base))
+            staging = base / "staging" / "run_fail"
+            write_valid_parquet(staging / "part-0.parquet", "data")
+
+            with patch.object(publisher, "get_current_pointer", side_effect=OSError("Simulated persistent pointer lock")):
+                res = publisher.publish("run_fail", staging, RowAccounting(10, 10, 0, 0))
+
+            self.assertFalse(res.success)
+            self.assertEqual(res.status, "FAILED_INITIAL_POINTER_READ")
+            self.assertEqual(res.aborted_step, 0)
+            self.assertIsNone(res.previous_pointer)
+            self.assertIn("Initial pointer read failed before publication", res.error_message)
+            # Ensure no data was promoted
+            self.assertFalse((publisher.runs_root / "run_fail").exists())
+            # Ensure pointer was not touched
+            self.assertFalse(publisher.pointer_file.exists())
+
+    def test_initial_pointer_read_transient_retry_success(self):
+        """PUB-01: Transient OSError on initial read is retried by get_current_pointer and succeeds."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base = Path(tmp_dir)
+            publisher = SafePublisher(str(base))
+            publisher.curated_root.mkdir(parents=True, exist_ok=True)
+            publisher.pointer_file.write_text("run_existing\n", encoding="utf-8")
+
+            call_count = [0]
+            real_read_text = Path.read_text
+
+            def flaky_read_text(*args, **kwargs):
+                call_count[0] += 1
+                if call_count[0] == 1:
+                    raise OSError("Transient file lock on initial read")
+                return real_read_text(publisher.pointer_file, *args, **kwargs)
+
+            staging = base / "staging" / "run_new"
+            write_valid_parquet(staging / "part-0.parquet", "data")
+
+            with patch("pathlib.Path.read_text", side_effect=flaky_read_text):
+                res = publisher.publish("run_new", staging, RowAccounting(10, 10, 0, 0))
+
+            self.assertTrue(res.success)
+            self.assertEqual(res.status, "PUBLISHED")
+            self.assertEqual(res.previous_pointer, "run_existing")
+            self.assertEqual(publisher.get_current_pointer(), "run_new")
+
+    def test_initial_pointer_missing_is_not_treated_as_error(self):
+        """PUB-01: When pointer does not exist initially, get_current_pointer returns None and publish proceeds."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base = Path(tmp_dir)
+            publisher = SafePublisher(str(base))
+            staging = base / "staging" / "run_first"
+            write_valid_parquet(staging / "part-0.parquet", "first_data")
+
+            # Ensure pointer file does not exist
+            self.assertFalse(publisher.pointer_file.exists())
+            self.assertIsNone(publisher.get_current_pointer())
+
+            res = publisher.publish("run_first", staging, RowAccounting(5, 5, 0, 0))
+            self.assertTrue(res.success)
+            self.assertEqual(res.status, "PUBLISHED")
+            self.assertIsNone(res.previous_pointer)
+            self.assertEqual(publisher.get_current_pointer(), "run_first")
+
 
 if __name__ == "__main__":
     unittest.main()
+
+
 
 
