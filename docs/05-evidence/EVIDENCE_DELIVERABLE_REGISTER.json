@@ -1,7 +1,7 @@
 {
   "registry_version": "1.0",
-  "task_id": "T-009",
-  "updated_at": "2026-10-17T08:41:30+07:00",
+  "task_id": "T-007",
+  "updated_at": "2026-10-17T13:10:00+07:00",
   "description": "Evidence Deliverable Register updated for T009-UNBLOCK-R2 Git metadata exclusion & validator reconciliation",
   "governed_living_docs": [
     {
@@ -2421,6 +2421,110 @@
       "bytes": 75,
       "sha256": "3d28f4bbcbeb55ced99b15b3c8cc45034a0e51353cfe92005f301264cb29f9a6",
       "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_ENTRY_GATE_AUDIT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8433,
+      "sha256": "10ec7c1fdf9128a73c244c483e6f2c3894c59484799e941373ddc1c97bcb5e69",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_SOURCE_SCHEMA_MATRIX.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 13566,
+      "sha256": "ce45200a0256f5ebc9b72780eb5230cdcf1eb67bdbe5c2a72f5e1c8064fbe4d4",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_INGESTION_DATAFLOW.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 12256,
+      "sha256": "8d693ab5563c66bf2ebcc2faad61feb5b405e443dd75c82e7ac0dd1e726d64fe",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_CLASSIFICATION_AND_ACCOUNTING.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8271,
+      "sha256": "f233c021b8017698eba35c72513d711447f7fddf536e074ecd0fa637f3752809",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_STORAGE_AND_SINGLE_WRITER.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7423,
+      "sha256": "82eb99b4696d34a3399072c1b3a41c71d2c84ff298bd2f4ea1b05cbcef4ddad0",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_TEST_FIXTURE_MATRIX.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6767,
+      "sha256": "7ea27c0b77df4eec5ad8697a32e8276049e70b0e4fb16660f212cd95aa0245a1",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_IMPLEMENTATION_DAG.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7842,
+      "sha256": "1b0335c759eb80207a95b47a7eb3a6da50b25c1101880636f3b367b8e6a905e2",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_RISK_ROLLBACK_PLAN.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6085,
+      "sha256": "233fe7f4c6501590b7b3726a5b1cae8cc136d98ed8bb94e8d23f2ecd808a5b29",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_FINAL_REVIEW.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6086,
+      "sha256": "4611baebb5237116414a58cd5c70bf21af140e861e4a8e7715135e791da1562f",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_LOG_CONSISTENCY.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "627e7d360d9ad64c22a2196fac8342c1b3fd0643991100265ce53887a33ca4a1",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2057,
+      "sha256": "868cc53789a2d6c36178c7284bbe063f9dcf0ff2aa51fe6ffda647546d24d9e0",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_LOG_T006_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2349,
+      "sha256": "0bdf2e72d1c2fcfd62269358210ad8cbd5d312b3a60bba94e861488694b499ec",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_LOG_CI_CLEAN_CHECKOUT.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "627e7d360d9ad64c22a2196fac8342c1b3fd0643991100265ce53887a33ca4a1",
+      "authorization_ref": "Project Lead T007-DESIGN instruction"
     }
   ]
 }
