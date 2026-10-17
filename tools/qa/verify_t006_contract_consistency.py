@@ -216,10 +216,24 @@ def verify_governance_invariants(root: Path):
     if not re.search(r"\|\s*\*\*T-006\*\*\s*\|\s*\*\*`?(?:PASS|COMPLETED|IN_PROGRESS)", pst):
         raise AssertionError("Task T-006 must be PASS, COMPLETED, or IN_PROGRESS in PROJECT_STATE.md!")
 
-    # Check G4 tasks: T-009, T-007, T-008 NOT_STARTED
-    for t in ("T-007", "T-008", "T-009"):
-        if re.search(rf"\|\s*\*\*{t}\*\*\s*\|\s*\*\*`?IN_PROGRESS`?\*\*", pst) or re.search(rf"\|\s*\*\*{t}\*\*\s*\|\s*\*\*`?PASS`?\*\*", pst):
+    # Check G4 tasks: T-007 and T-008 must NOT be started or passed
+    for t in ("T-007", "T-008"):
+        if re.search(rf"\|\s*\*\*{t}\*\*\s*\|\s*\*\*`?IN_PROGRESS`?\*\*", pst) or re.search(rf"\|\s*\*\*{t}\*\*\s*\|\s*\*\*`?(?:PASS|COMPLETED)`?\*\*", pst):
             raise AssertionError(f"G4 task {t} must NOT be started or passed!")
+
+    # Check G4 task T-009: Allowed to be PASS/COMPLETED when authorized by human signoff record, or NOT_STARTED in baseline
+    m_t009 = re.search(r"\|\s*\*\*T-009\*\*\s*\|\s*\*\*`?([^`|\n]+)`?\*\*", pst)
+    if m_t009:
+        t009_st = m_t009.group(1).strip()
+        if any(w in t009_st for w in ("PASS", "COMPLETED")):
+            signoff_p = root / "docs/05-evidence/T009_HUMAN_SIGNOFF_20261017.md"
+            if not signoff_p.is_file():
+                raise AssertionError("Task T-009 cannot be PASS without T009_HUMAN_SIGNOFF_20261017.md human signoff record!")
+            signoff_txt = signoff_p.read_text(encoding="utf-8")
+            if "tôi duyệt bạn hãy tạo promt để thực hiện việc tiếp theo" not in signoff_txt and "APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION" not in signoff_txt:
+                raise AssertionError("T009 human signoff record missing explicit approval provenance!")
+        elif "IN_PROGRESS" in t009_st:
+            raise AssertionError("Task T-009 cannot remain IN_PROGRESS in post-signoff PROJECT_STATE.md!")
 
     # Check G2-EXC-001 condition in DECISIONS.md or PROJECT_STATE.md
     dec_path = root / "docs/02-design/DECISIONS.md"
@@ -634,7 +648,7 @@ def main():
     verify_governance_invariants(root)
     print("[PASS] Case 10: G2-EXC-001 verified as provisional unit status with G5 TS-018 mandatory hard stop blocking G6.")
     print("[PASS] Case 11: Gate G2 confirmed PASS; Gate G3 confirmed PASS with human acceptance record; T-006 confirmed PASS / COMPLETED.")
-    print("[PASS] Case 12: Downstream G4 tasks (T-009, T-007, T-008) verified NOT_STARTED.")
+    print("[PASS] Case 12: Downstream G4 tasks (T-007, T-008) verified NOT_STARTED; T-009 governed by human signoff.")
     passed_checks += 3
 
     # 5. Implementation-Safety Addendum Invariants

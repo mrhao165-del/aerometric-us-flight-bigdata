@@ -1272,11 +1272,11 @@
     },
     {
       "path": "tools/qa/verify_t006_contract_consistency.py",
-      "task_id": "G3-OFFICIAL-SIGNOFF",
+      "task_id": "T-009",
       "artifact_type": "TEST_SUITE",
-      "bytes": 36149,
-      "sha256": "b0db7e843a5e640e6c7c6f62c20a4fcc44baaf942ad0a73e8a0d4256ca644b09",
-      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_EXECUTION_MANIFEST.md"
+      "bytes": 37263,
+      "sha256": "671b190a6a59648494c7dc4ffef932366fcbab4f39228e2f155283a64cb81eff",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/T009_HUMAN_SIGNOFF_20261017.md"
     },
     {
       "path": "src/flight_pipeline/__init__.py",
@@ -2341,6 +2341,86 @@
       "bytes": 77,
       "sha256": "9af7da14f6c010c000eab33e446a553944b5240eee9f6fd75f35016d7a63015e",
       "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SIGNOFF_AUTHORIZATION_RECORD.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9095,
+      "sha256": "fe86266d182fd0c73b9fe63010f7fd2ee74951310e425e1897c3d333efdba2b0",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_HUMAN_SIGNOFF_20261017.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8946,
+      "sha256": "0f2eb15613172f35fbf5fdcb9494b26bad71d225f3d5e9c9b317cec15c2cf0ff",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SIGNOFF_STATE_RECONCILIATION.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7880,
+      "sha256": "7d06c2e2f983addced34e9bca4b4c36f04086e71e07465a920a89cead3b19cd8",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SIGNOFF_EVIDENCE_INTEGRITY.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6669,
+      "sha256": "9bd404ffc5fcb8d29e38446f01983e41c820100abbf40113b5e3b46f0e1c4cf6",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SIGNOFF_POST_APPROVAL_VALIDATION.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6025,
+      "sha256": "89620f231da6dad4d0f2ce5ad149a83cd617ec580034475ecafb48eb76f4b585",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SIGNOFF_FINAL_HANDOFF.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5958,
+      "sha256": "8cd95f49041e137499f6e1627bb823643f0b78362e5deadfdeeed55246ef5c3d",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SIGNOFF_LOG_CONSISTENCY.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "3d28f4bbcbeb55ced99b15b3c8cc45034a0e51353cfe92005f301264cb29f9a6",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SIGNOFF_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2057,
+      "sha256": "868cc53789a2d6c36178c7284bbe063f9dcf0ff2aa51fe6ffda647546d24d9e0",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SIGNOFF_LOG_T006_REGRESSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2377,
+      "sha256": "afe7d5514ee01dff748f127563b30224705c8cf4c2b02c52c3b1268cc718bc74",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SIGNOFF_LOG_CI_CLEAN_CHECKOUT.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "3d28f4bbcbeb55ced99b15b3c8cc45034a0e51353cfe92005f301264cb29f9a6",
+      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction"
     }
   ]
 }
