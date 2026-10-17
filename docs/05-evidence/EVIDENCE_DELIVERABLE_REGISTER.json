@@ -1075,24 +1075,24 @@
       "task_id": "T-009",
       "artifact_type": "AUDIT_REPORT",
       "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
-      "bytes": 3947,
-      "sha256": "75add54760b6c7416240e117d8064f1cc7f54997f5b733495dd730dcf1a8ab30"
+      "bytes": 4029,
+      "sha256": "d4f6715384eef4cd912553ae00d56f1687dcb92d57922c6ba45bb2a3df0abe6a"
     },
     {
       "path": "docs/05-evidence/T009_UNBLOCK_GIT_VERIFICATION.md",
       "task_id": "T-009",
       "artifact_type": "AUDIT_REPORT",
       "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
-      "bytes": 2866,
-      "sha256": "6ba033055efce10a613aea697daf981690ffeb02b94001d1ca9ef76cd4a6ff78"
+      "bytes": 3309,
+      "sha256": "43396c89ba82e4062c97a75672cd84b6fbce7dae91073b6c1defc44154f7ba6c"
     },
     {
       "path": "docs/05-evidence/T009_UNBLOCK_REGRESSION_RESULTS.md",
       "task_id": "T-009",
       "artifact_type": "AUDIT_REPORT",
       "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
-      "bytes": 2096,
-      "sha256": "b31c50f19d30e01e506ac73232941b87a0b020c0d05f9c5893802ac327d84eaa"
+      "bytes": 4454,
+      "sha256": "ae2301960aea0a226d2164de59d377b21112433daefdbdd6b8d1c384312b6608"
     },
     {
       "path": "tools/audit/apply_closeout_edits.py",

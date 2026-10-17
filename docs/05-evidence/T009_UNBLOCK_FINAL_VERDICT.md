@@ -2,7 +2,7 @@
 
 **Task ID:** `T009-UNBLOCK-R1` (Controlled Git Baseline & Evidence Structure Remediation)  
 **Gate:** `G4`  
-**Review Date:** 2026-10-17T08:24:00+07:00  
+**Review Date:** 2026-10-17T08:26:00+07:00  
 **Reviewer Role:** Senior Software Engineer, Repository Governance Engineer & Independent QA Engineer  
 **Final Technical Verdict:** **`PRECONDITIONS_READY_FOR_T009_IMPLEMENTATION`**  
 
@@ -28,8 +28,8 @@ $$\mathbf{VERDICT:\ PRECONDITIONS\_READY\_FOR\_T009\_IMPLEMENTATION}$$
 |---|---|:---:|---|
 | **Phase A** | Kiểm toán tiền thực thi, kiểm tra `.gitignore`, kiểm kê tệp gốc T009, tạo backup ngoại vi an toàn | **`PASS`** | [`T009_UNBLOCK_BASELINE_AUDIT.md`](T009_UNBLOCK_BASELINE_AUDIT.md), `D:/Study/Code/Apache/Flight_Analyzt/T009_UNBLOCK_BACKUP_20261017_081700/` |
 | **Phase B** | Chuẩn hóa toàn bộ bằng chứng T-009 về quy ước phẳng (`docs/05-evidence/T009_*.md`), di chuyển thư mục `T009/` ra ngoài repository | **`PASS`** | [`T009_UNBLOCK_EVIDENCE_MIGRATION.md`](T009_UNBLOCK_EVIDENCE_MIGRATION.md) |
-| **Phase C** | Cập nhật sổ đăng ký `EVIDENCE_DELIVERABLE_REGISTER.json`, chạy kiểm toán cây làm việc | **`PASS`** | [`EVIDENCE_DELIVERABLE_REGISTER.json`](EVIDENCE_DELIVERABLE_REGISTER.json), [`T009_UNBLOCK_REGRESSION_RESULTS.md`](T009_UNBLOCK_REGRESSION_RESULTS.md) |
-| **Phase D** | Khởi tạo Git cục bộ (`git init`), stage kiểm toán loại trừ 100% raw data và secrets, tạo baseline commit | **`PASS`** | [`T009_UNBLOCK_GIT_VERIFICATION.md`](T009_UNBLOCK_GIT_VERIFICATION.md) |
+| **Phase C** | Cập nhật sổ đăng ký `EVIDENCE_DELIVERABLE_REGISTER.json`, chạy kiểm toán cây làm việc (385 checks PASS) | **`PASS`** | [`EVIDENCE_DELIVERABLE_REGISTER.json`](EVIDENCE_DELIVERABLE_REGISTER.json), [`T009_UNBLOCK_REGRESSION_RESULTS.md`](T009_UNBLOCK_REGRESSION_RESULTS.md) |
+| **Phase D** | Khởi tạo Git cục bộ (`git init`), stage kiểm toán loại trừ 100% raw data và secrets, tạo baseline commit | **`PASS`** | [`T009_UNBLOCK_GIT_VERIFICATION.md`](T009_UNBLOCK_GIT_VERIFICATION.md), Commit `5d2ce38da0c85e5219f1f8246b6a64135614913a` |
 | **Phase E** | Đối soát hồi quy tổng thể: Git hợp lệ, Validator PASS, T-006 PASS, bảo lưu nghĩa vụ G2/G3, T-007/008 giữ nguyên NOT_STARTED | **`PASS`** | [`T009_UNBLOCK_FINAL_VERDICT.md`](T009_UNBLOCK_FINAL_VERDICT.md) |
 
 ---
@@ -47,7 +47,7 @@ $$\mathbf{VERDICT:\ PRECONDITIONS\_READY\_FOR\_T009\_IMPLEMENTATION}$$
 
 ## 4. Mục Tiêu Khôi Phục (Rollback Target)
 
-- **Git Baseline Commit:** *(Ghi nhận hash sau khi commit tại Phase D)*
+- **Git Baseline Commit:** `5d2ce38da0c85e5219f1f8246b6a64135614913a` (Branch: `master`)
 - **Bản sao lưu ngoại vi:** `D:\Study\Code\Apache\Flight_Analyzt\T009_UNBLOCK_BACKUP_20261017_081700\`
 - Trạng thái hoàn toàn có thể khôi phục byte-for-byte nếu phát sinh bất kỳ yêu cầu hoàn nguyên nào từ Project Lead.
 
