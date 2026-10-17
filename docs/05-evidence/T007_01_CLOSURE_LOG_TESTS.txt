@@ -1,0 +1,106 @@
+================================================================================
+T007-01 CLOSURE TARGETED & REPOSITORY UNIT TEST EXECUTION LOG
+================================================================================
+Task ID: T007-01-FINAL-CLOSURE
+Timestamp: 2026-10-17T09:39:46Z
+Host Platform: Windows (Python 3.10.11 64-bit, PySpark 4.0.1, OpenJDK 21.0.12.1)
+
+COMMAND 1: python -m unittest tests/test_t007_schema.py
+......................
+----------------------------------------------------------------------
+Ran 22 tests in 0.011s
+
+OK
+Exit Code: 0
+
+Breakdown of tests in tests/test_t007_schema.py (22 tests):
+[PASS] test_01_exact_34_canonical_names_and_count
+[PASS] test_02_exact_physical_column_order
+[PASS] test_03_no_fabricated_columns
+[PASS] test_04_flights_column_retained_with_prohibited_weight_metadata
+[PASS] test_05_six_weather_fields_retained_as_optional
+[PASS] test_06_raw_csv_business_schema_all_stringtype
+[PASS] test_07_corrupt_record_separation_from_34_columns
+[PASS] test_08_curated_schema_exact_type_mapping
+[PASS] test_09_nullable_int64_calendar_fields
+[PASS] test_10_op_carrier_fl_num_float64_boundary
+[PASS] test_11_date_time_schema_preservation
+[PASS] test_12_pure_schema_no_side_effects
+[PASS] test_13_schema_deterministic_on_repeated_calls
+[PASS] test_14_negative_validation_tests
+[PASS] test_15_compatibility_with_existing_t009_modules
+[PASS] test_contract_01_exact_34_column_snapshot
+[PASS] test_contract_02_scope_isolation_no_io_or_executors
+[PASS] test_mut_01_raw_business_isolation
+[PASS] test_mut_02_raw_parser_isolation
+[PASS] test_mut_03_curated_isolation
+[PASS] test_mut_04_cross_schema_independence
+[PASS] test_mut_05_repeatability_and_immutability
+
+COMMAND 2: python -m unittest discover -v tests
+test_dc11_negative_counts_rejected (test_manifest.TestRunManifest) ... ok
+test_dc12_ingest_acceptance_rate (test_manifest.TestRunManifest) ... ok
+test_dc12_metric_accounting (test_manifest.TestRunManifest) ... ok
+test_dc12_valid_exceeding_records_rejected (test_manifest.TestRunManifest) ... ok
+test_row_accounting_balance_invariant (test_manifest.TestRunManifest) ... ok
+test_run_manifest_lifecycle_and_hashing (test_manifest.TestRunManifest) ... ok
+test_delay_predicates_preserve_signed_negative (test_numeric_predicates.TestNumericPredicates) ... ok
+test_duration_predicates_require_strictly_positive (test_numeric_predicates.TestNumericPredicates) ... ok
+test_is_finite_numeric_matrix (test_numeric_predicates.TestNumericPredicates) ... ok
+test_taxi_predicates_require_non_negative (test_numeric_predicates.TestNumericPredicates) ... ok
+test_f05_01_pointer_verification_mismatch_triggers_atomic_rollback (test_publication_safety.TestPublicationSafety) ... ok
+test_f05_02_pointer_verification_rollback_failure_reporting (test_publication_safety.TestPublicationSafety) ... ok
+test_f05_03_preservation_of_previous_version_and_failure_artifacts (test_publication_safety.TestPublicationSafety) ... ok
+test_f05_04_single_writer_operational_assumption_and_version_collision (test_publication_safety.TestPublicationSafety) ... ok
+test_fault_injection_step5_preserves_previous_pointer_and_staging (test_publication_safety.TestPublicationSafety) ... ok
+test_initial_pointer_missing_is_not_treated_as_error (test_publication_safety.TestPublicationSafety) ... ok
+test_initial_pointer_read_persistent_exception (test_publication_safety.TestPublicationSafety) ... ok
+test_initial_pointer_read_transient_retry_success (test_publication_safety.TestPublicationSafety) ... ok
+test_parquet_with_valid_magic_bytes_but_corrupted_footer_rejected (test_publication_safety.TestPublicationSafety) ... ok
+test_post_switch_pointer_read_exception_with_previous_pointer (test_publication_safety.TestPublicationSafety) ... ok
+test_post_switch_pointer_read_exception_with_rollback_failure (test_publication_safety.TestPublicationSafety) ... ok
+test_post_switch_pointer_read_exception_without_previous_pointer (test_publication_safety.TestPublicationSafety) ... ok
+test_rejection_of_fake_parquet_content (test_publication_safety.TestPublicationSafety) ... ok
+test_rejection_of_path_traversal_run_id (test_publication_safety.TestPublicationSafety) ... ok
+test_streaming_sha256_matches_hashlib_and_handles_blocks (test_publication_safety.TestPublicationSafety) ... ok
+test_successful_publication_sequence (test_publication_safety.TestPublicationSafety) ... ok
+test_unbalanced_accounting_aborts_publication (test_publication_safety.TestPublicationSafety) ... ok
+test_version_immutability_rejection (test_publication_safety.TestPublicationSafety) ... ok
+test_spark_scratch_dir_fallback_never_uses_repo (test_spark_env.TestSparkEnv) ... ok
+test_spark_scratch_dir_posix_compliance (test_spark_env.TestSparkEnv) ... ok
+test_spark_scratch_dir_windows_compliance (test_spark_env.TestSparkEnv) ... ok
+test_spark_session_creation_and_config (test_spark_env.TestSparkEnv) ... ok
+test_01_exact_34_canonical_names_and_count (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_02_exact_physical_column_order (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_03_no_fabricated_columns (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_04_flights_column_retained_with_prohibited_weight_metadata (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_05_six_weather_fields_retained_as_optional (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_06_raw_csv_business_schema_all_stringtype (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_07_corrupt_record_separation_from_34_columns (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_08_curated_schema_exact_type_mapping (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_09_nullable_int64_calendar_fields (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_10_op_carrier_fl_num_float64_boundary (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_11_date_time_schema_preservation (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_12_pure_schema_no_side_effects (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_13_schema_deterministic_on_repeated_calls (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_14_negative_validation_tests (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_15_compatibility_with_existing_t009_modules (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_contract_01_exact_34_column_snapshot (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_contract_02_scope_isolation_no_io_or_executors (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_mut_01_raw_business_isolation (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_mut_02_raw_parser_isolation (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_mut_03_curated_isolation (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_mut_04_cross_schema_independence (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_mut_05_repeatability_and_immutability (test_t007_schema.TestCanonicalSchemaModule) ... ok
+test_f01_manifest_save_sha256_matches_disk_bytes (test_t009_r3_defect_reproductions.TestT009R3DefectReproductions) ... ok
+test_f02_publication_rejects_fake_parquet_content (test_t009_r3_defect_reproductions.TestT009R3DefectReproductions) ... ok
+test_f03_run_id_path_traversal_strictly_rejected (test_t009_r3_defect_reproductions.TestT009R3DefectReproductions) ... ok
+test_f04_dc11_rejects_negative_counts (test_t009_r3_defect_reproductions.TestT009R3DefectReproductions) ... ok
+test_f04_dc12_rejects_valid_exceeding_records (test_t009_r3_defect_reproductions.TestT009R3DefectReproductions) ... ok
+
+----------------------------------------------------------------------
+Ran 59 tests in 24.016s
+
+OK
+Exit Code: 0
+================================================================================

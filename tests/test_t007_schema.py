@@ -241,6 +241,128 @@ class TestCanonicalSchemaModule(unittest.TestCase):
         self.assertTrue(callable(RunManifest))
         self.assertTrue(callable(RowAccounting))
 
+    # =========================================================================
+    # MANDATORY REGRESSION TESTS (T007-01-FINAL-CLOSURE)
+    # =========================================================================
+
+    def test_mut_01_raw_business_isolation(self):
+        """MUT-01: Verify mutating a returned raw business schema does not affect subsequent calls."""
+        s1 = get_raw_business_schema()
+        self.assertEqual(len(s1.fields), 34)
+        s1.add("MUTANT_FAKE_COL", StringType(), nullable=True)
+        self.assertEqual(len(s1.fields), 35)
+
+        s2 = get_raw_business_schema()
+        self.assertEqual(
+            len(s2.fields),
+            34,
+            "MUT-01 FAILED: Mutating s1 contaminated subsequent get_raw_business_schema() calls!",
+        )
+        self.assertNotIn("MUTANT_FAKE_COL", s2.fieldNames())
+
+    def test_mut_02_raw_parser_isolation(self):
+        """MUT-02: Verify mutating a returned raw parser schema does not affect subsequent calls."""
+        p1 = get_raw_parser_schema()
+        self.assertEqual(len(p1.fields), 35)
+        p1.add("MUTANT_PARSER_COL", DoubleType(), nullable=True)
+        self.assertEqual(len(p1.fields), 36)
+
+        p2 = get_raw_parser_schema()
+        self.assertEqual(
+            len(p2.fields),
+            35,
+            "MUT-02 FAILED: Mutating p1 contaminated subsequent get_raw_parser_schema() calls!",
+        )
+        self.assertNotIn("MUTANT_PARSER_COL", p2.fieldNames())
+        self.assertEqual(p2.fieldNames()[-1], CORRUPT_RECORD_COLUMN)
+        self.assertEqual(p2.fieldNames().count(CORRUPT_RECORD_COLUMN), 1)
+
+    def test_mut_03_curated_isolation(self):
+        """MUT-03: Verify mutating a returned curated schema does not affect subsequent calls."""
+        c1 = get_curated_parquet_schema()
+        self.assertEqual(len(c1.fields), 34)
+        c1.add("MUTANT_CURATED_COL", LongType(), nullable=True)
+        self.assertEqual(len(c1.fields), 35)
+
+        c2 = get_curated_parquet_schema()
+        self.assertEqual(
+            len(c2.fields),
+            34,
+            "MUT-03 FAILED: Mutating c1 contaminated subsequent get_curated_parquet_schema() calls!",
+        )
+        self.assertNotIn("MUTANT_CURATED_COL", c2.fieldNames())
+        self.assertEqual(c2["OP_CARRIER_FL_NUM"].dataType, DoubleType())
+        self.assertEqual(c2["FLIGHTS"].metadata.get("prohibited_use"), "KPI_DENOMINATOR_WEIGHTING")
+
+    def test_mut_04_cross_schema_independence(self):
+        """MUT-04: Verify mutating raw schema does not alter parser schema or curated schema."""
+        raw = get_raw_business_schema()
+        raw.add("INJECTED_COLUMN", StringType(), nullable=True)
+
+        parser = get_raw_parser_schema()
+        self.assertEqual(len(parser.fields), 35)
+        self.assertNotIn("INJECTED_COLUMN", parser.fieldNames())
+
+        curated = get_curated_parquet_schema()
+        self.assertEqual(len(curated.fields), 34)
+        self.assertNotIn("INJECTED_COLUMN", curated.fieldNames())
+
+    def test_mut_05_repeatability_and_immutability(self):
+        """MUT-05: Verify schemas are deterministic across repeated invocations and immune to mutation."""
+        first_raw = get_raw_business_schema()
+        second_raw = get_raw_business_schema()
+        self.assertEqual(first_raw.json(), second_raw.json())
+
+        first_raw.add("SPOILER", StringType())
+        third_raw = get_raw_business_schema()
+        self.assertEqual(
+            second_raw.json(),
+            third_raw.json(),
+            "MUT-05 FAILED: Schema was not pristine after mutation of another instance!",
+        )
+
+    def test_contract_01_exact_34_column_snapshot(self):
+        """CONTRACT-01: Compare all 34 names and physical positions against an independent snapshot."""
+        expected_34_snapshot = (
+            "FL_DATE", "OP_CARRIER", "OP_CARRIER_FL_NUM", "ORIGIN", "DEST",
+            "CRS_DEP_TIME", "DEP_TIME", "DEP_DELAY", "TAXI_OUT", "WHEELS_OFF",
+            "WHEELS_ON", "TAXI_IN", "CRS_ARR_TIME", "ARR_TIME", "ARR_DELAY",
+            "CRS_ELAPSED_TIME", "ACTUAL_ELAPSED_TIME", "AIR_TIME", "FLIGHTS",
+            "MONTH", "DAY_OF_MONTH", "DAY_OF_WEEK", "ORIGIN_INDEX", "DEST_INDEX",
+            "O_TEMP", "O_PRCP", "O_WSPD", "D_TEMP", "D_PRCP", "D_WSPD",
+            "O_LATITUDE", "O_LONGITUDE", "D_LATITUDE", "D_LONGITUDE"
+        )
+        curated_fields = tuple(get_curated_parquet_schema().fieldNames())
+        raw_fields = tuple(get_raw_business_schema().fieldNames())
+        canonical_tuple = tuple(get_canonical_column_names())
+
+        self.assertEqual(canonical_tuple, expected_34_snapshot)
+        self.assertEqual(raw_fields, expected_34_snapshot)
+        self.assertEqual(curated_fields, expected_34_snapshot)
+
+        # Verify exact position matching for each of the 34 indices
+        for idx, col_name in enumerate(expected_34_snapshot):
+            self.assertEqual(canonical_tuple[idx], col_name)
+            self.assertEqual(raw_fields[idx], col_name)
+            self.assertEqual(curated_fields[idx], col_name)
+
+    def test_contract_02_scope_isolation_no_io_or_executors(self):
+        """CONTRACT-02: Verify schema module does not import or execute readers, publishers, or raw I/O."""
+        import flight_pipeline.ingestion.schema as sm
+        # Check forbidden modules are not imported
+        for forbidden in ("reader", "classifier", "pipeline", "locking"):
+            self.assertFalse(
+                hasattr(sm, forbidden),
+                f"CONTRACT-02: schema module must not contain {forbidden}!",
+            )
+        # Check schema module attributes do not include file path handles to data/raw
+        for attr_name in dir(sm):
+            val = getattr(sm, attr_name)
+            if isinstance(val, str):
+                self.assertNotIn("data/raw", val)
+                self.assertNotIn("data\\raw", val)
+
 
 if __name__ == "__main__":
     unittest.main()
+

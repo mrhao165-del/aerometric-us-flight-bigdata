@@ -1,8 +1,8 @@
 {
   "registry_version": "1.0",
   "task_id": "T-007",
-  "updated_at": "2026-10-17T15:40:00+07:00",
-  "description": "Evidence Deliverable Register updated for T009-UNBLOCK-R2 Git metadata exclusion & validator reconciliation",
+  "updated_at": "2026-10-17T16:40:00+07:00",
+  "description": "Evidence Deliverable Register updated for T007-01-FINAL-CLOSURE Schema Factory and Closure Evidence Reconciliation",
   "governed_living_docs": [
     {
       "path": "docs/01-planning/BACKLOG.md",
@@ -2818,16 +2818,16 @@
       "path": "src/flight_pipeline/ingestion/schema.py",
       "task_id": "T-007",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 9308,
-      "sha256": "d3ec31baf6d9ac092f623dd20e3ef41ba1fa00ace2fb8c2b22ec79fd836edb93",
+      "bytes": 10842,
+      "sha256": "4302ff905ef38130b952f962c1aec48ca2df5cba7ca4b1b0696e9b46e772fb92",
       "authorization_ref": "Project Lead T007-CP1A instruction (2026-10-17); recorded in docs/05-evidence/T007_01_FINAL_VERDICT.md"
     },
     {
       "path": "tests/test_t007_schema.py",
       "task_id": "T-007",
       "artifact_type": "TEST_MODULE",
-      "bytes": 11059,
-      "sha256": "3da5818da4f1686cf2e470053f24a09b0d255b5daf22258b75df57aaf74c251e",
+      "bytes": 16897,
+      "sha256": "8975c52793b3ba4acb5d49562f79b6c83aab3b9363f3ab402e1418f11be2c1f2",
       "authorization_ref": "Project Lead T007-CP1A instruction (2026-10-17); recorded in docs/05-evidence/T007_01_FINAL_VERDICT.md"
     },
     {
@@ -2909,6 +2909,70 @@
       "bytes": 2349,
       "sha256": "0bdf2e72d1c2fcfd62269358210ad8cbd5d312b3a60bba94e861488694b499ec",
       "authorization_ref": "Project Lead T007-CP1A instruction (2026-10-17); recorded in docs/05-evidence/T007_01_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_CLOSURE_SOURCE_REVIEW.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6978,
+      "sha256": "1dcb7568199878c6e333bdc5be733f493b1ffe6b4be1c97e45ea0d521353d41e",
+      "authorization_ref": "Project Lead T007-01-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_01_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_CLOSURE_MUTATION_TESTS.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4591,
+      "sha256": "587332811e40bfcafef00f8289db66513eb981f87fe12682ed2097768914d15c",
+      "authorization_ref": "Project Lead T007-01-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_01_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_CLOSURE_FULL_TEST_RESULTS.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 10113,
+      "sha256": "193b2ed2010077e1d4afc43c2c07d87fc6b329608f72632ebe8308eb3228e691",
+      "authorization_ref": "Project Lead T007-01-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_01_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_CLOSURE_FINAL_VERDICT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4131,
+      "sha256": "161167a50f6ece9c73b84157ca1d6cac677efcc74ff37f04f94891eac3a2c516",
+      "authorization_ref": "Project Lead T007-01-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_01_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_CLOSURE_LOG_TESTS.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 7735,
+      "sha256": "593881d5bcb252c45e28e8a1a4291de4cd74c376ae3f3876cf9d5f83a7882785",
+      "authorization_ref": "Project Lead T007-01-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_01_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_CLOSURE_LOG_CONSISTENCY.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "252c27144f5bf1b478335512fe24a8b83e053d387e54ed7a5e7e4157e5334ed1",
+      "authorization_ref": "Project Lead T007-01-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_01_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_CLOSURE_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2057,
+      "sha256": "868cc53789a2d6c36178c7284bbe063f9dcf0ff2aa51fe6ffda647546d24d9e0",
+      "authorization_ref": "Project Lead T007-01-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_01_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_CLOSURE_LOG_T006_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6735,
+      "sha256": "abef125e9fbc539b01638cba36f5ce6c64f6787828eafd7c65366c1b202c0168",
+      "authorization_ref": "Project Lead T007-01-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_01_CLOSURE_FINAL_VERDICT.md"
     }
   ]
 }
