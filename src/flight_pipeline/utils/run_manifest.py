@@ -29,10 +29,54 @@ class RowAccounting:
             self.accepted_row_count + self.quarantined_row_count + self.rejected_row_count
         )
 
+    def calculate_ingest_acceptance_rate(self) -> Optional[float]:
+        """
+        Calculate ingest acceptance rate = accepted_row_count / raw_row_count (DC-12).
+        Returns None when raw_row_count == 0 to handle ZERO_DENOMINATOR cleanly.
+        """
+        if self.raw_row_count <= 0:
+            return None
+        return self.accepted_row_count / self.raw_row_count
+
     def to_dict(self) -> Dict[str, Any]:
         d = asdict(self)
         d["is_balanced"] = self.is_balanced()
+        d["ingest_acceptance_rate"] = self.calculate_ingest_acceptance_rate()
         return d
+
+
+@dataclass
+class MetricAccounting:
+    """
+    Per-submetric accounting per DATA_CONTRACT.md (DC-12).
+    Evaluated on accepted records for a specific submetric cohort.
+    """
+    metric_name: str
+    count_records: int = 0
+    count_metric_valid: int = 0
+
+    @property
+    def excluded_count(self) -> int:
+        """Excluded count = count_records - count_metric_valid (DC-12)."""
+        return self.count_records - self.count_metric_valid
+
+    def calculate_metric_valid_rate(self) -> Optional[float]:
+        """
+        Calculate metric valid rate = count_metric_valid / count_records when count_records > 0 (DC-12).
+        Returns None when count_records == 0 (ZERO_DENOMINATOR rule, not 0.0).
+        """
+        if self.count_records <= 0:
+            return None
+        return self.count_metric_valid / self.count_records
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "metric_name": self.metric_name,
+            "count_records": self.count_records,
+            "count_metric_valid": self.count_metric_valid,
+            "excluded_count": self.excluded_count,
+            "metric_valid_rate": self.calculate_metric_valid_rate(),
+        }
 
 
 @dataclass

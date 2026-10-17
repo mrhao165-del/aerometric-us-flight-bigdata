@@ -1234,16 +1234,16 @@
       "path": "tools/qa/test_t009_unblock_r2_git_exclusion.py",
       "task_id": "T-009",
       "artifact_type": "QA_SCRIPT",
-      "bytes": 8683,
-      "sha256": "bc6c004ad48f991eb4fed99c828057122994c4d87ee64fc264d4221244c82b71",
+      "bytes": 9335,
+      "sha256": "c22a8df771ab8e4efac49b7791185eb2fece38f247ade291ac0e0db5d11ccc2a",
       "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
     },
     {
       "path": "tools/qa/test_working_tree_registry_regression.py",
       "task_id": "G2-FINAL-FIX",
       "artifact_type": "QA_SCRIPT",
-      "bytes": 24823,
-      "sha256": "bc0866b3415bbfa84c986f026570404fc80c046f164446865fd22bde8a930bd2",
+      "bytes": 25690,
+      "sha256": "81a5729994a1a2fad8a5e172824ae24234e63f7a5927009193a13295fecc4897",
       "authorization_ref": "G2-FINAL-FIX Registry Regression Test Suite with Truthful NEG-10"
     },
     {
@@ -1298,8 +1298,8 @@
       "path": "src/flight_pipeline/config/spark_config.py",
       "task_id": "T-009",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 3221,
-      "sha256": "27e294f460de3b7c99e5cfd3aa9ea4f5ac43e13d2ada6121590dc2d2f7d36403",
+      "bytes": 3235,
+      "sha256": "98591e5685afca7cac0c603acc336b4bfac7d342b0adfcce195abd99b42e7bf0",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -1330,8 +1330,8 @@
       "path": "src/flight_pipeline/storage/publication.py",
       "task_id": "T-009",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 7533,
-      "sha256": "2b1427cbbd347ddb88829ad4f32e6f6a6769545e05f3e88086abfb981a696b7a",
+      "bytes": 8617,
+      "sha256": "1369ec0ce2895ba6f33eead5c3ef1c33d715eab33b8941b268ab94a7baa31093",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -1354,8 +1354,8 @@
       "path": "src/flight_pipeline/utils/run_manifest.py",
       "task_id": "T-009",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 4809,
-      "sha256": "a8e1ab84244533fb5c29be29524f714bb1c462182b3513637c6bde5075d1c34d",
+      "bytes": 6446,
+      "sha256": "7fad45ed162902bfcf6201d397510eaca5305b46162dea9f0b0b8a80cb5cf570",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -1370,8 +1370,8 @@
       "path": "tests/test_manifest.py",
       "task_id": "T-009",
       "artifact_type": "TEST_MODULE",
-      "bytes": 2557,
-      "sha256": "92c40ffcb2475cd90d5b9a5becb5ba1ef8a125d83821de9421d44e376d4f58be",
+      "bytes": 3879,
+      "sha256": "2f5c7c0e4bbf617ba07ae11db9fbc000177e56e5a87aa80be17198e0437f0b1c",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -1386,8 +1386,8 @@
       "path": "tests/test_publication_safety.py",
       "task_id": "T-009",
       "artifact_type": "TEST_MODULE",
-      "bytes": 5221,
-      "sha256": "60e89db3d29d741f1c5702e7e938bb41c8ea77f493a7dd5ff7dd2b47fe7c3b78",
+      "bytes": 6629,
+      "sha256": "4fa7e634c10c5ad9673a9a5c82c5af8479f979b51f6c1bcdeb54a764502fb69f",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -1418,8 +1418,8 @@
       "path": "tools/qa/test_t009_r1_validator_extension.py",
       "task_id": "T-009",
       "artifact_type": "QA_SCRIPT",
-      "bytes": 9768,
-      "sha256": "9f440b20ff3474091b582706c04bd2fc3894cbdb15655088ed46c0ee177e6337",
+      "bytes": 10420,
+      "sha256": "40227ddb73f6edf28c4ff53d553efdbc010e0c93eab28993062034d203d3a072",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -1573,6 +1573,142 @@
       "bytes": 75,
       "sha256": "d2131e3ad4d2d3cc18a22f1d345f90ea0842f2042e1ad442131c5d13e50cf14e",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_BASELINE_AND_SOURCE_AUDIT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4994,
+      "sha256": "f6fc47d62636f990865fb4a967e0b991d8bf91347f05a7d1175c8df1ae5d75e6",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_TEST_FAILURE_ROOT_CAUSE.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7160,
+      "sha256": "a7f986f73c4089f9ec8aa8382c6a4bc62922096f77cde923a4199e0e9ffd3295",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_CANONICAL_CONTRACT_ERRATA.md",
+      "task_id": "T-009",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 8247,
+      "sha256": "683cb2925833e13d1db846bab71301178c7d188553c3735164c012ede0169e8b",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_CODE_REVIEW_AND_CORRECTIONS.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6956,
+      "sha256": "9e7f7477e14201ea794795b5ffbb2297bad078165a0e877277b6e0efc20122d8",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_PUBLICATION_SAFETY_AUDIT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6899,
+      "sha256": "7434e7ac70f020d3a46705433ab48a0e2c9545e4d1d33524f6563e76378ed0fc",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_ROLLBACK_SAFETY_ADDENDUM.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4215,
+      "sha256": "08be6e678456663675702aa53441d4bf35208bc375dff11c5b0182382dcf0565",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_TEST_EXECUTION_REPORT.md",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 5895,
+      "sha256": "cd844aa5a8334cfb9f162fcb000f74a91ecbf925d89e25e959404f403e0eca64",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_REGRESSION_AND_INTEGRITY.md",
+      "task_id": "T-009",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 5320,
+      "sha256": "03ef195a8c45956109d2d4c2a82bc9478c58c02f822876d9f66c165b3b580294",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_CHANGE_AND_HASH_MANIFEST.json",
+      "task_id": "T-009",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "bytes": 7857,
+      "sha256": "f5b4b912e4ec917bfeb5109be1c236983de2d6ab79fca5916b3efbb291c27948",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5811,
+      "sha256": "7da1550ffc773c9f9afe7199bd9342550bffad25f244212f716b3755f43b90a1",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_UNITTESTS.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6666,
+      "sha256": "f7ad045edff12a132c991514f5387ddbd64cd4a94277fa664d0d8102ffd04543",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_SPARK_SMOKE.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2298,
+      "sha256": "1af00c8e3384cf62c37bab4b642a25d0561f37362dd5c8d5e98749195ca23640",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_VALIDATOR_EXTENSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 969,
+      "sha256": "bb3995bc730e9cacaf97522c2e30bd78345981f24eeb76be184e2cdc06720015",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_R2_TEST_RERUN.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 1129,
+      "sha256": "87c2cb3ce5f9e88ec078ded37cc654c5e6ee30152be1f67a0278fcd79c7de678",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_T006_REGRESSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2348,
+      "sha256": "5b8387eaebc6cc1dc67ace8954d0f8192c99d2461353f53fbcf79d0e0021b495",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2079,
+      "sha256": "23f065b2740cb803fd350b380da0f98a33dca3e784d29812a53dcfcf491df604",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_CONSISTENCY.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 77,
+      "sha256": "11e5cebc706518260443ddf2db3725ba11801aa246dc89d0079d1be312fe84e4",
+      "authorization_ref": "Project Lead T009-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md"
     }
   ]
 }

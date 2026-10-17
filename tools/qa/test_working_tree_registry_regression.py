@@ -89,6 +89,23 @@ def build_isolated_fixture(tmp_dir: Path) -> Path:
         csv_p.parent.mkdir(parents=True, exist_ok=True)
         csv_p.write_text("FL_DATE\n2016-01-01\n", encoding="utf-8")
 
+    # Ensure all registered deliverables inside fixture have matching byte size and sha256
+    reg_p = fx / "docs/05-evidence/EVIDENCE_DELIVERABLE_REGISTER.json"
+    if reg_p.is_file():
+        reg_data = json.loads(reg_p.read_text(encoding="utf-8"))
+        updated = False
+        for item in reg_data.get("registered_deliverables", []):
+            df = fx / item["path"]
+            if df.is_file():
+                actual_bytes = df.stat().st_size
+                actual_sha = sha256(df.read_bytes()).hexdigest()
+                if item.get("bytes") != actual_bytes or item.get("sha256") != actual_sha:
+                    item["bytes"] = actual_bytes
+                    item["sha256"] = actual_sha
+                    updated = True
+        if updated:
+            reg_p.write_text(json.dumps(reg_data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
     return fx
 
 

@@ -41,12 +41,12 @@ def ensure_scratch_dir(path_str: str) -> str:
         test_file = scratch / ".write_test"
         test_file.write_text("ok", encoding="utf-8")
         test_file.unlink()
-        return str(scratch.resolve().as_posix())
+        return os.path.normpath(str(scratch.resolve()))
     except Exception:
         # Fallback to local user temp directory if path is not writable
         fallback = Path(os.environ.get("TEMP", ".")) / "flight_spark_tmp"
         fallback.mkdir(parents=True, exist_ok=True)
-        return str(fallback.resolve().as_posix())
+        return os.path.normpath(str(fallback.resolve()))
 
 
 def get_spark_session(config: Optional[SparkConfig] = None) -> SparkSession:

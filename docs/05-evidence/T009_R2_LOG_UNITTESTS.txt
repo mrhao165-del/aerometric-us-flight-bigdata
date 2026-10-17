@@ -1,0 +1,89 @@
+test_dc12_ingest_acceptance_rate (test_manifest.TestRunManifest)
+Test DC-12 ingest_acceptance_rate = accepted / raw with zero-denominator handling. ... ok
+test_dc12_metric_accounting (test_manifest.TestRunManifest)
+Test DC-12 per-submetric accounting, excluded_count, and valid rate. ... ok
+test_row_accounting_balance_invariant (test_manifest.TestRunManifest)
+Test DC-11 three-state disjoint row accounting balance check. ... ok
+test_run_manifest_lifecycle_and_hashing (test_manifest.TestRunManifest)
+Test RunManifest creation, input/output tracking, close, and SHA-256 computation. ... ok
+WARNING: Using incubator modules: jdk.incubator.vector
+26/10/17 09:29:28 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/17 09:29:28 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/17 09:29:28 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+test_delay_predicates_preserve_signed_negative (test_numeric_predicates.TestNumericPredicates)
+Test that ARR_DELAY and DEP_DELAY preserve signed negative values. ... 
+[Stage 0:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1908, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52402), raddr=('127.0.0.1', 52401)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_duration_predicates_require_strictly_positive (test_numeric_predicates.TestNumericPredicates)
+Test AIR_TIME, ACTUAL_ELAPSED_TIME, CRS_ELAPSED_TIME domain constraints (> 0.0). ... 
+[Stage 1:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1944, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52412), raddr=('127.0.0.1', 52411)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_is_finite_numeric_matrix (test_numeric_predicates.TestNumericPredicates)
+Test is_finite_numeric against None, NaN, +inf, -inf, 0, negative and positive numbers. ... 
+[Stage 2:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1932, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52422), raddr=('127.0.0.1', 52421)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_taxi_predicates_require_non_negative (test_numeric_predicates.TestNumericPredicates)
+Test TAXI_OUT and TAXI_IN domain constraints (>= 0.0). ... 
+[Stage 3:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2060, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52432), raddr=('127.0.0.1', 52431)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_fault_injection_step5_preserves_previous_pointer_and_staging (test_publication_safety.TestPublicationSafety)
+Test TS-013 fault injection at Step 5 triggers Step 6 non-destructive rollback. ... ok
+test_successful_publication_sequence (test_publication_safety.TestPublicationSafety)
+Test complete 7-step safe publication with balanced row accounting. ... ok
+test_unbalanced_accounting_aborts_publication (test_publication_safety.TestPublicationSafety)
+Test Step 2 aborts publication with ACCOUNTING_UNVERIFIED when accounting is unbalanced. ... ok
+test_version_immutability_rejection (test_publication_safety.TestPublicationSafety)
+Test Step 3 strictly rejects promotion if versioned directory already exists (immutability). ... ok
+test_spark_session_creation_and_config (test_spark_env.TestSparkEnv)
+Verify SparkSession factory instantiates session with proper configuration. ... 26/10/17 09:29:44 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+
+[Stage 0:>                                                          (0 + 2) / 4]
+
+[Stage 0:==============>                                            (1 + 2) / 4]
+
+[Stage 0:=============================>                             (2 + 2) / 4]
+
+[Stage 0:============================================>              (3 + 1) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1940, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52446), raddr=('127.0.0.1', 52445)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 1:>                                                          (0 + 2) / 2]
+
+[Stage 1:=============================>                             (1 + 1) / 2]
+
+                                                                                
+ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 27.155s
+
+OK
+SUCCESS: The process with PID 8880 (child process of PID 14132) has been terminated.
+SUCCESS: The process with PID 14132 (child process of PID 5588) has been terminated.
+SUCCESS: The process with PID 5588 (child process of PID 22240) has been terminated.

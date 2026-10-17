@@ -78,6 +78,20 @@ def build_test_fixture(base_dir: Path) -> Path:
         if src.is_file():
             shutil.copy2(src, dst)
 
+    # Synchronize registered deliverables inside fixture with actual copied files
+    updated = False
+    for item in reg_data.get("registered_deliverables", []):
+        df = fx / item["path"]
+        if df.is_file():
+            actual_bytes = df.stat().st_size
+            actual_sha = sha256(df.read_bytes()).hexdigest()
+            if item.get("bytes") != actual_bytes or item.get("sha256") != actual_sha:
+                item["bytes"] = actual_bytes
+                item["sha256"] = actual_sha
+                updated = True
+    if updated:
+        reg_dst.write_text(json.dumps(reg_data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
     # 9 dummy CSVs
     for yr in range(2016, 2025):
         csv_p = fx / f"data/raw/tabular/{yr}/flight_with_weather_{yr}.csv"

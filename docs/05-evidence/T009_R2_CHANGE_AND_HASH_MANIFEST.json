@@ -1,0 +1,178 @@
+{
+  "manifest_version": "2.0",
+  "task_id": "T-009",
+  "gate": "G4",
+  "timestamp": "2026-10-17T09:33:00+07:00",
+  "auditor": "Senior Big Data Architect, Senior PySpark Engineer & Independent QA Auditor",
+  "total_files": 25,
+  "files": [
+    {
+      "path": "src/flight_pipeline/config/spark_config.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 3235,
+      "sha256": "98591e5685afca7cac0c603acc336b4bfac7d342b0adfcce195abd99b42e7bf0",
+      "role": "Spark configuration with normalized Windows path and 4g memory budget"
+    },
+    {
+      "path": "src/flight_pipeline/storage/publication.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 8617,
+      "sha256": "1369ec0ce2895ba6f33eead5c3ef1c33d715eab33b8941b268ab94a7baa31093",
+      "role": "7-step NTFS publication engine with version immutability and post-pointer verification"
+    },
+    {
+      "path": "src/flight_pipeline/utils/run_manifest.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 6446,
+      "sha256": "7fad45ed162902bfcf6201d397510eaca5305b46162dea9f0b0b8a80cb5cf570",
+      "role": "RowAccounting with ingest_acceptance_rate and MetricAccounting conforming to DC-12"
+    },
+    {
+      "path": "tests/test_manifest.py",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 3879,
+      "sha256": "2f5c7c0e4bbf617ba07ae11db9fbc000177e56e5a87aa80be17198e0437f0b1c",
+      "role": "Unit tests for RowAccounting and DC-12 MetricAccounting"
+    },
+    {
+      "path": "tests/test_publication_safety.py",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 6629,
+      "sha256": "4fa7e634c10c5ad9673a9a5c82c5af8479f979b51f6c1bcdeb54a764502fb69f",
+      "role": "Unit tests for 7-step safe publication and version immutability"
+    },
+    {
+      "path": "tools/qa/test_t009_unblock_r2_git_exclusion.py",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 9335,
+      "sha256": "c22a8df771ab8e4efac49b7791185eb2fece38f247ade291ac0e0db5d11ccc2a",
+      "role": "Git exclusion test suite with self-consistent isolated fixture"
+    },
+    {
+      "path": "tools/qa/test_working_tree_registry_regression.py",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 25690,
+      "sha256": "81a5729994a1a2fad8a5e172824ae24234e63f7a5927009193a13295fecc4897",
+      "role": "Registry regression test suite with self-consistent isolated fixture"
+    },
+    {
+      "path": "tools/qa/test_t009_r1_validator_extension.py",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 10420,
+      "sha256": "40227ddb73f6edf28c4ff53d553efdbc010e0c93eab28993062034d203d3a072",
+      "role": "Validator extension test suite with self-consistent isolated fixture"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_BASELINE_AND_SOURCE_AUDIT.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4994,
+      "sha256": "f6fc47d62636f990865fb4a967e0b991d8bf91347f05a7d1175c8df1ae5d75e6",
+      "role": "Independent baseline inspection, raw data preservation, and canonical row count reconciliation"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_TEST_FAILURE_ROOT_CAUSE.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7160,
+      "sha256": "a7f986f73c4089f9ec8aa8382c6a4bc62922096f77cde923a4199e0e9ffd3295",
+      "role": "Forensic root cause analysis of R1 test log contradictions and architectural remediation"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_CANONICAL_CONTRACT_ERRATA.md",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 8247,
+      "sha256": "683cb2925833e13d1db846bab71301178c7d188553c3735164c012ede0169e8b",
+      "role": "Canonical test ID table, DC-11/12 formulas, and audited row count errata"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_CODE_REVIEW_AND_CORRECTIONS.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6956,
+      "sha256": "9e7f7477e14201ea794795b5ffbb2297bad078165a0e877277b6e0efc20122d8",
+      "role": "Code review, runtime warnings audit, and unit test expansion report"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_PUBLICATION_SAFETY_AUDIT.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6899,
+      "sha256": "7434e7ac70f020d3a46705433ab48a0e2c9545e4d1d33524f6563e76378ed0fc",
+      "role": "Windows NTFS publication safety, atomicity, and fault tolerance audit"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_ROLLBACK_SAFETY_ADDENDUM.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4215,
+      "sha256": "08be6e678456663675702aa53441d4bf35208bc375dff11c5b0182382dcf0565",
+      "role": "Non-destructive rollback policy superseding destructive shell instructions"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_TEST_EXECUTION_REPORT.md",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 5895,
+      "sha256": "cd844aa5a8334cfb9f162fcb000f74a91ecbf925d89e25e959404f403e0eca64",
+      "role": "Automated unit test execution report covering all 13 unit tests"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_REGRESSION_AND_INTEGRITY.md",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 5320,
+      "sha256": "03ef195a8c45956109d2d4c2a82bc9478c58c02f822876d9f66c165b3b580294",
+      "role": "Comprehensive regression report covering all 5 regression suites"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5811,
+      "sha256": "7da1550ffc773c9f9afe7199bd9342550bffad25f244212f716b3755f43b90a1",
+      "role": "Final independent audit verdict and Gate G4 readiness dossier"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_UNITTESTS.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6666,
+      "sha256": "f7ad045edff12a132c991514f5387ddbd64cd4a94277fa664d0d8102ffd04543",
+      "role": "Raw terminal log of 13 unit tests (100% PASS)"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_SPARK_SMOKE.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2298,
+      "sha256": "1af00c8e3384cf62c37bab4b642a25d0561f37362dd5c8d5e98749195ca23640",
+      "role": "Raw terminal log of Spark smoke test (PASS)"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_VALIDATOR_EXTENSION.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 969,
+      "sha256": "bb3995bc730e9cacaf97522c2e30bd78345981f24eeb76be184e2cdc06720015",
+      "role": "Raw terminal log of validator extension suite (8 PASS, 0 FAIL)"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_R2_TEST_RERUN.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 1129,
+      "sha256": "87c2cb3ce5f9e88ec078ded37cc654c5e6ee30152be1f67a0278fcd79c7de678",
+      "role": "Raw terminal log of git exclusion suite (7 PASS, 0 FAIL)"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_T006_REGRESSION.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2348,
+      "sha256": "5b8387eaebc6cc1dc67ace8954d0f8192c99d2461353f53fbcf79d0e0021b495",
+      "role": "Raw terminal log of T-006 contract consistency verifier (17 Invariants, 16 Mutations PASS)"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_REGISTRY_REGRESSION.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2079,
+      "sha256": "23f065b2740cb803fd350b380da0f98a33dca3e784d29812a53dcfcf491df604",
+      "role": "Raw terminal log of registry regression suite (16 PASS, 0 FAIL)"
+    },
+    {
+      "path": "docs/05-evidence/T009_R2_LOG_CONSISTENCY.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 77,
+      "sha256": "11e5cebc706518260443ddf2db3725ba11801aa246dc89d0079d1be312fe84e4",
+      "role": "Raw terminal log of working tree consistency validator (517 assertions PASS)"
+    }
+  ]
+}

@@ -108,10 +108,17 @@ class SafePublisher:
 
         # Step 3: Promote staging to versioned directory under curated/runs/{run_id}/
         versioned_target = self.runs_root / run_id
+        if versioned_target.exists():
+            return PublicationResult(
+                success=False,
+                status="FAILED_VERSION_EXISTS",
+                run_id=run_id,
+                previous_pointer=previous_pointer,
+                error_message=f"Version target already exists and is immutable: {versioned_target}",
+                aborted_step=3,
+            )
         try:
             versioned_target.parent.mkdir(parents=True, exist_ok=True)
-            if versioned_target.exists():
-                shutil.rmtree(versioned_target)
             shutil.copytree(staging_dir, versioned_target)
         except Exception as exc:
             return PublicationResult(
@@ -136,10 +143,9 @@ class SafePublisher:
             )
 
         # Step 5: Switch Pointer (latest_run_id) with retry and atomic write
-        # Fault injection hook for TS-013
+        # Fault injection hook for TS-013 simulation
         if fault_injection_step5:
-            # Step 6: Rollback pointer (preserve previous pointer)
-            # Staging and versioned run remain preserved for audit
+            # Preservation of previous pointer and staging for audit
             return PublicationResult(
                 success=False,
                 status="FAILED_POINTER_SWITCH",
@@ -159,7 +165,7 @@ class SafePublisher:
             try:
                 self.curated_root.mkdir(parents=True, exist_ok=True)
                 tmp_pointer.write_text(run_id + "\n", encoding="utf-8")
-                # Atomic replace
+                # Atomic replace on Windows NTFS
                 os.replace(tmp_pointer, self.pointer_file)
                 pointer_updated = True
                 break
@@ -167,7 +173,6 @@ class SafePublisher:
                 time.sleep(0.05 * (attempt + 1))
 
         if not pointer_updated:
-            # Step 6: Rollback pointer (revert / maintain previous)
             if tmp_pointer.exists():
                 try:
                     tmp_pointer.unlink()
@@ -184,7 +189,26 @@ class SafePublisher:
                 aborted_step=5,
             )
 
-        # Step 7: Record Success & Close Run
+        # Step 6: Post-switch pointer verification
+        current_pointer = self.get_current_pointer()
+        if current_pointer != run_id:
+            # Rollback pointer
+            if previous_pointer:
+                self.pointer_file.write_text(previous_pointer + "\n", encoding="utf-8")
+            elif self.pointer_file.exists():
+                self.pointer_file.unlink()
+            return PublicationResult(
+                success=False,
+                status="FAILED_POINTER_VERIFICATION",
+                run_id=run_id,
+                published_path=str(versioned_target.resolve().as_posix()),
+                pointer_value=previous_pointer,
+                previous_pointer=previous_pointer,
+                error_message=f"Pointer verification failed: expected {run_id}, got {current_pointer}",
+                aborted_step=6,
+            )
+
+        # Step 7: Record Success & Close Run (Preserve staging & versioned run)
         return PublicationResult(
             success=True,
             status="PUBLISHED",

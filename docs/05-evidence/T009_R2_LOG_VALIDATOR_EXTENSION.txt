@@ -1,0 +1,15 @@
+================================================================================
+RUNNING T009-R1 VALIDATOR POLICY EXTENSION SECURITY & COMPATIBILITY SUITE
+================================================================================
+[PASS] BASE-01: Base fixture satisfies all checks
+[PASS] NEG-01: Unregistered .py in src/ is rejected
+[PASS] NEG-02: Unregistered .py in tests/ is rejected
+[PASS] NEG-03: Non-.py extension in src/ is strictly rejected
+[PASS] NEG-04: Unauthorized root .env file is strictly rejected
+[PASS] POS-01: Registered .py in src/flight_pipeline/ is accepted
+[PASS] POS-02: Registered requirements.txt at root is accepted
+[PASS] POS-03: Registered .github/workflows/*.yml is accepted
+================================================================================
+VERIFICATION SUMMARY: 8 PASS, 0 FAIL
+================================================================================
+ALL T009-R1 VALIDATOR EXTENSION TESTS PASSED.

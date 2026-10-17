@@ -37,6 +37,27 @@ class TestRunManifest(unittest.TestCase):
         )
         self.assertFalse(acc_invalid.is_balanced())
 
+    def test_dc12_ingest_acceptance_rate(self):
+        """Test DC-12 ingest_acceptance_rate = accepted / raw with zero-denominator handling."""
+        acc = RowAccounting(raw_row_count=1000, accepted_row_count=980, quarantined_row_count=15, rejected_row_count=5)
+        self.assertEqual(acc.calculate_ingest_acceptance_rate(), 0.98)
+
+        # Zero raw records returns None (ZERO_DENOMINATOR, not 0.0)
+        acc_zero = RowAccounting(raw_row_count=0, accepted_row_count=0, quarantined_row_count=0, rejected_row_count=0)
+        self.assertIsNone(acc_zero.calculate_ingest_acceptance_rate())
+
+    def test_dc12_metric_accounting(self):
+        """Test DC-12 per-submetric accounting, excluded_count, and valid rate."""
+        from flight_pipeline.utils.run_manifest import MetricAccounting
+        metric = MetricAccounting(metric_name="ARR_DELAY", count_records=1000, count_metric_valid=950)
+        self.assertEqual(metric.excluded_count, 50)
+        self.assertEqual(metric.calculate_metric_valid_rate(), 0.95)
+
+        # Zero cohort records returns None (ZERO_DENOMINATOR, not 0.0)
+        metric_empty = MetricAccounting(metric_name="DEP_DELAY", count_records=0, count_metric_valid=0)
+        self.assertEqual(metric_empty.excluded_count, 0)
+        self.assertIsNone(metric_empty.calculate_metric_valid_rate())
+
     def test_run_manifest_lifecycle_and_hashing(self):
         """Test RunManifest creation, input/output tracking, close, and SHA-256 computation."""
         manifest = RunManifest(run_id="run_20261017_test", task_id="T-009")

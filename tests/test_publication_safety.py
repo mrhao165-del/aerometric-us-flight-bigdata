@@ -105,6 +105,32 @@ class TestPublicationSafety(unittest.TestCase):
             versioned_faulty = base_dir / "curated" / "runs" / "run_faulty"
             self.assertTrue(versioned_faulty.is_dir())
 
+    def test_version_immutability_rejection(self):
+        """Test Step 3 strictly rejects promotion if versioned directory already exists (immutability)."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base_dir = Path(tmp_dir)
+            publisher = SafePublisher(str(base_dir))
+
+            staging = base_dir / "staging" / "run_v1"
+            staging.mkdir(parents=True, exist_ok=True)
+            (staging / "data.parquet").write_text("v1 original", encoding="utf-8")
+            res1 = publisher.publish("run_v1", staging, RowAccounting(10, 10, 0, 0))
+            self.assertTrue(res1.success)
+
+            # Attempt to publish again with same run_id but different data
+            staging_tamper = base_dir / "staging" / "run_v1_tamper"
+            staging_tamper.mkdir(parents=True, exist_ok=True)
+            (staging_tamper / "data.parquet").write_text("v1 tampered", encoding="utf-8")
+            res2 = publisher.publish("run_v1", staging_tamper, RowAccounting(10, 10, 0, 0))
+
+            self.assertFalse(res2.success)
+            self.assertEqual(res2.status, "FAILED_VERSION_EXISTS")
+            self.assertEqual(res2.aborted_step, 3)
+
+            # Verify original content is intact (immutable)
+            original_file = base_dir / "curated" / "runs" / "run_v1" / "data.parquet"
+            self.assertEqual(original_file.read_text(encoding="utf-8"), "v1 original")
+
 
 if __name__ == "__main__":
     unittest.main()
