@@ -1,19 +1,20 @@
 """
-Unit tests for RunManifest and RowAccounting models.
+Unit tests for RunManifest, RowAccounting, and MetricAccounting models.
 Conforms to DATA_CONTRACT.md (DC-11/12) and ARCHITECTURE.md specifications.
 """
 
+from hashlib import sha256
 import json
+from pathlib import Path
 import sys
 import tempfile
 import unittest
-from pathlib import Path
 
 SRC_DIR = Path(__file__).resolve().parents[1] / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from flight_pipeline.utils.run_manifest import RunManifest, RowAccounting
+from flight_pipeline.utils.run_manifest import RunManifest, RowAccounting, MetricAccounting
 
 
 class TestRunManifest(unittest.TestCase):
@@ -37,6 +38,14 @@ class TestRunManifest(unittest.TestCase):
         )
         self.assertFalse(acc_invalid.is_balanced())
 
+    def test_dc11_negative_counts_rejected(self):
+        """F-04: Test DC-11 rejects negative row counts and does not declare balanced."""
+        with self.assertRaises((ValueError, TypeError)):
+            RowAccounting(-1, -1, 0, 0)
+
+        with self.assertRaises((ValueError, TypeError)):
+            RowAccounting(100, -5, 100, 5)
+
     def test_dc12_ingest_acceptance_rate(self):
         """Test DC-12 ingest_acceptance_rate = accepted / raw with zero-denominator handling."""
         acc = RowAccounting(raw_row_count=1000, accepted_row_count=980, quarantined_row_count=15, rejected_row_count=5)
@@ -48,7 +57,6 @@ class TestRunManifest(unittest.TestCase):
 
     def test_dc12_metric_accounting(self):
         """Test DC-12 per-submetric accounting, excluded_count, and valid rate."""
-        from flight_pipeline.utils.run_manifest import MetricAccounting
         metric = MetricAccounting(metric_name="ARR_DELAY", count_records=1000, count_metric_valid=950)
         self.assertEqual(metric.excluded_count, 50)
         self.assertEqual(metric.calculate_metric_valid_rate(), 0.95)
@@ -58,8 +66,13 @@ class TestRunManifest(unittest.TestCase):
         self.assertEqual(metric_empty.excluded_count, 0)
         self.assertIsNone(metric_empty.calculate_metric_valid_rate())
 
+    def test_dc12_valid_exceeding_records_rejected(self):
+        """F-04: Test DC-12 rejects count_metric_valid exceeding count_records."""
+        with self.assertRaises(ValueError):
+            MetricAccounting(metric_name="TAXI_OUT", count_records=100, count_metric_valid=120)
+
     def test_run_manifest_lifecycle_and_hashing(self):
-        """Test RunManifest creation, input/output tracking, close, and SHA-256 computation."""
+        """F-01: Test RunManifest creation, input/output tracking, close, and SHA-256 disk synchronization."""
         manifest = RunManifest(run_id="run_20261017_test", task_id="T-009")
         self.assertEqual(manifest.status, "IN_PROGRESS")
         self.assertIn("python", manifest.runtime_versions)
@@ -75,7 +88,7 @@ class TestRunManifest(unittest.TestCase):
         self.assertEqual(manifest.status, "SUCCESS")
         self.assertIsNotNone(manifest.end_time)
 
-        # Test JSON serialization and save
+        # Test JSON serialization and save with exact disk SHA-256 match
         with tempfile.TemporaryDirectory() as tmp_dir:
             out_file = Path(tmp_dir) / "manifest.json"
             computed_sha = manifest.save(str(out_file))
@@ -86,6 +99,10 @@ class TestRunManifest(unittest.TestCase):
             self.assertEqual(data["run_id"], "run_20261017_test")
             self.assertTrue(data["row_accounting"]["is_balanced"])
             self.assertEqual(len(computed_sha), 64)
+
+            # F-01 strict check: returned sha must match physical bytes on disk
+            disk_sha = sha256(out_file.read_bytes()).hexdigest()
+            self.assertEqual(computed_sha, disk_sha)
 
 
 if __name__ == "__main__":

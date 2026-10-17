@@ -1,0 +1,63 @@
+test_f01_manifest_save_sha256_matches_disk_bytes (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-01: Returned sha256 from RunManifest.save() must match exact disk bytes. ... FAIL
+test_f02_publication_rejects_fake_parquet_content (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-02: SafePublisher must reject non-Parquet files masquerading as .parquet. ... FAIL
+test_f03_run_id_path_traversal_strictly_rejected (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-03: SafePublisher must strictly reject path traversal in run_id before writing. ... FAIL
+test_f04_dc11_rejects_negative_counts (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-04: RowAccounting must reject negative counts and not declare balanced. ... FAIL
+test_f04_dc12_rejects_valid_exceeding_records (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-04: MetricAccounting must reject count_metric_valid > count_records. ... FAIL
+
+======================================================================
+FAIL: test_f01_manifest_save_sha256_matches_disk_bytes (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-01: Returned sha256 from RunManifest.save() must match exact disk bytes.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\tests\test_t009_r3_defect_reproductions.py", line 29, in test_f01_manifest_save_sha256_matches_disk_bytes
+    self.assertEqual(
+AssertionError: 'ff9d2a409b8b472d02f5da6aa55b2ffdc110cb1438827fee118be02620f9ef84' != '8e13a8c0fb1bb7c5283b21d9d43d8c6710598d6cd3d9eec419fceb5e96bbd88b'
+- ff9d2a409b8b472d02f5da6aa55b2ffdc110cb1438827fee118be02620f9ef84
++ 8e13a8c0fb1bb7c5283b21d9d43d8c6710598d6cd3d9eec419fceb5e96bbd88b
+ : F-01 Defect: returned ff9d2a409b8b472d02f5da6aa55b2ffdc110cb1438827fee118be02620f9ef84 != disk 8e13a8c0fb1bb7c5283b21d9d43d8c6710598d6cd3d9eec419fceb5e96bbd88b
+
+======================================================================
+FAIL: test_f02_publication_rejects_fake_parquet_content (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-02: SafePublisher must reject non-Parquet files masquerading as .parquet.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\tests\test_t009_r3_defect_reproductions.py", line 47, in test_f02_publication_rejects_fake_parquet_content
+    self.assertFalse(result.success, "F-02 Defect: Fake parquet was erroneously accepted")
+AssertionError: True is not false : F-02 Defect: Fake parquet was erroneously accepted
+
+======================================================================
+FAIL: test_f03_run_id_path_traversal_strictly_rejected (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-03: SafePublisher must strictly reject path traversal in run_id before writing.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\tests\test_t009_r3_defect_reproductions.py", line 73, in test_f03_run_id_path_traversal_strictly_rejected
+    self.assertFalse(
+AssertionError: True is not false : F-03 Defect: Malicious run_id '../../escaped' was not rejected
+
+======================================================================
+FAIL: test_f04_dc11_rejects_negative_counts (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-04: RowAccounting must reject negative counts and not declare balanced.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\tests\test_t009_r3_defect_reproductions.py", line 86, in test_f04_dc11_rejects_negative_counts
+    self.assertFalse(bad_row.is_balanced(), "F-04 Defect: Negative row count declared balanced")
+AssertionError: True is not false : F-04 Defect: Negative row count declared balanced
+
+======================================================================
+FAIL: test_f04_dc12_rejects_valid_exceeding_records (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-04: MetricAccounting must reject count_metric_valid > count_records.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\tests\test_t009_r3_defect_reproductions.py", line 95, in test_f04_dc12_rejects_valid_exceeding_records
+    self.assertIsNone(rate, f"F-04 Defect: Rate {rate} exceeds 1.0 without rejection")
+AssertionError: 1.2 is not None : F-04 Defect: Rate 1.2 exceeds 1.0 without rejection
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.235s
+
+FAILED (failures=5)

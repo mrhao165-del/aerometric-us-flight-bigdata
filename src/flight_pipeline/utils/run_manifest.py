@@ -23,8 +23,23 @@ class RowAccounting:
     quarantined_row_count: int = 0
     rejected_row_count: int = 0
 
+    def __post_init__(self):
+        for name in ("raw_row_count", "accepted_row_count", "quarantined_row_count", "rejected_row_count"):
+            val = getattr(self, name)
+            if not isinstance(val, int) or isinstance(val, bool):
+                raise TypeError(f"{name} must be an integer, got {type(val).__name__}")
+            if val < 0:
+                raise ValueError(f"{name} must be non-negative, got {val}")
+
     def is_balanced(self) -> bool:
-        """Verify the mandatory invariant: raw = accepted + quarantined + rejected."""
+        """Verify the mandatory invariant: raw = accepted + quarantined + rejected with non-negative domains."""
+        if (
+            self.raw_row_count < 0
+            or self.accepted_row_count < 0
+            or self.quarantined_row_count < 0
+            or self.rejected_row_count < 0
+        ):
+            return False
         return self.raw_row_count == (
             self.accepted_row_count + self.quarantined_row_count + self.rejected_row_count
         )
@@ -35,6 +50,8 @@ class RowAccounting:
         Returns None when raw_row_count == 0 to handle ZERO_DENOMINATOR cleanly.
         """
         if self.raw_row_count <= 0:
+            return None
+        if not (0 <= self.accepted_row_count <= self.raw_row_count):
             return None
         return self.accepted_row_count / self.raw_row_count
 
@@ -55,17 +72,32 @@ class MetricAccounting:
     count_records: int = 0
     count_metric_valid: int = 0
 
+    def __post_init__(self):
+        for name in ("count_records", "count_metric_valid"):
+            val = getattr(self, name)
+            if not isinstance(val, int) or isinstance(val, bool):
+                raise TypeError(f"{name} must be an integer, got {type(val).__name__}")
+            if val < 0:
+                raise ValueError(f"{name} must be non-negative, got {val}")
+        if self.count_metric_valid > self.count_records:
+            raise ValueError(
+                f"count_metric_valid ({self.count_metric_valid}) cannot exceed count_records ({self.count_records})"
+            )
+
     @property
     def excluded_count(self) -> int:
         """Excluded count = count_records - count_metric_valid (DC-12)."""
-        return self.count_records - self.count_metric_valid
+        diff = self.count_records - self.count_metric_valid
+        return max(0, diff) if self.count_records >= 0 else 0
 
     def calculate_metric_valid_rate(self) -> Optional[float]:
         """
         Calculate metric valid rate = count_metric_valid / count_records when count_records > 0 (DC-12).
-        Returns None when count_records == 0 (ZERO_DENOMINATOR rule, not 0.0).
+        Returns None when count_records == 0 (ZERO_DENOMINATOR rule, not 0.0) or invalid.
         """
         if self.count_records <= 0:
+            return None
+        if not (0 <= self.count_metric_valid <= self.count_records):
             return None
         return self.count_metric_valid / self.count_records
 
@@ -162,15 +194,18 @@ class RunManifest:
     def to_json(self, indent: int = 2) -> str:
         return json.dumps(self.to_dict(), indent=indent, ensure_ascii=False)
 
+    def to_bytes(self) -> bytes:
+        """Canonical byte representation of the manifest."""
+        return (self.to_json() + "\n").encode("utf-8")
+
     def calculate_sha256(self) -> str:
-        """Calculate SHA-256 hash of the canonical JSON representation."""
-        content = self.to_json()
-        return sha256(content.encode("utf-8")).hexdigest()
+        """Calculate SHA-256 hash of the canonical manifest bytes."""
+        return sha256(self.to_bytes()).hexdigest()
 
     def save(self, target_path: str) -> str:
-        """Save manifest JSON to file and return its SHA-256 hash."""
+        """Save manifest JSON to file and return its exact disk SHA-256 hash."""
         p = Path(target_path)
         p.parent.mkdir(parents=True, exist_ok=True)
-        content = self.to_json()
-        p.write_text(content + "\n", encoding="utf-8")
-        return sha256(content.encode("utf-8")).hexdigest()
+        data = self.to_bytes()
+        p.write_bytes(data)
+        return sha256(data).hexdigest()

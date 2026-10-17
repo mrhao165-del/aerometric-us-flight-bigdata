@@ -1,0 +1,15 @@
+test_f01_manifest_save_sha256_matches_disk_bytes (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-01: Returned sha256 from RunManifest.save() must match exact disk bytes. ... ok
+test_f02_publication_rejects_fake_parquet_content (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-02: SafePublisher must reject non-Parquet files masquerading as .parquet. ... ok
+test_f03_run_id_path_traversal_strictly_rejected (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-03: SafePublisher must strictly reject path traversal in run_id before writing. ... ok
+test_f04_dc11_rejects_negative_counts (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-04: RowAccounting must reject negative counts and not declare balanced. ... ok
+test_f04_dc12_rejects_valid_exceeding_records (tests.test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-04: MetricAccounting must reject count_metric_valid > count_records. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.222s
+
+OK
