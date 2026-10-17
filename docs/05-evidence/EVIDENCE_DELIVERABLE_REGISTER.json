@@ -1,8 +1,8 @@
 {
   "registry_version": "1.0",
-  "task_id": "G3-OFFICIAL-SIGNOFF",
-  "updated_at": "2026-10-17",
-  "description": "Cryptographic Deliverable & Living Governance Document Registry for Gate G2 and G3 working-tree consistency verification.",
+  "task_id": "T-009",
+  "updated_at": "2026-10-17T08:41:30+07:00",
+  "description": "Evidence Deliverable Register updated for T009-UNBLOCK-R2 Git metadata exclusion & validator reconciliation",
   "governed_living_docs": [
     {
       "path": "docs/01-planning/BACKLOG.md",
@@ -1087,6 +1087,94 @@
       "sha256": "43396c89ba82e4062c97a75672cd84b6fbce7dae91073b6c1defc44154f7ba6c"
     },
     {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_CHANGE_REVIEW.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6726,
+      "sha256": "fa1de9947959ec9a42624bb36c34b3b30eaf0dc9d76b5f83786760808fd46ecf",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_DOCUMENT_AND_SCOPE_AUDIT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7262,
+      "sha256": "74fd3f974bf9b95f9d37f424b2c834a0eaeeab909315f9e6c2984bcfadb6d680",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5276,
+      "sha256": "61cb6ce44ff165d66dd7250ef4ac40efccd63b38c16367b2a040a88c16aa1aba",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_FUTURE_COMPATIBILITY.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7641,
+      "sha256": "dbd3f883593cfc898ab8eb1e155e4f2dea8b1e68691d7e468aad113abddb77ac",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_LOG_NEGATIVE_TESTS.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 884,
+      "sha256": "188d331b3f4405c8da5f15f587faef3781665b06dc0d49204c302583518c7b41",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_LOG_POST_REMED_CONSISTENCY.txt",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 77,
+      "sha256": "d7ec387d888d3b423a1a589964bababfd4ff3c8cf461f077d6efb1e67cceb3d6",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_LOG_PRE_REMED_CONSISTENCY.txt",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 13120,
+      "sha256": "2be406c5892e3cfcb00222a57d7d4397366e06ab7c070ceb393d754ffc1b9014",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_LOG_REGRESSION_T006.txt",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2348,
+      "sha256": "5b8387eaebc6cc1dc67ace8954d0f8192c99d2461353f53fbcf79d0e0021b495",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_ROOT_CAUSE.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4813,
+      "sha256": "d43213170d9cdc5948a0873ad199fc2a28a36c6fa1a47fc50da4924cdfcff0a6",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_TEST_RESULTS.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6652,
+      "sha256": "07bad2d5a8a585c5ca4e5832b55462c8172f06bbcca764c2d432977cc8a671a4",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_R2_VERDICT_ERRATA.md",
+      "task_id": "T-009",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 5002,
+      "sha256": "0596ac245fb49aad1cfa4e98c423b1ebe322b5a48c2fcbc512af987c1e48601e",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
       "path": "docs/05-evidence/T009_UNBLOCK_REGRESSION_RESULTS.md",
       "task_id": "T-009",
       "artifact_type": "AUDIT_REPORT",
@@ -1136,11 +1224,19 @@
     },
     {
       "path": "tools/check_working_tree_consistency.py",
-      "task_id": "G3-OFFICIAL-SIGNOFF",
+      "task_id": "T-009",
       "artifact_type": "QA_SCRIPT",
-      "bytes": 23426,
-      "sha256": "4f53a91458a3fabe896edb63b38198c0280d11d15638e6bef0c6f44164d013c9",
-      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_EXECUTION_MANIFEST.md"
+      "bytes": 23642,
+      "sha256": "8ed88ff6c3b0bffc4130732a4f4a346106b9860eece25a351a1044d30822b894",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
+    },
+    {
+      "path": "tools/qa/test_t009_unblock_r2_git_exclusion.py",
+      "task_id": "T-009",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 8683,
+      "sha256": "bc6c004ad48f991eb4fed99c828057122994c4d87ee64fc264d4221244c82b71",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R2 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_R2_FINAL_VERDICT.md"
     },
     {
       "path": "tools/qa/test_working_tree_registry_regression.py",

@@ -174,7 +174,11 @@ def run_consistency_check(root_dir: Path):
         "Doc group counts and unique roles",
     )
 
-    active = [f for f in root.rglob("*.md") if "inputs" not in f.parts]
+    active = [
+        f
+        for f in root.rglob("*.md")
+        if "inputs" not in f.parts and f.relative_to(root).parts[0] != ".git"
+    ]
     require(all(f.stat().st_size > 100 for f in active), "Active docs are nonempty")
 
     # 2. Markdown reference integrity (no broken docs/... paths)
@@ -535,18 +539,18 @@ def run_consistency_check(root_dir: Path):
                         registered_deliverables[dp] = item
 
         # 14. Working-tree accounting: All files in repo are either manifest release files, raw data, the registry itself, or verified registered deliverables
-        # Check that no symlinks exist anywhere in the working-tree
+        # Check that no symlinks exist anywhere in the working-tree (excluding root .git)
         symlinks_in_repo = [
             f.relative_to(root).as_posix()
             for f in root.rglob("*")
-            if f.is_symlink()
+            if f.is_symlink() and f.relative_to(root).parts[0] != ".git"
         ]
         require(
             len(symlinks_in_repo) == 0,
             "No symbolic links in working-tree"
             + (": " + repr(symlinks_in_repo[:5]) if symlinks_in_repo else ""),
         )
-        # Ignore transient Python bytecode cache files (__pycache__ / .pyc)
+        # Ignore transient Python bytecode cache files (__pycache__ / .pyc) and root .git metadata
         actual_files = {
             f.relative_to(root).as_posix()
             for f in root.rglob("*")
@@ -554,6 +558,7 @@ def run_consistency_check(root_dir: Path):
             and f.name != "PACKAGE_MANIFEST.json"
             and "__pycache__" not in f.parts
             and not f.name.endswith(".pyc")
+            and f.relative_to(root).parts[0] != ".git"
         }
         extra_files = actual_files - manifest_paths
 

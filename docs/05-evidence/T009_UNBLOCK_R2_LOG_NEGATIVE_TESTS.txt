@@ -1,0 +1,11 @@
+================================================================================
+RUNNING T009-UNBLOCK-R2 GIT EXCLUSION POSITIVE & NEGATIVE VERIFICATION SUITE
+================================================================================
+[PASS] NEG-01: Unrecognized stray file at repository root is strictly rejected
+[PASS] NEG-02: Unrecognized stray file in docs/ subfolder is strictly rejected
+[PASS] NEG-03: Unrecognized stray Python script in tools/ subfolder is strictly rejected
+[PASS] NEG-04: Nested `.git/` outside repository root is NOT ignored and strictly rejected
+[PASS] NEG-05: Tampered deliverable with SHA-256/size mismatch is strictly detected and rejected
+================================================================================
+VERIFICATION SUMMARY: 5 PASS, 2 FAIL
+================================================================================
