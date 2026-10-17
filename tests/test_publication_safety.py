@@ -8,6 +8,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -16,7 +17,7 @@ SRC_DIR = Path(__file__).resolve().parents[1] / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from flight_pipeline.storage.publication import SafePublisher
+from flight_pipeline.storage.publication import SafePublisher, is_valid_parquet_file
 from flight_pipeline.utils.run_manifest import RowAccounting
 
 
@@ -154,6 +155,160 @@ class TestPublicationSafety(unittest.TestCase):
                 self.assertFalse(res.success)
                 self.assertEqual(res.status, "FAILED_INVALID_RUN_ID")
 
+    def test_f05_01_pointer_verification_mismatch_triggers_atomic_rollback(self):
+        """F05-01: Step 6 detects pointer mismatch on read-back and rolls back to previous pointer."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base_dir = Path(tmp_dir)
+            publisher = SafePublisher(str(base_dir))
+
+            # Initial valid publication establishes baseline pointer
+            staging1 = base_dir / "staging" / "run_001"
+            write_valid_parquet(staging1 / "data.parquet", "run_001")
+            res1 = publisher.publish("run_001", staging1, RowAccounting(10, 10, 0, 0))
+            self.assertTrue(res1.success)
+            self.assertEqual(publisher.get_current_pointer(), "run_001")
+
+            # Second publication where Step 6 detects read-back mismatch
+            staging2 = base_dir / "staging" / "run_002"
+            write_valid_parquet(staging2 / "data.parquet", "run_002")
+
+            call_count = [0]
+            real_get = publisher.get_current_pointer
+
+            def mock_get():
+                call_count[0] += 1
+                # Call 1 is Step 0 (previous_pointer). Call 2 is Step 6 (post-switch verification)
+                if call_count[0] == 2:
+                    return "unexpected_corrupted_pointer"
+                return real_get()
+
+            with patch.object(publisher, "get_current_pointer", side_effect=mock_get):
+                res2 = publisher.publish("run_002", staging2, RowAccounting(20, 20, 0, 0))
+
+            self.assertFalse(res2.success)
+            self.assertEqual(res2.status, "FAILED_POINTER_VERIFICATION")
+            self.assertEqual(res2.aborted_step, 6)
+            self.assertEqual(res2.previous_pointer, "run_001")
+            # Step 6 rollback returned pointer to run_001
+            self.assertEqual(publisher.get_current_pointer(), "run_001")
+
+    def test_f05_02_pointer_verification_rollback_failure_reporting(self):
+        """F05-02: Step 6 reports FAILED_POINTER_VERIFICATION_ROLLBACK_ERROR when rollback replacement fails."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base_dir = Path(tmp_dir)
+            publisher = SafePublisher(str(base_dir))
+
+            staging1 = base_dir / "staging" / "run_001"
+            write_valid_parquet(staging1 / "data.parquet", "run_001")
+            publisher.publish("run_001", staging1, RowAccounting(10, 10, 0, 0))
+
+            staging2 = base_dir / "staging" / "run_002"
+            write_valid_parquet(staging2 / "data.parquet", "run_002")
+
+            call_count = [0]
+            real_get = publisher.get_current_pointer
+
+            def mock_get():
+                call_count[0] += 1
+                if call_count[0] == 2:
+                    return "unexpected_corrupted_pointer"
+                return real_get()
+
+            real_atomic_write = publisher._atomic_write_pointer
+            atomic_calls = [0]
+
+            def mock_atomic_write(pval, tmp_prefix=""):
+                atomic_calls[0] += 1
+                # Call 1 is Step 5 switch. Call 2 is Step 6 rollback attempt
+                if atomic_calls[0] == 2:
+                    return False  # Simulate NTFS lock failure during rollback
+                return real_atomic_write(pval, tmp_prefix)
+
+            with patch.object(publisher, "get_current_pointer", side_effect=mock_get):
+                with patch.object(publisher, "_atomic_write_pointer", side_effect=mock_atomic_write):
+                    res2 = publisher.publish("run_002", staging2, RowAccounting(20, 20, 0, 0))
+
+            self.assertFalse(res2.success)
+            self.assertEqual(res2.status, "FAILED_POINTER_VERIFICATION_ROLLBACK_ERROR")
+            self.assertEqual(res2.aborted_step, 6)
+            self.assertEqual(res2.previous_pointer, "run_001")
+
+    def test_f05_03_preservation_of_previous_version_and_failure_artifacts(self):
+        """F05-03: Non-destructive policy preserves previous version data, staging data, and promoted artifacts on failure."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base_dir = Path(tmp_dir)
+            publisher = SafePublisher(str(base_dir))
+
+            staging1 = base_dir / "staging" / "run_001"
+            write_valid_parquet(staging1 / "data.parquet", "version 1 payload")
+            res1 = publisher.publish("run_001", staging1, RowAccounting(10, 10, 0, 0))
+            self.assertTrue(res1.success)
+
+            prev_run_file = base_dir / "curated" / "runs" / "run_001" / "data.parquet"
+            self.assertTrue(prev_run_file.is_file())
+            prev_bytes = prev_run_file.read_bytes()
+
+            # Attempt run_002 with fault injection at Step 5
+            staging2 = base_dir / "staging" / "run_002"
+            write_valid_parquet(staging2 / "data.parquet", "version 2 payload")
+            res2 = publisher.publish("run_002", staging2, RowAccounting(20, 20, 0, 0), fault_injection_step5=True)
+            self.assertFalse(res2.success)
+
+            # Invariants verification:
+            # 1. Previous run files are completely unmodified
+            self.assertEqual(prev_run_file.read_bytes(), prev_bytes)
+            # 2. Pointer continues to resolve to run_001
+            self.assertEqual(publisher.get_current_pointer(), "run_001")
+            # 3. Staging directory of failed run is preserved (not purged)
+            self.assertTrue(staging2.is_dir())
+            self.assertTrue((staging2 / "data.parquet").is_file())
+            # 4. Versioned target is preserved for forensic inspection
+            versioned2 = base_dir / "curated" / "runs" / "run_002"
+            self.assertTrue(versioned2.is_dir())
+
+    def test_f05_04_single_writer_operational_assumption_and_version_collision(self):
+        """F05-04: Batch architecture assumes a single writer; concurrent/duplicate version publication is strictly rejected."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base_dir = Path(tmp_dir)
+            publisher = SafePublisher(str(base_dir))
+
+            staging = base_dir / "staging" / "run_batch_01"
+            write_valid_parquet(staging / "data.parquet", "batch 1")
+            res1 = publisher.publish("run_batch_01", staging, RowAccounting(10, 10, 0, 0))
+            self.assertTrue(res1.success)
+            self.assertEqual(publisher.get_current_pointer(), "run_batch_01")
+
+            # Duplicate attempt to publish run_batch_01 must fail at Step 3 (immutability)
+            staging_dup = base_dir / "staging" / "run_batch_01_concurrent"
+            write_valid_parquet(staging_dup / "data.parquet", "duplicate collision payload")
+            res_collision = publisher.publish("run_batch_01", staging_dup, RowAccounting(10, 10, 0, 0))
+
+            self.assertFalse(res_collision.success)
+            self.assertEqual(res_collision.status, "FAILED_VERSION_EXISTS")
+            self.assertEqual(res_collision.aborted_step, 3)
+            # Pointer remains on original version
+            self.assertEqual(publisher.get_current_pointer(), "run_batch_01")
+
+    def test_parquet_with_valid_magic_bytes_but_corrupted_footer_rejected(self):
+        """Verify is_valid_parquet_file and SafePublisher reject files with valid PAR1 magic bytes but corrupt Thrift footers."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base_dir = Path(tmp_dir)
+            publisher = SafePublisher(str(base_dir))
+
+            staging = base_dir / "staging" / "run_corrupt_footer"
+            staging.mkdir(parents=True, exist_ok=True)
+            corrupt_file = staging / "part-000.parquet"
+            # File begins and ends with PAR1, length > 12, but has corrupted Thrift metadata
+            corrupt_file.write_bytes(b"PAR1" + b"\x00" * 40 + b"PAR1")
+
+            self.assertFalse(is_valid_parquet_file(corrupt_file))
+
+            res = publisher.publish("run_corrupt_footer", staging, RowAccounting(10, 10, 0, 0))
+            self.assertFalse(res.success)
+            self.assertEqual(res.status, "FAILED_STAGING_CONTENT_INVALID")
+            self.assertEqual(res.aborted_step, 1)
+
 
 if __name__ == "__main__":
     unittest.main()
+

@@ -43,8 +43,10 @@ def validate_run_id(run_id: str, runs_root: Path) -> Path:
 
 def is_valid_parquet_file(p: Path) -> bool:
     """
-    Verify that a file is a valid Parquet file by checking standard magic bytes.
-    A valid Parquet file must begin and end with b'PAR1' and have size >= 12 bytes.
+    Verify that a file is a valid Parquet file by checking standard magic bytes
+    and reading Thrift file metadata/footer without loading row data into RAM.
+    A valid Parquet file must begin and end with b'PAR1', have size >= 12 bytes,
+    and have parseable Parquet metadata.
     """
     if not p.is_file():
         return False
@@ -60,6 +62,16 @@ def is_valid_parquet_file(p: Path) -> bool:
             footer = f.read(4)
             if footer != b"PAR1":
                 return False
+    except Exception:
+        return False
+
+    # Deep footer/metadata parseability check via pyarrow without loading rows
+    try:
+        import pyarrow.parquet as pq
+
+        meta = pq.read_metadata(str(p))
+        if meta.num_columns <= 0:
+            return False
         return True
     except Exception:
         return False
