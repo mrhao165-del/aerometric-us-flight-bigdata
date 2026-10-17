@@ -1394,8 +1394,8 @@
       "path": "tests/test_spark_env.py",
       "task_id": "T-009",
       "artifact_type": "TEST_MODULE",
-      "bytes": 5130,
-      "sha256": "c480fc840fc4e528deb8825f8f75677dbb9436fadb0e4aebfa332a6f1c7a8618",
+      "bytes": 5597,
+      "sha256": "04e48b481429c4fda9760e754ecfe598fecbb48605a9f148a256a40bfb4b2dfd",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -2261,6 +2261,86 @@
       "bytes": 77,
       "sha256": "e6a21ba26320548cc3a92c1810afa664f43fbd00291be02f5c076b1d1534038f",
       "authorization_ref": "Project Lead T009-CI-FINAL-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_TEST_CLOSURE_ERRATA.md",
+      "task_id": "T-009",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 7189,
+      "sha256": "7a0aea949e0ec291d41ee213f01309a1bdcb0918aa9137dca1dad521ca6e806d",
+      "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_TEST_CLOSURE_VERDICT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2367,
+      "sha256": "49c2b30357beda6eeecc02bd6b7d21e718bf5157d7439bcc1518e80f079f9c30",
+      "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_TEST_CLOSURE_LOG_UNITTESTS.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 4607,
+      "sha256": "97d01efc9124e453b8194e2d3ad9799c3c329fe19d77ad54d70875d37731459a",
+      "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_TEST_CLOSURE_LOG_SPARK_SMOKE.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2929,
+      "sha256": "177dd9485a0dc6163b770285699233d8ae74ee55367f82eb7c2e1d8991aa053f",
+      "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_TEST_CLOSURE_LOG_T006_REGRESSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2348,
+      "sha256": "5b8387eaebc6cc1dc67ace8954d0f8192c99d2461353f53fbcf79d0e0021b495",
+      "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_TEST_CLOSURE_LOG_GIT_EXCLUSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 1129,
+      "sha256": "87c2cb3ce5f9e88ec078ded37cc654c5e6ee30152be1f67a0278fcd79c7de678",
+      "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_TEST_CLOSURE_LOG_VALIDATOR_EXTENSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 969,
+      "sha256": "bb3995bc730e9cacaf97522c2e30bd78345981f24eeb76be184e2cdc06720015",
+      "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_TEST_CLOSURE_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2079,
+      "sha256": "23f065b2740cb803fd350b380da0f98a33dca3e784d29812a53dcfcf491df604",
+      "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_TEST_CLOSURE_LOG_CI_CLEAN_CHECKOUT.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 77,
+      "sha256": "9af7da14f6c010c000eab33e446a553944b5240eee9f6fd75f35016d7a63015e",
+      "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_TEST_CLOSURE_LOG_CONSISTENCY.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 77,
+      "sha256": "9af7da14f6c010c000eab33e446a553944b5240eee9f6fd75f35016d7a63015e",
+      "authorization_ref": "Project Lead T009-CI-TEST-CLOSURE instruction"
     }
   ]
 }

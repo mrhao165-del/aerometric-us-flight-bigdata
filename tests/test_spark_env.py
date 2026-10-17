@@ -75,11 +75,20 @@ class TestSparkEnv(unittest.TestCase):
         import os
         from unittest.mock import patch
 
+        windows_approved_scratch_path = "D:/Study/Code/Apache/Flight_Analyzt/tmp_spark/"
+
+        # 1. Pure configuration assertion: Verify default scratch_dir on Windows host
         with patch("flight_pipeline.config.spark_config.is_windows_host", return_value=True):
             cfg = SparkConfig()
-            self.assertEqual(cfg.scratch_dir, "D:/Study/Code/Apache/Flight_Analyzt/tmp_spark/")
-            res = ensure_scratch_dir("D:/Study/Code/Apache/Flight_Analyzt/tmp_spark/")
-            self.assertEqual(os.path.normpath(res), os.path.normpath("D:/Study/Code/Apache/Flight_Analyzt/tmp_spark/"))
+            self.assertEqual(cfg.scratch_dir, windows_approved_scratch_path)
+
+        # 2. Filesystem integration test: ONLY execute on actual Windows host (os.name == 'nt')
+        # Running Windows drive path mkdir on POSIX hosts treats 'D:' as a relative folder,
+        # polluting the repository checkout and failing cross-platform assertions.
+        if os.name == "nt":
+            res = ensure_scratch_dir(windows_approved_scratch_path)
+            self.assertEqual(os.path.normpath(res), os.path.normpath(windows_approved_scratch_path))
+            self.assertTrue(os.path.isabs(res))
 
     def test_spark_scratch_dir_fallback_never_uses_repo(self):
         """CI-01: If scratch path creation fails, fallback uses OS temp directory and NEVER '.' or workspace."""

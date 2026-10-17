@@ -1,0 +1,43 @@
+SUCCESS: The process with PID 25316 (child process of PID 20268) has been terminated.
+SUCCESS: The process with PID 20268 (child process of PID 27704) has been terminated.
+SUCCESS: The process with PID 27704 (child process of PID 26168) has been terminated.
+
+test_spark_scratch_dir_fallback_never_uses_repo (tests.test_spark_env.TestSparkEnv)
+CI-01: If scratch path creation fails, fallback uses OS temp directory and NEVER '.' or workspace. ... ok
+test_spark_scratch_dir_posix_compliance (tests.test_spark_env.TestSparkEnv)
+CI-01: On POSIX environments, scratch directory must be absolute, outside checkout, and never create 'D:'. ... ok
+test_spark_scratch_dir_windows_compliance (tests.test_spark_env.TestSparkEnv)
+CI-01: On Windows environments, approved D: drive path is preserved. ... ok
+test_spark_session_creation_and_config (tests.test_spark_env.TestSparkEnv)
+Verify SparkSession factory instantiates session with proper configuration. ... WARNING: Using incubator modules: jdk.incubator.vector
+26/10/17 11:53:44 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/17 11:53:44 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/17 11:53:44 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+
+[Stage 0:>                                                          (0 + 2) / 4]
+
+[Stage 0:==============>                                            (1 + 2) / 4]
+
+[Stage 0:=============================>                             (2 + 2) / 4]
+
+[Stage 0:============================================>              (3 + 1) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1592, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56641), raddr=('127.0.0.1', 56640)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 1:>                                                          (0 + 2) / 2]
+
+[Stage 1:=============================>                             (1 + 1) / 2]
+
+                                                                                
+ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 15.493s
+
+OK
