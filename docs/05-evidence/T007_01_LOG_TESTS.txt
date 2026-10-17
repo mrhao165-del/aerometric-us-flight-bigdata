@@ -1,0 +1,35 @@
+================================================================================
+T007-01 UNIT TEST EXECUTION LOG (tests/test_t007_schema.py)
+================================================================================
+Task ID: T007-01 (Canonical Schema Module)
+Framework: unittest
+Execution Command: python -m unittest tests/test_t007_schema.py
+Timestamp: 2026-10-17T09:21:41Z
+Host Platform: Windows (Python 3.10.11 64-bit)
+
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.009s
+
+OK
+
+Test Details:
+[PASS] test_01_exact_34_canonical_names_and_count
+[PASS] test_02_exact_physical_column_order
+[PASS] test_03_no_fabricated_columns
+[PASS] test_04_flights_column_retained_with_prohibited_weight_metadata
+[PASS] test_05_six_weather_fields_retained_as_optional
+[PASS] test_06_raw_csv_business_schema_all_stringtype
+[PASS] test_07_corrupt_record_separation_from_34_columns
+[PASS] test_08_curated_schema_exact_type_mapping
+[PASS] test_09_nullable_int64_calendar_fields
+[PASS] test_10_op_carrier_fl_num_float64_boundary
+[PASS] test_11_date_time_schema_preservation
+[PASS] test_12_pure_schema_no_side_effects
+[PASS] test_13_schema_deterministic_on_repeated_calls
+[PASS] test_14_negative_validation_tests
+[PASS] test_15_compatibility_with_existing_t009_modules
+
+SUMMARY: 15 PASS, 0 FAIL, 0 SKIP
+Exit Code: 0
+================================================================================
