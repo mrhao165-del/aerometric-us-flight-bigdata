@@ -1,0 +1,93 @@
+test_dc11_negative_counts_rejected (test_manifest.TestRunManifest)
+F-04: Test DC-11 rejects negative row counts and does not declare balanced. ... ok
+test_dc12_ingest_acceptance_rate (test_manifest.TestRunManifest)
+Test DC-12 ingest_acceptance_rate = accepted / raw with zero-denominator handling. ... ok
+test_dc12_metric_accounting (test_manifest.TestRunManifest)
+Test DC-12 per-submetric accounting, excluded_count, and valid rate. ... ok
+test_dc12_valid_exceeding_records_rejected (test_manifest.TestRunManifest)
+F-04: Test DC-12 rejects count_metric_valid exceeding count_records. ... ok
+test_row_accounting_balance_invariant (test_manifest.TestRunManifest)
+Test DC-11 three-state disjoint row accounting balance check. ... ok
+test_run_manifest_lifecycle_and_hashing (test_manifest.TestRunManifest)
+F-01: Test RunManifest creation, input/output tracking, close, and SHA-256 disk synchronization. ... ok
+WARNING: Using incubator modules: jdk.incubator.vector
+26/10/17 11:09:31 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/17 11:09:32 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/17 11:09:32 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+test_delay_predicates_preserve_signed_negative (test_numeric_predicates.TestNumericPredicates)
+Test that ARR_DELAY and DEP_DELAY preserve signed negative values. ... [Stage 0:>                                                          (0 + 4) / 4]                                                                                C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2104, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55596), raddr=('127.0.0.1', 55595)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_duration_predicates_require_strictly_positive (test_numeric_predicates.TestNumericPredicates)
+Test AIR_TIME, ACTUAL_ELAPSED_TIME, CRS_ELAPSED_TIME domain constraints (> 0.0). ... [Stage 1:>                                                          (0 + 4) / 4]                                                                                C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1916, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55606), raddr=('127.0.0.1', 55605)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_is_finite_numeric_matrix (test_numeric_predicates.TestNumericPredicates)
+Test is_finite_numeric against None, NaN, +inf, -inf, 0, negative and positive numbers. ... [Stage 2:>                                                          (0 + 4) / 4]                                                                                C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2180, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55616), raddr=('127.0.0.1', 55615)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_taxi_predicates_require_non_negative (test_numeric_predicates.TestNumericPredicates)
+Test TAXI_OUT and TAXI_IN domain constraints (>= 0.0). ... [Stage 3:>                                                          (0 + 4) / 4][Stage 3:============================================>              (3 + 1) / 4]                                                                                C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1944, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55626), raddr=('127.0.0.1', 55625)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_f05_01_pointer_verification_mismatch_triggers_atomic_rollback (test_publication_safety.TestPublicationSafety)
+F05-01: Step 6 detects pointer mismatch on read-back and rolls back to previous pointer. ... ok
+test_f05_02_pointer_verification_rollback_failure_reporting (test_publication_safety.TestPublicationSafety)
+F05-02: Step 6 reports FAILED_POINTER_VERIFICATION_ROLLBACK_ERROR when rollback replacement fails. ... ok
+test_f05_03_preservation_of_previous_version_and_failure_artifacts (test_publication_safety.TestPublicationSafety)
+F05-03: Non-destructive policy preserves previous version data, staging data, and promoted artifacts on failure. ... ok
+test_f05_04_single_writer_operational_assumption_and_version_collision (test_publication_safety.TestPublicationSafety)
+F05-04: Batch architecture assumes a single writer; concurrent/duplicate version publication is strictly rejected. ... ok
+test_fault_injection_step5_preserves_previous_pointer_and_staging (test_publication_safety.TestPublicationSafety)
+Test TS-013 fault injection at Step 5 triggers Step 6 non-destructive rollback. ... ok
+test_parquet_with_valid_magic_bytes_but_corrupted_footer_rejected (test_publication_safety.TestPublicationSafety)
+Verify is_valid_parquet_file and SafePublisher reject files with valid PAR1 magic bytes but corrupt Thrift footers. ... ok
+test_post_switch_pointer_read_exception_with_previous_pointer (test_publication_safety.TestPublicationSafety)
+FIX-S02: Step 6 pointer read OSError must be caught, rollback to previous pointer, and return error result. ... ok
+test_post_switch_pointer_read_exception_with_rollback_failure (test_publication_safety.TestPublicationSafety)
+FIX-S02: If post-switch read fails AND rollback fails, report FAILED_POINTER_VERIFICATION_ROLLBACK_ERROR. ... ok
+test_post_switch_pointer_read_exception_without_previous_pointer (test_publication_safety.TestPublicationSafety)
+FIX-S02: Step 6 pointer read OSError with previous_pointer=None must rollback cleanly to None. ... ok
+test_rejection_of_fake_parquet_content (test_publication_safety.TestPublicationSafety)
+F-02: SafePublisher strictly rejects non-Parquet files masquerading as .parquet. ... ok
+test_rejection_of_path_traversal_run_id (test_publication_safety.TestPublicationSafety)
+F-03: SafePublisher strictly rejects path traversal in run_id before writing. ... ok
+test_streaming_sha256_matches_hashlib_and_handles_blocks (test_publication_safety.TestPublicationSafety)
+FIX-S03: Streaming SHA-256 calculation matches hashlib on empty, small, and multi-block files. ... ok
+test_successful_publication_sequence (test_publication_safety.TestPublicationSafety)
+Test complete 7-step safe publication with balanced row accounting and valid Parquet. ... ok
+test_unbalanced_accounting_aborts_publication (test_publication_safety.TestPublicationSafety)
+Test Step 2 aborts publication with ACCOUNTING_UNVERIFIED when accounting is unbalanced. ... ok
+test_version_immutability_rejection (test_publication_safety.TestPublicationSafety)
+Test Step 3 strictly rejects promotion if versioned directory already exists (immutability). ... ok
+test_spark_session_creation_and_config (test_spark_env.TestSparkEnv)
+Verify SparkSession factory instantiates session with proper configuration. ... 26/10/17 11:09:48 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+[Stage 0:>                                                          (0 + 2) / 4][Stage 0:==============>                                            (1 + 2) / 4][Stage 0:=============================>                             (2 + 2) / 4]                                                                                C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2188, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55640), raddr=('127.0.0.1', 55639)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+[Stage 1:>                                                          (0 + 2) / 2][Stage 1:=============================>                             (1 + 1) / 2]                                                                                ok
+test_f01_manifest_save_sha256_matches_disk_bytes (test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-01: Returned sha256 from RunManifest.save() must match exact disk bytes. ... ok
+test_f02_publication_rejects_fake_parquet_content (test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-02: SafePublisher must reject non-Parquet files masquerading as .parquet. ... ok
+test_f03_run_id_path_traversal_strictly_rejected (test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-03: SafePublisher must strictly reject path traversal in run_id before writing. ... ok
+test_f04_dc11_rejects_negative_counts (test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-04: RowAccounting must reject negative counts and not declare balanced. ... ok
+test_f04_dc12_rejects_valid_exceeding_records (test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-04: MetricAccounting must reject count_metric_valid > count_records. ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 28.504s
+
+OK
+SUCCESS: The process with PID 11016 (child process of PID 11980) has been terminated.
+SUCCESS: The process with PID 11980 (child process of PID 27936) has been terminated.
+SUCCESS: The process with PID 27936 (child process of PID 27404) has been terminated.

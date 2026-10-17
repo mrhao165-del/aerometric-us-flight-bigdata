@@ -32,9 +32,9 @@ jobs:
       run: |
         python -m unittest discover -s tests
 
-    - name: Run working-tree consistency verifier
+    - name: Run working-tree consistency verifier (CI clean-checkout mode)
       run: |
-        python tools/check_working_tree_consistency.py
+        python tools/check_working_tree_consistency.py --ci-mode
 
     - name: Run T-006 contract consistency verifier
       run: |

@@ -1226,8 +1226,8 @@
       "path": "tools/check_working_tree_consistency.py",
       "task_id": "T-009",
       "artifact_type": "QA_SCRIPT",
-      "bytes": 24155,
-      "sha256": "41ac4c1ba33d49da76b806f7dfca957f60b7a9bf94b1f83b27e9c2b10aeb5d1c",
+      "bytes": 24507,
+      "sha256": "e03281358299e9eb15dea9d63fdf5d7010a7be0d7edaf02f53f3b981824b0bfc",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -1330,8 +1330,8 @@
       "path": "src/flight_pipeline/storage/publication.py",
       "task_id": "T-009",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 14167,
-      "sha256": "f20f491c239c9ac28e1adad0d7e90753c17169630860e7ce59066597dc882e2a",
+      "bytes": 16616,
+      "sha256": "1d78be4729a3ce8c7df129d319f8e730722464cde5b298bf2fa7eeb93eab1a7e",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -1386,8 +1386,8 @@
       "path": "tests/test_publication_safety.py",
       "task_id": "T-009",
       "artifact_type": "TEST_MODULE",
-      "bytes": 15772,
-      "sha256": "c82a426411a919f51eedb6ebe90e463e3a3c5da0f8883d404669508d10c56ab8",
+      "bytes": 22343,
+      "sha256": "8894a1f817f05bca68bcd5cbfd32759b99f7dadff342203edaa3cd278e9185c4",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -1410,8 +1410,8 @@
       "path": ".github/workflows/ci.yml",
       "task_id": "T-009",
       "artifact_type": "CI_CONFIG",
-      "bytes": 888,
-      "sha256": "175d30047113cb100154cbf53a6d910c57811dd0c45e5c3c009639107721be37",
+      "bytes": 923,
+      "sha256": "dd1c17c516045476f89743fbf44f3dfc00fdfea2b052479558cb5a627193fddb",
       "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
     },
     {
@@ -2013,6 +2013,142 @@
       "bytes": 75,
       "sha256": "23da81032a4b374d376390b068bd0bfeed98933ffccf28c72fd4271ea79d3360",
       "authorization_ref": "Project Lead T009-R3-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_FINAL_GOVERNANCE_ERRATA.md",
+      "task_id": "T-009",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 7939,
+      "sha256": "30b49ac95a4d36f45166fa8d754ded2d88f2f4a28245fa77f77292236e36030c",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_BASELINE_AND_FINDINGS.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3167,
+      "sha256": "b181751afd7190efc25fb6d347821f72e1e1e7262e416be444993ad7cba5cce2",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_SOURCE_REMEDIATION.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3004,
+      "sha256": "18aeeaadf23299d0008bdf5b430cfc17be1284cda4f47d53c94ddaa13571340b",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_POINTER_FAILURE_TESTS.md",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2996,
+      "sha256": "60432dd3f9b1410a7aea7358396040d7edf3728a3789e203c05e03cbcd247723",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_STREAMING_HASH_TESTS.md",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2007,
+      "sha256": "9643505be55ca19dd244ab5f805b1b53a7aeb2daccea5c00c81320c8f878c7e5",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_CI_READINESS_REVIEW.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2504,
+      "sha256": "b1d572be4148cfe42fc69282eefda48f13f50f60a80e904607b35328ab8579a6",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_REGISTRY_RECONCILIATION.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3206,
+      "sha256": "35b0ebdf420e3f8bd1152fb55b4bd20ea83a0b3c405764771f9a4cac876d6fe5",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_FINAL_TEST_MATRIX.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2896,
+      "sha256": "d933b0c41542dc4d0f4a7f007eff77c0ea8605e14498cb0c7a331de9c986c4af",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_FINAL_VERDICT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2897,
+      "sha256": "adaa1d676c9e7a8ce68178d9a6d51766ce67b6b9bd84e792067676962280f7af",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_LOG_UNITTESTS.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 10337,
+      "sha256": "5a21d38df733b20bfb6f980489443447d67c9ee26b550fbb01477092c39b2b0a",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_LOG_SPARK_SMOKE.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2026,
+      "sha256": "46595911537b5670975f36b34c2a7b5769a49aac7a4214a30a208966a86d27d2",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_LOG_T006_REGRESSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2348,
+      "sha256": "5b8387eaebc6cc1dc67ace8954d0f8192c99d2461353f53fbcf79d0e0021b495",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2057,
+      "sha256": "868cc53789a2d6c36178c7284bbe063f9dcf0ff2aa51fe6ffda647546d24d9e0",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_LOG_GIT_EXCLUSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 1129,
+      "sha256": "87c2cb3ce5f9e88ec078ded37cc654c5e6ee30152be1f67a0278fcd79c7de678",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_LOG_VALIDATOR_EXTENSION.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 969,
+      "sha256": "bb3995bc730e9cacaf97522c2e30bd78345981f24eeb76be184e2cdc06720015",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_LOG_CI_CLEAN_CHECKOUT.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "07ecab46ed16b0ed44d60b0c83393ea34a7ef966c082329c0ef10b5afcd3d06b",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
+    },
+    {
+      "path": "docs/05-evidence/T009_SEAL_FIX_LOG_CONSISTENCY.txt",
+      "task_id": "T-009",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "07ecab46ed16b0ed44d60b0c83393ea34a7ef966c082329c0ef10b5afcd3d06b",
+      "authorization_ref": "Project Lead T009-SEAL-CORRECTION instruction"
     }
   ]
 }

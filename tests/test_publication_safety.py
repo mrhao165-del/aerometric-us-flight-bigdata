@@ -308,7 +308,142 @@ class TestPublicationSafety(unittest.TestCase):
             self.assertEqual(res.status, "FAILED_STAGING_CONTENT_INVALID")
             self.assertEqual(res.aborted_step, 1)
 
+    def test_post_switch_pointer_read_exception_with_previous_pointer(self):
+        """FIX-S02: Step 6 pointer read OSError must be caught, rollback to previous pointer, and return error result."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base_dir = Path(tmp_dir)
+            publisher = SafePublisher(str(base_dir))
+
+            staging1 = base_dir / "staging" / "run_prev"
+            write_valid_parquet(staging1 / "data.parquet", "prev")
+            res1 = publisher.publish("run_prev", staging1, RowAccounting(10, 10, 0, 0))
+            self.assertTrue(res1.success)
+            self.assertEqual(publisher.get_current_pointer(), "run_prev")
+
+            staging2 = base_dir / "staging" / "run_new"
+            write_valid_parquet(staging2 / "data.parquet", "new")
+
+            call_count = [0]
+            real_get = publisher.get_current_pointer
+
+            def mock_get(*args, **kwargs):
+                call_count[0] += 1
+                # Call 1 is Step 0 (read previous). Call 2 is Step 6 (post-switch verification read)
+                if call_count[0] == 2:
+                    raise OSError("Simulated NTFS access lock on post-switch read")
+                return real_get(*args, **kwargs)
+
+            with patch.object(publisher, "get_current_pointer", side_effect=mock_get):
+                res2 = publisher.publish("run_new", staging2, RowAccounting(20, 20, 0, 0))
+
+            # Must not crash, must return failed PublicationResult with aborted_step=6
+            self.assertFalse(res2.success)
+            self.assertIn(res2.status, ("FAILED_POINTER_READ_VERIFICATION", "FAILED_POINTER_VERIFICATION"))
+            self.assertEqual(res2.aborted_step, 6)
+            self.assertEqual(res2.previous_pointer, "run_prev")
+            # Step 6 rollback must have restored pointer to run_prev
+            self.assertEqual(publisher.get_current_pointer(), "run_prev")
+            # Staging and promoted directory preserved
+            self.assertTrue(staging2.is_dir())
+            self.assertTrue((base_dir / "curated" / "runs" / "run_new").is_dir())
+
+    def test_post_switch_pointer_read_exception_without_previous_pointer(self):
+        """FIX-S02: Step 6 pointer read OSError with previous_pointer=None must rollback cleanly to None."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base_dir = Path(tmp_dir)
+            publisher = SafePublisher(str(base_dir))
+
+            staging = base_dir / "staging" / "run_first"
+            write_valid_parquet(staging / "data.parquet", "first")
+
+            call_count = [0]
+            real_get = publisher.get_current_pointer
+
+            def mock_get(*args, **kwargs):
+                call_count[0] += 1
+                if call_count[0] == 2:  # Step 6 read fails on initial run
+                    raise OSError("Simulated IO failure on initial pointer read")
+                return real_get(*args, **kwargs)
+
+            with patch.object(publisher, "get_current_pointer", side_effect=mock_get):
+                res = publisher.publish("run_first", staging, RowAccounting(10, 10, 0, 0))
+
+            self.assertFalse(res.success)
+            self.assertIn(res.status, ("FAILED_POINTER_READ_VERIFICATION", "FAILED_POINTER_VERIFICATION"))
+            self.assertEqual(res.aborted_step, 6)
+            self.assertIsNone(res.previous_pointer)
+            self.assertIsNone(publisher.get_current_pointer())
+
+    def test_post_switch_pointer_read_exception_with_rollback_failure(self):
+        """FIX-S02: If post-switch read fails AND rollback fails, report FAILED_POINTER_VERIFICATION_ROLLBACK_ERROR."""
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base_dir = Path(tmp_dir)
+            publisher = SafePublisher(str(base_dir))
+
+            staging1 = base_dir / "staging" / "run_prev"
+            write_valid_parquet(staging1 / "data.parquet", "prev")
+            publisher.publish("run_prev", staging1, RowAccounting(10, 10, 0, 0))
+
+            staging2 = base_dir / "staging" / "run_new"
+            write_valid_parquet(staging2 / "data.parquet", "new")
+
+            call_count = [0]
+            real_get = publisher.get_current_pointer
+
+            def mock_get(*args, **kwargs):
+                call_count[0] += 1
+                if call_count[0] == 2:
+                    raise OSError("Simulated post-switch read error")
+                return real_get(*args, **kwargs)
+
+            real_atomic_write = publisher._atomic_write_pointer
+            atomic_calls = [0]
+
+            def mock_atomic_write(pval, tmp_prefix=""):
+                atomic_calls[0] += 1
+                if atomic_calls[0] == 2:  # Rollback attempt
+                    return False
+                return real_atomic_write(pval, tmp_prefix)
+
+            with patch.object(publisher, "get_current_pointer", side_effect=mock_get):
+                with patch.object(publisher, "_atomic_write_pointer", side_effect=mock_atomic_write):
+                    res2 = publisher.publish("run_new", staging2, RowAccounting(20, 20, 0, 0))
+
+            self.assertFalse(res2.success)
+            self.assertEqual(res2.status, "FAILED_POINTER_VERIFICATION_ROLLBACK_ERROR")
+            self.assertEqual(res2.aborted_step, 6)
+
+    def test_streaming_sha256_matches_hashlib_and_handles_blocks(self):
+        """FIX-S03: Streaming SHA-256 calculation matches hashlib on empty, small, and multi-block files."""
+        from hashlib import sha256 as std_sha256
+        from flight_pipeline.storage.publication import compute_file_sha256
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            base = Path(tmp_dir)
+
+            # 1. Empty file
+            empty_f = base / "empty.bin"
+            empty_f.write_bytes(b"")
+            self.assertEqual(compute_file_sha256(empty_f), std_sha256(b"").hexdigest())
+
+            # 2. Small file (< 64KB)
+            small_data = b"Hello, Flight Pipeline!" * 100
+            small_f = base / "small.bin"
+            small_f.write_bytes(small_data)
+            self.assertEqual(compute_file_sha256(small_f), std_sha256(small_data).hexdigest())
+
+            # 3. Multi-block file (200KB with 64KB blocks)
+            large_data = b"A" * 70000 + b"B" * 70000 + b"C" * 60000
+            large_f = base / "large.bin"
+            large_f.write_bytes(large_data)
+            self.assertEqual(compute_file_sha256(large_f), std_sha256(large_data).hexdigest())
+
+            # 4. Non-existent file raises FileNotFoundError
+            with self.assertRaises(FileNotFoundError):
+                compute_file_sha256(base / "nonexistent.bin")
+
 
 if __name__ == "__main__":
     unittest.main()
+
 

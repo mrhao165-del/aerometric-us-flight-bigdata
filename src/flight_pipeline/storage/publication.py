@@ -77,6 +77,23 @@ def is_valid_parquet_file(p: Path) -> bool:
         return False
 
 
+def compute_file_sha256(p: Path, chunk_size: int = 65536) -> str:
+    """
+    Compute SHA-256 hash of a file using streaming fixed-size blocks (default 64KB).
+    Avoids reading large Parquet files completely into RAM.
+    """
+    if not p.is_file():
+        raise FileNotFoundError(f"Cannot compute hash for non-existent file: {p}")
+    h = sha256()
+    with open(p, "rb") as f:
+        while True:
+            chunk = f.read(chunk_size)
+            if not chunk:
+                break
+            h.update(chunk)
+    return h.hexdigest()
+
+
 @dataclass
 class PublicationResult:
     """Result of a 7-step safe publication execution."""
@@ -109,12 +126,25 @@ class SafePublisher:
         self.runs_root = self.curated_root / "runs"
         self.pointer_file = self.curated_root / "latest_run_id.txt"
 
-    def get_current_pointer(self) -> Optional[str]:
-        """Read the currently published run_id pointer."""
-        if self.pointer_file.is_file():
-            val = self.pointer_file.read_text(encoding="utf-8").strip()
-            return val if val else None
-        return None
+    def get_current_pointer(self, max_retries: int = 3, retry_delay: float = 0.05) -> Optional[str]:
+        """
+        Read the currently published run_id pointer with backoff retry on transient OS/NTFS errors.
+        Returns None if pointer file does not exist.
+        Raises OSError if all read attempts fail due to persistent file lock/IO errors.
+        """
+        if not self.pointer_file.exists():
+            return None
+        last_err: Optional[Exception] = None
+        for attempt in range(max_retries):
+            try:
+                if not self.pointer_file.is_file():
+                    return None
+                val = self.pointer_file.read_text(encoding="utf-8").strip()
+                return val if val else None
+            except (OSError, PermissionError) as exc:
+                last_err = exc
+                time.sleep(retry_delay * (attempt + 1))
+        raise OSError(f"Unable to read pointer file {self.pointer_file} after {max_retries} attempts: {last_err}")
 
     def _atomic_write_pointer(self, pointer_val: Optional[str], tmp_prefix: str = ".latest_run_id_tmp") -> bool:
         """Atomically update the latest_run_id.txt pointer using os.replace with backoff retry."""
@@ -221,7 +251,7 @@ class SafePublisher:
         staging_inventory: Dict[str, Tuple[int, str]] = {}
         for f in staging_data_files:
             rel = f.relative_to(staging_dir).as_posix()
-            staging_inventory[rel] = (f.stat().st_size, sha256(f.read_bytes()).hexdigest())
+            staging_inventory[rel] = (f.stat().st_size, compute_file_sha256(f))
 
         # Step 2: Validate Row Accounting Balance (DC-11 / TS-003 / F-04)
         if not accounting.is_balanced():
@@ -283,7 +313,7 @@ class SafePublisher:
                     error_message=f"Promoted file size mismatch: {rel_path}",
                     aborted_step=4,
                 )
-            actual_sha = sha256(promoted_f.read_bytes()).hexdigest()
+            actual_sha = compute_file_sha256(promoted_f)
             if actual_sha != exp_sha:
                 return PublicationResult(
                     success=False,
@@ -321,19 +351,45 @@ class SafePublisher:
                 aborted_step=5,
             )
 
-        # Step 6: Post-switch pointer verification & atomic rollback (F-05)
-        current_pointer = self.get_current_pointer()
-        if current_pointer != run_id:
+        # Step 6: Post-switch pointer verification & atomic rollback (F-05 / FIX-S02)
+        read_err: Optional[Exception] = None
+        current_pointer: Optional[str] = None
+        try:
+            current_pointer = self.get_current_pointer()
+        except OSError as exc:
+            read_err = exc
+
+        if read_err is not None or current_pointer != run_id:
             rollback_ok = self._atomic_write_pointer(previous_pointer, f".latest_run_id_rollback_{run_id}")
-            rollback_status = "FAILED_POINTER_VERIFICATION" if rollback_ok else "FAILED_POINTER_VERIFICATION_ROLLBACK_ERROR"
+            verified_pointer_after_rollback: Optional[str] = None
+            try:
+                verified_pointer_after_rollback = self.get_current_pointer()
+            except OSError:
+                verified_pointer_after_rollback = None
+                rollback_ok = False
+
+            if rollback_ok and verified_pointer_after_rollback == previous_pointer:
+                if read_err is not None:
+                    status = "FAILED_POINTER_READ_VERIFICATION"
+                    msg = f"Pointer read verification failed with OSError: {read_err}. Atomic rollback to {previous_pointer!r} succeeded."
+                else:
+                    status = "FAILED_POINTER_VERIFICATION"
+                    msg = f"Pointer verification failed: expected {run_id!r}, got {current_pointer!r}. Atomic rollback to {previous_pointer!r} succeeded."
+            else:
+                status = "FAILED_POINTER_VERIFICATION_ROLLBACK_ERROR"
+                msg = (
+                    f"Pointer verification failure (read_err={read_err}, current={current_pointer!r}) "
+                    f"AND rollback to {previous_pointer!r} failed or could not be verified (rollback_ok={rollback_ok}, verified={verified_pointer_after_rollback!r})."
+                )
+
             return PublicationResult(
                 success=False,
-                status=rollback_status,
+                status=status,
                 run_id=run_id,
                 published_path=str(versioned_target.resolve().as_posix()),
-                pointer_value=self.get_current_pointer(),
+                pointer_value=verified_pointer_after_rollback,
                 previous_pointer=previous_pointer,
-                error_message=f"Pointer verification failed: expected {run_id}, got {current_pointer}. Rollback success: {rollback_ok}",
+                error_message=msg,
                 aborted_step=6,
             )
 

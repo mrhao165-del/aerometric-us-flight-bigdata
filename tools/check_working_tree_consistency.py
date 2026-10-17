@@ -124,7 +124,7 @@ def _is_safe_rel_path(rel_path: str, root: Path) -> bool:
     return True
 
 
-def run_consistency_check(root_dir: Path):
+def run_consistency_check(root_dir: Path, ci_mode: bool = False):
     root = Path(root_dir).resolve()
     issues = []
     passed = []
@@ -596,10 +596,16 @@ def run_consistency_check(root_dir: Path):
         )
         missing_registered = verified_deliv_paths - extra_files
 
-        require(
-            len(raw_data_files) == 9,
-            "Working-tree contains exactly 9 raw CSV files (2016-2024)",
-        )
+        if ci_mode:
+            require(
+                len(raw_data_files) == 0,
+                "CI clean-checkout mode: raw data files excluded from Git tracking as required by repository policy",
+            )
+        else:
+            require(
+                len(raw_data_files) == 9,
+                "Working-tree contains exactly 9 raw CSV files (2016-2024)",
+            )
         require(
             len(missing_registered) == 0,
             "All registered deliverables present in working-tree"
@@ -621,7 +627,8 @@ def run_consistency_check(root_dir: Path):
 
 def main():
     root = Path(__file__).resolve().parents[1]
-    passed, issues = run_consistency_check(root)
+    ci_mode = "--ci-mode" in sys.argv or "--repo-only" in sys.argv
+    passed, issues = run_consistency_check(root, ci_mode=ci_mode)
     print(f"Working-Tree PASS assertions: {len(passed)}; FAIL: {len(issues)}")
     for i in issues:
         print("FAIL:", i)
