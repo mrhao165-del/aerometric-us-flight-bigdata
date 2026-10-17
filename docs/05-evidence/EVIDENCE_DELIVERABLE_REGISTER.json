@@ -1,0 +1,1186 @@
+{
+  "registry_version": "1.0",
+  "task_id": "G3-OFFICIAL-SIGNOFF",
+  "updated_at": "2026-10-17",
+  "description": "Cryptographic Deliverable & Living Governance Document Registry for Gate G2 and G3 working-tree consistency verification.",
+  "governed_living_docs": [
+    {
+      "path": "docs/01-planning/BACKLOG.md",
+      "task_id": "G2-REPO-APPLY",
+      "original_v1_1_bytes": 5026,
+      "original_v1_1_sha256": "6525a1735338f80c5a4ad1d4260cab1b43646a342799c8fb300f9db9adc787ed",
+      "current_bytes": 11013,
+      "current_sha256": "68770e5d88fd5cb7d70dcb3afb6a0eda66772f8f045976c29b9caffe2076ef43",
+      "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__01-planning__BACKLOG.md.pre_g2_repo_apply.bak",
+      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+    },
+    {
+      "path": "docs/02-design/DECISIONS.md",
+      "task_id": "G2-REPO-APPLY",
+      "original_v1_1_bytes": 3894,
+      "original_v1_1_sha256": "046ca0e627266815a1b9c17df49f6676f49c6b7e9aeb18bb6025740a56d8a180",
+      "current_bytes": 21647,
+      "current_sha256": "bede7f51e95a832bd24dd6ceb51e4eb72a0fb6d9d3efc5a97fc4bc7642d0e66d",
+      "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__02-design__DECISIONS.md.pre_g2_repo_apply.bak",
+      "authorization_ref": "Project Lead G2-REPO-APPLY instruction (2026-10-16); recorded in docs/05-evidence/G2_REPO_APPLY_HUMAN_APPROVAL_RECORD.md"
+    },
+    {
+      "path": "docs/02-design/KPI_SPEC.md",
+      "task_id": "G2-REPO-APPLY",
+      "original_v1_1_bytes": 5845,
+      "original_v1_1_sha256": "1972fca2c67288a76984fe1f9953752f77dd65262bee04ff1af942902e4a6dbe",
+      "current_bytes": 9949,
+      "current_sha256": "bf4a663485c6416a790e1ca1d721f1da808fa9da61dc1e377b52b4ef04121d9c",
+      "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__02-design__KPI_SPEC.md.pre_g2_repo_apply.bak",
+      "authorization_ref": "Project Lead G2-REPO-APPLY instruction (2026-10-16); recorded in docs/05-evidence/G2_REPO_APPLY_HUMAN_APPROVAL_RECORD.md"
+    },
+    {
+      "path": "docs/03-quality/CHANGELOG.md",
+      "task_id": "G2-REPO-APPLY",
+      "original_v1_1_bytes": 2012,
+      "original_v1_1_sha256": "feb443581633193be978be9e587b3dbae8d4afd700dfc231c16fa73b021365f1",
+      "current_bytes": 9124,
+      "current_sha256": "4a10f400651bf335cfc322aae1cf38565bb495c13dcba40b43a4f74b04c10f31",
+      "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__03-quality__CHANGELOG.md.pre_g2_repo_apply.bak",
+      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+    },
+    {
+      "path": "docs/03-quality/RISK_REGISTER.md",
+      "task_id": "G2-REPO-APPLY",
+      "original_v1_1_bytes": 3215,
+      "original_v1_1_sha256": "745c18d56f60173b6e41e102894bd968570650359a14c38aa1c620dc54cf12df",
+      "current_bytes": 11376,
+      "current_sha256": "55c5a46d682cfd5b0ec45d9d3f4d65c9adf4f513ad12a8dc0eae88af01fd2d85",
+      "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__03-quality__RISK_REGISTER.md.pre_g2_repo_apply.bak",
+      "authorization_ref": "Project Lead G2-REPO-APPLY instruction (2026-10-16); recorded in docs/05-evidence/G2_REPO_APPLY_HUMAN_APPROVAL_RECORD.md"
+    },
+    {
+      "path": "docs/04-execution/AI_HANDOFF.md",
+      "task_id": "G2-REPO-APPLY",
+      "original_v1_1_bytes": 2745,
+      "original_v1_1_sha256": "7bd3a3b376e13bfda0aed8ed95f1f625fa39cdc0f7ebf31ea5bb9df11df4ca69",
+      "current_bytes": 17329,
+      "current_sha256": "c1d7ae6469570f3da4f36df7a92ada07f594159753781b3e8b05ceb5bd6a06bb",
+      "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__04-execution__AI_HANDOFF.md.pre_g2_repo_apply.bak",
+      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+    },
+    {
+      "path": "docs/04-execution/TASK_TEMPLATE.md",
+      "task_id": "G2-REPO-APPLY",
+      "original_v1_1_bytes": 1764,
+      "original_v1_1_sha256": "47350b4b253b9ab3192404eceef87b40cbd9061c0093307ae749ed66f4bb8eb7",
+      "current_bytes": 8445,
+      "current_sha256": "a0d0ae0059350a653ec17ce5b32400983f18f63687d1ffd43017b2abbb5faf91",
+      "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__04-execution__TASK_TEMPLATE.md.pre_g2_repo_apply.bak",
+      "authorization_ref": "Project Lead G2-REPO-APPLY instruction (2026-10-16); recorded in docs/05-evidence/G2_REPO_APPLY_HUMAN_APPROVAL_RECORD.md"
+    },
+    {
+      "path": "docs/02-design/ARCHITECTURE.md",
+      "task_id": "T-006",
+      "original_v1_1_bytes": 4261,
+      "original_v1_1_sha256": "1f9d5ee4773fa62575813dbad60b6a77d4d63f3fab9dbb588b0e97dd4b6258e4",
+      "current_bytes": 21056,
+      "current_sha256": "14cf55d04468149886bec7d6102228240f98bdb07305b7282073bd71608fa6a6",
+      "backup_path": "docs/05-evidence/T006_BACKUPS/docs__02-design__ARCHITECTURE.md.pre_t006.bak",
+      "authorization_ref": "Project Lead G3-T006-FINAL-CORRECTIONS instruction (2026-10-17); recorded in docs/05-evidence/T006_FINAL_CONTRACT_VERIFICATION.md"
+    }
+  ],
+  "registered_deliverables": [
+    {
+      "path": "docs/05-evidence/G2_DECISION_AND_BLOCKER_REGISTER.md",
+      "task_id": "G2-FINAL-REVIEW",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 16007,
+      "sha256": "b67100b2eb9fd9d406f3f015c7d5f3bf62090b61aab4f0baa26a1063eb07a8ea",
+      "authorization_ref": "G2-FINAL-REVIEW Readiness Report"
+    },
+    {
+      "path": "docs/05-evidence/G2_EXECUTION_EVIDENCE_RECONCILIATION.md",
+      "task_id": "G2-FINAL-REVIEW",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 15667,
+      "sha256": "06559b9cc08f5d39cfdf5932d94eba0141a8847fff53cdde512bc43dd8081c8f",
+      "authorization_ref": "G2-FINAL-REVIEW Readiness Report"
+    },
+    {
+      "path": "docs/05-evidence/G2_FINAL_CLOSEOUT_ROLLBACK_ERRATA.md",
+      "task_id": "G2-FINAL-CLOSEOUT",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 17320,
+      "sha256": "37546adb3f89e7df4f5159b580f8f668ecc1a0df4348130da9f9d64f0a31d7ee",
+      "authorization_ref": "G2-FINAL-CLOSEOUT Rollback Errata & Boundaries Addendum"
+    },
+    {
+      "path": "docs/05-evidence/G2_FINAL_FIX_BACKUPS/docs__05-evidence__EVIDENCE_DELIVERABLE_REGISTER.json.pre_g2_final_fix.bak",
+      "task_id": "G2-FINAL-FIX",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 31072,
+      "sha256": "7b4ceada7f8a8204b2f461b387c0fb17c9f2b83e086bd8525d7dfb3be603526f",
+      "authorization_ref": "Pre-G2-FINAL-FIX snapshot for docs__05-evidence__EVIDENCE_DELIVERABLE_REGISTER.json.pre_g2_final_fix.bak"
+    },
+    {
+      "path": "docs/05-evidence/G2_FINAL_FIX_BACKUPS/tools__check_working_tree_consistency.py.pre_g2_final_fix.bak",
+      "task_id": "G2-FINAL-FIX",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 21085,
+      "sha256": "9b98051466113c0faa9da064aa1e9011e28d6d149e87afbe6bf82e17702e61ec",
+      "authorization_ref": "Pre-G2-FINAL-FIX snapshot for tools__check_working_tree_consistency.py.pre_g2_final_fix.bak"
+    },
+    {
+      "path": "docs/05-evidence/G2_FINAL_FIX_BACKUPS/tools__qa__test_working_tree_registry_regression.py.pre_g2_final_fix.bak",
+      "task_id": "G2-FINAL-FIX",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 20762,
+      "sha256": "b7a28ffaa2aebc873d9fa9379a36d1f50f9f6cbe21dc4eac0c9a10a0c4555a4a",
+      "authorization_ref": "Pre-G2-FINAL-FIX snapshot for tools__qa__test_working_tree_registry_regression.py.pre_g2_final_fix.bak"
+    },
+    {
+      "path": "docs/05-evidence/G2_FINAL_FIX_BACKUPS/tools__qa__verify_g2_repo_apply_r1_semantic_invariants.py.pre_g2_final_fix.bak",
+      "task_id": "G2-FINAL-FIX",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 25504,
+      "sha256": "766dd615f289a1722a4909390cc4d7ccea0820510584580ae1c3df3e7777a853",
+      "authorization_ref": "Pre-G2-FINAL-FIX snapshot for tools__qa__verify_g2_repo_apply_r1_semantic_invariants.py.pre_g2_final_fix.bak"
+    },
+    {
+      "path": "docs/05-evidence/G2_FINAL_FIX_CORRECTION_AND_SCOPE_REPORT.md",
+      "task_id": "G2-FINAL-FIX",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 17193,
+      "sha256": "3904ef7933d08e898dd0e9e3f0c9d1d4933eaf71e8a228355effdc576aaa27cb",
+      "authorization_ref": "G2-FINAL-FIX Technical Correction and Scope Report"
+    },
+    {
+      "path": "docs/05-evidence/G2_FINAL_FIX_FINAL_GATE_RECOMMENDATION.md",
+      "task_id": "G2-FINAL-FIX",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 11583,
+      "sha256": "a3a569d80b9f801d37fb4465133688f1d6aa17069f332cba02d3222f7d2369b7",
+      "authorization_ref": "G2-FINAL-FIX Final Gate Recommendation"
+    },
+    {
+      "path": "docs/05-evidence/G2_FINAL_FIX_TEST_AND_EXECUTION_MANIFEST.md",
+      "task_id": "G2-FINAL-FIX",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "bytes": 6480,
+      "sha256": "a6e17ebf5607a9b15794385f26117bae2c76e461fbb00e33586652d7088fcff8",
+      "authorization_ref": "G2-FINAL-FIX Test and Execution Manifest"
+    },
+    {
+      "path": "docs/05-evidence/G2_FINAL_GATE_READINESS_AUDIT.md",
+      "task_id": "G2-FINAL-REVIEW",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 17501,
+      "sha256": "038a7411f823c2dba704afec97f0b5bdd9c6d9ea262d21dcfb5f2dd63057cb47",
+      "authorization_ref": "G2-FINAL-REVIEW Readiness Report"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_BACKUPS/docs__01-planning__BACKLOG.md.pre_g2_official_signoff.bak",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 10556,
+      "sha256": "172760f42ac735e4d34f38c4c8f415f868b3381ffd8dac268ae0b17c2d685b4e",
+      "authorization_ref": "Pre-G2-OFFICIAL-SIGNOFF snapshot for docs__01-planning__BACKLOG.md"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_BACKUPS/docs__03-quality__CHANGELOG.md.pre_g2_official_signoff.bak",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 4561,
+      "sha256": "9a45e8fdde45a1b81e2cbc294231c3d18e9375c88179b0f359c1c45956da8cb1",
+      "authorization_ref": "Pre-G2-OFFICIAL-SIGNOFF snapshot for docs__03-quality__CHANGELOG.md"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_BACKUPS/docs__04-execution__AI_HANDOFF.md.pre_g2_official_signoff.bak",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 15862,
+      "sha256": "004a9c2cd96eb2aa51610bf684fbc3bb1165640d09b3aecf68d598f66d40fde7",
+      "authorization_ref": "Pre-G2-OFFICIAL-SIGNOFF snapshot for docs__04-execution__AI_HANDOFF.md"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_BACKUPS/docs__04-execution__PROJECT_STATE.md.pre_g2_official_signoff.bak",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 18599,
+      "sha256": "11ef2bd24fdc280fa7560547c8ae40a8a3c9a394eabee69edcfd068ac9a40379",
+      "authorization_ref": "Pre-G2-OFFICIAL-SIGNOFF snapshot for docs__04-execution__PROJECT_STATE.md"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_BACKUPS/docs__05-evidence__EVIDENCE_DELIVERABLE_REGISTER.json.pre_g2_official_signoff.bak",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 34394,
+      "sha256": "9f926deee35d1e60cc797473166553af91ca2b50790ecb4d11bf268ceabaa131",
+      "authorization_ref": "Pre-G2-OFFICIAL-SIGNOFF snapshot for docs__05-evidence__EVIDENCE_DELIVERABLE_REGISTER.json"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_BACKUPS/tools__check_working_tree_consistency.py.pre_g2_official_signoff.bak",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 21387,
+      "sha256": "66f19c321b2164a916f2c41d1879e4af9996386dee0d12c40b6ec9c626dc52c1",
+      "authorization_ref": "Pre-G2-OFFICIAL-SIGNOFF snapshot for tools__check_working_tree_consistency.py"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_BACKUPS/tools__qa__verify_g2_repo_apply_r1_semantic_invariants.py.pre_g2_official_signoff.bak",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 27960,
+      "sha256": "272f3ce963e31641551beffeaaf8dac11585ba48f74006a53f4ec231cd3f5f17",
+      "authorization_ref": "Pre-G2-OFFICIAL-SIGNOFF snapshot for tools__qa__verify_g2_repo_apply_r1_semantic_invariants.py"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_BACKUPS/tools__qa__verify_t003_contract_consistency.py.pre_g2_official_signoff.bak",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 20788,
+      "sha256": "b23f5710ce7c158803b16d5dc2f7244c4cc922d694869295c2c7494fde091820",
+      "authorization_ref": "Pre-G2-OFFICIAL-SIGNOFF snapshot for tools__qa__verify_t003_contract_consistency.py"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_BACKUPS/tools__qa__verify_t004_time_representation.py.pre_g2_official_signoff.bak",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 13970,
+      "sha256": "5adadd4d59302fac102afa13259d86b92e8c12069b1f6ceb1b80877aa85e6c4c",
+      "authorization_ref": "Pre-G2-OFFICIAL-SIGNOFF snapshot for tools__qa__verify_t004_time_representation.py"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_EXECUTION_MANIFEST.md",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "bytes": 12054,
+      "sha256": "826d3ecca4d96feae2dabc0d2ea9ae3fdb4d265ed99527765d5c71237afcc795",
+      "authorization_ref": "G2-OFFICIAL-SIGNOFF Execution Manifest"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 12478,
+      "sha256": "42c6131345069eac540337b6ca9cc0359219a051a8199f35fc29e158d58b95fc",
+      "authorization_ref": "Project Lead explicit G2 acceptance statement (APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION)"
+    },
+    {
+      "path": "docs/05-evidence/G2_OFFICIAL_SIGNOFF_STATE_TRANSITION_REPORT.md",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 11820,
+      "sha256": "c7e85ce66b98c5fe3c0310c2d97a28fd816ad07c0dcac76c831d7fab764cc9bf",
+      "authorization_ref": "G2-OFFICIAL-SIGNOFF State Transition Report"
+    },
+    {
+      "path": "docs/05-evidence/G2_R1_CORRECTED_GATE_READINESS.md",
+      "task_id": "G2-R1",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 13516,
+      "sha256": "c2b9e98afa708e31864a81438237568dac8d12129b2876b54ff86039410a4a30",
+      "authorization_ref": "G2-R1 Reconciliation Report"
+    },
+    {
+      "path": "docs/05-evidence/G2_R1_CRITICAL_FINDINGS_RECONCILIATION.md",
+      "task_id": "G2-R1",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 23914,
+      "sha256": "a9f410107c716b58262b3bca48b9623f33b9dc1fdaf650748eb678ee879896ec",
+      "authorization_ref": "G2-R1 Reconciliation Report"
+    },
+    {
+      "path": "docs/05-evidence/G2_R1_EXECUTION_AND_ARTIFACT_MANIFEST.md",
+      "task_id": "G2-R1",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7360,
+      "sha256": "e1f917146fc0f482f523f02f42e7cd1a1b988965e4c920ed19fa6f4b2ce44b9e",
+      "authorization_ref": "G2-R1 Reconciliation Report"
+    },
+    {
+      "path": "docs/05-evidence/G2_R1_TEST_AND_ASSERTION_AUDIT.md",
+      "task_id": "G2-R1",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 11301,
+      "sha256": "a3bf39f673d9309339ac3e3242ba606fe837a2d28b8b35189eed691557e69c9c",
+      "authorization_ref": "G2-R1 Reconciliation Report"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__01-planning__BACKLOG.md.pre_g2_repo_apply.bak",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 5026,
+      "sha256": "6525a1735338f80c5a4ad1d4260cab1b43646a342799c8fb300f9db9adc787ed",
+      "authorization_ref": "G2-REPO-APPLY Phase 0 Backup"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__02-design__DECISIONS.md.pre_g2_repo_apply.bak",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 3894,
+      "sha256": "046ca0e627266815a1b9c17df49f6676f49c6b7e9aeb18bb6025740a56d8a180",
+      "authorization_ref": "G2-REPO-APPLY Phase 0 Backup"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__02-design__KPI_SPEC.md.pre_g2_repo_apply.bak",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 5845,
+      "sha256": "1972fca2c67288a76984fe1f9953752f77dd65262bee04ff1af942902e4a6dbe",
+      "authorization_ref": "G2-REPO-APPLY Phase 0 Backup"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__03-quality__CHANGELOG.md.pre_g2_repo_apply.bak",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 2012,
+      "sha256": "feb443581633193be978be9e587b3dbae8d4afd700dfc231c16fa73b021365f1",
+      "authorization_ref": "G2-REPO-APPLY Phase 0 Backup"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__03-quality__RISK_REGISTER.md.pre_g2_repo_apply.bak",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 3215,
+      "sha256": "745c18d56f60173b6e41e102894bd968570650359a14c38aa1c620dc54cf12df",
+      "authorization_ref": "G2-REPO-APPLY Phase 0 Backup"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__04-execution__AI_HANDOFF.md.pre_g2_repo_apply.bak",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 2745,
+      "sha256": "7bd3a3b376e13bfda0aed8ed95f1f625fa39cdc0f7ebf31ea5bb9df11df4ca69",
+      "authorization_ref": "G2-REPO-APPLY Phase 0 Backup"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__04-execution__PROJECT_STATE.md.pre_g2_repo_apply.bak",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 6148,
+      "sha256": "5b803ec172155815b00e9370e3969789d8042c17785e02e5aa06750e1e647269",
+      "authorization_ref": "G2-REPO-APPLY Phase 0 Backup"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__04-execution__TASK_TEMPLATE.md.pre_g2_repo_apply.bak",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 1764,
+      "sha256": "47350b4b253b9ab3192404eceef87b40cbd9061c0093307ae749ed66f4bb8eb7",
+      "authorization_ref": "G2-REPO-APPLY Phase 0 Backup"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/tools__check_working_tree_consistency.py.pre_g2_repo_apply.bak",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 8688,
+      "sha256": "acdc5911180a4f3672b51a5182d070ed8f72f868665f4ecc4f162c905ebc2a91",
+      "authorization_ref": "G2-REPO-APPLY Phase 0 Backup"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_CHECKER_AND_REGRESSION_REPORT.md",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 11579,
+      "sha256": "6ad3181f5393a27c7e2a7596a65541983061ac740f3331337c825bf663463e15",
+      "authorization_ref": "G2-REPO-APPLY Phase 5 Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_EXECUTION_AND_ARTIFACT_MANIFEST.md",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 12935,
+      "sha256": "0b7b4f4d1d2953cf12d1d07a3c02a69bc004b7300c9aceafc72bcccbf9b89794",
+      "authorization_ref": "G2-REPO-APPLY Phase 5 Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_FINAL_GATE_READINESS.md",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 10676,
+      "sha256": "4c31a7ca7ae58d5af5e28c530b908d7406b19878cbacabcafdb6b9f179a7a6ff",
+      "authorization_ref": "G2-REPO-APPLY Phase 5 Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_GOVERNANCE_RECONCILIATION.md",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 15417,
+      "sha256": "535cdb1f7d0cd3daa11e69401c850616531352cdd1b6295c15a7e27b36c664cc",
+      "authorization_ref": "G2-REPO-APPLY Phase 5 Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_HUMAN_APPROVAL_RECORD.md",
+      "task_id": "G2-REPO-APPLY",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 20364,
+      "sha256": "987b8889a6984c1abb95dfe80a4798e0c8019c6bd58527f8678ddbfb69fe55fc",
+      "authorization_ref": "G2-REPO-APPLY Phase 5 Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_R1_CODE_AND_REGRESSION_AUDIT.md",
+      "task_id": "G2-REPO-APPLY-R1",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 11839,
+      "sha256": "9cd87a65f0d48631bc614470c9cb1f3698de28fbe37d48e309558b59e2cc9004",
+      "authorization_ref": "G2-REPO-APPLY-R1 Code and Regression Audit"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_R1_EXECUTION_MANIFEST.md",
+      "task_id": "G2-REPO-APPLY-R1",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "bytes": 9133,
+      "sha256": "20e9498522bc29168d7d449f4d4e7048feb6a437013d822b96b0ced875855119",
+      "authorization_ref": "G2-REPO-APPLY-R1 Execution Manifest"
+    },
+    {
+      "path": "docs/05-evidence/G2_REPO_APPLY_R1_SEMANTIC_ERRATA.md",
+      "task_id": "G2-REPO-APPLY-R1",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 13204,
+      "sha256": "34f1530260aa2c8c08828c4d93ccee0079e808d79bd87c47f17e0f02c832fb17",
+      "authorization_ref": "G2-REPO-APPLY-R1 Semantic Errata Report"
+    },
+    {
+      "path": "docs/05-evidence/G2_SIGNOFF_DECISION_APPROVAL_MATRIX.md",
+      "task_id": "G2-SIGNOFF-PREP",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 48247,
+      "sha256": "37a15fdc0bb369d8d159a459540713baf6da860cdbf03a446ba758e4710b9774",
+      "authorization_ref": "G2-SIGNOFF-PREP Governance Package"
+    },
+    {
+      "path": "docs/05-evidence/G2_SIGNOFF_EXECUTION_AND_ARTIFACT_MANIFEST.md",
+      "task_id": "G2-SIGNOFF-PREP",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 11646,
+      "sha256": "30f160624dd63eaa66224235a0edcfdfdf93f774b7d2c20d09f8083661665f27",
+      "authorization_ref": "G2-SIGNOFF-PREP Governance Package"
+    },
+    {
+      "path": "docs/05-evidence/G2_SIGNOFF_FINAL_PRECHECK_ADDENDUM.md",
+      "task_id": "G2-SIGNOFF-PRECHECK",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 28011,
+      "sha256": "37995a3dc4f24673774b19fc90e3cc4886c926d7135efd0520e12fe6329ca86f",
+      "authorization_ref": "G2-SIGNOFF-PRECHECK Review Package"
+    },
+    {
+      "path": "docs/05-evidence/G2_SIGNOFF_FINAL_PRECHECK_MANIFEST.md",
+      "task_id": "G2-SIGNOFF-PRECHECK",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 10492,
+      "sha256": "7ea8e64dae367dbfb4cf4c76a9d2bbd638e629ffd708b246d7978c183b9390d0",
+      "authorization_ref": "G2-SIGNOFF-PRECHECK Review Package"
+    },
+    {
+      "path": "docs/05-evidence/G2_SIGNOFF_HUMAN_APPROVAL_RECORD_DRAFT.md",
+      "task_id": "G2-SIGNOFF-PREP",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 19305,
+      "sha256": "46555fd65f32e963f82d3a2a010d0dde22a7ca5c3f2418a451ba2cee402b505c",
+      "authorization_ref": "G2-SIGNOFF-PREP Governance Package"
+    },
+    {
+      "path": "docs/05-evidence/G2_SIGNOFF_PRECHECK_CONSISTENCY_ERRATA.md",
+      "task_id": "G2-SIGNOFF-HANDOFF-FIX",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 37570,
+      "sha256": "71ea3bfaa85f88428dd662f099b8ca4e4b430fbefdb0de262541b50ce4429d7a",
+      "authorization_ref": "G2-SIGNOFF-HANDOFF-FIX Reconciliation Package"
+    },
+    {
+      "path": "docs/05-evidence/G2_SIGNOFF_PRECHECK_CONSISTENCY_MANIFEST.md",
+      "task_id": "G2-SIGNOFF-HANDOFF-FIX",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 12347,
+      "sha256": "998843ac72b71633b58ed595cb2f0f721b9590a8c7977eb3d1179facdfa6e6a3",
+      "authorization_ref": "G2-SIGNOFF-HANDOFF-FIX Reconciliation Package"
+    },
+    {
+      "path": "docs/05-evidence/G2_SIGNOFF_RESIDUAL_RISK_AND_CHANGE_PLAN.md",
+      "task_id": "G2-SIGNOFF-PREP",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 31363,
+      "sha256": "884457a7476d9d7dd756e74c181043d4c014bddaf93cd8e35f184c7174968e38",
+      "authorization_ref": "G2-SIGNOFF-PREP Governance Package"
+    },
+    {
+      "path": "docs/05-evidence/G3_OFFICIAL_SIGNOFF_EXECUTION_MANIFEST.md",
+      "task_id": "G3-OFFICIAL-SIGNOFF",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF execution manifest (2026-10-17)",
+      "bytes": 8221,
+      "sha256": "f5cd92a0002e184c8638c9c2d03da74cc1f5af59ec5ea90b7c865e09301b9ae5"
+    },
+    {
+      "path": "docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md",
+      "task_id": "G3-OFFICIAL-SIGNOFF",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead explicit instruction on 2026-10-17; recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md",
+      "bytes": 14451,
+      "sha256": "f83825f1b12ce84fe6e01bbf760a87598d2ffbaa1c9b6ae83a9aeedaa955ba8c"
+    },
+    {
+      "path": "docs/05-evidence/G3_OFFICIAL_SIGNOFF_STATE_TRANSITION_REPORT.md",
+      "task_id": "G3-OFFICIAL-SIGNOFF",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF state transition report (2026-10-17)",
+      "bytes": 9104,
+      "sha256": "f73713e2b6a2fd97441db53ae9832dab441218cbbaf66f8ae0bbada1c7c8f8cf"
+    },
+    {
+      "path": "docs/05-evidence/T001_PROVENANCE_AUDIT.md",
+      "task_id": "T-001",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 35390,
+      "sha256": "4fa546f2f2dc419d38f116518b6dad1102ef949aed42330619c33b60980cb045",
+      "authorization_ref": "T-001 Provenance Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T001_R1_RECONCILIATION.md",
+      "task_id": "T-001",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 20913,
+      "sha256": "2113b85c00147f22c8980f3119b2ad337baa0db8400ed3799054acad22d57236",
+      "authorization_ref": "T-001 Provenance Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T001_R2_FINAL_REVIEW.md",
+      "task_id": "T-001",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 17110,
+      "sha256": "1e876a0212c2fdc44eec4c7fc8545fae53e9dd5e7980fe96d851d0d2e7a3f27e",
+      "authorization_ref": "T-001 Provenance Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T002_DENOMINATOR_RECOMMENDATION.md",
+      "task_id": "T-002",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 10835,
+      "sha256": "875bbb99b130dbc1b12170368e6ab8626fe155a848af7ed511dfbe6911a0cd71",
+      "authorization_ref": "T-002 Flight Grain & Duplicate Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T002_DUPLICATE_ANALYSIS.md",
+      "task_id": "T-002",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 13683,
+      "sha256": "efd05ceb1d2210b94b5e0970f774b22fb7be8621a3baad31b897a71e05c100cd",
+      "authorization_ref": "T-002 Flight Grain & Duplicate Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T002_FINAL_ACCEPTANCE_CHECK.md",
+      "task_id": "T-002",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 11667,
+      "sha256": "afa89a70f8a6bc278d7130ab75b5b10301b3395072f3da989fa7e59f74d02aa6",
+      "authorization_ref": "T-002 Flight Grain & Duplicate Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T002_FLIGHT_GRAIN_AUDIT.md",
+      "task_id": "T-002",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 12223,
+      "sha256": "c4ebc3062d6a539cb400602f1d412da887e9e246fcd139fdcc2173bf9dbcd01a",
+      "authorization_ref": "T-002 Flight Grain & Duplicate Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T002_R1_INDEPENDENT_REVIEW.md",
+      "task_id": "T-002",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 19604,
+      "sha256": "e942cf9c993216fe5c04a687134824efe7dc1b0b9160830a02b96f9bf96fada9",
+      "authorization_ref": "T-002 Flight Grain & Duplicate Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_FINAL_ACCEPTANCE_RECONCILIATION.md",
+      "task_id": "T-003",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 28146,
+      "sha256": "079e1d7864f6a270e2f94a6f19d84b3a141b92e954a0f3ead1101f7142954d64",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_FINAL_CLOSEOUT_VERIFICATION.md",
+      "task_id": "T-003",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 46576,
+      "sha256": "dc47f5a27800da5e787990fa1d1efe733185ef0465518ae690e510f0be5f1d6a",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_FINAL_GATE_RECOMMENDATION.md",
+      "task_id": "T-003",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 13781,
+      "sha256": "30761b009e018276587c61bbced510150bbe4b32bd49d6999757c5772b3ec4c5",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_FIX14_accounting_fixture.csv",
+      "task_id": "T-003",
+      "artifact_type": "TEST_FIXTURE",
+      "bytes": 1517,
+      "sha256": "632a254b01ed8099de3fa26d98a232ff3c29ce01eada126b6412215fa8a18a4e",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_FIX14_accounting_fixture.json",
+      "task_id": "T-003",
+      "artifact_type": "TEST_FIXTURE",
+      "bytes": 2150,
+      "sha256": "b96647f0008958c48623a9bd9e6561c9022519562c286e316e6d1f5a2085c844",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_KPI_CONTRACT_REVIEW.md",
+      "task_id": "T-003",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 19263,
+      "sha256": "28abe1b536f91e7de4901d89878354dda2a36532928c2c7277ff5887855a842d",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_PERCENTILE_AND_MIN_N_DECISIONS.md",
+      "task_id": "T-003",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 15745,
+      "sha256": "3793203b5524dad9ab21156323ad3faba5cefaa22c0c9658bebf6c325b8bf428",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_R1_CONSISTENCY_AND_VALIDATION.md",
+      "task_id": "T-003",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 28910,
+      "sha256": "eeaaf064f75d70e77609c769678b7f078a9d54e6da72036ac88a8e988f38cbf7",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_SIGNOFF_RECORD.md",
+      "task_id": "T-003",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9456,
+      "sha256": "590fa69047583811e8d68ed96a38d48a7f615791af626c11beb8a9e7542e49a2",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_TEST_FIXTURE_SPEC.md",
+      "task_id": "T-003",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 20981,
+      "sha256": "66f0561171bf4b97023338347852539d99cf953ee351458c2f150c33f1b6defe",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T003_UNIT_VERIFICATION.md",
+      "task_id": "T-003",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 17419,
+      "sha256": "e2fdc8a6b2e634370a7ee37676a88f935b2b7824435e43bef0f0db7826b3eaba",
+      "authorization_ref": "T-003 KPI Contract & Unit Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_2024_DATE_COVERAGE_AUDIT.md",
+      "task_id": "T-004",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 11789,
+      "sha256": "d4bfbf3cd0c4b0a57d84b2d5ff2b02746f4825df5e5518f9a838e53b66f3d9e7",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_FINAL_QA_RECONCILIATION.md",
+      "task_id": "T-004",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 24399,
+      "sha256": "39f42dfe513e3adf7b87ec0b599949014082202658c569978fd7c709a8eefb17",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_FINAL_REVIEW.md",
+      "task_id": "T-004",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9971,
+      "sha256": "f6c358b1f3a90bd5b4102da18f68d1b52e4c6ed27429869c8ea04d138d7d2b0c",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_OVERNIGHT_COUNTEREXAMPLES.md",
+      "task_id": "T-004",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 11513,
+      "sha256": "413872fe44345f285b8f917be5eafec39fe7369cbcef9df4cc9fb6ef0816c96c",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_R1_INDEPENDENT_RECONCILIATION.md",
+      "task_id": "T-004",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 27032,
+      "sha256": "9cc761e9c8c163e7f45ea35fccaad06d48dbc27859c5c0a126da745ecf4bcbf4",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_SAFE_FIELDS_DECISION.md",
+      "task_id": "T-004",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 11779,
+      "sha256": "ee7833b9214a766adc82413fbc89852f70b570e3b4f1160cf1412ccd62023e3d",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_TEST_FIXTURE_SPEC.md",
+      "task_id": "T-004",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 11005,
+      "sha256": "fe196dfe26f2cfca359636ade9378c063626e01457982b121b860c1da2260597",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_TF09_full_schema_fixture.csv",
+      "task_id": "T-004",
+      "artifact_type": "TEST_FIXTURE",
+      "bytes": 2841,
+      "sha256": "65e7dd7a138591a03584e8ee6f853b3c3a60be8a0da876e8bcc256caf65ce303",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_TF09_temporal_fixture.csv",
+      "task_id": "T-004",
+      "artifact_type": "TEST_FIXTURE",
+      "bytes": 3127,
+      "sha256": "5a7507ba16f09c0f4d6c3589b7ffad3f95f43d01ab0404da205a7ada1a141449",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_TF09_temporal_fixture.json",
+      "task_id": "T-004",
+      "artifact_type": "TEST_FIXTURE",
+      "bytes": 13649,
+      "sha256": "e5adfa32c5b6fd03747466d0b3226ac1d9820b2fd65d9bd57065336802cb9fc0",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T004_TIME_REPRESENTATION_AUDIT.md",
+      "task_id": "T-004",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9420,
+      "sha256": "2eeb40afcf481e1b35671b5b53db9b79280a31b6da4157de2689f7f6d5cf02a4",
+      "authorization_ref": "T-004 Temporal Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T005_CONDITIONAL_NO_GO_PROPOSAL.md",
+      "task_id": "T-005",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 14007,
+      "sha256": "92c58405625a65cfb14d27cabac0dfcbe4823087d6e8a1fb5b7fe45f31698707",
+      "authorization_ref": "T-005 Weather Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T005_EVIDENCE_MATRIX.md",
+      "task_id": "T-005",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 13414,
+      "sha256": "658bedfd7610912d145fe701aeb9dc7b602abab9f0252bb0d1baad246169c134",
+      "authorization_ref": "T-005 Weather Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T005_EXECUTION_AND_FILE_MANIFEST.md",
+      "task_id": "T-005",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 11738,
+      "sha256": "1bc2a5b00fd989c2a41771413d09ffcd64d45a6c82c95f34f52c5fb1c79261a1",
+      "authorization_ref": "T-005 Weather Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T005_FINAL_AUDIT_RECONCILIATION.md",
+      "task_id": "T-005",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 19047,
+      "sha256": "0ae421b54fc0dab37a0fc7385010461f404112b3ff5e5b620bda0918431f18ed",
+      "authorization_ref": "T-005 Weather Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T005_R2_1_EVIDENCE_COMPLETENESS_CHECK.md",
+      "task_id": "T-005",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 10923,
+      "sha256": "ea680778a0c829db38903f7fd5a694aaea04747e8aef7f947ae033e8110c7459",
+      "authorization_ref": "T-005 Weather Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T005_R2_1_REVIEWER_ADDENDUM.md",
+      "task_id": "T-005",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 14373,
+      "sha256": "6d1d054249f62c96df6319d402492750c36b90bd935d8d215829125280b8e7fb",
+      "authorization_ref": "T-005 Weather Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T005_TS011_TEST_SPEC.md",
+      "task_id": "T-005",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 19136,
+      "sha256": "b93c4b388999a70d0a830ee000fdf2bd1661c410c53026a6bd93556bf17d4886",
+      "authorization_ref": "T-005 Weather Audit Deliverable"
+    },
+    {
+      "path": "docs/05-evidence/T006_ARCHITECTURE_AND_RUNTIME_DESIGN.md",
+      "task_id": "T-006",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 16991,
+      "sha256": "c81ec84953238630ee270d77d2bbe0b2b5842304eda1baa95cd2d8c0c273bc5b",
+      "authorization_ref": "Project Lead G3-T006 instruction (2026-10-17); recorded in docs/05-evidence/T006_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_BACKUPS/docs__01-planning__BACKLOG.md.pre_t006.bak",
+      "task_id": "T-006",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 10757,
+      "sha256": "aadaa304402c5f82fd015fbbfe0ad308ea43ceb3dafdb714116552f549a08a29",
+      "authorization_ref": "T-006 preflight backup prior to G3 kickoff modifications (2026-10-17)"
+    },
+    {
+      "path": "docs/05-evidence/T006_BACKUPS/docs__02-design__ARCHITECTURE.md.pre_t006.bak",
+      "task_id": "T-006",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 4261,
+      "sha256": "1f9d5ee4773fa62575813dbad60b6a77d4d63f3fab9dbb588b0e97dd4b6258e4",
+      "authorization_ref": "T-006 preflight backup prior to G3 kickoff modifications (2026-10-17)"
+    },
+    {
+      "path": "docs/05-evidence/T006_BACKUPS/docs__03-quality__CHANGELOG.md.pre_t006.bak",
+      "task_id": "T-006",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 6104,
+      "sha256": "62ab79f10cfeae153622a25e75a99a734c088a2b8cc23a5501e51bbe07b89b26",
+      "authorization_ref": "T-006 preflight backup prior to G3 kickoff modifications (2026-10-17)"
+    },
+    {
+      "path": "docs/05-evidence/T006_BACKUPS/docs__04-execution__AI_HANDOFF.md.pre_t006.bak",
+      "task_id": "T-006",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 16494,
+      "sha256": "3454d7e5fd05645b5aa5ad1a39eac2b9f85ecdffd8a5cf36a1255ad775502b88",
+      "authorization_ref": "T-006 preflight backup prior to G3 kickoff modifications (2026-10-17)"
+    },
+    {
+      "path": "docs/05-evidence/T006_BACKUPS/docs__04-execution__PROJECT_STATE.md.pre_t006.bak",
+      "task_id": "T-006",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 19199,
+      "sha256": "32b71aecc221dc1991c5d518758257360e0f3c5616b2d82e93196dac0007a3d8",
+      "authorization_ref": "T-006 preflight backup prior to G3 kickoff modifications (2026-10-17)"
+    },
+    {
+      "path": "docs/05-evidence/T006_BACKUPS/docs__05-evidence__EVIDENCE_DELIVERABLE_REGISTER.json.pre_t006.bak",
+      "task_id": "T-006",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 39762,
+      "sha256": "a759af2fa7d0ea5641e7090b2956f8160c5691a36ac8277634cfccd4e75f6e2a",
+      "authorization_ref": "T-006 preflight backup prior to G3 kickoff modifications (2026-10-17)"
+    },
+    {
+      "path": "docs/05-evidence/T006_BACKUPS/tools__check_working_tree_consistency.py.pre_t006.bak",
+      "task_id": "T-006",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 22143,
+      "sha256": "3a8d897889f4ab6049cc1a081338792cb9c6399bdc3fb6c153ec711692f75387",
+      "authorization_ref": "T-006 preflight backup prior to G3 kickoff modifications (2026-10-17)"
+    },
+    {
+      "path": "docs/05-evidence/T006_BACKUPS/tools__qa__verify_g2_repo_apply_r1_semantic_invariants.py.pre_t006.bak",
+      "task_id": "T-006",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 32453,
+      "sha256": "f95b0ff8784d90366266c80f5e6db2a1802f658f951b5c7af59376dc7e2a75c9",
+      "authorization_ref": "T-006 preflight backup prior to G3 kickoff modifications (2026-10-17)"
+    },
+    {
+      "path": "docs/05-evidence/T006_EXECUTION_MANIFEST.md",
+      "task_id": "T-006",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "bytes": 9608,
+      "sha256": "991330eff7d8d21cd6efc9fb72bbe201ba851b925a36c96607e5f0b3162cf380",
+      "authorization_ref": "Project Lead G3-T006 instruction (2026-10-17); recorded in docs/05-evidence/T006_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_FINAL_CONTRACT_VERIFICATION.md",
+      "task_id": "T-006",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 17830,
+      "sha256": "c2eb05608370e124eeb44441b5a115778c9e1c50bdb4e2b566d887973308e16f",
+      "authorization_ref": "Project Lead G3-T006-FINAL-CORRECTIONS instruction (2026-10-17); recorded in docs/05-evidence/T006_FINAL_CONTRACT_VERIFICATION.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_FINAL_CORRECTIONS_ADDENDUM.md",
+      "task_id": "T-006",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 22420,
+      "sha256": "9966159e5d8aecc2f3bc786faacd22c72d02568e37b4b80e40c5faaa14c87304",
+      "authorization_ref": "Project Lead G3-T006-FINAL-CORRECTIONS instruction (2026-10-17); recorded in docs/05-evidence/T006_FINAL_CONTRACT_VERIFICATION.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_KPI_AND_TEST_BLUEPRINT.md",
+      "task_id": "T-006",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 21409,
+      "sha256": "5258fac980e207ca6b5fb0ed1d6699f0062d21335d043c736651f6ed1d089345",
+      "authorization_ref": "Project Lead G3-T006 instruction (2026-10-17); recorded in docs/05-evidence/T006_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_R1_ARCHITECTURE_RISK_CORRECTIONS.md",
+      "task_id": "G3-T006-R1",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 14408,
+      "sha256": "524d49229d1c5a620b585ca2ceac672a2cbc2ff685bbef5ba1346307401e5c33",
+      "authorization_ref": "Project Lead G3-T006-R1 instruction (2026-10-17); recorded in docs/05-evidence/T006_R1_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_R1_BACKUPS/docs__02-design__ARCHITECTURE.md.pre_t006_r1.bak",
+      "task_id": "G3-T006-R1",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 17479,
+      "sha256": "a301611b01e7cee43d7dc27869d9628bcae79016d29dc1505e40ef5a7dfec587",
+      "authorization_ref": "Project Lead G3-T006-R1 instruction (2026-10-17); recorded in docs/05-evidence/T006_R1_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_R1_BACKUPS/docs__05-evidence__EVIDENCE_DELIVERABLE_REGISTER.json.pre_t006_r1.bak",
+      "task_id": "G3-T006-R1",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 45367,
+      "sha256": "6028691b1ec77343c21d040084c61f5bbfa81c03de0cd26b779cec6d4d45e579",
+      "authorization_ref": "Project Lead G3-T006-R1 instruction (2026-10-17); recorded in docs/05-evidence/T006_R1_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_R1_BACKUPS/tools__check_working_tree_consistency.py.pre_t006_r1.bak",
+      "task_id": "G3-T006-R1",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "bytes": 22423,
+      "sha256": "b8988b5e3b8802d7f145f94c0ff190171e7c424f3503fab8cdcaefe0d9fd90fd",
+      "authorization_ref": "Project Lead G3-T006-R1 instruction (2026-10-17); recorded in docs/05-evidence/T006_R1_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_R1_CANONICAL_SCHEMA_RECONCILIATION.md",
+      "task_id": "G3-T006-R1",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 17529,
+      "sha256": "3cd842e2e240e6ce01a6e6a13ade5bfc7e43852775911e0f3d280fb138a0aa87",
+      "authorization_ref": "Project Lead G3-T006-R1 instruction (2026-10-17); recorded in docs/05-evidence/T006_R1_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_R1_EXECUTION_MANIFEST.md",
+      "task_id": "G3-T006-R1",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "bytes": 7422,
+      "sha256": "59ce50eb02701b66f7b38e9b9f623d17a9911d6ff4acd3e2941fab8053d20f95",
+      "authorization_ref": "Project Lead G3-T006-R1 instruction (2026-10-17); recorded in docs/05-evidence/T006_R1_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_R1_KPI_AND_TEST_RECONCILIATION.md",
+      "task_id": "G3-T006-R1",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 21826,
+      "sha256": "25eded92a5bfad3fc691d62adeca4da3871d3236be906bf0ad470c583faa9e1d",
+      "authorization_ref": "Project Lead G3-T006-R1 instruction (2026-10-17); recorded in docs/05-evidence/T006_R1_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_R1_VERIFICATION_AND_GATE_REPORT.md",
+      "task_id": "G3-T006-R1",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 10580,
+      "sha256": "b95e97698a45a46bbc1a95629e62ca0501abc87a5ac389c5ba5867d8d219c535",
+      "authorization_ref": "Project Lead G3-T006-R1 instruction (2026-10-17); recorded in docs/05-evidence/T006_R1_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_REVIEW_AND_GATE_REPORT.md",
+      "task_id": "T-006",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 10884,
+      "sha256": "de0c281969e2b7c1ac1bc784cc469c1c310543ea02829ace8790b9ed7d3e96c5",
+      "authorization_ref": "Project Lead G3-T006 instruction (2026-10-17); recorded in docs/05-evidence/T006_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T006_SCHEMA_QUALITY_AND_LINEAGE_DESIGN.md",
+      "task_id": "T-006",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 17276,
+      "sha256": "325dba248d7c1f94302881ba22868a4a97afdf05a465f9198fd2bb9cbae70a16",
+      "authorization_ref": "Project Lead G3-T006 instruction (2026-10-17); recorded in docs/05-evidence/T006_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "docs/05-evidence/T009_BASELINE_AND_SCOPE_REPORT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 10257,
+      "sha256": "17e37d700503d7a66a8e00cf0d6dd154850aea5b51a3e48d8cc9962f9048f4d7"
+    },
+    {
+      "path": "docs/05-evidence/T009_DOCUMENT_READING_AND_AUTHORITY_AUDIT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 15498,
+      "sha256": "e6bb148bb67b6dc6c3ebb14d6e2ab4d2f558f704490e9502cfe0e556142ec7ed"
+    },
+    {
+      "path": "docs/05-evidence/T009_FINAL_REVIEW.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 8071,
+      "sha256": "7a2fb6e553a04d985ddc0281c251844ebc252b25fabdb4ff10ed7eb4482942bc"
+    },
+    {
+      "path": "docs/05-evidence/T009_LOG_REGRESSION_CONSISTENCY.txt",
+      "task_id": "T-009",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 1119,
+      "sha256": "36fa6f26fafabf0237903dea376819e1ed1740acf901152fe98199d4590b1e41"
+    },
+    {
+      "path": "docs/05-evidence/T009_LOG_REGRESSION_T006.txt",
+      "task_id": "T-009",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 2582,
+      "sha256": "d6ac11cc5e83b796d2cc29d713b65d911987445b835e2a3c2c3609d6fbefb5f6"
+    },
+    {
+      "path": "docs/05-evidence/T009_RISK_AND_DEVIATION_REPORT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 7817,
+      "sha256": "05fbe4810589f4332932e4b207a1e3199a7ee8014df156ebacf12ac5d1dde1ab"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_BASELINE_AUDIT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 4978,
+      "sha256": "82361e939169c81f1fd54bb71977022a7c6d72fd2fbc44c08dea09e500009616"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_EVIDENCE_MIGRATION.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 4067,
+      "sha256": "22330f534a67c9c21792436ac9af84af8f293c7301722861d29c0c73a0d60435"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 3947,
+      "sha256": "75add54760b6c7416240e117d8064f1cc7f54997f5b733495dd730dcf1a8ab30"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_GIT_VERIFICATION.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 2866,
+      "sha256": "6ba033055efce10a613aea697daf981690ffeb02b94001d1ca9ef76cd4a6ff78"
+    },
+    {
+      "path": "docs/05-evidence/T009_UNBLOCK_REGRESSION_RESULTS.md",
+      "task_id": "T-009",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T009-UNBLOCK-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_UNBLOCK_FINAL_VERDICT.md",
+      "bytes": 2096,
+      "sha256": "b31c50f19d30e01e506ac73232941b87a0b020c0d05f9c5893802ac327d84eaa"
+    },
+    {
+      "path": "tools/audit/apply_closeout_edits.py",
+      "task_id": "T-003",
+      "artifact_type": "AUDIT_SCRIPT",
+      "bytes": 3575,
+      "sha256": "68ad104688029886b768bf9e0dd5dbefd64a79d6fa3f0fd0718137a8daab4467",
+      "authorization_ref": "Gate G2 Audit Utility"
+    },
+    {
+      "path": "tools/audit/audit_candidate_key.py",
+      "task_id": "T-002",
+      "artifact_type": "AUDIT_SCRIPT",
+      "bytes": 6667,
+      "sha256": "44ed61f04e2cdae5d3606db5313d76f63d89238e6ef2a022045d3d546be47c6b",
+      "authorization_ref": "Gate G2 Audit Utility"
+    },
+    {
+      "path": "tools/audit/audit_flights_column.py",
+      "task_id": "T-002",
+      "artifact_type": "AUDIT_SCRIPT",
+      "bytes": 3688,
+      "sha256": "c2d08bd69c19651dd80b2ebdbf26bfb940ccc1ca9fa6a388d541649b221305ca",
+      "authorization_ref": "Gate G2 Audit Utility"
+    },
+    {
+      "path": "tools/audit/candidate_key_audit_summary.json",
+      "task_id": "T-002",
+      "artifact_type": "TEST_FIXTURE",
+      "bytes": 7386,
+      "sha256": "16363861da4880a898d1b3a1ec9889bbca47836ae6556902f67566236c897085",
+      "authorization_ref": "Gate G2 Audit Utility"
+    },
+    {
+      "path": "tools/audit/print_summary.py",
+      "task_id": "T-002",
+      "artifact_type": "AUDIT_SCRIPT",
+      "bytes": 838,
+      "sha256": "0492b7565b32d9e0e06b5b334a20ed71ed596d21064b1bbd79b50f55bd2d3bb9",
+      "authorization_ref": "Gate G2 Audit Utility"
+    },
+    {
+      "path": "tools/check_working_tree_consistency.py",
+      "task_id": "G3-OFFICIAL-SIGNOFF",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 23426,
+      "sha256": "4f53a91458a3fabe896edb63b38198c0280d11d15638e6bef0c6f44164d013c9",
+      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "tools/qa/test_working_tree_registry_regression.py",
+      "task_id": "G2-FINAL-FIX",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 24823,
+      "sha256": "bc0866b3415bbfa84c986f026570404fc80c046f164446865fd22bde8a930bd2",
+      "authorization_ref": "G2-FINAL-FIX Registry Regression Test Suite with Truthful NEG-10"
+    },
+    {
+      "path": "tools/qa/verify_g2_repo_apply_r1_semantic_invariants.py",
+      "task_id": "G3-OFFICIAL-SIGNOFF",
+      "artifact_type": "AUTOMATED_VERIFICATION_SCRIPT",
+      "bytes": 39292,
+      "sha256": "5cd9bab5568be9ad91befd28044d1866519d70da605fa5d73f24f50a71eeab34",
+      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_EXECUTION_MANIFEST.md"
+    },
+    {
+      "path": "tools/qa/verify_t003_contract_consistency.py",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 21527,
+      "sha256": "e91286556d0eefe25a35a554f32bcc4cd507eb4dae0e08b7befe8e7f9183c833",
+      "authorization_ref": "G2-OFFICIAL-SIGNOFF Contract Consistency QA Script with Guarded G2"
+    },
+    {
+      "path": "tools/qa/verify_t004_time_representation.py",
+      "task_id": "G2-OFFICIAL-SIGNOFF",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 14311,
+      "sha256": "7712d1758c0e0459bd6335099b78051b76fae120bf45f413ec3b7507343092bf",
+      "authorization_ref": "G2-OFFICIAL-SIGNOFF Time Representation QA Script with Guarded G2"
+    },
+    {
+      "path": "tools/qa/verify_t006_contract_consistency.py",
+      "task_id": "G3-OFFICIAL-SIGNOFF",
+      "artifact_type": "TEST_SUITE",
+      "bytes": 36149,
+      "sha256": "b0db7e843a5e640e6c7c6f62c20a4fcc44baaf942ad0a73e8a0d4256ca644b09",
+      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_EXECUTION_MANIFEST.md"
+    }
+  ]
+}

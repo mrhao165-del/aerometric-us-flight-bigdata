@@ -1,0 +1,15 @@
+Working-Tree Consistency Check Execution Log
+Command: python tools/check_working_tree_consistency.py
+Working Directory: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1
+Timestamp: 2026-10-17T08:03:17+07:00
+Exit Code: 1
+
+Raw Output:
+Working-Tree PASS assertions: 361; FAIL: 2
+FAIL: No unrecognized stray files in working-tree: ['docs/05-evidence/T009/01_DOCUMENT_READING_AND_AUTHORITY_AUDIT.md', 'docs/05-evidence/T009/02_BASELINE_AND_SCOPE_REPORT.md', 'docs/05-evidence/T009/08_RISK_AND_DEVIATION_REPORT.md', 'docs/05-evidence/T009/10_FINAL_T009_REVIEW.md']
+FAIL: All extra working-tree files cleanly accounted for
+
+Analysis:
+Prior to creating docs/05-evidence/T009/, check_working_tree_consistency.py passed 363/363 assertions with Exit Code 0.
+The 2 FAIL assertions observed above are the exact expected behavior: check_working_tree_consistency.py line 495 enforces flat deliverable files directly under docs/05-evidence/, and line 569/583 rejects any unregistered subdirectories.
+This verifies the structural conflict disclosed in T009_RISK_AND_DEVIATION_REPORT.md and confirms the mandate to STOP.

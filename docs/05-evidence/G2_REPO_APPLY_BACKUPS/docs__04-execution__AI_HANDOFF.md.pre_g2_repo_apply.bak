@@ -1,0 +1,26 @@
+# AI_HANDOFF — Bàn giao ngữ cảnh AI Agent
+
+**Documentation:** docs-v1.1, 2026-10-13. **Project:** descriptive, retrospective US flight operational performance 2016–2024; không ML, ATL-only predictor, `.pt` hay national population inference thiếu chứng cứ.
+
+## Thứ tự đọc (root relative)
+1. `README.md`, `AGENTS.md`, `docs/00-governance/DOCUMENT_REGISTER.md`.
+2. `docs/04-execution/PROJECT_STATE.md`, `docs/02-design/DECISIONS.md`.
+3. `docs/01-planning/{PRD,ROADMAP,BACKLOG}.md` (mở từng file theo tên thật).
+4. Task-dependent: `docs/02-design/{DATA_CONTRACT,DATA_DICTIONARY,KPI_SPEC,ANALYSIS_PROTOCOL}.md`, `docs/03-quality/TEST_PLAN.md`.
+5. Facts & limitations: `docs/03-quality/G0_G1_REVIEW.md`, `docs/05-evidence/{DATA_PROVENANCE,DATA_QUALITY_REPORT,RESULTS_REGISTER}.md`; historical snapshot nguyên bytes trong `docs/05-evidence/inputs/`.
+
+## Verified vs unresolved
+- Source audits 9 năm, 34 columns, 54,674,003 rows; audit ARR_DELAY >=15 counts. **NOT** raw/production Spark verification.
+- Timestamp representation 2016–2023 processed only; unknown 2400/rollover/2024 full; no unverified datetime derivations.
+- Source flight grain, `FLIGHTS`, canceled/diverted coverage, Weather units/timing/join, numeric units, national representativeness **OPEN**.
+- `ARR_DELAY`, `DEP_DELAY`, `TAXI_*` phân tích mô tả là hợp lệ nếu qua domain/units QA; old prediction leakage prohibitions chỉ áp cho mô hình T-2h ATL lịch sử.
+
+## Gate and task dependency
+- `G0 DESIGN_BASELINE`, `G1 PARTIAL`, `G2 DRAFT/NOT_PASSED`, `G3–G7 not run`.
+- T-001 → T-002 → T-003 (**8 CORE KPI** + 7 source units), parallel T-004 date safety, T-005 conditional Weather.
+- T-006 G3 design; T-009 G4 setup **trước** T-007 ingestion và T-008 quality; T-010/011 G5, T-012/013/014 G6, T-016/017 G7. T-015 optional conditional.
+- `count_records`, `excluded_count`, `metric_valid_rate`, source_coverage_status chỉ định nghĩa tại `DATA_CONTRACT.md` DC-11/12; không dùng tên `coverage_rate` chung chung.
+- `RESULTS_REGISTER.md` 12 planned slots; **no production results**.
+
+## Agent prompt
+> Bạn đang làm đồ án mô tả hiệu suất chuyến bay Hoa Kỳ 2016–2024. Đọc `AGENTS.md`, `PROJECT_STATE.md`, `DECISIONS.md`, `ROADMAP.md`, `BACKLOG.md`, `DATA_CONTRACT.md`, `KPI_SPEC.md`, `TEST_PLAN.md` theo đúng đường dẫn trong `DOCUMENT_REGISTER.md`. Chỉ thực hiện task được yêu cầu, ghi bằng chứng thực thi và rủi ro. Không ghi raw, không đọc `.pt`, không suy diễn units/market coverage/timezone/Weather, không tự nhận KPI PASS. G2 chưa nghiệm thu; T-009 phải precede T-007/008. Báo file changes, commands/exit code, tests và unresolved blockers.

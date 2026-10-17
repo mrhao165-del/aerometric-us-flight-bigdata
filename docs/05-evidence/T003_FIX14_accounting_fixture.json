@@ -1,0 +1,69 @@
+{
+  "fixture_id": "FIX-14",
+  "description": "5-row synthetic dataset demonstrating raw_row_count = accepted_row_count + quarantined_row_count + rejected_row_count invariant (TS-003, DC-11/12)",
+  "fixture_file": "docs/05-evidence/T003_FIX14_accounting_fixture.csv",
+  "schema_version": "canonical_v1_34_columns",
+  "expected_accounting": {
+    "raw_row_count": 5,
+    "accepted_row_count": 3,
+    "quarantined_row_count": 1,
+    "rejected_row_count": 1,
+    "accounting_invariant_holds": true,
+    "ingest_acceptance_rate": 0.60
+  },
+  "row_classifications": [
+    {
+      "physical_line_number": 2,
+      "record_id": "ROW_01_ACCEPTED",
+      "status": "ACCEPTED",
+      "reason": "VALID_CORE_RECORD"
+    },
+    {
+      "physical_line_number": 3,
+      "record_id": "ROW_02_ACCEPTED",
+      "status": "ACCEPTED",
+      "reason": "VALID_CORE_RECORD"
+    },
+    {
+      "physical_line_number": 4,
+      "record_id": "ROW_03_ACCEPTED",
+      "status": "ACCEPTED",
+      "reason": "VALID_CORE_RECORD_LATE"
+    },
+    {
+      "physical_line_number": 5,
+      "record_id": "ROW_04_QUARANTINED",
+      "status": "QUARANTINED",
+      "reason": "INVALID_IATA_AIRPORT_SYNTAX:ORIGIN_NOT_3_ALPHA",
+      "failed_field": "ORIGIN",
+      "failed_value": "12A"
+    },
+    {
+      "physical_line_number": 6,
+      "record_id": "ROW_05_REJECTED",
+      "status": "REJECTED",
+      "reason": "COLUMN_COUNT_MISMATCH: EXPECTED_34_FOUND_6",
+      "failed_field": "ROW_SYNTAX",
+      "failed_value": "MALFORMED_TRUNCATED_RECORD"
+    }
+  ],
+  "expected_kpis_on_accepted_cohort": {
+    "count_records": 3,
+    "count_metric_valid_arr_delay": 3,
+    "excluded_count_arr_delay": 0,
+    "metric_valid_rate_arr_delay": 1.0,
+    "KPI-01": 3,
+    "KPI-02": 0.3333333333333333,
+    "KPI-03": 2.6666666666666665,
+    "KPI-04": 0.3333333333333333,
+    "KPI-05": 8.333333333333334,
+    "KPI-06-P50": 0.0,
+    "KPI-06-P90_continuous": 16.0,
+    "KPI-06-P90_discrete": 20.0,
+    "KPI-07-TAXI_OUT": 15.0,
+    "KPI-07-TAXI_IN": 6.0,
+    "KPI-08-AIR_TIME": 116.66666666666667,
+    "KPI-08-ACTUAL_ELAPSED_TIME": 137.66666666666666,
+    "KPI-08-CRS_ELAPSED_TIME": 143.33333333333334
+  }
+}

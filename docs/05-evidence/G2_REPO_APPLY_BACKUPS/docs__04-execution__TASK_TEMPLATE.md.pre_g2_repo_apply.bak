@@ -1,0 +1,45 @@
+# TASK_TEMPLATE — Mẫu yêu cầu AI Agent
+
+```markdown
+# TASK: <TASK-ID> — <Tên>
+
+## Context bắt buộc
+- Đề tài: phân tích hiệu suất bay Mỹ 2016–2024 (không ML/Flight Chain).
+- Đọc: AGENTS.md, PROJECT_STATE.md, DECISIONS.md,
+  DATA_CONTRACT.md, KPI_SPEC.md, TEST_PLAN.md (phần liên quan).
+- Gate hiện tại: <G#>, state: <...>; check dependencies trong ROADMAP/BACKLOG.
+- Contract version: docs-v1.1; KPI/row accounting owner: DATA_CONTRACT DC-11/12 + KPI_SPEC; no G2 PASS yet.
+
+## Mục tiêu / đầu vào
+- Requirement ID / Research Question: <REQ, RQ>
+- Dữ liệu / files đầu vào: <đường dẫn được xác minh>
+- Những giả định chưa biết: <...>
+
+## Giới hạn
+- Allowed files/dirs to modify: <...>
+- Forbidden: raw overwrite, unsupported KPI, .pt, scope creep,
+  unreviewed date/Weather conversion, destructive commands.
+
+## Deliverables và acceptance
+1. <artifact + schema/metadata>
+2. <test đã thực thi + expected outcome>
+3. <manifest, logs và tài liệu cập nhật>
+
+## Trình tự
+1. Audit bounded/read-only
+2. Triển khai phạm vi hẹp
+3. Unit tests
+4. Integration smoke
+5. So sánh baseline, kiểm tra regression
+6. Báo cáo, không publish nếu FAIL
+
+## Kết quả bắt buộc
+- Status: PASS / FAIL / BLOCKED / NOT_RUN / CONDITIONAL_PENDING / CONDITIONAL_NO_GO (optional với decision reference)
+- File changes / commands and exit code
+- Evidence paths, counts/tolerances
+- Risks / unresolved decisions / rollback path
+- Git commit and next task (nếu có)
+```
+
+## Quy tắc
+Không yêu cầu Agent thực hiện nhiều gate phụ thuộc trong một lần chỉ để giảm số prompt. Đầu ra code không được đóng dấu PASS chỉ dựa vào việc tạo file.

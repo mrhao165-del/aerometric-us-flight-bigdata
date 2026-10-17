@@ -1,0 +1,286 @@
+[
+  {
+    "year": 2016,
+    "total_rows": 5537987,
+    "distinct_candidate_keys": 5537987,
+    "duplicate_keys_count": 0,
+    "duplicate_rows_count": 0,
+    "duplicate_row_percentage": 0.0,
+    "multiplicity_distribution": {
+      "1": 5537987
+    },
+    "component_nulls": {
+      "FL_DATE": 0,
+      "OP_CARRIER": 0,
+      "OP_CARRIER_FL_NUM": 0,
+      "ORIGIN": 0,
+      "DEST": 0,
+      "CRS_DEP_TIME": 0
+    },
+    "year_mismatch_count": 0,
+    "duplicate_analysis": {
+      "identical_row_groups": 0,
+      "differing_row_groups": 0
+    },
+    "sample_duplicate_groups": [],
+    "elapsed_sec": 31.2
+  },
+  {
+    "year": 2017,
+    "total_rows": 5575872,
+    "distinct_candidate_keys": 5575872,
+    "duplicate_keys_count": 0,
+    "duplicate_rows_count": 0,
+    "duplicate_row_percentage": 0.0,
+    "multiplicity_distribution": {
+      "1": 5575872
+    },
+    "component_nulls": {
+      "FL_DATE": 0,
+      "OP_CARRIER": 0,
+      "OP_CARRIER_FL_NUM": 0,
+      "ORIGIN": 0,
+      "DEST": 0,
+      "CRS_DEP_TIME": 0
+    },
+    "year_mismatch_count": 0,
+    "duplicate_analysis": {
+      "identical_row_groups": 0,
+      "differing_row_groups": 0
+    },
+    "sample_duplicate_groups": [],
+    "elapsed_sec": 31.06
+  },
+  {
+    "year": 2018,
+    "total_rows": 6986842,
+    "distinct_candidate_keys": 6986841,
+    "duplicate_keys_count": 1,
+    "duplicate_rows_count": 2,
+    "duplicate_row_percentage": 0.0,
+    "multiplicity_distribution": {
+      "1": 6986840,
+      "2": 1
+    },
+    "component_nulls": {
+      "FL_DATE": 0,
+      "OP_CARRIER": 0,
+      "OP_CARRIER_FL_NUM": 0,
+      "ORIGIN": 0,
+      "DEST": 0,
+      "CRS_DEP_TIME": 0
+    },
+    "year_mismatch_count": 0,
+    "duplicate_analysis": {
+      "identical_row_groups": 0,
+      "differing_row_groups": 1
+    },
+    "sample_duplicate_groups": [
+      {
+        "candidate_key": {
+          "FL_DATE": "2018-06-21 00:00:00",
+          "OP_CARRIER": "YX",
+          "OP_CARRIER_FL_NUM": "3624.0",
+          "ORIGIN": "DEN",
+          "DEST": "XNA",
+          "CRS_DEP_TIME": "2018-06-21 20:07:00"
+        },
+        "count": 2,
+        "all_identical": false,
+        "rows_sample": [
+          {
+            "FL_DATE": "2018-06-21 00:00:00",
+            "OP_CARRIER": "YX",
+            "OP_CARRIER_FL_NUM": "3624.0",
+            "ORIGIN": "DEN",
+            "DEST": "XNA",
+            "CRS_DEP_TIME": "2018-06-21 20:07:00",
+            "DEP_TIME": "2018-06-21 10:44:00",
+            "DEP_DELAY": "877.0",
+            "TAXI_OUT": "91.0",
+            "WHEELS_OFF": "2018-06-21 12:15:00",
+            "WHEELS_ON": "2018-06-21 14:39:00",
+            "TAXI_IN": "7.0",
+            "CRS_ARR_TIME": "2018-06-21 23:05:00",
+            "ARR_TIME": "2018-06-21 14:46:00",
+            "ARR_DELAY": "941.0"
+          },
+          {
+            "FL_DATE": "2018-06-21 00:00:00",
+            "OP_CARRIER": "YX",
+            "OP_CARRIER_FL_NUM": "3624.0",
+            "ORIGIN": "DEN",
+            "DEST": "XNA",
+            "CRS_DEP_TIME": "2018-06-21 20:07:00",
+            "DEP_TIME": "2018-06-21 20:27:00",
+            "DEP_DELAY": "20.0",
+            "TAXI_OUT": "13.0",
+            "WHEELS_OFF": "2018-06-21 20:40:00",
+            "WHEELS_ON": "2018-06-21 23:03:00",
+            "TAXI_IN": "6.0",
+            "CRS_ARR_TIME": "2018-06-21 23:05:00",
+            "ARR_TIME": "2018-06-21 23:09:00",
+            "ARR_DELAY": "4.0"
+          }
+        ]
+      }
+    ],
+    "elapsed_sec": 68.31
+  },
+  {
+    "year": 2019,
+    "total_rows": 7161827,
+    "distinct_candidate_keys": 7161827,
+    "duplicate_keys_count": 0,
+    "duplicate_rows_count": 0,
+    "duplicate_row_percentage": 0.0,
+    "multiplicity_distribution": {
+      "1": 7161827
+    },
+    "component_nulls": {
+      "FL_DATE": 0,
+      "OP_CARRIER": 0,
+      "OP_CARRIER_FL_NUM": 0,
+      "ORIGIN": 0,
+      "DEST": 0,
+      "CRS_DEP_TIME": 0
+    },
+    "year_mismatch_count": 0,
+    "duplicate_analysis": {
+      "identical_row_groups": 0,
+      "differing_row_groups": 0
+    },
+    "sample_duplicate_groups": [],
+    "elapsed_sec": 40.44
+  },
+  {
+    "year": 2020,
+    "total_rows": 4312091,
+    "distinct_candidate_keys": 4312091,
+    "duplicate_keys_count": 0,
+    "duplicate_rows_count": 0,
+    "duplicate_row_percentage": 0.0,
+    "multiplicity_distribution": {
+      "1": 4312091
+    },
+    "component_nulls": {
+      "FL_DATE": 0,
+      "OP_CARRIER": 0,
+      "OP_CARRIER_FL_NUM": 0,
+      "ORIGIN": 0,
+      "DEST": 0,
+      "CRS_DEP_TIME": 0
+    },
+    "year_mismatch_count": 0,
+    "duplicate_analysis": {
+      "identical_row_groups": 0,
+      "differing_row_groups": 0
+    },
+    "sample_duplicate_groups": [],
+    "elapsed_sec": 23.98
+  },
+  {
+    "year": 2021,
+    "total_rows": 5755666,
+    "distinct_candidate_keys": 5755666,
+    "duplicate_keys_count": 0,
+    "duplicate_rows_count": 0,
+    "duplicate_row_percentage": 0.0,
+    "multiplicity_distribution": {
+      "1": 5755666
+    },
+    "component_nulls": {
+      "FL_DATE": 0,
+      "OP_CARRIER": 0,
+      "OP_CARRIER_FL_NUM": 0,
+      "ORIGIN": 0,
+      "DEST": 0,
+      "CRS_DEP_TIME": 0
+    },
+    "year_mismatch_count": 0,
+    "duplicate_analysis": {
+      "identical_row_groups": 0,
+      "differing_row_groups": 0
+    },
+    "sample_duplicate_groups": [],
+    "elapsed_sec": 32.77
+  },
+  {
+    "year": 2022,
+    "total_rows": 6413416,
+    "distinct_candidate_keys": 6413416,
+    "duplicate_keys_count": 0,
+    "duplicate_rows_count": 0,
+    "duplicate_row_percentage": 0.0,
+    "multiplicity_distribution": {
+      "1": 6413416
+    },
+    "component_nulls": {
+      "FL_DATE": 0,
+      "OP_CARRIER": 0,
+      "OP_CARRIER_FL_NUM": 0,
+      "ORIGIN": 0,
+      "DEST": 0,
+      "CRS_DEP_TIME": 0
+    },
+    "year_mismatch_count": 0,
+    "duplicate_analysis": {
+      "identical_row_groups": 0,
+      "differing_row_groups": 0
+    },
+    "sample_duplicate_groups": [],
+    "elapsed_sec": 35.86
+  },
+  {
+    "year": 2023,
+    "total_rows": 6645461,
+    "distinct_candidate_keys": 6645461,
+    "duplicate_keys_count": 0,
+    "duplicate_rows_count": 0,
+    "duplicate_row_percentage": 0.0,
+    "multiplicity_distribution": {
+      "1": 6645461
+    },
+    "component_nulls": {
+      "FL_DATE": 0,
+      "OP_CARRIER": 0,
+      "OP_CARRIER_FL_NUM": 0,
+      "ORIGIN": 0,
+      "DEST": 0,
+      "CRS_DEP_TIME": 0
+    },
+    "year_mismatch_count": 0,
+    "duplicate_analysis": {
+      "identical_row_groups": 0,
+      "differing_row_groups": 0
+    },
+    "sample_duplicate_groups": [],
+    "elapsed_sec": 37.63
+  },
+  {
+    "year": 2024,
+    "total_rows": 6284841,
+    "distinct_candidate_keys": 6284841,
+    "duplicate_keys_count": 0,
+    "duplicate_rows_count": 0,
+    "duplicate_row_percentage": 0.0,
+    "multiplicity_distribution": {
+      "1": 6284841
+    },
+    "component_nulls": {
+      "FL_DATE": 0,
+      "OP_CARRIER": 0,
+      "OP_CARRIER_FL_NUM": 0,
+      "ORIGIN": 0,
+      "DEST": 0,
+      "CRS_DEP_TIME": 0
+    },
+    "year_mismatch_count": 0,
+    "duplicate_analysis": {
+      "identical_row_groups": 0,
+      "differing_row_groups": 0
+    },
+    "sample_duplicate_groups": [],
+    "elapsed_sec": 35.45
+  }
+]

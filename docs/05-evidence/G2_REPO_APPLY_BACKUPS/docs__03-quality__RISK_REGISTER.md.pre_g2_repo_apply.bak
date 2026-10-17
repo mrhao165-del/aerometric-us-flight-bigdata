@@ -1,0 +1,26 @@
+# RISK_REGISTER — Rủi ro và xử lý
+
+Mức P=khả năng 1–5; I=tác động 1–5; score=P×I là **đánh giá sơ bộ**, không phải số liệu đo được. Owner mặc định nhóm thực hiện, phải phân công thực tế sau.
+
+| ID | Rủi ro | P×I | Trigger | Mitigation | Residual/Gate |
+|---|---|---|---|---|---|
+| R-01 | Không có dữ liệu cancel/divert nhưng báo cáo sai tỷ lệ | 4×5 | KPI canceled xuất hiện | Block KPI, bổ sung nguồn độc lập nếu cần | G2 |
+| R-02 | 54.7m rows không đại diện toàn bộ chuyến bay Mỹ | 4×5 | Báo cáo dùng “all flights” | Xác minh selection bias, flight grain, carrier coverage | G2/G7 |
+| R-03 | Tính sai overnight/2400 và giờ địa phương | 4×4 | Dùng time diff naive | Gated T-004, fixtures midnight | G2/G5 |
+| R-04 | Thời tiết thiếu unit/join/availability | 4×4 | Claim tác động/nhân quả | Quarantine RQ-06, verify provenance | G2 |
+| R-05 | Drop trùng/thiếu làm sai mẫu số | 3×5 | Group totals mismatch | Row accounting, full vs sample audits | G5/G6 |
+| R-06 | Quá tải bộ nhớ/disk Spark | 4×4 | OOM, spill, executor fail | Benchmark, partition, backpressure, resource manifest | G5 |
+| R-07 | Hai AI sửa khác nhau gây drift tài liệu | 4×4 | Tên KPI/denominator khác | Document register + ADR + PR review | Mọi gate |
+| R-08 | Raw bị ghi đè hoặc lộ đường dẫn/key | 3×5 | overwrite/delete/upload | permissions read-only, backups, .gitignore | Mọi gate |
+| R-09 | Không rõ ý nghĩa `FLIGHTS`, `OP_CARRIER_FL_NUM` | 4×3 | weighted flight count | Không dùng weight/key trước evidence | G2 |
+| R-10 | So sánh theo năm gây lệch do 2020 & coverage | 4×4 | Biểu đồ chỉ rate không N | Count, panel checks, caveat | G6/G7 |
+| R-11 | Nạp file PyTorch `.pt` không tin cậy | 3×5 | Agent gọi torch.load | Cấm trong core, provenance/separate sandbox | Mọi gate |
+| R-12 | Kết quả KPI không tái lập | 4×5 | Không lưu query/run/config | Versioned run artifacts, independent check | G5–G7 |
+| R-13 | Giá trị cực trị có thật bị loại im lặng | 3×4 | “clean” ngầm winsorization | Keep + flag; sensitivity analysis | G5/G6 |
+| R-14 | Chưa biết rubric/thời hạn/môi trường | 3×3 | Đầu ra không khớp giảng viên | G0 scope note, giữ deliverables linh hoạt | G7 |
+| R-15 | Units/sign của delay, taxi, elapsed chưa được upstream xác nhận | 4×5 | Gắn phút và nhận xét sai KPI | T-003 + TS-018, chặn G2 cho CORE metric chưa chứng minh | G2 |
+| R-16 | Size/mtime bị hiểu nhầm là raw content hash | 3×4 | File đổi nhưng metadata trùng hoặc mtime khác do copy | Cần content digest + TS-019, công bố identity status | G4/G5 |
+| R-17 | Cộng nhầm origin-year và dest-year hoặc dùng chung denominator taxi/elapsed | 3×4 | Double count / sai mean | Per-dimension parity, submetric counts, TS-007/008/017 | G6 |
+
+## Quy trình
+Tại mỗi gate ghi owner thực, xác suất và tác động mới, evidence link, trạng thái OPEN/MITIGATED/ACCEPTED. Risk score không dùng để thay thế kiểm thử dữ liệu.

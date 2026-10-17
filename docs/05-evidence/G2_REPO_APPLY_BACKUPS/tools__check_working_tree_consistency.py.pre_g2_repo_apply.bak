@@ -1,0 +1,152 @@
+#!/usr/bin/env python3
+"""Working-tree consistency verifier for flight docs repository.
+Checks documentary integrity, manifest preservation, and working-tree additions.
+Designed for active workspace where raw data and task evidence reports are present.
+"""
+from pathlib import Path
+from hashlib import sha256
+import json, re, sys
+
+ROOT = Path(__file__).resolve().parents[1]
+issues = []
+passed = []
+
+def require(v, msg):
+    if v:
+        passed.append(msg)
+    else:
+        issues.append(msg)
+
+def load(rel):
+    return (ROOT / rel).read_text(encoding='utf-8')
+
+# 1. Core documentary structure (18 ABC + 8 supplementary)
+core_paths = {
+    'A': ['README.md', 'AGENTS.md', 'docs/01-planning/PRD.md', 'docs/01-planning/ROADMAP.md', 'docs/01-planning/BACKLOG.md', 'docs/02-design/ARCHITECTURE.md'],
+    'B': ['docs/03-quality/TEST_PLAN.md', 'docs/03-quality/RISK_REGISTER.md', 'docs/02-design/DECISIONS.md', 'docs/03-quality/CHANGELOG.md', 'docs/03-quality/ROLLBACK_PLAN.md', 'docs/03-quality/SECURITY.md'],
+    'C': ['docs/04-execution/PROJECT_STATE.md', 'docs/04-execution/AI_HANDOFF.md', 'docs/04-execution/TASK_TEMPLATE.md', 'docs/02-design/API_CONTRACTS.md', 'docs/02-design/DATA_DICTIONARY.md', 'docs/04-execution/DEPLOYMENT.md'],
+    'supplementary': ['docs/02-design/DATA_CONTRACT.md', 'docs/02-design/KPI_SPEC.md', 'docs/02-design/ANALYSIS_PROTOCOL.md', 'docs/05-evidence/DATA_PROVENANCE.md', 'docs/05-evidence/DATA_QUALITY_REPORT.md', 'docs/05-evidence/RESULTS_REGISTER.md', 'docs/03-quality/G0_G1_REVIEW.md', 'docs/00-governance/DOCUMENT_REGISTER.md']
+}
+paths = sum(core_paths.values(), [])
+require(all((ROOT / p).is_file() for p in paths), '18 A/B/C + 8 supplementary paths exist')
+require(len(set(paths)) == 26 and all(len(v) == 6 for k, v in core_paths.items() if k != 'supplementary') and len(core_paths['supplementary']) == 8, 'Doc group counts and unique roles')
+
+active = [f for f in ROOT.rglob('*.md') if 'inputs' not in f.parts]
+require(all(f.stat().st_size > 100 for f in active), 'Active docs are nonempty')
+
+# 2. Markdown reference integrity (no broken docs/... paths)
+path_pat = re.compile(r'(?<![A-Za-z0-9_./])(?:docs/(?:[A-Za-z0-9_.()\-]+/)+[A-Za-z0-9_.()\-]+\.(?:md|json))')
+refbad = []
+for f in active:
+    for n, line in enumerate(f.read_text(encoding='utf-8').splitlines(), 1):
+        for x in path_pat.findall(line):
+            if not (ROOT / x).is_file():
+                refbad.append(f'{f.relative_to(ROOT)}:{n}:{x}')
+require(not refbad, 'All explicitly written docs/... MD/JSON paths resolve' + (': ' + repr(refbad[:12]) if refbad else ''))
+
+# 3. Relative link resolution in all markdown files
+link_pat = re.compile(r'\[([^\]]+)\]\((?:<([^>]+)>|([^)]+))\)')
+broken_links = []
+for f in active:
+    content = f.read_text(encoding='utf-8')
+    for match in link_pat.finditer(content):
+        text, u1, u2 = match.groups()
+        url = u1 or u2
+        if not url or url.startswith(('http://', 'https://', '#', 'mailto:')):
+            continue
+        clean_url = url.split('#')[0]
+        if clean_url and not (f.parent / clean_url).resolve().exists():
+            broken_links.append(f'{f.relative_to(ROOT)} -> {url}')
+require(not broken_links, 'All relative markdown links resolve correctly' + (': ' + repr(broken_links[:10]) if broken_links else ''))
+
+# 4. No stale tokens
+for bad in ('`HANDOFF.md`', 'TEST-013 logs', 'Khóa 5 KPI lõi'):
+    require(not any(bad in f.read_text(encoding='utf-8') for f in active if f.name not in ('CHANGELOG.md', 'V1_0_CONSISTENCY_AUDIT.md', 'DOCS_CONSISTENCY_AUDIT_v1.1.md')), 'No stale actionable token ' + bad)
+
+# 5. Core glossary and definitions
+dc = load('docs/02-design/DATA_CONTRACT.md')
+kpi = load('docs/02-design/KPI_SPEC.md')
+for s in ('raw_row_count = accepted_row_count + quarantined_row_count + rejected_row_count', 'count_metric_valid', 'metric_valid_rate', 'source_coverage_status', 'IDENTITY_UNVERIFIED', 'METADATA_MATCH_ONLY'):
+    require(s in dc, 'DC owns ' + s)
+require('accepted_row_count(C)' in dc and 'ZERO_DENOMINATOR' in dc, 'Group denominator and zero guard')
+require('KPI-01..08' in load('docs/01-planning/ROADMAP.md') and 'KPI-01..KPI-08' in load('docs/01-planning/BACKLOG.md'), '8 CORE KPIs in roadmap and backlog')
+
+# 6. KPI catalog ordering and CORE_DRAFT
+rows = re.findall(r'^\|\s*(KPI-\d\d)\s*\|.*$', kpi, re.M)
+require(rows == [f'KPI-{i:02d}' for i in range(1, 13)], 'KPI catalog exactly 01..12 ordered')
+require(sum(bool(re.search(r'^\|\s*KPI-(?:0[1-8])\s*\|.*CORE_DRAFT', l)) for l in kpi.splitlines()) == 8, '8 CORE_DRAFT rows')
+
+# 7. Task DAG and acyclicity
+backlog = load('docs/01-planning/BACKLOG.md')
+tasks = {}
+deps = {}
+for line in backlog.splitlines():
+    m = re.match(r'^\|\s*(T-\d{3})\s*\|\s*(G\d)\s*\|(.+?)\|(.+?)\|(.+?)\|(.+?)\|\s*$', line)
+    if m:
+        task, gate, descr, dependency, accept, status = m.groups()
+        tasks[task] = gate
+        deps[task] = re.findall(r'T-\d{3}', dependency)
+require(set(tasks) == {f'T-{i:03d}' for i in range(1, 18)}, 'Exactly T-001..017')
+require(deps.get('T-007') == ['T-009'] and deps.get('T-008') == ['T-007'] and deps.get('T-009') == ['T-006'], 'T-009->T-007->T-008 dependency')
+visited = set()
+path = set()
+def dfs(k):
+    if k in path: return False
+    if k in visited: return True
+    path.add(k)
+    if not all(dfs(d) for d in deps[k]): return False
+    path.remove(k); visited.add(k); return True
+require(all(dfs(k) for k in tasks), 'Task dependencies acyclic')
+
+# 8. Test catalog TS-001..TS-020
+testtext = load('docs/03-quality/TEST_PLAN.md')
+defined_tests = re.findall(r'^\|\s*(TS-\d{3})\s*\|', testtext, re.M)
+require(defined_tests == [f'TS-{i:03d}' for i in range(1, 21)], 'Test catalog exactly TS-001..020 ordered')
+
+# 9. Results Register slots
+results = load('docs/05-evidence/RESULTS_REGISTER.md')
+res_ids = re.findall(r'^\|\s*(RES-\d{3})\s*\|', results, re.M)
+require(res_ids == [f'RES-{i:03d}' for i in range(1, 13)], 'RES-001..012 planned exactly once')
+require('NO_PRODUCTION_RESULTS' in results and not re.search(r'\|\s*PASS\s*\|$', results, re.M), 'No fabricated production results')
+
+# 10. Immutable source manifest
+source = json.loads((ROOT / 'docs/05-evidence/inputs/SOURCE_MANIFEST.json').read_text(encoding='utf-8'))
+for x in source['sources']:
+    f = ROOT / x['path']
+    require(f.is_file() and len(f.read_bytes()) == x['bytes'] and sha256(f.read_bytes()).hexdigest() == x['sha256'], 'Input immutable ' + x['path'])
+
+# 11. Release package manifest verification (all release files intact)
+pm_path = ROOT / 'PACKAGE_MANIFEST.json'
+require(pm_path.exists(), 'PACKAGE_MANIFEST.json exists')
+if pm_path.exists():
+    pm = json.loads(pm_path.read_text(encoding='utf-8'))
+    manifest_paths = set()
+    for obj in pm['generated_files']:
+        name = obj['path']
+        manifest_paths.add(name)
+        ff = ROOT / name
+        if name == 'docs/04-execution/PROJECT_STATE.md':
+            require(ff.exists() and ff.stat().st_size > 500 and 'T-001' in ff.read_text(encoding='utf-8'), 'Living project state verified: ' + name)
+        else:
+            require(ff.exists() and ff.stat().st_size == obj['bytes'] and sha256(ff.read_bytes()).hexdigest() == obj['sha256'], 'Package manifest verified: ' + name)
+
+    # 12. Working-tree accounting: All files in repo are either manifest release files, raw data, or recognized task deliverables
+    actual_files = {f.relative_to(ROOT).as_posix() for f in ROOT.rglob('*') if f.is_file() and f.name != 'PACKAGE_MANIFEST.json'}
+    extra_files = actual_files - manifest_paths
+    
+    # Classify extra files
+    raw_data_files = {f for f in extra_files if f.startswith('data/raw/tabular/') and f.endswith('.csv')}
+    task_deliverables = {f for f in extra_files if f.startswith('docs/05-evidence/T001_') or f.startswith('docs/05-evidence/T002_') or f.startswith('docs/05-evidence/T003_') or f.startswith('docs/05-evidence/T004_')}
+    tool_deliverables = {f for f in extra_files if f == 'tools/check_working_tree_consistency.py' or f.startswith('tools/audit/') or f.startswith('tools/qa/')}
+    unrecognized = extra_files - raw_data_files - task_deliverables - tool_deliverables
+    
+    require(len(raw_data_files) == 9, 'Working-tree contains exactly 9 raw CSV files (2016-2024)')
+    require(len(unrecognized) == 0, 'No unrecognized stray files in working-tree' + (': ' + repr(unrecognized) if unrecognized else ''))
+    require(len(extra_files) == len(raw_data_files) + len(task_deliverables) + len(tool_deliverables), 'All extra working-tree files cleanly accounted for')
+
+print(f'Working-Tree PASS assertions: {len(passed)}; FAIL: {len(issues)}')
+for i in issues:
+    print('FAIL:', i)
+if issues:
+    sys.exit(1)
+print('ALL WORKING-TREE CHECKS PASSED.')

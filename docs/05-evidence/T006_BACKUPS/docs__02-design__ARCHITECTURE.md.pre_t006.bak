@@ -1,0 +1,52 @@
+# ARCHITECTURE — Kiến trúc đề xuất Analysis-first
+
+**Status: PROPOSED, không phải code đã triển khai.** Tập trung Spark SQL/DataFrame và batch processing; không xây ML phục vụ ATL.
+
+## Dataflow
+```text
+9 immutable CSV (2016–2024)
+   -> source manifest & read-only validation
+   -> Spark explicit schema + parsing/normalization
+   -> data quality / quarantine + accounting
+   -> staging/processed Parquet partitioned by year
+   -> curated summary tables (year/month/carrier/airport/route)
+   -> charts + report + optional dashboard
+                       ↘ evidence manifests/results register
+```
+
+## Layer/contract
+| Layer | Input | Output | Quy tắc |
+|---|---|---|---|
+| RAW | `data/raw/tabular/{year}/flight_with_weather_{year}.csv` | Không thay đổi | Read-only; size/signature/checksum khi có khả năng |
+| STAGING | CSV | Temporary parsed fields + reject metadata | Fail-fast schema drift; không sửa giá trị trái phép |
+| PROCESSED | staging | Parquet/version/run-id | Provenance: year, raw source, source_row_number (nếu tạo được), audit flags |
+| CURATED | processed | Bảng aggregation có KPI version | Denominator/coverage/filters đi kèm từng bảng |
+| REPORT | curated | Charts/markdown/PDF/slide (sau này) | Không tính KPIs độc lập ngoài catalog |
+
+## Module đề xuất
+- `src/ingestion/`: đọc nguồn + manifest, explicit schema, column reconciliation.
+- `src/quality/`: validation, profile, rule flags, reject/accounting.
+- `src/transform/`: date handling, numeric casting, stable categories; giữ nguyên raw.
+- `src/analytics/`: versioned KPI expressions, aggregations và đối chiếu.
+- `src/reporting/`: artifact + metadata, không gọi raw CSV.
+- Phương án `source_row_number` của Spark phải chứng minh reproducibility (TS-020); nếu không, không coi số thứ tự do partition tự sinh là physical CSV offset ổn định.
+- `tests/unit/`, `tests/integration/`, `tests/reconciliation/`.
+
+## Date/time
+- `FL_DATE` timestamp-like 00:00 đã kiểm chứng cho 2016–2023 processed; 2024 cần xác minh cùng hành vi theo cách dùng thực tế.
+- `CRS_DEP_TIME` và `CRS_ARR_TIME` được lưu timestamp-like cùng service date; **không** coi date component là ngày đến chính xác qua đêm. Cấm sử dụng số phút chênh clock timestamp để tính lịch trình xuyên đêm khi chưa thông qua T-004.
+- Dùng `ARR_DELAY`, `DEP_DELAY`, `TAXI_*` sẵn có làm phép đo mô tả sau khi kiểm chứng domain; tránh suy diễn timezone.
+
+## Tính đúng đắn & hiệu năng
+- Không gọi `toPandas()` trên toàn dataset; only collect aggregate bounded.
+- Theo `DATA_CONTRACT.md` DC-11/12: `raw_row_count = accepted_row_count + quarantined_row_count + rejected_row_count` theo source_year; nhóm disjoint, lý do đầy đủ, không drop ngầm. KPI chỉ tính trên accepted rows; `metric_valid_rate` và `source_coverage_status` là hai khái niệm khác.
+- Tại G3 chỉ hoàn thành thiết kế/fixtures; G4 **T-009 khởi tạo môi trường/CI → T-007 ingestion → T-008 QA**; G5 mới smoke KPI.
+- Tránh `overwrite` thư mục raw; output riêng theo `run_id` rồi publish bằng thao tác kiểm tra an toàn.
+- Partition `year`; nếu quá nhiều file nhỏ dùng coalesce hợp lý dựa benchmark, không chốt số partition trước khi đo.
+- Metadata source size/mtime chỉ đủ báo drift, không đủ xác nhận content identity; cần content checksum để `CONTENT_VERIFIED` khi khả thi. Ghi source sizes, raw content hash (nếu tạo), config, code commit, Spark version, test outcomes; idempotent output theo run-id.
+
+## Toolchain
+**PROPOSED:** Apache Spark/PySpark + Parquet, Python kiểm thử, Git. Exact versions, notebook vs local vs cluster, RAM/CPU, dashboard library và môi trường deploy đều **CHƯA XÁC NHẬN**. Tài liệu không được gắn nhãn `installed` trước khi có thực chứng.
+
+## Boundary
+Weather chỉ là exploratory nếu T-005 PASS; Flight Chain `.pt` và mô hình dự báo không được liên kết với pipeline CORE. Không nhập cơ chế `T_cutoff` cũ vì mục tiêu mới là phân tích sau khi chuyến bay kết thúc.

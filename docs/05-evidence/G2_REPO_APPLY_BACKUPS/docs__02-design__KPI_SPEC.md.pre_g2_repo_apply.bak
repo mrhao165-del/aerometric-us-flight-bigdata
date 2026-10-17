@@ -1,0 +1,40 @@
+# KPI_SPEC — Catalog chỉ số và các hợp đồng tính toán
+
+**Version:** docs-v1.1; `CORE_DRAFT` đến khi T-003 review xong và G2 PASS. 8 CORE KPI phục vụ RQ-01..05. Không suy diễn đây là thống kê toàn bộ chuyến bay Hoa Kỳ. Thuật ngữ `count_records`, `count_metric_valid`, `excluded_count`, `metric_valid_rate`, `source_coverage_status` có **một** định nghĩa tại `DATA_CONTRACT.md` DC-11/12.
+
+## Nguyên tắc tính
+- Dataset KPI = `accepted` records, sau các bộ lọc công khai `source_year`, service date, hãng, sân bay, tuyến bay (có hướng). Bảng `raw/quarantine/reject` ghi riêng ở year manifest; số hàng rejected/quarantine không được ngầm tính vào mẫu số accepted KPI.
+- `N_valid(f,C)` = số record accepted ở cohort C có trường f finite và thỏa domain của submetric. Numerator và denominator của mỗi KPI dùng cùng C và cùng validation rules. Tỷ lệ `>=15` bao gồm giá trị đúng 15; negative signed delay giữ nguyên trong mean/quantiles.
+- Mọi output row: `KPI-ID`, `submetric` (nếu có), `run_id`, `kpi_version`, `source_year`, `group_dimensions`, `filter_definition`, `count_records`, `count_metric_valid`, `excluded_count`, `metric_valid_rate`, `source_coverage_status`, `value`, `unit_status`, `min_n_status`, `quality_version`, `provenance_reference`. Nếu `N_valid=0`, kết quả mean/rate/percentile = `null` với `ZERO_METRIC_DENOMINATOR`, không dùng 0.
+- `count_records` **không** được gọi “number of all US flights” cho đến khi flight-grain/coverage được xác minh. Không có tỷ lệ hủy hoặc chuyển hướng từ CSV hiện tại.
+- `source_coverage_status` chỉ là nhãn evidence; `metric_valid_rate` tuyệt đối không mang nghĩa market coverage.
+
+| KPI | Tên & giá trị | Định nghĩa tính trong cohort C | Status | RQ |
+|---|---|---|---|---|
+| KPI-01 | Tổng bản ghi accepted | `count_records(C)`; metric valid = count_records (nếu có) | CORE_DRAFT | RQ-01 |
+| KPI-02 | Tỷ lệ trễ đến >=15 | `sum_{valid ARR_DELAY}(1[ARR_DELAY>=15]) / N_valid(ARR_DELAY,C)` | CORE_DRAFT | RQ-02/03/04 |
+| KPI-03 | Trễ đến TB signed | `sum_{valid ARR_DELAY}(ARR_DELAY)/N_valid(ARR_DELAY,C)` | CORE_DRAFT | RQ-02/03/04 |
+| KPI-04 | Tỷ lệ trễ đi >=15 | `sum_{valid DEP_DELAY}(1[DEP_DELAY>=15]) / N_valid(DEP_DELAY,C)` | CORE_DRAFT | RQ-02/03/04 |
+| KPI-05 | Trễ đi TB signed | `sum_{valid DEP_DELAY}(DEP_DELAY)/N_valid(DEP_DELAY,C)` | CORE_DRAFT | RQ-02/03/04 |
+| KPI-06 | P50/P90 độ trễ đến | percentile `ARR_DELAY` trên đúng cohort valid; exact/approx, quantile definition và tolerance phải **khóa T-003** | CORE_DRAFT | RQ-02/03/04 |
+| KPI-07 | Taxi-out và Taxi-in TB | **Hai submetrics** `avg(TAXI_OUT)` / `avg(TAXI_IN)` trên từng `N_valid` riêng | CORE_DRAFT | RQ-05 |
+| KPI-08 | Air/Actual/Crs elapsed TB | **Ba submetrics** `avg(AIR_TIME)`, `avg(ACTUAL_ELAPSED_TIME)`, `avg(CRS_ELAPSED_TIME)` trên từng `N_valid` riêng | CORE_DRAFT | RQ-05 |
+| KPI-09 | Trung bình số phút trễ dương trên mỗi bản ghi hợp lệ (không phải mean chỉ của chuyến trễ) | `sum_{valid ARR_DELAY}(max(ARR_DELAY,0))/N_valid(ARR_DELAY,C)`; giữ cả các bản ghi sớm/đúng giờ trong mẫu số, khác mean signed | OPTIONAL_DRAFT | RQ-02 |
+| KPI-10 | Weather-conditioned delay | KPI-02/03 theo bins có evidence units/join/timing + N | CONDITIONAL_PENDING | RQ-06 |
+| KPI-11 | Cancel/divert rate | Không có cột cờ & denominator population trong 34 cột | NOT_COMPUTABLE | ngoài CORE |
+| KPI-12 | Tổng lượt theo `FLIGHTS` | Không biết grain hay weight semantics | BLOCKED | ngoài CORE |
+
+## Đơn vị, validation và nghiệm thu
+- Các phép trễ/thời lượng đang **được hiểu là phút theo tên field thông dụng**, nhưng vẫn `UNIT_UNVERIFIED` khi chưa có documentation nguồn đáng tin cậy. T-003 phải ghi bằng chứng xác nhận cho tất cả 7 measures `ARR_DELAY`, `DEP_DELAY`, `TAXI_OUT`, `TAXI_IN`, `AIR_TIME`, `ACTUAL_ELAPSED_TIME`, `CRS_ELAPSED_TIME` trước khi G2 PASS; **không được gắn 'minutes' như fact đã kiểm chứng trong output**.
+- KPI-06 bắt buộc chốt implementation exact/approx, cách nội suy percentile và sai số chấp nhận, test synthetic. Mặc định chưa có phương pháp chính thức được duyệt.
+- `min_n_threshold`, quy tắc cảnh báo/suppression bảng xếp hạng phải chốt T-003; không tự chọn một số từ suy đoán. N là `count_metric_valid` của KPI đang xếp hạng; khi chưa khóa min-N, **không công bố ranking**.
+- Đối với nhóm/carrier theo nhiều năm, danh tính/mã hãng và cohort coverage cần đối chiếu; không gọi khác biệt quan sát là hiệu quả nhân quả.
+
+## Bảng tổng hợp tối thiểu (T-013)
+`year`, `year-month`, `carrier-year`, `origin-year`, `dest-year`, `route-year` (route **có hướng**: ORIGIN→DEST). Phải tính các KPI liên quan một cách có ý nghĩa; RQ-05 có riêng KPI-07/08. Tổng ở từng dimension có thể reconcile **trong chính dimension**, không được cộng tổng nhóm origin và tổng nhóm dest thành hai tập độc lập.
+
+## Baseline từ audit nguồn — chỉ để reconciliation
+9 schema JSON: `54,674,003` records, `10,116,916` with `ARR_DELAY>=15`, tỷ lệ audit ≈ `18.5041%`, mean signed đã báo ≈ `4.4771` đơn vị nguồn. **Không** gọi đây là Spark output; nếu record policy khác source audit, tỷ lệ mới có thể khác, phải ghi lý do khác biệt.
+
+## Diễn giải 2020
+Luôn đi kèm số hàng, số mã hãng/sân bay và thay đổi thành phần mẫu; không quy trực tiếp khác biệt cho một nguyên nhân duy nhất.

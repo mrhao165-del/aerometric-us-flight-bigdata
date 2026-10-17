@@ -1,0 +1,71 @@
+{
+  "created_at": "2026-10-13",
+  "statement": "SHA-256 verifies snapshots of user-provided audit documents; NOT raw CSV files.",
+  "sources": [
+    {
+      "path": "docs/05-evidence/inputs/data_inventory.md",
+      "bytes": 6636,
+      "sha256": "0de4156b7a3ec6bd3e7e8a856d6c5a85b18a0dc7861b5b63c3a639f142bebe54"
+    },
+    {
+      "path": "docs/05-evidence/inputs/canonical_schema_v1(1).md",
+      "bytes": 1803,
+      "sha256": "ca88c9472624ae2022606b1d2c9941893b8d64ec108b8c6cc52fecc9c1150428"
+    },
+    {
+      "path": "docs/05-evidence/inputs/canonical_schedule_datetime_representation_audit.md",
+      "bytes": 8801,
+      "sha256": "bf4f58384706d0f601746bbafca04de774fd473bc7a071fc2858f9319ad3c09f"
+    },
+    {
+      "path": "docs/05-evidence/inputs/leakage_audit.md",
+      "bytes": 7088,
+      "sha256": "ff86c5b878dd142b6cd1ec5d9d96d563d48fa91cce3ee42e512b500ef883c220"
+    },
+    {
+      "path": "docs/05-evidence/inputs/schema_2016.json",
+      "bytes": 10409,
+      "sha256": "a2c1da87b1055a51973baebeda0781e912738006303069ed446a2d20e2b727a5"
+    },
+    {
+      "path": "docs/05-evidence/inputs/schema_2017.json",
+      "bytes": 10570,
+      "sha256": "30f9f7d39c5038b445666ad168cb238e4d2b5a187e72ae7c14e3dc603191aabb"
+    },
+    {
+      "path": "docs/05-evidence/inputs/schema_2018.json",
+      "bytes": 10561,
+      "sha256": "2078a3b91c1f7dd5d1e944e83221fe3d39c34e11a0765dba376e8fb9811d3d20"
+    },
+    {
+      "path": "docs/05-evidence/inputs/schema_2019.json",
+      "bytes": 10564,
+      "sha256": "7b22be38006453090afe2faab715822b48c4e433734b6129be8fa23808b7de1c"
+    },
+    {
+      "path": "docs/05-evidence/inputs/schema_2020.json",
+      "bytes": 10561,
+      "sha256": "4bfb0817f25ad029b658c3b5fa8839e73c323287578afd827b11ba37b72d47cd"
+    },
+    {
+      "path": "docs/05-evidence/inputs/schema_2021.json",
+      "bytes": 10560,
+      "sha256": "2b3443fab878b566f0c3527dd22266dfbecd952914a3aa03e1d94b7f764ada6a"
+    },
+    {
+      "path": "docs/05-evidence/inputs/schema_2022.json",
+      "bytes": 10563,
+      "sha256": "52fb7673de5059f5504921c941a23f2710a2538920fa33542d58a1438c401d8f"
+    },
+    {
+      "path": "docs/05-evidence/inputs/schema_2023.json",
+      "bytes": 10562,
+      "sha256": "775403563c61c365970b1b5eafd43141227059bda0ee4f84266648de2b8aa329"
+    },
+    {
+      "path": "docs/05-evidence/inputs/schema_2024.json",
+      "bytes": 10565,
+      "sha256": "4d3fa1465cd65b9b662596ecd8ffeefc74836078fa0e6f1d6461e1f9f83cf6a7"
+    }
+  ]
+}

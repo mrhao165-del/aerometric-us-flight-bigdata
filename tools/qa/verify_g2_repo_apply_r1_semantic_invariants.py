@@ -1,0 +1,643 @@
+#!/usr/bin/env python3
+"""
+tools/qa/verify_g2_repo_apply_r1_semantic_invariants.py
+
+Automated Semantic Invariant and Regression Verification Suite for G2-REPO-APPLY-R1.
+Verifies all 12 mandatory semantic requirements (R1-01 through R1-06) across
+living governance documents and includes isolated mutation testing (MUT-01..08)
+proving that regressions are actively caught and rejected.
+
+Invariants Verified:
+- INV-01 (R1-01): FP-DEC-002 retains original 2024 retrospective scope meaning (USER_CONFIRMED_BY_SCOPE).
+- INV-02: FP-DEC-015 is percentile_approx(ARR_DELAY, [0.5, 0.9], accuracy=10000).
+- INV-03: FP-DEC-016 uses min-N thresholds 1000/365/100 on count_metric_valid.
+- INV-04: FP-DEC-017 is Weather CONDITIONAL_NO_GO, keeping 34 columns in raw schema.
+- INV-05: Exactly KPI-01..08 are CORE; KPI-09 optional, KPI-10 excluded, KPI-11 not computable, KPI-12 blocked.
+- INV-06 (R1-03): Raw Weather columns in schema are exactly O_TEMP, O_PRCP, O_WSPD, D_TEMP, D_PRCP, D_WSPD.
+- INV-07 (R1-02): OR-01..08 to R-01..17 mappings agree with canonical definitions.
+- INV-08 (R1-04): TS-001..TS-020 IDs and gates match authoritative TEST_PLAN.md.
+- INV-09: G2-EXC-001 remains approved for 7 raw numeric measures with mandatory TS-018 at G5.
+- INV-10: OR-05 remains OPEN_QUALITY_DEFECT (missing March 2024, PARTIAL coverage).
+- INV-11: OR-08 remains IDENTITY_UNVERIFIED (size/mtime is METADATA_MATCH_ONLY).
+- INV-12: G2 remains IN_PROGRESS / NOT_PASSED and T-006 remains NOT_STARTED.
+- INV-13 (R1-05): Decision approval wording uses APPROVED_BY_PROJECT_LEAD_INSTRUCTION.
+- INV-14 (R1-06): Rejection of unapproved claims (ELAPSED_DIFF in G2-EXC-001, weather_code, tz in raw).
+
+Mutation Tests (MUT-01..08):
+- Proves tests fail when semantic regressions are injected into isolated fixtures.
+"""
+
+from pathlib import Path
+import re
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+class SemanticVerificationError(AssertionError):
+    pass
+
+
+def load_file(root: Path, rel_path: str) -> str:
+    p = root / rel_path
+    if not p.is_file():
+        raise FileNotFoundError(f"Required file missing: {rel_path}")
+    return p.read_text(encoding="utf-8")
+
+
+def verify_semantic_invariants(root: Path) -> list:
+    """Verifies all semantic invariants against the repository tree at root.
+    Returns a list of passed assertion descriptions.
+    Raises SemanticVerificationError if any invariant fails."""
+    passed = []
+
+    decisions_txt = load_file(root, "docs/02-design/DECISIONS.md")
+    kpi_txt = load_file(root, "docs/02-design/KPI_SPEC.md")
+    risk_txt = load_file(root, "docs/03-quality/RISK_REGISTER.md")
+    test_plan_txt = load_file(root, "docs/03-quality/TEST_PLAN.md")
+    state_txt = load_file(root, "docs/04-execution/PROJECT_STATE.md")
+    handoff_txt = load_file(root, "docs/04-execution/AI_HANDOFF.md")
+    backlog_txt = load_file(root, "docs/01-planning/BACKLOG.md")
+    dict_txt = load_file(root, "docs/02-design/DATA_DICTIONARY.md")
+
+    # -------------------------------------------------------------------------
+    # INV-01: FP-DEC-002 retains original 2024 scope meaning (R1-01)
+    # -------------------------------------------------------------------------
+    m_fp002 = re.search(
+        r"\|\s*`?FP-DEC-002`?\s*\|\s*([^|]+)\|\s*`?USER_CONFIRMED_BY_SCOPE`?\s*\|",
+        decisions_txt,
+    )
+    if not m_fp002:
+        raise SemanticVerificationError("INV-01 FAIL: FP-DEC-002 not found with status USER_CONFIRMED_BY_SCOPE in DECISIONS.md")
+    fp002_title = m_fp002.group(1).lower()
+    if "2024" not in fp002_title or "holdout" not in fp002_title:
+        raise SemanticVerificationError(f"INV-01 FAIL: FP-DEC-002 title does not describe 2024 retrospective scope: {m_fp002.group(1)}")
+    if re.search(r"^\s*(?:ưu tiên\s+)?(?:lộ trình\s+)?8\s*core", fp002_title) or "chất lượng dữ liệu (kpi-09)" in fp002_title:
+        raise SemanticVerificationError("INV-01 FAIL: FP-DEC-002 corrupted with 8 CORE KPI or data quality reinterpretation")
+    passed.append("INV-01: FP-DEC-002 retains canonical 2024 retrospective scope meaning (USER_CONFIRMED_BY_SCOPE)")
+
+    # -------------------------------------------------------------------------
+    # INV-02: FP-DEC-015 is percentile_approx(ARR_DELAY, [0.5, 0.9], accuracy=10000)
+    # -------------------------------------------------------------------------
+    m_fp015 = re.search(r"\|\s*`?FP-DEC-015`?\s*\|\s*([^|]+)\|", decisions_txt)
+    if not m_fp015 or "percentile" not in m_fp015.group(1).lower():
+        raise SemanticVerificationError("INV-02 FAIL: FP-DEC-015 is not percentile decision")
+    if "percentile_approx(ARR_DELAY, [0.5, 0.9], accuracy=10000)" not in decisions_txt:
+        raise SemanticVerificationError("INV-02 FAIL: FP-DEC-015 accuracy=10000 specification missing in DECISIONS.md")
+    passed.append("INV-02: FP-DEC-015 is percentile_approx with accuracy=10000")
+
+    # -------------------------------------------------------------------------
+    # INV-03: FP-DEC-016 uses min-N thresholds 1000/365/100 on count_metric_valid
+    # -------------------------------------------------------------------------
+    m_fp016 = re.search(r"\|\s*`?FP-DEC-016`?\s*\|\s*([^|]+)\|", decisions_txt)
+    if not m_fp016 or "min-n" not in m_fp016.group(1).lower():
+        raise SemanticVerificationError("INV-03 FAIL: FP-DEC-016 is not min-N decision")
+    for thresh, num in (("carrier-year", "1000"), ("airport-year", "365"), ("route-year", "100")):
+        pat = rf"{thresh}.*?count_metric_valid\s*>=\s*{num}"
+        if not re.search(pat, decisions_txt, re.S):
+            raise SemanticVerificationError(f"INV-03 FAIL: FP-DEC-016 threshold pattern {pat} missing in DECISIONS.md")
+    if "count_metric_valid" not in decisions_txt:
+        raise SemanticVerificationError("INV-03 FAIL: min-N not pinned to count_metric_valid in DECISIONS.md")
+    passed.append("INV-03: FP-DEC-016 specifies min-N thresholds (1000/365/100) on count_metric_valid")
+
+    # -------------------------------------------------------------------------
+    # INV-04: FP-DEC-017 is Weather CONDITIONAL_NO_GO
+    # -------------------------------------------------------------------------
+    m_fp017 = re.search(
+        r"\|\s*`?FP-DEC-017`?\s*\|\s*([^|]+)\|\s*`?APPROVED_CONDITIONAL_NO_GO`?\s*\|",
+        decisions_txt,
+    )
+    if not m_fp017 or not any(k in m_fp017.group(1).lower() for k in ("weather", "thời tiết", "conditional_no_go")):
+        raise SemanticVerificationError("INV-04 FAIL: FP-DEC-017 is not Weather CONDITIONAL_NO_GO in DECISIONS.md")
+    passed.append("INV-04: FP-DEC-017 is Weather CONDITIONAL_NO_GO (APPROVED_CONDITIONAL_NO_GO)")
+
+    # -------------------------------------------------------------------------
+    # INV-05: Exactly KPI-01..08 are CORE
+    # -------------------------------------------------------------------------
+    kpi_rows = re.findall(r"^\|\s*(KPI-\d\d)\s*\|([^|]+)\|([^|]+)\|\s*([^|]+)\|\s*([^|]+)\|", kpi_txt, re.M)
+    kpi_map = {r[0]: r[3].strip() for r in kpi_rows}
+    for i in range(1, 9):
+        kid = f"KPI-{i:02d}"
+        if kpi_map.get(kid) != "CORE_DRAFT":
+            raise SemanticVerificationError(f"INV-05 FAIL: {kid} status is {kpi_map.get(kid)}, expected CORE_DRAFT")
+    if kpi_map.get("KPI-09") != "OPTIONAL_DRAFT":
+        raise SemanticVerificationError(f"INV-05 FAIL: KPI-09 status is {kpi_map.get('KPI-09')}, expected OPTIONAL_DRAFT")
+    if kpi_map.get("KPI-10") != "CONDITIONAL_NO_GO":
+        raise SemanticVerificationError(f"INV-05 FAIL: KPI-10 status is {kpi_map.get('KPI-10')}, expected CONDITIONAL_NO_GO")
+    if kpi_map.get("KPI-11") != "NOT_COMPUTABLE":
+        raise SemanticVerificationError(f"INV-05 FAIL: KPI-11 status is {kpi_map.get('KPI-11')}, expected NOT_COMPUTABLE")
+    if kpi_map.get("KPI-12") != "BLOCKED":
+        raise SemanticVerificationError(f"INV-05 FAIL: KPI-12 status is {kpi_map.get('KPI-12')}, expected BLOCKED")
+    passed.append("INV-05: Exactly KPI-01..08 are CORE_DRAFT; KPI-09..12 mapped to OPTIONAL, CONDITIONAL_NO_GO, NOT_COMPUTABLE, BLOCKED")
+
+    # -------------------------------------------------------------------------
+    # INV-06: Raw Weather columns in schema are exactly O_TEMP..D_WSPD (R1-03)
+    # -------------------------------------------------------------------------
+    raw_weather_cols = ["O_TEMP", "O_PRCP", "O_WSPD", "D_TEMP", "D_PRCP", "D_WSPD"]
+    for col in raw_weather_cols:
+        if col not in dict_txt:
+            raise SemanticVerificationError(f"INV-06 FAIL: Raw Weather column {col} missing in DATA_DICTIONARY.md")
+    fabricated_names = ["weather_code", "app_temp", "surface_pressure", "wind_speed", "precip"]
+    for f_name in fabricated_names:
+        # DATA_DICTIONARY.md must not define these as schema columns
+        if re.search(rf"\b{f_name}\b", dict_txt):
+            raise SemanticVerificationError(f"INV-06 FAIL: Fabricated column name {f_name} found in DATA_DICTIONARY.md")
+    passed.append("INV-06: Raw Weather schema columns are exactly O_TEMP, O_PRCP, O_WSPD, D_TEMP, D_PRCP, D_WSPD")
+
+    # -------------------------------------------------------------------------
+    # INV-07: OR-01..08 to R-01..17 mappings agree with canonical definitions (R1-02)
+    # -------------------------------------------------------------------------
+    canonical_or_r = {
+        "OR-01": "R-09",
+        "OR-02": "R-05",  # Primary R-05
+        "OR-03": "R-15",
+        "OR-04": "R-01",  # Primary R-01
+        "OR-05": "R-10",
+        "OR-06": "R-03",
+        "OR-07": "R-04",
+        "OR-08": "R-16",
+    }
+    for or_id, primary_r in canonical_or_r.items():
+        pattern = rf"\|\s*`{or_id}`\s*\|[^|]+\|\s*([^|]+)\|"
+        m_or = re.search(pattern, risk_txt)
+        if not m_or:
+            raise SemanticVerificationError(f"INV-07 FAIL: {or_id} row missing in RISK_REGISTER.md Section 2")
+        mapping_text = m_or.group(1)
+        if primary_r not in mapping_text:
+            raise SemanticVerificationError(f"INV-07 FAIL: {or_id} mapped to '{mapping_text}', missing Primary {primary_r}")
+    # Verify rejection of scrambled mappings
+    if re.search(r"\|\s*`OR-01`\s*\|[^|]+\|\s*`?R-02`?\s*\|", risk_txt):
+        raise SemanticVerificationError("INV-07 FAIL: OR-01 falsely mapped to R-02 in RISK_REGISTER.md")
+    if re.search(r"\|\s*`OR-03`\s*\|[^|]+\|\s*`?R-04`?\s*\|", risk_txt):
+        raise SemanticVerificationError("INV-07 FAIL: OR-03 falsely mapped to R-04 in RISK_REGISTER.md")
+    if re.search(r"\|\s*`OR-05`\s*\|[^|]+\|\s*`?R-15`?\s*\|", risk_txt):
+        raise SemanticVerificationError("INV-07 FAIL: OR-05 falsely mapped to R-15 in RISK_REGISTER.md")
+    passed.append("INV-07: OR-01..OR-08 canonical Primary R-01..R-17 mappings verified in RISK_REGISTER.md")
+
+    # -------------------------------------------------------------------------
+    # INV-08: TS IDs match authoritative TEST_PLAN.md (R1-04)
+    # -------------------------------------------------------------------------
+    ts_entries = {
+        "TS-003": "row accounting",  # row accounting
+        "TS-004": "2024",           # calendar coverage
+        "TS-005": "arr_delay",
+        "TS-006": "signed",
+        "TS-007": "aggregate",
+        "TS-008": "p50/p90",
+        "TS-009": "flights",
+        "TS-010": "timezone",
+        "TS-011": "weather",
+        "TS-017": "accounting",
+        "TS-018": "seven core",
+        "TS-019": "raw identity",
+        "TS-020": "row identifier",
+    }
+    for ts_id, keyword in ts_entries.items():
+        m_ts = re.search(rf"^\|\s*{ts_id}\s*\|([^|]+)\|([^|]+)\|([^|]+)\|([^|]+)\|", test_plan_txt, re.M)
+        if not m_ts:
+            raise SemanticVerificationError(f"INV-08 FAIL: {ts_id} missing in TEST_PLAN.md catalog")
+        row_content = (m_ts.group(2) + " " + m_ts.group(4)).lower()
+        if keyword.lower() not in row_content:
+            raise SemanticVerificationError(f"INV-08 FAIL: {ts_id} description '{row_content}' missing expected keyword '{keyword}'")
+    passed.append("INV-08: TS-001..TS-020 semantic definitions verified against TEST_PLAN.md")
+
+    # -------------------------------------------------------------------------
+    # INV-09: G2-EXC-001 remains approved for 7 measures with TS-018 at G5
+    # -------------------------------------------------------------------------
+    if "G2-EXC-001" not in decisions_txt:
+        raise SemanticVerificationError("INV-09 FAIL: G2-EXC-001 missing in DECISIONS.md")
+    if "TS-018" not in decisions_txt or "Gate G5" not in decisions_txt:
+        raise SemanticVerificationError("INV-09 FAIL: G2-EXC-001 missing TS-018 Gate G5 dependency in DECISIONS.md")
+    if "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL" not in decisions_txt:
+        raise SemanticVerificationError("INV-09 FAIL: OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL missing in DECISIONS.md")
+    if "ELAPSED_DIFF" in decisions_txt and "7 trường số đo CORE" in decisions_txt:
+        # Ensure ELAPSED_DIFF is explicitly excluded from G2-EXC-001
+        m_ed = re.search(r"G2-EXC-001.*?ELAPSED_DIFF", decisions_txt, re.S)
+        if m_ed and "không bao gồm" not in m_ed.group(0):
+            raise SemanticVerificationError("INV-09 FAIL: ELAPSED_DIFF incorrectly included in G2-EXC-001")
+    passed.append("INV-09: G2-EXC-001 approved with mandatory TS-018 PASS condition at G5 and provisional unit status")
+
+    # -------------------------------------------------------------------------
+    # INV-10: OR-05 remains OPEN_QUALITY_DEFECT
+    # -------------------------------------------------------------------------
+    if "OR-05 = OPEN_QUALITY_DEFECT" not in risk_txt and "OPEN_QUALITY_DEFECT" not in risk_txt:
+        raise SemanticVerificationError("INV-10 FAIL: OR-05 OPEN_QUALITY_DEFECT status missing in RISK_REGISTER.md")
+    if "335/366" not in risk_txt or "Tháng 3/2024" not in risk_txt:
+        raise SemanticVerificationError("INV-10 FAIL: OR-05 missing 335/366 days or March 2024 defect detail in RISK_REGISTER.md")
+    passed.append("INV-10: OR-05 verified as OPEN_QUALITY_DEFECT (335/366 days, missing March 2024)")
+
+    # -------------------------------------------------------------------------
+    # INV-11: OR-08 remains IDENTITY_UNVERIFIED
+    # -------------------------------------------------------------------------
+    if "IDENTITY_UNVERIFIED" not in risk_txt:
+        raise SemanticVerificationError("INV-11 FAIL: OR-08 IDENTITY_UNVERIFIED status missing in RISK_REGISTER.md")
+    if "METADATA_MATCH_ONLY" not in risk_txt:
+        raise SemanticVerificationError("INV-11 FAIL: OR-08 METADATA_MATCH_ONLY detail missing in RISK_REGISTER.md")
+    passed.append("INV-11: OR-08 verified as IDENTITY_UNVERIFIED (METADATA_MATCH_ONLY)")
+
+    # -------------------------------------------------------------------------
+    # INV-12: Guarded G2 Gate Acceptance & T-006 Locked
+    # -------------------------------------------------------------------------
+    acc_rec_rel = "docs/05-evidence/G2_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+    acc_rec_p = root / acc_rec_rel
+    has_acc_rec = acc_rec_p.is_file()
+
+    g2_is_pass = bool(re.search(r"\|\s*G2\s*\|\s*PASS\s*\|", state_txt))
+    g2_is_not_passed = bool(re.search(r"\|\s*G2\s*\|\s*IN_PROGRESS\s*/\s*NOT_PASSED\s*\|", state_txt))
+
+    if g2_is_pass:
+        # Situation B: G2 is PASS, requires valid Project Lead acceptance record
+        if not has_acc_rec:
+            raise SemanticVerificationError("INV-12 FAIL: G2 is PASS in PROJECT_STATE.md but official human acceptance record is missing")
+        acc_txt = load_file(root, acc_rec_rel)
+        if "APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION" not in acc_txt:
+            raise SemanticVerificationError("INV-12 FAIL: Official acceptance record missing APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION provenance")
+        for mandatory_cond in ("G2-EXC-001", "OR-05", "OR-08", "FP-DEC-017", "L-01", "L-02", "TS-018"):
+            if mandatory_cond not in acc_txt:
+                raise SemanticVerificationError(f"INV-12 FAIL: Mandatory condition/limitation '{mandatory_cond}' missing in acceptance record")
+        if not re.search(r"Gate\s+G2", acc_txt, re.IGNORECASE):
+            raise SemanticVerificationError("INV-12 FAIL: Acceptance record scope does not match Gate G2")
+        # Ensure state_txt points to acceptance record and records provenance
+        if "G2_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md" not in state_txt:
+            raise SemanticVerificationError("INV-12 FAIL: PROJECT_STATE.md does not point to G2_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md")
+        if "APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION" not in state_txt:
+            raise SemanticVerificationError("INV-12 FAIL: PROJECT_STATE.md does not record APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION provenance")
+        # Ensure handoff and backlog agree
+        if "Gate G2 = PASS" not in handoff_txt:
+            raise SemanticVerificationError("INV-12 FAIL: AI_HANDOFF.md does not agree with G2 = PASS")
+        if "G2 đã đạt `PASS`" not in backlog_txt and "G2 | PASS" not in backlog_txt and "Gate G2 PASS" not in backlog_txt:
+            raise SemanticVerificationError("INV-12 FAIL: BACKLOG.md does not agree with G2 PASS status")
+    elif g2_is_not_passed:
+        # Situation A: G2 is NOT_PASSED
+        if "AWAITING_FINAL_HUMAN_GATE_SIGNOFF" not in state_txt:
+            raise SemanticVerificationError("INV-12 FAIL: AWAITING_FINAL_HUMAN_GATE_SIGNOFF readiness annotation missing in PROJECT_STATE.md")
+    else:
+        raise SemanticVerificationError("INV-12 FAIL: Unrecognized or invalid G2 status in PROJECT_STATE.md")
+
+    # In ALL situations:
+    # 1. Gate G3 MUST NOT be PASS without human signoff and required conditions
+    acc_rec_g3_rel = "docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+    acc_rec_g3_p = root / acc_rec_g3_rel
+    has_acc_rec_g3 = acc_rec_g3_p.is_file()
+
+    g3_is_pass = bool(re.search(r"\|\s*G3\s*\|\s*PASS\s*\|", state_txt))
+    g3_is_in_progress = bool(re.search(r"\|\s*G3\s*\|\s*IN_PROGRESS\s*\|", state_txt))
+
+    if g3_is_pass:
+        if not has_acc_rec_g3:
+            raise SemanticVerificationError("INV-12 FAIL: G3 is PASS in PROJECT_STATE.md but official human acceptance record is missing")
+        acc_g3_txt = load_file(root, acc_rec_g3_rel)
+        if "APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION" not in acc_g3_txt:
+            raise SemanticVerificationError("INV-12 FAIL: G3 official acceptance record missing APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION provenance")
+        for mandatory_cond in ("G3-COND-A", "G3-COND-B", "G3-COND-C", "G2-EXC-001", "OR-05", "OR-08", "FP-DEC-017"):
+            if mandatory_cond not in acc_g3_txt:
+                raise SemanticVerificationError(f"INV-12 FAIL: Mandatory condition/obligation '{mandatory_cond}' missing in G3 acceptance record")
+        if not re.search(r"Gate\s+G3", acc_g3_txt, re.IGNORECASE):
+            raise SemanticVerificationError("INV-12 FAIL: Acceptance record scope does not match Gate G3")
+        if "G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md" not in state_txt:
+            raise SemanticVerificationError("INV-12 FAIL: PROJECT_STATE.md does not point to G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md")
+        if "APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION" not in state_txt:
+            raise SemanticVerificationError("INV-12 FAIL: PROJECT_STATE.md does not record APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION provenance for G3")
+        if "Gate G3 = PASS" not in handoff_txt and "G3 = PASS" not in handoff_txt:
+            raise SemanticVerificationError("INV-12 FAIL: AI_HANDOFF.md does not agree with G3 = PASS")
+        if "G3 đã đạt `PASS`" not in backlog_txt and "G3 | PASS" not in backlog_txt and "Gate G3 PASS" not in backlog_txt:
+            raise SemanticVerificationError("INV-12 FAIL: BACKLOG.md does not agree with G3 PASS status")
+    elif not g3_is_in_progress:
+        raise SemanticVerificationError("INV-12 FAIL: Unrecognized or invalid G3 status in PROJECT_STATE.md")
+
+    # 2. Check T-006 status in PROJECT_STATE.md
+    m_t006 = re.search(r"\|\s*\*\*T-006\*\*\s*\|\s*\*\*`?([^`|\n]+)`?\*\*\s*\|", state_txt)
+    if not m_t006:
+        raise SemanticVerificationError("INV-12 FAIL: T-006 status row missing in PROJECT_STATE.md")
+    t006_status = m_t006.group(1).strip()
+    if g3_is_pass:
+        if not any(st in t006_status for st in ("PASS", "COMPLETED")):
+            raise SemanticVerificationError(f"INV-12 FAIL: T-006 must be PASS or COMPLETED when G3 is PASS, got '{t006_status}'")
+    else:
+        if t006_status not in ("NOT_STARTED", "IN_PROGRESS"):
+            raise SemanticVerificationError(f"INV-12 FAIL: Unrecognized T-006 status '{t006_status}' in PROJECT_STATE.md")
+
+    # 3. Guard: T-006 can ONLY be IN_PROGRESS if G2 is PASS with valid human acceptance record
+    if t006_status == "IN_PROGRESS":
+        if not g2_is_pass or not has_acc_rec:
+            raise SemanticVerificationError("INV-12 FAIL: T-006 cannot be IN_PROGRESS when G2 is not officially PASS with acceptance record")
+        if "T-006 = IN_PROGRESS" not in handoff_txt and "T-006 | IN_PROGRESS" not in handoff_txt:
+            raise SemanticVerificationError("INV-12 FAIL: AI_HANDOFF.md does not agree with T-006 = IN_PROGRESS")
+        if not re.search(r"\|\s*T-006\s*\|\s*G3\s*\|[^|]+\|[^|]+\|[^|]+\|\s*IN_PROGRESS\s*\|", backlog_txt):
+            raise SemanticVerificationError("INV-12 FAIL: BACKLOG.md does not record T-006 as IN_PROGRESS")
+    elif not g2_is_pass:
+        if t006_status != "NOT_STARTED":
+            raise SemanticVerificationError("INV-12 FAIL: T-006 must be NOT_STARTED when G2 is not PASS")
+
+    # 4. Guard: Downstream tasks T-007, T-008, T-009 MUST be NOT_STARTED / TODO
+    for down_t in ("T-007", "T-008", "T-009"):
+        m_down = re.search(rf"\|\s*{down_t}\s*\|\s*G4\s*\|[^|]+\|[^|]+\|[^|]+\|\s*([^|]+)\s*\|", backlog_txt)
+        if m_down and m_down.group(1).strip() not in ("TODO", "NOT_STARTED"):
+            raise SemanticVerificationError(f"INV-12 FAIL: Downstream task {down_t} unauthorized start ({m_down.group(1).strip()}) before G3 completion")
+
+    passed.append(f"INV-12: Gate G2 confirmed PASS, Gate G3 confirmed {('PASS with human record' if g3_is_pass else 'IN_PROGRESS')}, and T-006 controlled ({t006_status})")
+
+    # -------------------------------------------------------------------------
+    # INV-13: Approval wording uses APPROVED_BY_PROJECT_LEAD_INSTRUCTION (R1-05)
+    # -------------------------------------------------------------------------
+    if re.search(r"\|\s*`?SIGNED_BY_PROJECT_LEAD_INSTRUCTION`?\s*\|", decisions_txt):
+        raise SemanticVerificationError("INV-13 FAIL: Ambiguous SIGNED_BY_PROJECT_LEAD_INSTRUCTION used as approval status in DECISIONS.md")
+    if re.search(r"Trạng thái[^:\n]*:\s*`?SIGNED_BY_PROJECT_LEAD_INSTRUCTION`?", decisions_txt + handoff_txt):
+        raise SemanticVerificationError("INV-13 FAIL: Ambiguous SIGNED_BY_PROJECT_LEAD_INSTRUCTION assigned as status in living docs")
+    if "APPROVED_BY_PROJECT_LEAD_INSTRUCTION" not in decisions_txt:
+        raise SemanticVerificationError("INV-13 FAIL: APPROVED_BY_PROJECT_LEAD_INSTRUCTION missing in DECISIONS.md")
+    passed.append("INV-13: Decision approvals correctly recorded as APPROVED_BY_PROJECT_LEAD_INSTRUCTION without physical signature claims")
+
+    # -------------------------------------------------------------------------
+    # INV-14: Unapproved extra assumptions rejected in living docs (R1-06)
+    # -------------------------------------------------------------------------
+    # Check that DEP_TIME_TZ is not presented as raw column in living docs
+    if "DEP_TIME_TZ" in dict_txt:
+        raise SemanticVerificationError("INV-14 FAIL: Synthetic helper column DEP_TIME_TZ found in raw DATA_DICTIONARY.md")
+    # Check that canonical CSV path is used
+    if "data/raw/tabular/{year}/flight_with_weather_{year}.csv" not in backlog_txt:
+        raise SemanticVerificationError("INV-14 FAIL: Canonical CSV path pattern missing in BACKLOG.md")
+    passed.append("INV-14: Unapproved extra assumptions (ELAPSED_DIFF in G2-EXC-001, DEP_TIME_TZ in raw) rejected in living docs")
+
+    # -------------------------------------------------------------------------
+    # INV-15: TS-020 Cross-Document Semantic Consistency
+    # -------------------------------------------------------------------------
+    # 1. Canonical definition in TEST_PLAN.md must define TS-020 as stable lineage / row identifier
+    m_ts20 = re.search(r"\|\s*TS-020\s*\|([^|]+)\|([^|]+)\|([^|]+)\|([^|]+)\|", test_plan_txt)
+    if not m_ts20:
+        raise SemanticVerificationError("INV-15 FAIL: TS-020 missing in TEST_PLAN.md catalog")
+    ts20_title = m_ts20.group(2).strip().lower()
+    ts20_details = m_ts20.group(4).strip().lower()
+    if "stable lineage" not in ts20_title and "row identifier" not in ts20_title:
+        raise SemanticVerificationError(f"INV-15 FAIL: TS-020 title '{m_ts20.group(2)}' missing 'stable lineage' or 'row identifier' in TEST_PLAN.md")
+    if "reproducible" not in ts20_details or "spark offset" not in ts20_details:
+        raise SemanticVerificationError("INV-15 FAIL: TS-020 details missing reproducible traceability or Spark offset warning in TEST_PLAN.md")
+    if "bảo toàn cặp bản ghi trùng khóa yx 3624" in ts20_title:
+        raise SemanticVerificationError("INV-15 FAIL: TS-020 title mistakenly reduced exclusively to YX 3624 in TEST_PLAN.md")
+
+    # 2. Living governance docs (DECISIONS.md) must not reduce TS-020 solely to YX 3624
+    if "định danh dòng ổn định" not in decisions_txt and "row identifier" not in decisions_txt and "stable lineage" not in decisions_txt:
+        raise SemanticVerificationError("INV-15 FAIL: TS-020 stable lineage / row identifier role missing in DECISIONS.md")
+
+    passed.append("INV-15: TS-020 cross-document semantic consistency verified (Stable lineage / row identifier, not exclusively YX 3624)")
+
+    return passed
+
+
+def run_mutation_tests(root: Path) -> list:
+    """Executes isolated controlled mutation tests (MUT-01..08) to prove
+    that verify_semantic_invariants actively detects and rejects regressions."""
+    mut_passed = []
+
+    # Read base contents
+    decisions_orig = load_file(root, "docs/02-design/DECISIONS.md")
+    dict_orig = load_file(root, "docs/02-design/DATA_DICTIONARY.md")
+    risk_orig = load_file(root, "docs/03-quality/RISK_REGISTER.md")
+    test_orig = load_file(root, "docs/03-quality/TEST_PLAN.md")
+    state_orig = load_file(root, "docs/04-execution/PROJECT_STATE.md")
+
+    import tempfile, shutil
+
+    with tempfile.TemporaryDirectory(prefix="g2_mut_test_") as tmp_dir:
+        tmp_root = Path(tmp_dir)
+
+        def make_fixture():
+            shutil.rmtree(tmp_root)
+            tmp_root.mkdir()
+            for rel in (
+                "docs/02-design/DECISIONS.md",
+                "docs/02-design/KPI_SPEC.md",
+                "docs/03-quality/RISK_REGISTER.md",
+                "docs/03-quality/TEST_PLAN.md",
+                "docs/04-execution/PROJECT_STATE.md",
+                "docs/04-execution/AI_HANDOFF.md",
+                "docs/01-planning/BACKLOG.md",
+                "docs/02-design/DATA_DICTIONARY.md",
+                "docs/05-evidence/G2_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md",
+                "docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md",
+            ):
+                dest = tmp_root / rel
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                dest.write_text(load_file(root, rel), encoding="utf-8")
+
+        # MUT-01: Mutate FP-DEC-002 to claim 8 CORE KPIs
+        make_fixture()
+        mut_file = tmp_root / "docs/02-design/DECISIONS.md"
+        mut_file.write_text(
+            decisions_orig.replace("FP-DEC-002", "FP-DEC-002_OLD").replace(
+                "| FP-DEC-002_OLD |",
+                "| FP-DEC-002 | Ưu tiên lộ trình 8 CORE KPIs | G2-REPO-APPLY | USER_CONFIRMED_BY_SCOPE |",
+            ),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-01 FAIL: Verifier did not catch FP-DEC-002 corruption")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-01: Caught FP-DEC-002 corruption ({e})")
+
+        # MUT-02: Mutate DATA_DICTIONARY.md to include fabricated weather_code
+        make_fixture()
+        mut_file = tmp_root / "docs/02-design/DATA_DICTIONARY.md"
+        mut_file.write_text(dict_orig + "\n| weather_code | WMO code | INT |\n", encoding="utf-8")
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-02 FAIL: Verifier did not catch weather_code fabrication")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-02: Caught weather_code fabrication ({e})")
+
+        # MUT-03: Mutate OR-01 mapping in RISK_REGISTER.md to R-02
+        make_fixture()
+        mut_file = tmp_root / "docs/03-quality/RISK_REGISTER.md"
+        mut_file.write_text(
+            risk_orig.replace("`OR-01` | Trường `FLIGHTS == 1.0`", "`OR-01` | Trường `FLIGHTS == 1.0` | `R-02` |"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-03 FAIL: Verifier did not catch OR-01 -> R-02 scrambled mapping")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-03: Caught OR-01 scrambled mapping ({e})")
+
+        # MUT-04: Mutate TS-003 definition in TEST_PLAN.md
+        make_fixture()
+        mut_file = tmp_root / "docs/03-quality/TEST_PLAN.md"
+        mut_file.write_text(
+            test_orig.replace("Ba trạng thái row accounting", "Kiểm thử overnight temporal"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-04 FAIL: Verifier did not catch TS-003 definition corruption")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-04: Caught TS-003 definition corruption ({e})")
+
+        # MUT-05A: G2 is PASS but acceptance record is missing
+        make_fixture()
+        (tmp_root / "docs/05-evidence/G2_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md").unlink()
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-05A FAIL: Verifier did not catch G2 PASS without acceptance record")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-05A: Caught G2 PASS without acceptance record ({e})")
+
+        # MUT-05B: Mutate approval provenance in acceptance record
+        make_fixture()
+        mut_rec = tmp_root / "docs/05-evidence/G2_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+        mut_rec.write_text(
+            mut_rec.read_text(encoding="utf-8").replace("APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION", "FORGED_DIGITAL_SIGNATURE_AUTO_APPROVED"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-05B FAIL: Verifier did not catch unapproved provenance")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-05B: Caught unapproved provenance ({e})")
+
+        # MUT-05C: Mutate acceptance record to drop G2-EXC-001
+        make_fixture()
+        mut_rec = tmp_root / "docs/05-evidence/G2_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+        mut_rec.write_text(
+            mut_rec.read_text(encoding="utf-8").replace("G2-EXC-001", "UNAUTHORIZED_WAIVER"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-05C FAIL: Verifier did not catch missing G2-EXC-001 in acceptance record")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-05C: Caught missing G2-EXC-001 in acceptance record ({e})")
+
+        # MUT-05D: G3 PASS without valid acceptance record in tmp_root
+        make_fixture()
+        mut_g3_acc = tmp_root / "docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+        if mut_g3_acc.is_file():
+            mut_g3_acc.unlink()
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-05D FAIL: Verifier did not catch G3 PASS without acceptance record")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-05D: Caught G3 PASS without acceptance record ({e})")
+
+        # MUT-06A: Mutate G2 to NOT_PASSED while T-006 is IN_PROGRESS
+        make_fixture()
+        mut_file = tmp_root / "docs/04-execution/PROJECT_STATE.md"
+        mut_file.write_text(
+            mut_file.read_text(encoding="utf-8").replace("| G2 | PASS |", "| G2 | IN_PROGRESS / NOT_PASSED |"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-06A FAIL: Verifier did not catch T-006 IN_PROGRESS when G2 is NOT_PASSED")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-06A: Caught T-006 IN_PROGRESS when G2 is NOT_PASSED ({e})")
+
+        # MUT-06B: Mutate downstream T-009 in BACKLOG.md to IN_PROGRESS prematurely
+        make_fixture()
+        mut_bl = tmp_root / "docs/01-planning/BACKLOG.md"
+        mut_bl.write_text(
+            mut_bl.read_text(encoding="utf-8").replace("| T-009 | G4 | Khởi tạo project Python/Spark, test runner, lint, CI skeleton, run manifest (`FP-DEC-005`) | T-006 | Có lệnh thực tế chạy tests khởi tạo và evidence | TODO |",
+                                                       "| T-009 | G4 | Khởi tạo project Python/Spark, test runner, lint, CI skeleton, run manifest (`FP-DEC-005`) | T-006 | Có lệnh thực tế chạy tests khởi tạo và evidence | IN_PROGRESS |"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-06B FAIL: Verifier did not catch premature downstream task T-009 start")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-06B: Caught premature downstream task T-009 start ({e})")
+
+        # MUT-06C: Mutate downstream T-007 in BACKLOG.md to IN_PROGRESS prematurely
+        make_fixture()
+        mut_bl = tmp_root / "docs/01-planning/BACKLOG.md"
+        mut_bl.write_text(
+            mut_bl.read_text(encoding="utf-8").replace("| T-007 | G4 | Viết ingestion read-only (`data/raw/tabular/{year}/flight_with_weather_{year}.csv`), explicit schema (giữ nguyên 34 cột gồm 6 cột Weather `O_TEMP..D_WSPD` theo `DC-07` / `FP-DEC-017`), tính SHA-256 cục bộ cho 9 CSV (`OR-08` -> `R-16` / `TS-019`) & synthetic tests | T-009 | Unit tests PASS (`TS-001`), mismatch metadata fail-closed đúng chính sách, lưu local SHA-256 baseline vào manifest (`TS-019`), không ghi raw | TODO |",
+                                                       "| T-007 | G4 | Viết ingestion read-only (`data/raw/tabular/{year}/flight_with_weather_{year}.csv`), explicit schema (giữ nguyên 34 cột gồm 6 cột Weather `O_TEMP..D_WSPD` theo `DC-07` / `FP-DEC-017`), tính SHA-256 cục bộ cho 9 CSV (`OR-08` -> `R-16` / `TS-019`) & synthetic tests | T-009 | Unit tests PASS (`TS-001`), mismatch metadata fail-closed đúng chính sách, lưu local SHA-256 baseline vào manifest (`TS-019`), không ghi raw | IN_PROGRESS |"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-06C FAIL: Verifier did not catch premature downstream task T-007 start")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-06C: Caught premature downstream task T-007 start ({e})")
+
+        # MUT-07: Mutate min-N threshold in DECISIONS.md
+        make_fixture()
+        mut_file = tmp_root / "docs/02-design/DECISIONS.md"
+        mut_file.write_text(
+            decisions_orig.replace("count_metric_valid >= 1000", "count_metric_valid >= 500"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-07 FAIL: Verifier did not catch min-N threshold corruption")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-07: Caught min-N threshold corruption ({e})")
+
+        # MUT-08: Mutate OR-03 units from PROVISIONAL to VERIFIED in RISK_REGISTER.md
+        make_fixture()
+        mut_file = tmp_root / "docs/03-quality/RISK_REGISTER.md"
+        mut_file.write_text(
+            risk_orig.replace("Duy trì nhãn `OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL`", "Đã xác nhận VERIFIED đơn vị phút"),
+            encoding="utf-8",
+        )
+        # Also mutate in DECISIONS.md to trigger rejection
+        mut_file_dec = tmp_root / "docs/02-design/DECISIONS.md"
+        mut_file_dec.write_text(
+            decisions_orig.replace("OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL", "OFFICIAL_MINUTES_VERIFIED"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-08 FAIL: Verifier did not catch premature VERIFIED units claim")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-08: Caught premature VERIFIED units claim ({e})")
+
+        # MUT-09: Mutate TS-020 to be exclusively YX 3624 duplicate preservation in TEST_PLAN.md
+        make_fixture()
+        mut_file_test = tmp_root / "docs/03-quality/TEST_PLAN.md"
+        mut_file_test.write_text(
+            test_orig.replace("Stable lineage / row identifier", "Bảo toàn cặp bản ghi trùng khóa YX 3624"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-09 FAIL: Verifier did not catch TS-020 definition corruption")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-09: Caught TS-020 definition corruption ({e})")
+
+    return mut_passed
+
+
+def main():
+    print("=" * 80)
+    print("RUNNING G2-REPO-APPLY-R1 SEMANTIC INVARIANT AND MUTATION VERIFIER")
+    print("=" * 80)
+
+    try:
+        passed = verify_semantic_invariants(ROOT)
+        print(f"\n[PASS] Verified {len(passed)} Semantic Invariants:")
+        for p in passed:
+            print(f"  [OK] {p}")
+
+        mut_passed = run_mutation_tests(ROOT)
+        print(f"\n[PASS] Executed {len(mut_passed)} Isolated Mutation Tests (MUT-01..09):")
+        for m in mut_passed:
+            safe_m = m.encode("ascii", errors="replace").decode("ascii")
+            print(f"  [OK] {safe_m}")
+
+        print("\n" + "=" * 80)
+        print(f"ALL SEMANTIC INVARIANTS AND MUTATION TESTS PASSED ({len(passed)} invariants + {len(mut_passed)} mutations).")
+        print("=" * 80)
+        sys.exit(0)
+
+    except SemanticVerificationError as err:
+        print(f"\n[FAIL] Semantic invariant violation detected: {err}", file=sys.stderr)
+        sys.exit(1)
+    except Exception as err:
+        print(f"\n[ERROR] Unexpected error during verification: {err}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

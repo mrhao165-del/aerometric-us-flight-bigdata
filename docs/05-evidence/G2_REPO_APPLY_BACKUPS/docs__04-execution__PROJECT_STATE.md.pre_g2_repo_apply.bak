@@ -1,0 +1,36 @@
+# PROJECT_STATE — Snapshot gate và công việc hiện tại
+
+**Updated:** 2026-10-13; docs-v1.1. Đây là snapshot **document-only**, không phải trạng thái Git/Spark runtime được xác minh.
+
+| Gate | Trạng thái | Evidence | Next / restrictions |
+|---|---|---|---|
+| G0 | DESIGN_BASELINE | User-confirmed descriptive study 2016–2024; FP-DEC-001/002 | Rubric & submission constraints still OPEN |
+| G1 | PARTIAL | 9 completed schema JSON audits, canonical v1, historical time/leakage audits | Semantic source provenance, grain, units, coverage, time, Weather unresolved |
+| G2 | IN_PROGRESS / NOT_PASSED | T-001 PASS (Conditional); T-002 PASS_WITH_OPEN_RISKS; T-003 PASS_WITH_OPEN_RISKS; T-004 Audit Complete | T-005 Weather conditional pending; G2 NOT PASSED |
+| G3 | PLANNED | ARCHITECTURE, TEST_PLAN, SECURITY, ROLLBACK specs | T-006 design, no production code expected here |
+| G4 | PLANNED | AGENTS/BACKLOG/docs ready, no runtime evidence | **T-009 bootstrap → T-007 ingestion → T-008 quality**; tests not run |
+| G5 | NOT_STARTED | No PySpark evidence | T-010 smoke, T-011 KPI sample+rollback |
+| G6 | NOT_STARTED | No 9-year production run | T-012/013/014; T-015 only if optional GO |
+| G7 | NOT_STARTED | No final report/slide/demo | T-016/017 |
+
+## Task execution status
+| Task | Trạng thái | Bằng chứng nghiệm thu | Unresolved Risks / Giới hạn bàn giao |
+|---|:---:|---|---|
+| **T-001** | **PASS** *(Conditional)* | [`T001_R2_FINAL_REVIEW.md`](../05-evidence/T001_R2_FINAL_REVIEW.md) (kèm [`T001_PROVENANCE_AUDIT.md`](../05-evidence/T001_PROVENANCE_AUDIT.md)) | Reviewer chấp thuận có điều kiện; Upstream URL/License UNKNOWN; 8 Unresolved Risks (OR-01..OR-08) bàn giao cho T-002..T-005. |
+| **T-002** | **PASS_WITH_OPEN_RISKS** | [`T002_FINAL_ACCEPTANCE_CHECK.md`](../05-evidence/T002_FINAL_ACCEPTANCE_CHECK.md) (kèm [`T002_R1_INDEPENDENT_REVIEW.md`](../05-evidence/T002_R1_INDEPENDENT_REVIEW.md), [`T002_FLIGHT_GRAIN_AUDIT.md`](../05-evidence/T002_FLIGHT_GRAIN_AUDIT.md), [`T002_DUPLICATE_ANALYSIS.md`](../05-evidence/T002_DUPLICATE_ANALYSIS.md), [`T002_DENOMINATOR_RECOMMENDATION.md`](../05-evidence/T002_DENOMINATOR_RECOMMENDATION.md)) | Nghiệm thu có điều kiện theo phê duyệt của Project Lead; Cấp hạt: Scheduled Flight Leg Record; FLIGHTS = 1.0 (100%); 1 cặp trùng khóa YX 3624 (2018, bản chất vật lý UNKNOWN chuyển T-004); Cấm dedup tùy tiện; Mẫu số: count_records; Chuyển giao OR-01..OR-08. |
+| **T-003** | **PASS_WITH_OPEN_RISKS** | [`T003_SIGNOFF_RECORD.md`](../05-evidence/T003_SIGNOFF_RECORD.md) (kèm [`T003_FINAL_CLOSEOUT_VERIFICATION.md`](../05-evidence/T003_FINAL_CLOSEOUT_VERIFICATION.md), [`T003_FIX14_accounting_fixture.csv`](../05-evidence/T003_FIX14_accounting_fixture.csv), [`T003_FIX14_accounting_fixture.json`](../05-evidence/T003_FIX14_accounting_fixture.json)) | Đã ký nghiệm thu kỹ thuật; 8 CORE KPIs locked; 7 đơn vị đo chuẩn OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL; cực trị ARR_DELAY [-238, 4405]; 133/133 QA checks PASS; 8 rủi ro mở (OR-01..OR-08) bảo lưu chuyển giao cho T-004..T-008 và G5. |
+| **T-004** | **READY_FOR_SIGNOFF_WITH_OPEN_DEFECT** | [`T004_FINAL_QA_RECONCILIATION.md`](../05-evidence/T004_FINAL_QA_RECONCILIATION.md) (kèm [`T004_R1_INDEPENDENT_RECONCILIATION.md`](../05-evidence/T004_R1_INDEPENDENT_RECONCILIATION.md), [`T004_FINAL_REVIEW.md`](../05-evidence/T004_FINAL_REVIEW.md), [`T004_TF09_temporal_fixture.csv`](../05-evidence/T004_TF09_temporal_fixture.csv), [`T004_TF09_full_schema_fixture.csv`](../05-evidence/T004_TF09_full_schema_fixture.csv), [`T004_TF09_temporal_fixture.json`](../05-evidence/T004_TF09_temporal_fixture.json), [`T004_TIME_REPRESENTATION_AUDIT.md`](../05-evidence/T004_TIME_REPRESENTATION_AUDIT.md), [`T004_2024_DATE_COVERAGE_AUDIT.md`](../05-evidence/T004_2024_DATE_COVERAGE_AUDIT.md), [`T004_OVERNIGHT_COUNTEREXAMPLES.md`](../05-evidence/T004_OVERNIGHT_COUNTEREXAMPLES.md), [`T004_SAFE_FIELDS_DECISION.md`](../05-evidence/T004_SAFE_FIELDS_DECISION.md), [`T004_TEST_FIXTURE_SPEC.md`](../05-evidence/T004_TEST_FIXTURE_SPEC.md)) | Hoàn tất QA cuối cùng (QA-01..QA-04); đối chiếu khớp 100% số dòng 9 năm (54,674,003); khôi phục nguyên bản số liệu YX 3624 (13, 83, 6, 102); ban hành 2 tệp CSV fixture (18 cột projection & 34 cột full schema) và JSON oracle múi giờ chuẩn IANA/DST; kiểm toán 100% timestamp string; phát hiện năm 2024 có 335 ngày (vắng mặt 31 ngày Tháng 3/2024, ngày nhuận 29/02 có 18,642 chuyến, OR-05 xác lập OPEN_QUALITY_DEFECT); ma trận an toàn 4 cấp cấm trừ timestamp trực tiếp và cấm +24h; 61/61 QA checks PASS; 88/88 working-tree checks PASS; Gate G2 tiếp tục IN_PROGRESS chờ T-005. |
+
+
+## Fact baseline (source-derived only)
+- Schema audit: **54,674,003** rows across 9 × 34 field sets. `ARR_DELAY>=15`: **10,116,916** source records, approximately **18.5041%** of finite audit `ARR_DELAY`; **not** Spark output.
+- Full time representation audit is 2016–2023 processed, `2400_SEMANTICS_NOT_PROVEN`; not 2024. No raw CSV read/updated in this docs release.
+- No verified raw SHA256, dataset representative coverage, flight grain, units for 7 CORE numeric measures, Weather units/join, or deployment environment. Historic T-2h/ATL ML policies do not govern retrospective KPIs.
+
+## Next safe work sequence
+1. T-001 provenance, T-002 grain, T-003 units and **8 CORE KPI lock**; independent T-004 safe-time audit. T-005 Weather conditional may be approved NO-GO without stalling CORE.
+2. Review G2 exit with actual citations, then G3 design T-006; after G3, G4 begins at T-009 setup followed by T-007/008 coding.
+3. G5 bounded smoke and validation, then G6 production/full analysis; no gate leap based on documentation existence.
+
+## Runtime fields to populate only when true
+`repo/branch`, `commit`, `owner/reviewer`, `environment`, `Spark/Python/Java versions`, `command`, `exit code`, `run_id`, `raw content identity evidence`, `manifest`, `test results`, `rollback target`. Do not invent.

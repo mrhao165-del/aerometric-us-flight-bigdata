@@ -1,0 +1,14 @@
+# CHANGELOG — Lịch sử tài liệu / dự án
+
+## docs-v1.1 — 2026-10-13 (documentation remediation)
+- Sửa F-01..F-11 theo `docs/00-governance/V1_0_CONSISTENCY_AUDIT.md` (bản sao kiểm toán v1.0 có trong package): G3 design và G4 toolchain+code đúng thứ tự T-009→T-007→T-008; T-003 khóa 8 CORE KPI và kiểm chứng 7 numeric units; DC-11/12 định nghĩa disjoint row accounting/metric denominators; optional Weather `CONDITIONAL_NO_GO` không chặn CORE; lập RES-001..012 bao phủ RQ-01..05 và conditional RQ-06; source size/mtime không coi là content identity; áp dụng evidence theo đúng scope; sửa HANDOFF/CHANGELOG/TS-013 references.
+- Làm rõ KPI-09 là `mean(max(ARR_DELAY,0))` trên **tất cả** record eligible, không phải độ trễ trung bình chỉ trong tập chuyến bay trễ; bổ sung TS-008 synthetic tại G5 vì T-011 kiểm KPI-01..08.
+- Bổ sung DOCS_CONSISTENCY_AUDIT_v1.1, crosswalk RQ→REQ→KPI→T→TS→RES và TS-017..020. Rà soát semantic references, ZIP CRC, SHA manifests, source input byte equality. Chỉ báo PASS ở phạm vi **document QA**; **không chạy Spark**.
+- Không sửa bất kỳ file nào trong `docs/05-evidence/inputs/`; không khẳng định G2/G3+/KPI production đã đạt.
+
+## 1.0-docs — 2026-10-13 (historical release)
+- Tạo hồ sơ analysis-first cho dữ liệu flights 2016–2024, đưa 18 tài liệu A/B/C và source audits vào package.
+- Trích schema & source audit, tách ML/ATL policy cũ khỏi phạm vi mô tả; chưa chạy Spark/CSV mới. Đã phát hiện lỗi consistency F-01..F-11 ở audit sau khi phát hành; không dùng v1.0 cho autonomous coding.
+
+## Quy tắc cập nhật
+`date | docs_version | changed_artifact | contract/traceability impact | data_rebuild? | tests | reviewer/commit`. Mọi thay đổi KPI cần cập nhật KPI_SPEC, DATA_CONTRACT (nếu chạm denominator), TEST_PLAN, RESULTS_REGISTER và ADR; không thay thế kết quả lịch sử.

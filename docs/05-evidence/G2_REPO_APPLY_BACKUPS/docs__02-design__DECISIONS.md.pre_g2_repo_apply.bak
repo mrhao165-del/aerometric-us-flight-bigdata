@@ -1,0 +1,26 @@
+# DECISIONS — Nhật ký quyết định (ADR-lite)
+
+**Không chỉnh sửa các ADR lịch sử Aeolus**. Dự án này dùng namespace `FP-DEC-###`. `USER_CONFIRMED` chỉ cho nội dung người dùng đã chốt; các lựa chọn kỹ thuật `PROPOSED` cần review trước triển khai.
+
+| ID | Quyết định | Trạng thái | Bằng chứng/lý do | Hệ quả |
+|---|---|---|---|---|
+| FP-DEC-001 | Đồ án **phân tích hiệu suất chuyến bay Mỹ 2016–2024**, không tập trung ML | USER_CONFIRMED | Người dùng chốt phạm vi ngày 13/10/2026 | PRD/Roadmap/KPI mô tả |
+| FP-DEC-002 | Dùng cả 2024 cho phân tích mô tả, không gọi là sealed ML holdout của đề tài cũ | USER_CONFIRMED_BY_SCOPE | Người dùng muốn phân tích toàn kỳ 2016–2024 | 2024 được thống kê; không tuyên bố mô hình độc lập |
+| FP-DEC-003 | Machine Learning, ATL-only, Flight Chain `.pt`, Flight Network nằm ngoài CORE | PROPOSED_IMPLEMENTATION | Không phục vụ câu hỏi chính; `.pt` nguồn lịch sử NO_GO | Không đọc `.pt` |
+| FP-DEC-004 | Raw immutable + output version theo run | PROPOSED_CONTROL, kế thừa tinh thần D013 lịch sử | An toàn, reproducibility | No overwrite raw |
+| FP-DEC-005 | Dùng PySpark + Parquet cho xử lý chính | PROPOSED | Quy mô 9 CSV ~15.2 GB, phù hợp Big Data | Benchmark, version chưa chốt |
+| FP-DEC-006 | Cấm canceled/diverted KPI từ 34 trường hiện có | PROPOSED_GUARD | Không có trường trạng thái hủy/chuyển | Phải có nguồn bổ sung nếu mở phạm vi |
+| FP-DEC-007 | Không tính timeline qua đêm bằng `CRS_ARR_TIME` date component | PROPOSED_GUARD | Audit `2400_SEMANTICS_NOT_PROVEN` | T-004 trước các KPI sử dụng overnight |
+| FP-DEC-008 | Dùng ngưỡng `ARR_DELAY >= 15` cho KPI trễ đến có mẫu số finite | PROPOSED_KPI | Audit đã thống kê ngưỡng này; dễ đối chiếu | Khóa tại KPI_SPEC sau review |
+| FP-DEC-009 | Weather chỉ mở rộng có điều kiện, không kết luận nguyên nhân | PROPOSED | Chưa có units/time/join provenance | Block RQ-06 trước T-005 |
+| FP-DEC-010 | Không dùng `FLIGHTS` làm trọng số trước xác minh grain | PROPOSED_GUARD | Audit xác nhận dtype, chưa xác nhận semantics | Denominator báo accepted row-based |
+| FP-DEC-011 | Chính thức phân biệt `metric_valid_rate` với `source_coverage_status`, các tập row accepted/quarantine/reject loại trừ lẫn nhau | PROPOSED_CONTROL | F-03 kiểm toán docs v1.0; DC-11/12 v1.1 | T-003 + TS-017 review trước G2 |
+| FP-DEC-012 | Có 8 CORE KPI và phải xác minh đơn vị/sign/domain của 7 measures cốt lõi trước G2 | PROPOSED_REQUIREMENT | RQ-01..05 Must, v1.0 catalog KPI-01..08 | T-003 + TS-018; không tự hạ RQ-05 |
+| FP-DEC-013 | Weather là Should/conditional: explicit GO hoặc CONDITIONAL_NO_GO | PROPOSED_CONTROL | RQ-06 không Must | T-005/015 optional, không chặn G2/G6 CORE |
+| FP-DEC-014 | Metadata size/mtime chỉ cảnh báo drift, không chứng minh raw content identity | PROPOSED_CONTROL | JSON thiếu checksum raw | `IDENTITY_UNVERIFIED` khi không thể làm rõ mismatch |
+
+## Phân loại quyết định cũ
+`D004`, `D013`, `D026`, lịch sử T-2h, 2016–2022 rolling/2023-dev/2024 holdout đều thuộc ngữ cảnh pipeline Aeolus dự báo; được giữ nguyên trong **source evidence**, không tự áp vào scope mới.
+
+## Quy trình duyệt ADR
+Viết vấn đề → các phương án → bằng chứng → quyết định → tác động → người duyệt/ngày → cập nhật contract/KPI/test/roadmap. Không đổi `PROPOSED` thành `APPROVED` nếu chưa được người chịu trách nhiệm duyệt. Các quy tắc cụ thể hóa ở đây không có nghĩa đã có bằng chứng từ upstream dataset.

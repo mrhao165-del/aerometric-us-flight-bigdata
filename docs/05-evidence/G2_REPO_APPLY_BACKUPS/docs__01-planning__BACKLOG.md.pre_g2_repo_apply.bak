@@ -1,0 +1,30 @@
+# BACKLOG — Các nhiệm vụ triển khai và tiêu chí nghiệm thu
+
+**Version:** docs-v1.1. Status các task bên dưới là trạng thái thực hiện, **không** biểu thị tài liệu đặc tả đã soạn. `TODO` = chưa thực thi; `CONDITIONAL_PENDING` = chờ GO/NO-GO; `CONDITIONAL_NO_GO` = được miễn với quyết định ghi rõ; `PASS` chỉ khi có evidence.
+
+| Task | Gate | Hành động | Phụ thuộc | Done khi | Status |
+|---|---|---|---|---|---|
+| T-001 | G2 | Xác minh upstream source/license, flight population, filters, phạm vi hãng/sân bay, hạn chế coverage và metadata identity | G1 structural | Provenance memo, source-coverage status, đối chiếu selection, việc chưa rõ liệt kê minh bạch | TODO |
+| T-002 | G2 | Xác minh flight event grain/`FLIGHTS`, business key, duplicate policy, số hàng vs chuyến bay | T-001 | Có denominator cohort/record strategy, test grain không dedup tùy tiện | TODO |
+| T-003 | G2 | Kiểm chứng **đơn vị/sign/domain** cho `ARR_DELAY`, `DEP_DELAY`, `TAXI_OUT`, `TAXI_IN`, `AIR_TIME`, `ACTUAL_ELAPSED_TIME`, `CRS_ELAPSED_TIME`; review & khóa **KPI-01..KPI-08** và min-N/percentile/coverage | T-001,T-002 | Mọi CORE KPI có units & denominator được duyệt, percentile method/tolerance, min-N policy, synthetic fixture design và ADR review; thiếu evidence ⇒ BLOCKED G2 | TODO |
+| T-004 | G2 | Kiểm toán timestamps, 2024 time/2400/rollover và xác định trường nào an toàn dùng | G1 structural | Có danh sách safe/blocked; timestamp derived chỉ GO khi evidence, nếu không chính thức loại khỏi CORE và có tests bảo vệ | TODO |
+| T-005 | G2 | Xác minh weather source, units, timing, join và quyền sử dụng | T-001 | GO có evidence **hoặc** FP-DEC weather `CONDITIONAL_NO_GO`; không làm gate CORE thất bại | CONDITIONAL_PENDING |
+| T-006 | G3 | Thiết kế Spark version/environment/resource budget/fixtures, output schema và recovery | T-003,T-004 | Compatibility/resource/benchmark plan, schema & tests design đã review, chưa viết ingestion | TODO |
+| T-009 | G4 | Khởi tạo project Python/Spark, test runner, lint, CI skeleton, run manifest | T-006 | Có lệnh thực tế chạy tests khởi tạo và evidence | TODO |
+| T-007 | G4 | Viết ingestion read-only, explicit schema & synthetic tests | T-009 | Unit tests PASS, mismatch metadata fail-closed đúng chính sách, không ghi raw | TODO |
+| T-008 | G4 | Viết quality/disjoint row accounting/quarantine + synthetic tests | T-007 | Mọi raw record vào đúng 1 trạng thái, test domain+source-year+zero denominator, log đầy đủ | TODO |
+| T-010 | G5 | Smoke bounded trên một năm 2016 vào staging Parquet | T-008 | Row accounting, quality flags, run manifest, logs, benchmark & raw immutable | TODO |
+| T-011 | G5 | Triển khai/kiểm thử KPI nhỏ, reconcile độc lập & fault/rollback | T-010,T-003 | KPI-01..08 synthetic/representative smoke + sample parity, TS-001..006, TS-008, TS-009, TS-012, TS-013 áp dụng có evidence; không tuyên bố full-run | TODO |
+| T-012 | G6 | ETL full 2016–2024 theo năm, đặc biệt validate 2024 | T-010,T-011 | 9 year manifests, row count/quality reconcile, versioned Parquet, TS-004 PASS | TODO |
+| T-013 | G6 | CORE KPI-01..08 theo year/month/carrier/origin/dest/route + metadata | T-012 | All mandatory aggregates + metric sample coverage/min-N, TS-007/008/016 PASS | TODO |
+| T-014 | G6 | Biểu đồ, so sánh 2020 và trả lời RQ-01..05 | T-013 | Kết quả RQ-01..05 theo các RES slot bắt buộc; không gọi association là causation | TODO |
+| T-015 | G6 | Weather stratified RQ-06, tùy điều kiện | T-005,T-012 | Nếu GO: provenance+tests+RES; nếu không GO: ghi `CONDITIONAL_NO_GO`, không làm blocked G6 | CONDITIONAL_PENDING |
+| T-016 | G7 | Báo cáo, slide, hướng dẫn chạy/tái lập | T-014 | RQ-01..05 có evidence, limitations, tests, demo thực hoặc ghi rõ không khả dụng | TODO |
+| T-017 | G7 | Kiểm toán chéo docs/results/security/rollback | T-016 | Traceability đầy đủ, links, version, reproducibility verified, reviewer signoff | TODO |
+
+## Quy tắc nghiệm thu
+- G2 bao gồm việc chuẩn hóa **8 CORE KPI** (không phải 5); KPI-09 optional, KPI-10 weather conditional, KPI-11 không thể tính, KPI-12 bị chặn.
+- G2/G6 **không** phụ thuộc PASS T-005/T-015 nếu quyết định NO-GO đã lưu; `CONDITIONAL_PENDING` không đồng nghĩa đã quyết định NO-GO.
+- Các thực thi có thể thử độc lập trên branch khác nhưng không nghiệm thu gate cuối hoặc publish KPI khi dependency CORE chưa PASS.
+- Mỗi task ghi REQ/RQ/KPI/TS/RES liên quan, file được sửa, commands/exit code, output evidence, rollback path, commit, reviewer; dùng `docs/04-execution/TASK_TEMPLATE.md`.
+- Các task G4 code không được tự động chạy chỉ vì đã có tài liệu G3 draft; reviewer cần chốt G2/G3.
