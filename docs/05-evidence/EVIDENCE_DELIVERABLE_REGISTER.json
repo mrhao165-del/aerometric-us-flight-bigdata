@@ -2717,6 +2717,94 @@
       "bytes": 2349,
       "sha256": "0bdf2e72d1c2fcfd62269358210ad8cbd5d312b3a60bba94e861488694b499ec",
       "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "tools/qa/test_t007_spark_csv_reproduction.py",
+      "task_id": "T-007",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 7823,
+      "sha256": "fd6e2ba0474130f1b4526f3145a89b47118d80d734c006c5da39e0b840c081ea",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_EXIT_DELTA_PARSER_REPRODUCTION.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7541,
+      "sha256": "9e597694f87610075df1fe4ad54a6762d79a0cfecf72afa45a84dabc844af48e",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_EXIT_DELTA_CLASSIFICATION_DECISION.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7200,
+      "sha256": "ec02a7cdd2c939350999a21b8a509b584038f789fa4c48e11b0fea800582f5c1",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_EXIT_DELTA_RECORD_ACCOUNTING.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6973,
+      "sha256": "ca0d2e0ed53a8781420399a094a465b546b29ee4d29ad700402a80c1ef9f1464",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_EXIT_DELTA_MANIFEST_STATE_MACHINE.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5682,
+      "sha256": "c88cd8289d9208ad12ad997e459fcf5fc2aed3737fdc97b488a7dab99673d880",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_EXIT_DELTA_CHECKPOINT_RECOMMENDATION.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6846,
+      "sha256": "5bfbb89d057757511946997195c76362575594c85b92991bfdb388ef92e594cc",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5613,
+      "sha256": "903e0ad854504375c8448ce70f404d70d1234d93209370450cb54dfb7c2c7dd3",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_EXIT_DELTA_LOG_SPARK_POC.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 1396,
+      "sha256": "b2a09ec8c0e0d8be573fe9805273ae20dc5254004b119c12e23830427fc44f6d",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_EXIT_DELTA_LOG_CONSISTENCY.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "06f72ac06bc1147ebd1c2fc3630ddfc113d6e80c479d22ac26958a3c383ac94e",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_EXIT_DELTA_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2057,
+      "sha256": "868cc53789a2d6c36178c7284bbe063f9dcf0ff2aa51fe6ffda647546d24d9e0",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_EXIT_DELTA_LOG_T006_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2349,
+      "sha256": "0bdf2e72d1c2fcfd62269358210ad8cbd5d312b3a60bba94e861488694b499ec",
+      "authorization_ref": "Project Lead T007-DESIGN-EXIT-DELTA instruction (2026-10-17); recorded in docs/05-evidence/T007_EXIT_DELTA_FINAL_VERDICT.md"
     }
   ]
 }

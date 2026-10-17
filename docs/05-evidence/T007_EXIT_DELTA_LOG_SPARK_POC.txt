@@ -1,0 +1,31 @@
+================================================================================
+PYSPARK 4.0.1 CSV PARSER EMPIRICAL REPRODUCTION SUITE EXECUTION LOG
+================================================================================
+Task ID: T-007 (Raw CSV Ingestion Pipeline)
+Execution ID: T007-DESIGN-EXIT-DELTA
+Target Script: tools/qa/test_t007_spark_csv_reproduction.py
+Execution Timestamp: 2026-10-17T09:04:59Z
+Host Platform: Windows (Python 3.10.11 64-bit)
+
+================================================================================
+PYSPARK 4.0.1 CSV PARSER EMPIRICAL REPRODUCTION SUITE RESULTS
+================================================================================
+  python_version: 3.10.11
+  pyspark_version: 4.0.1
+  spark_version: 4.0.1
+  java_version: 21.0.12.1
+  corrupt_record_pruned_from_plan: True
+  direct_corrupt_query_rejected: True
+  total_cached_rows: 8
+  corrupt_count_typed: 4
+  short_row_captured: True
+  extra_tokens_captured: True
+  numeric_failure_captured_in_typed: True
+  unclosed_quote_captured: True
+  string_schema_preserves_row6_acceptance: True
+  string_schema_short_row_captured: True
+  string_schema_extra_tokens_captured: True
+================================================================================
+ALL EMPIRICAL REPRODUCTION ASSERTIONS PASSED.
+Exit Code: 0
+================================================================================
