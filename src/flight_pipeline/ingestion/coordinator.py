@@ -85,7 +85,7 @@ from flight_pipeline.utils.run_manifest import RowAccounting, RunManifest
 
 
 class PipelineState(str, Enum):
-    """Canonical lifecycle states for T-007 Ingestion Coordinator (including FIX-F05 recovery states)."""
+    """Canonical lifecycle states for T-007 Ingestion Coordinator (including FIX-F05 and BLOCKER-03 recovery states)."""
     RUN_STARTED = "RUN_STARTED"
     SOURCE_VERIFICATION = "SOURCE_VERIFICATION"
     INGESTION_IN_PROGRESS = "INGESTION_IN_PROGRESS"
@@ -94,6 +94,7 @@ class PipelineState(str, Enum):
     PUBLICATION_PENDING = "PUBLICATION_PENDING"
     PUBLISHED = "PUBLISHED"
     PUBLISHED_RECEIPT_PENDING_RECONCILIATION = "PUBLISHED_RECEIPT_PENDING_RECONCILIATION"
+    MANUAL_RECONCILIATION_REQUIRED = "MANUAL_RECONCILIATION_REQUIRED"
     ABORTED_PRESERVED_PREVIOUS = "ABORTED_PRESERVED_PREVIOUS"
     TERMINAL_FAILURE = "TERMINAL_FAILURE"
 
@@ -393,6 +394,89 @@ def write_dataframe_parquet_safe(
                 pass
 
 
+def verify_arrow_schema_against_curated(
+    arrow_sch: pa.Schema,
+    source_name: str = "<parquet>",
+) -> None:
+    """
+    Verify that a PyArrow schema from a Parquet file matches `get_curated_parquet_schema()` field-by-field:
+    1. Zero leaked technical or underscore-prefixed columns (`_corrupt_record`, `_record_status`, etc.).
+    2. Exact 34 canonical column names and physical order (`0..33` matching `CANONICAL_COLUMN_NAMES`).
+    3. Exact physical Arrow data type mapping for every field:
+       - `StringType()` -> `pa.types.is_string(t)` (`utf8`/`string`) or `pa.types.is_large_string(t)` (`large_utf8`/`large_string`).
+         Explicitly rejects `date32`, `date64`, `timestamp`, `int*`, `float*`, `binary`, etc. on string/temporal string columns.
+       - `DoubleType()` -> `pa.types.is_float64(t)` (`double` / `float64`).
+         Explicitly rejects `float32`, `int64`, `decimal`, `string`, etc.
+       - `LongType()` -> `pa.types.is_int64(t)` (`int64`).
+         Explicitly rejects `int32`, `int16`, `uint64`, `float64`, `string`, etc.
+    4. Exact nullability (`field.nullable == True`) for all 34 curated columns.
+
+    Raises RuntimeError with `FAILED_STAGING_CONTENT_INVALID` on any mismatch.
+    """
+    from pyspark.sql.types import DoubleType, LongType, StringType as SparkStringType
+
+    forbidden_tech_cols = {
+        CORRUPT_RECORD_COLUMN,
+        STATUS_COLUMN,
+        REASON_COLUMN,
+        ANOMALY_FLAGS_COLUMN,
+        SOURCE_YEAR_COLUMN,
+        SOURCE_FILE_COLUMN,
+        LINEAGE_ID_COLUMN,
+    }
+
+    col_names = list(arrow_sch.names)
+    leaked_tech = sorted(
+        set(c for c in col_names if c in forbidden_tech_cols or c.startswith("_"))
+    )
+    if leaked_tech:
+        raise RuntimeError(
+            f"FAILED_STAGING_CONTENT_INVALID: Technical columns {leaked_tech} leaked into curated Parquet {source_name}"
+        )
+
+    expected_curated_schema = get_curated_parquet_schema()
+    if col_names != list(CANONICAL_COLUMN_NAMES) or len(col_names) != CANONICAL_COLUMNS_COUNT:
+        raise RuntimeError(
+            f"FAILED_STAGING_CONTENT_INVALID: Curated Parquet {source_name} column mismatch: "
+            f"expected {CANONICAL_COLUMNS_COUNT} canonical columns in exact order, got {len(col_names)}: {col_names}"
+        )
+
+    for idx, (expected_field, actual_field) in enumerate(zip(expected_curated_schema.fields, arrow_sch)):
+        if actual_field.name != expected_field.name:
+            raise RuntimeError(
+                f"FAILED_STAGING_CONTENT_INVALID: Curated Parquet {source_name} field #{idx} name mismatch: "
+                f"expected '{expected_field.name}', got '{actual_field.name}'"
+            )
+
+        actual_type = actual_field.type
+        expected_spark_type = expected_field.dataType
+
+        if isinstance(expected_spark_type, SparkStringType):
+            type_ok = pa.types.is_string(actual_type) or pa.types.is_large_string(actual_type)
+            expected_type_desc = "StringType (Arrow string/utf8 or large_string/large_utf8)"
+        elif isinstance(expected_spark_type, DoubleType):
+            type_ok = pa.types.is_float64(actual_type)
+            expected_type_desc = "DoubleType (Arrow float64/double)"
+        elif isinstance(expected_spark_type, LongType):
+            type_ok = pa.types.is_int64(actual_type)
+            expected_type_desc = "LongType (Arrow int64)"
+        else:
+            type_ok = False
+            expected_type_desc = str(expected_spark_type)
+
+        if not type_ok:
+            raise RuntimeError(
+                f"FAILED_STAGING_CONTENT_INVALID: Curated Parquet {source_name} field #{idx} '{expected_field.name}' "
+                f"physical type mismatch: expected {expected_type_desc}, got Arrow type '{actual_type}'"
+            )
+
+        if bool(actual_field.nullable) != bool(expected_field.nullable):
+            raise RuntimeError(
+                f"FAILED_STAGING_CONTENT_INVALID: Curated Parquet {source_name} field #{idx} '{expected_field.name}' "
+                f"nullability mismatch: expected nullable={expected_field.nullable}, got nullable={actual_field.nullable}"
+            )
+
+
 def verify_parquet_directory_integrity(
     parquet_dir: Path,
     expected_row_count: Optional[int] = None,
@@ -404,7 +488,8 @@ def verify_parquet_directory_integrity(
     - Zero leftover `.tmp` or `_task_attempts` files
     - Valid `PAR1` header/footer magic bytes (`is_valid_parquet_file`)
     - Exact readback row count matching `driver_written_rows` and `expected_row_count`
-    - Exact 34-column canonical curated schema and types when `verify_curated_schema=True`.
+    - Exact 34-column canonical curated schema, physical order, Arrow data types, and nullability
+      when `verify_curated_schema=True` (BLOCKER-02).
 
     Raises RuntimeError with `FAILED_STAGING_CONTENT_INVALID` / `PARQUET_WRITE_INTEGRITY_ERROR` on failure.
     """
@@ -428,16 +513,6 @@ def verify_parquet_directory_integrity(
         raise RuntimeError(f"FAILED_STAGING_CONTENT_INVALID: No .parquet files found in {parquet_dir}")
 
     readback_rows = 0
-    expected_curated_schema = get_curated_parquet_schema() if verify_curated_schema else None
-    forbidden_tech_cols = {
-        CORRUPT_RECORD_COLUMN,
-        STATUS_COLUMN,
-        REASON_COLUMN,
-        ANOMALY_FLAGS_COLUMN,
-        SOURCE_YEAR_COLUMN,
-        SOURCE_FILE_COLUMN,
-        LINEAGE_ID_COLUMN,
-    }
 
     for pf in parquet_files:
         if not is_valid_parquet_file(pf):
@@ -453,19 +528,8 @@ def verify_parquet_directory_integrity(
                 f"FAILED_STAGING_CONTENT_INVALID: Unable to read Parquet metadata from {pf.name}: {exc}"
             ) from exc
 
-        col_names = list(arrow_sch.names)
-        leaked_tech = forbidden_tech_cols.intersection(col_names)
-        if verify_curated_schema and leaked_tech:
-            raise RuntimeError(
-                f"FAILED_STAGING_CONTENT_INVALID: Technical columns {sorted(leaked_tech)} leaked into curated Parquet {pf.name}"
-            )
-
-        if verify_curated_schema and expected_curated_schema is not None:
-            if col_names != list(CANONICAL_COLUMN_NAMES) or len(col_names) != CANONICAL_COLUMNS_COUNT:
-                raise RuntimeError(
-                    f"FAILED_STAGING_CONTENT_INVALID: Curated Parquet {pf.name} column mismatch: "
-                    f"expected {CANONICAL_COLUMNS_COUNT} canonical columns, got {len(col_names)}: {col_names}"
-                )
+        if verify_curated_schema:
+            verify_arrow_schema_against_curated(arrow_sch, source_name=pf.name)
 
     if driver_written_rows is not None and readback_rows != driver_written_rows:
         raise RuntimeError(
@@ -740,6 +804,7 @@ class IngestionCoordinator:
 
         lock = SingleWriterLock(self.lock_dir, run_id=run_id)
         pointer_switched = False
+        manifest_written = False
         is_duplicate_run_id = False
         pub_result: Optional[PublicationResult] = None
         batch_res: Optional[BatchVerificationResult] = None
@@ -791,7 +856,7 @@ class IngestionCoordinator:
             combined_raw_df: Optional[DataFrame] = None
             for yr in target_years:
                 src_path = self.source_validator.get_source_path(yr)
-                # Independent physical & logical record scan + header validation (FIX-F01 / FIX-F02)
+                # Independent physical & logical record scan + header validation (FIX-F01 / FIX-F02 / BLOCKER-01)
                 scan_res = scan_csv_logical_records(
                     src_path,
                     options=self.csv_options,
@@ -799,7 +864,13 @@ class IngestionCoordinator:
                 )
                 scan_results_by_year[yr] = scan_res
 
-                yr_df = self.reader.read_raw(src_path, source_year=yr, attach_lineage=True)
+                yr_df = self.reader.read_raw(
+                    src_path,
+                    source_year=yr,
+                    attach_lineage=True,
+                    scan_result=scan_res,
+                    enforce_record_boundaries=True,
+                )
                 if combined_raw_df is None:
                     combined_raw_df = yr_df
                 else:
@@ -810,7 +881,7 @@ class IngestionCoordinator:
 
             classified_df = IngestionRecordClassifier.classify(combined_raw_df)
 
-            # Reconcile independent source counts against Spark classifier counts per year & per run (FIX-F02)
+            # Reconcile independent source counts against Spark classifier counts per year & per run (FIX-F02 / BLOCKER-01)
             accounting, per_year_accounting = compute_per_year_accounting(
                 classified_df=classified_df,
                 scan_results_by_year=scan_results_by_year,
@@ -831,8 +902,10 @@ class IngestionCoordinator:
                 accounting=accounting,
             )
             manifest.configuration["forensic_persistence"] = forensic_res.to_dict()
+            pre_publish_pointer = self.publisher.get_current_pointer()
+            manifest.configuration["previous_pointer"] = pre_publish_pointer
 
-            # Collect anomaly breakdown for forensic metadata
+            # Collect anomaly breakdown and persist authoritative pre-publication metadata sidecar (BLOCKER-03)
             anomaly_rows = (
                 classified_df
                 .filter(F.col(STATUS_COLUMN) != RecordStatus.ACCEPTED.value)
@@ -848,6 +921,11 @@ class IngestionCoordinator:
                 run_meta_dir / "anomaly_summary.json",
                 {
                     "run_id": run_id,
+                    "task_id": self.task_id,
+                    "start_time": manifest.start_time,
+                    "runtime_versions": manifest.runtime_versions,
+                    "configuration": manifest.configuration,
+                    "previous_pointer": pre_publish_pointer,
                     "row_accounting": accounting.to_dict(),
                     "per_year_accounting": {
                         str(yr): acc_yr.to_dict() for yr, acc_yr in sorted(per_year_accounting.items())
@@ -900,7 +978,7 @@ class IngestionCoordinator:
                     f"{pub_result.status}: {pub_result.error_message}"
                 )
 
-            # CRITICAL COMMIT POINT REACHED (FIX-F05):
+            # CRITICAL COMMIT POINT REACHED (FIX-F05 / BLOCKER-03):
             # Pointer latest_run_id.txt now points to run_id and immutable Parquet is live!
             pointer_switched = True
             manifest.configuration["previous_pointer"] = pub_result.previous_pointer
@@ -914,12 +992,19 @@ class IngestionCoordinator:
                     sha256_hash=compute_file_sha256(pf),
                 )
 
-            # Close and persist RunManifest atomically in metadata directory (outside published_dir)
+            # Close RunManifest in-memory
             manifest.close(status="PUBLISHED")
+
+            # Optional fault injection hook right after pointer switch, BEFORE manifest write (BLOCKER-03 test hook)
+            if fault_injector is not None:
+                fault_injector("POST_POINTER_PRE_MANIFEST_WRITE")
+
+            # Persist RunManifest atomically in metadata directory (outside published_dir)
             manifest_bytes, manifest_sha256 = write_json_atomic_with_retry(
                 manifest_path,
                 manifest.to_dict(),
             )
+            manifest_written = True
 
             # Optional fault injection hook right before/during sidecar receipt persistence (FIX-F05 test hook)
             if fault_injector is not None:
@@ -971,19 +1056,23 @@ class IngestionCoordinator:
         except Exception as exc:
             err_msg = str(exc)
 
-            # Check if THIS run invocation already switched the pointer (FIX-F05)
+            # Check if THIS run invocation already switched the pointer (FIX-F05 / BLOCKER-03)
             if pointer_switched:
                 # POST-POINTER-SWITCH FAILURE:
                 # NEVER overwrite manifest.status to FAILED when latest_run_id.txt points to run_id!
+                # Only update manifest_path to PUBLISHED_RECEIPT_PENDING_RECONCILIATION if manifest_path
+                # was already written; if the initial manifest write itself failed (Case B), leave
+                # manifest_path absent on disk so reconcile_published_run reconstructs it from sidecars.
                 state_history.append(PipelineState.PUBLISHED_RECEIPT_PENDING_RECONCILIATION)
-                try:
-                    manifest.close(
-                        status="PUBLISHED_RECEIPT_PENDING_RECONCILIATION",
-                        error=f"Published pointer is live for '{run_id}', but post-pointer sidecar failed: {err_msg}",
-                    )
-                    write_json_atomic_with_retry(manifest_path, manifest.to_dict())
-                except Exception:
-                    pass
+                if manifest_written and manifest_path.exists():
+                    try:
+                        manifest.close(
+                            status="PUBLISHED_RECEIPT_PENDING_RECONCILIATION",
+                            error=f"Published pointer is live for '{run_id}', but post-pointer sidecar failed: {err_msg}",
+                        )
+                        write_json_atomic_with_retry(manifest_path, manifest.to_dict())
+                    except Exception:
+                        pass
 
                 return PipelineRunOutcome(
                     success=False,
@@ -1038,15 +1127,43 @@ class IngestionCoordinator:
                 except Exception:
                     pass
 
-    def reconcile_published_run(self, run_id: str) -> PipelineRunOutcome:
+    def reconcile_published_run(
+        self,
+        run_id: str,
+        fault_injector: Optional[Callable[[str], None]] = None,
+    ) -> PipelineRunOutcome:
         """
         Repair/complete `run_manifest.json` (`status="PUBLISHED"`) and `execution_receipt.json` for a run
         whose pointer switch in `latest_run_id.txt` succeeded, without modifying any file inside
-        the immutable published Parquet directory `data/curated/runs/<run_id>` (FIX-F05).
+        the immutable published Parquet directory `data/curated/runs/<run_id>` (FIX-F05 / BLOCKER-03).
+
+        Handles:
+        - Case A: `run_manifest.json` exists (`PUBLISHED_RECEIPT_PENDING_RECONCILIATION` or `PUBLISHED`),
+          and `execution_receipt.json` is missing or needs reconciliation.
+        - Case B: `latest_run_id.txt == run_id` and `data/curated/runs/<run_id>` is live, but
+          `run_manifest.json` is missing because the initial manifest write failed after pointer switch.
+          Reconstructs `run_manifest.json` strictly from verified authoritative sidecars
+          (`source_verification.json`, `anomaly_summary.json`, `forensic_manifest.json`, and
+          `data/curated/runs/<run_id>/*.parquet`).
+        - Fail-Closed Guard: If `run_manifest.json` is corrupted on disk, or if any required authoritative
+          sidecar (`source_verification.json`, `anomaly_summary.json`, `forensic_manifest.json`, or
+          forensic/published Parquet files) is missing, corrupted, or fails DC-11 / schema verification,
+          returns `PipelineState.MANUAL_RECONCILIATION_REQUIRED` without fabricating metadata or touching
+          the live pointer or published Parquet files.
         """
         validate_run_id(run_id, self.staging_root)
         lock = SingleWriterLock(self.lock_dir, run_id=f"reconcile_{run_id}")
         state_history = [PipelineState.PUBLISHED_RECEIPT_PENDING_RECONCILIATION]
+
+        def fail_manual_reconciliation(reason: str) -> PipelineRunOutcome:
+            state_history.append(PipelineState.MANUAL_RECONCILIATION_REQUIRED)
+            return PipelineRunOutcome(
+                success=False,
+                run_id=run_id,
+                final_state=PipelineState.MANUAL_RECONCILIATION_REQUIRED,
+                state_history=state_history,
+                error_message=f"MANUAL_RECONCILIATION_REQUIRED: {reason}",
+            )
 
         try:
             lock.acquire()
@@ -1066,38 +1183,237 @@ class IngestionCoordinator:
             run_meta_dir = self.metadata_root / run_id
             manifest_path = run_meta_dir / "run_manifest.json"
             receipt_path = run_meta_dir / "execution_receipt.json"
+            source_ver_path = run_meta_dir / "source_verification.json"
             anomaly_path = run_meta_dir / "anomaly_summary.json"
+            forensic_manifest_path = self.quarantine_root / run_id / "forensic_manifest.json"
 
-            if not manifest_path.exists():
-                raise RuntimeError(f"Cannot reconcile run '{run_id}': manifest file missing at {manifest_path}")
+            # -----------------------------------------------------------------
+            # 1. VERIFY AUTHORITATIVE SIDECARS (source_verification, anomaly_summary, forensic_manifest)
+            # -----------------------------------------------------------------
+            for label, required_path in [
+                ("source_verification.json", source_ver_path),
+                ("anomaly_summary.json", anomaly_path),
+                ("forensic_manifest.json", forensic_manifest_path),
+            ]:
+                if not required_path.exists() or not required_path.is_file():
+                    return fail_manual_reconciliation(
+                        f"Required authoritative sidecar '{label}' is missing at {required_path}"
+                    )
 
-            manifest_data = json.loads(manifest_path.read_text(encoding="utf-8"))
-            previous_ptr = manifest_data.get("configuration", {}).get("previous_pointer")
-            acc_dict = manifest_data.get("row_accounting")
-            if not acc_dict and anomaly_path.exists():
+            try:
+                source_ver_data = json.loads(source_ver_path.read_text(encoding="utf-8"))
                 anom_data = json.loads(anomaly_path.read_text(encoding="utf-8"))
-                acc_dict = anom_data.get("row_accounting")
-
-            if not acc_dict:
-                raise RuntimeError(f"Cannot reconcile run '{run_id}': row_accounting missing from metadata")
-
-            accounting = RowAccounting(
-                raw_row_count=int(acc_dict["raw_row_count"]),
-                accepted_row_count=int(acc_dict["accepted_row_count"]),
-                quarantined_row_count=int(acc_dict["quarantined_row_count"]),
-                rejected_row_count=int(acc_dict["rejected_row_count"]),
-            )
-            if not accounting.is_balanced():
-                raise AccountingUnverifiedError(
-                    f"ACCOUNTING_UNVERIFIED: Stored accounting for '{run_id}' is unbalanced: {acc_dict}"
+                forensic_data = json.loads(forensic_manifest_path.read_text(encoding="utf-8"))
+            except Exception as exc:
+                return fail_manual_reconciliation(
+                    f"Failed to parse required authoritative sidecar JSON for '{run_id}': {exc}"
                 )
 
-            # Verify immutable published Parquet directory without modifying any files inside it
-            verify_parquet_directory_integrity(
-                parquet_dir=published_dir,
-                expected_row_count=accounting.accepted_row_count,
-                verify_curated_schema=True,
-            )
+            if (
+                not isinstance(source_ver_data, dict)
+                or not isinstance(anom_data, dict)
+                or not isinstance(forensic_data, dict)
+            ):
+                return fail_manual_reconciliation(
+                    f"Authoritative sidecar JSON root is not an object for '{run_id}'"
+                )
+
+            if anom_data.get("run_id") != run_id or forensic_data.get("run_id") != run_id:
+                return fail_manual_reconciliation(
+                    f"Sidecar run_id mismatch for '{run_id}': anomaly_summary={anom_data.get('run_id')}, "
+                    f"forensic_manifest={forensic_data.get('run_id')}"
+                )
+
+            # Validate source_verification.json inputs
+            src_results = source_ver_data.get("results")
+            if not isinstance(src_results, dict) or not src_results:
+                return fail_manual_reconciliation(
+                    f"source_verification.json missing valid 'results' dictionary for '{run_id}'"
+                )
+            reconstructed_inputs: List[Dict[str, Any]] = []
+            try:
+                sorted_yr_keys = sorted(src_results.keys(), key=lambda k: int(k))
+            except Exception as exc:
+                return fail_manual_reconciliation(
+                    f"source_verification.json contains non-integer year keys for '{run_id}': {exc}"
+                )
+            for yr_key in sorted_yr_keys:
+                entry = src_results[yr_key]
+                if not isinstance(entry, dict):
+                    return fail_manual_reconciliation(
+                        f"source_verification.json entry for year {yr_key} is not an object"
+                    )
+                src_p = entry.get("path")
+                src_b = entry.get("actual_byte_size")
+                src_h = entry.get("computed_sha256")
+                if not src_p or not isinstance(src_b, int) or src_b < 0 or not isinstance(src_h, str) or len(src_h) != 64:
+                    return fail_manual_reconciliation(
+                        f"source_verification.json entry for year {yr_key} has incomplete path/size/sha256"
+                    )
+                reconstructed_inputs.append({
+                    "path": src_p,
+                    "bytes": src_b,
+                    "sha256": src_h,
+                })
+
+            # Validate anomaly_summary.json DC-11 accounting & scan results
+            acc_dict = anom_data.get("row_accounting")
+            per_yr_dict = anom_data.get("per_year_accounting")
+            scan_dict = anom_data.get("source_scan_results")
+            if (
+                not isinstance(acc_dict, dict)
+                or not isinstance(per_yr_dict, dict)
+                or not per_yr_dict
+                or not isinstance(scan_dict, dict)
+                or not scan_dict
+            ):
+                return fail_manual_reconciliation(
+                    f"anomaly_summary.json missing row_accounting, per_year_accounting, or source_scan_results for '{run_id}'"
+                )
+
+            try:
+                accounting = RowAccounting(
+                    raw_row_count=int(acc_dict["raw_row_count"]),
+                    accepted_row_count=int(acc_dict["accepted_row_count"]),
+                    quarantined_row_count=int(acc_dict["quarantined_row_count"]),
+                    rejected_row_count=int(acc_dict["rejected_row_count"]),
+                )
+            except Exception as exc:
+                return fail_manual_reconciliation(
+                    f"Invalid row_accounting structure in anomaly_summary.json for '{run_id}': {exc}"
+                )
+
+            if not accounting.is_balanced():
+                return fail_manual_reconciliation(
+                    f"ACCOUNTING_UNVERIFIED: Stored row_accounting in anomaly_summary.json is unbalanced: {acc_dict}"
+                )
+
+            # Verify scan results sum and verifiability
+            scan_raw_sum = 0
+            for yr_key, sr_dict in scan_dict.items():
+                if not isinstance(sr_dict, dict) or sr_dict.get("is_verifiable") is not True:
+                    return fail_manual_reconciliation(
+                        f"ACCOUNTING_UNVERIFIED: source_scan_results[{yr_key}] is missing or not verifiable"
+                    )
+                scan_raw_sum += int(sr_dict.get("logical_data_records", -1))
+            if scan_raw_sum != accounting.raw_row_count:
+                return fail_manual_reconciliation(
+                    f"ACCOUNTING_UNVERIFIED: Sum of source_scan_results.logical_data_records ({scan_raw_sum}) "
+                    f"!= row_accounting.raw_row_count ({accounting.raw_row_count})"
+                )
+
+            # Verify forensic_manifest.json and forensic Parquet directories
+            if (
+                forensic_data.get("verified") is not True
+                or int(forensic_data.get("expected_quarantined_count", -1)) != accounting.quarantined_row_count
+                or int(forensic_data.get("persisted_quarantined_count", -1)) != accounting.quarantined_row_count
+                or int(forensic_data.get("expected_rejected_count", -1)) != accounting.rejected_row_count
+                or int(forensic_data.get("persisted_rejected_count", -1)) != accounting.rejected_row_count
+            ):
+                return fail_manual_reconciliation(
+                    f"forensic_manifest.json counts/verification mismatch against DC-11 accounting for '{run_id}'"
+                )
+
+            try:
+                verify_parquet_directory_integrity(
+                    parquet_dir=self.quarantine_root / run_id / "quarantined_parquet",
+                    expected_row_count=accounting.quarantined_row_count,
+                    verify_curated_schema=False,
+                )
+                verify_parquet_directory_integrity(
+                    parquet_dir=self.quarantine_root / run_id / "rejected_parquet",
+                    expected_row_count=accounting.rejected_row_count,
+                    verify_curated_schema=False,
+                )
+            except Exception as exc:
+                return fail_manual_reconciliation(
+                    f"Forensic Parquet integrity verification failed for '{run_id}': {exc}"
+                )
+
+            # -----------------------------------------------------------------
+            # 2. INSPECT OR RECONSTRUCT run_manifest.json (Case A vs Case B)
+            # -----------------------------------------------------------------
+            manifest_data: Dict[str, Any]
+            if manifest_path.exists():
+                # Case A: manifest_path exists on disk; validate it strictly (reject corrupted manifest)
+                try:
+                    loaded_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+                except Exception as exc:
+                    return fail_manual_reconciliation(
+                        f"Corrupted run_manifest.json at {manifest_path} (invalid JSON): {exc}"
+                    )
+                if not isinstance(loaded_manifest, dict):
+                    return fail_manual_reconciliation(
+                        f"Corrupted run_manifest.json at {manifest_path}: root is not a JSON object"
+                    )
+                if loaded_manifest.get("run_id") != run_id:
+                    return fail_manual_reconciliation(
+                        f"Corrupted run_manifest.json at {manifest_path}: run_id='{loaded_manifest.get('run_id')}' != '{run_id}'"
+                    )
+                if loaded_manifest.get("status") not in ("PUBLISHED", "PUBLISHED_RECEIPT_PENDING_RECONCILIATION"):
+                    return fail_manual_reconciliation(
+                        f"Corrupted or invalid run_manifest.json status '{loaded_manifest.get('status')}' for live run '{run_id}'"
+                    )
+                if (
+                    not isinstance(loaded_manifest.get("inputs"), list)
+                    or not loaded_manifest.get("inputs")
+                    or not isinstance(loaded_manifest.get("configuration"), dict)
+                    or loaded_manifest.get("row_accounting") != accounting.to_dict()
+                ):
+                    return fail_manual_reconciliation(
+                        f"Corrupted run_manifest.json at {manifest_path}: inputs, configuration, or row_accounting mismatch against authoritative sidecars"
+                    )
+                manifest_data = loaded_manifest
+            else:
+                # Case B: manifest_path is missing because initial post-pointer write failed.
+                # Reconstruct manifest_data strictly from verified authoritative sidecars.
+                anom_cfg = anom_data.get("configuration")
+                if isinstance(anom_cfg, dict):
+                    reconstructed_cfg = dict(anom_cfg)
+                else:
+                    reconstructed_cfg = {
+                        "base_data_dir": str(self.base_data_dir),
+                        "years": [int(y) for y in sorted_yr_keys],
+                        "upstream_identity_status": source_ver_data.get(
+                            "upstream_identity_status", UPSTREAM_IDENTITY_STATUS_UNVERIFIED
+                        ),
+                        "weather_status": "CONDITIONAL_NO_GO",
+                        "core_units_status": "G2-EXC-001_PROVISIONAL",
+                        "per_year_accounting": per_yr_dict,
+                        "source_scan_results": scan_dict,
+                        "forensic_persistence": forensic_data,
+                        "previous_pointer": anom_data.get("previous_pointer"),
+                    }
+
+                skeleton = RunManifest(
+                    run_id=run_id,
+                    task_id=str(anom_data.get("task_id", self.task_id)),
+                    start_time=str(anom_data.get("start_time", datetime.now(timezone.utc).isoformat())),
+                    status="PUBLISHED",
+                    runtime_versions=(
+                        anom_data["runtime_versions"]
+                        if isinstance(anom_data.get("runtime_versions"), dict)
+                        else RunManifest._collect_runtime_versions()
+                    ),
+                    configuration=reconstructed_cfg,
+                    inputs=reconstructed_inputs,
+                    row_accounting=accounting,
+                )
+                manifest_data = skeleton.to_dict()
+
+            # -----------------------------------------------------------------
+            # 3. VERIFY IMMUTABLE PUBLISHED PARQUET DIRECTORY (INCLUDING EXACT TYPES)
+            # -----------------------------------------------------------------
+            try:
+                verify_parquet_directory_integrity(
+                    parquet_dir=published_dir,
+                    expected_row_count=accounting.accepted_row_count,
+                    verify_curated_schema=True,
+                )
+            except Exception as exc:
+                return fail_manual_reconciliation(
+                    f"Published Parquet directory verification failed for '{run_id}': {exc}"
+                )
 
             # Reconstruct outputs list from immutable published Parquet files
             outputs_list = []
@@ -1108,42 +1424,76 @@ class IngestionCoordinator:
                     "sha256": compute_file_sha256(pf),
                 })
 
+            already_finalized = (
+                manifest_path.exists()
+                and manifest_data.get("status") == "PUBLISHED"
+                and manifest_data.get("error_message") is None
+                and manifest_data.get("outputs") == outputs_list
+                and bool(manifest_data.get("completed_at"))
+            )
+
             manifest_data["outputs"] = outputs_list
             manifest_data["row_accounting"] = accounting.to_dict()
             manifest_data["status"] = "PUBLISHED"
             manifest_data["error_message"] = None
-            manifest_data["completed_at"] = datetime.now(timezone.utc).isoformat()
-
-            manifest_bytes, manifest_sha256 = write_json_atomic_with_retry(manifest_path, manifest_data)
+            if not already_finalized:
+                manifest_data["completed_at"] = datetime.now(timezone.utc).isoformat()
 
             cfg = manifest_data.get("configuration", {})
-            years_cfg = cfg.get("years", [])
+            previous_ptr = cfg.get("previous_pointer", anom_data.get("previous_pointer"))
+            years_cfg = cfg.get("years", [int(y) for y in sorted_yr_keys])
             or05_warn = (
                 "OR-05: OPEN_QUALITY_DEFECT — Year 2024 has partial coverage (335/366 days; March 2024 missing)."
                 if 2024 in years_cfg
                 else None
             )
-            forensic_info = cfg.get("forensic_persistence", {})
-            per_yr_info = cfg.get("per_year_accounting", {})
+            forensic_info = cfg.get("forensic_persistence", forensic_data)
+            per_yr_info = cfg.get("per_year_accounting", per_yr_dict)
 
-            receipt = ExecutionReceipt(
-                run_id=run_id,
-                task_id=manifest_data.get("task_id", self.task_id),
-                pipeline_state=PipelineState.PUBLISHED.value,
-                publication_status="PUBLISHED",
-                published_path=str(published_dir),
-                pointer_value=run_id,
-                previous_pointer=previous_ptr,
-                manifest_path=str(manifest_path),
-                manifest_bytes=manifest_bytes,
-                manifest_sha256=manifest_sha256,
-                row_accounting=accounting.to_dict(),
-                per_year_accounting=per_yr_info,
-                forensic_quarantine_dir=forensic_info.get("quarantine_dir"),
-                upstream_identity_status=UPSTREAM_IDENTITY_STATUS_UNVERIFIED,
-                or05_coverage_warning=or05_warn,
-            )
-            write_json_atomic_with_retry(receipt_path, receipt.to_dict())
+            # -----------------------------------------------------------------
+            # 4. ATOMICALLY WRITE MANIFEST & EXECUTION RECEIPT (WITH RETRY SAFETY)
+            # -----------------------------------------------------------------
+            try:
+                if fault_injector is not None:
+                    fault_injector("RECONCILE_PRE_MANIFEST_WRITE")
+
+                manifest_bytes, manifest_sha256 = write_json_atomic_with_retry(manifest_path, manifest_data)
+
+                if fault_injector is not None:
+                    fault_injector("RECONCILE_PRE_RECEIPT_WRITE")
+
+                receipt = ExecutionReceipt(
+                    run_id=run_id,
+                    task_id=manifest_data.get("task_id", self.task_id),
+                    pipeline_state=PipelineState.PUBLISHED.value,
+                    publication_status="PUBLISHED",
+                    published_path=str(published_dir),
+                    pointer_value=run_id,
+                    previous_pointer=previous_ptr,
+                    manifest_path=str(manifest_path),
+                    manifest_bytes=manifest_bytes,
+                    manifest_sha256=manifest_sha256,
+                    row_accounting=accounting.to_dict(),
+                    per_year_accounting=per_yr_info,
+                    forensic_quarantine_dir=forensic_info.get("quarantine_dir"),
+                    upstream_identity_status=UPSTREAM_IDENTITY_STATUS_UNVERIFIED,
+                    or05_coverage_warning=or05_warn,
+                )
+                write_json_atomic_with_retry(receipt_path, receipt.to_dict())
+            except Exception as write_exc:
+                return PipelineRunOutcome(
+                    success=False,
+                    run_id=run_id,
+                    final_state=PipelineState.PUBLISHED_RECEIPT_PENDING_RECONCILIATION,
+                    state_history=state_history,
+                    row_accounting=accounting,
+                    manifest_path=manifest_path if manifest_path.exists() else None,
+                    receipt_path=receipt_path if receipt_path.exists() else None,
+                    error_message=(
+                        f"PUBLISHED_RECEIPT_PENDING_RECONCILIATION: Sidecar write failed during reconciliation "
+                        f"for '{run_id}' ({write_exc}). Retry reconcile_published_run('{run_id}')."
+                    ),
+                )
 
             state_history.append(PipelineState.PUBLISHED)
             pub_res = PublicationResult(

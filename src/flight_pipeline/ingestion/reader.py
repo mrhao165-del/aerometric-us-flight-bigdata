@@ -286,18 +286,33 @@ def scan_csv_logical_records(
     source_year: Optional[int] = None,
 ) -> SourceScanResult:
     """
-    Independently scan a raw CSV file to count physical lines and logical CSV records (FIX-F02).
-    
-    Fast-path & RFC-4180 state machine:
+    Independently scan a raw CSV file to count physical lines and RFC-4180 logical CSV records (FIX-F02 / BLOCKER-01).
+
+    Strictly distinguishes three concepts:
+    1. `physical_data_lines`: Raw newline-delimited lines after the physical header.
+    2. `logical_data_records`: RFC-4180 CSV logical records (where quoted fields with embedded newlines
+       belong to a single logical record, matching Python `csv.reader`).
+    3. Spark parser output: Evaluated independently downstream in `compute_row_accounting` / `compute_per_year_accounting`.
+
+    Fast-path & Unified RFC-4180 State Machine:
     - Validates the physical 34-column header first.
     - Streams the file in 1 MiB binary chunks (O(1) memory).
-    - If a chunk contains no quote characters (`"`) and no blank lines (`\\n\\n` / `\\r\\n\\r\\n`),
-      counts newlines at C speed (`chunk.count(b"\\n")`), allowing 15 GB of clean CSVs to scan in ~3s.
-    - Whenever quotes or potential blank lines are present, runs a character/byte state machine to
-      accurately distinguish:
-        * Physical lines vs logical CSV records (embedded newlines inside quotes)
-        * Unclosed quotes (per-line in multi_line=False mode, or at EOF in multi_line=True mode)
-        * Blank lines (which Spark Univocity silently skips, triggering ACCOUNTING_UNVERIFIED).
+    - When not inside an open quote and a line-aligned chunk contains no quote characters (`"`) and no
+      blank lines (`\\n\\n` / `\\r\\n\\r\\n`), counts newlines at C speed (`chunk.count(b"\\n")`), allowing
+      15 GB of clean single-line CSVs to scan in ~3s.
+    - Whenever quotes or potential blank lines are present, runs a byte-level RFC-4180 state machine that
+      simultaneously tracks:
+        * Physical data lines (`physical_data_lines`) and single-line quote balance (`unclosed_quote_count`)
+        * RFC-4180 logical CSV records (`logical_data_records`) and embedded newlines (`embedded_newline_count`)
+        * Unclosed quotes reaching EOF (`has_unclosed_quote_eof`)
+        * Blank lines (`blank_lines_count`), which Spark Univocity silently skips.
+    - Verifiability Rules (`is_verifiable` / `ACCOUNTING_UNVERIFIED`):
+        * `blank_lines_count > 0` -> `is_verifiable = False` (both `multi_line=False` and `multi_line=True`).
+        * `not opts.multi_line` and (`embedded_newline_count > 0` or `physical_data_lines != logical_data_records`)
+          -> `is_verifiable = False` (`ACCOUNTING_UNVERIFIED`: quoted multiline record would be split across
+          physical lines in single-line `multiLine=False` mode).
+        * `opts.multi_line` and `has_unclosed_quote_eof` -> `is_verifiable = False` (`ACCOUNTING_UNVERIFIED`:
+          unclosed quote reaching EOF corrupts multiline record boundaries).
     """
     opts = options or CsvReadOptions()
     path = Path(source_path)
@@ -323,82 +338,84 @@ def scan_csv_logical_records(
             raise HeaderValidationError(f"Empty CSV file: {path}")
         physical_lines_total = 1
 
-        if not opts.multi_line:
-            # Single-line mode: each physical line after header is one record candidate.
-            carry = b""
-            while True:
-                chunk = f.read(1024 * 1024)
-                if not chunk:
-                    break
-                buf = carry + chunk
-                last_nl = buf.rfind(b"\n")
-                if last_nl == -1:
-                    carry = buf
-                    continue
-                complete_part = buf[: last_nl + 1]
-                carry = buf[last_nl + 1 :]
+        in_quotes = False
+        i_prev_escape = False
+        pending_quote_close = False
+        pending_embedded_nl = False
+        line_has_non_ws = False
+        record_has_content = False
+        line_saw_quote = False
+        current_line_buf = bytearray()
 
-                # Fast check: if no quotes and no blank lines in complete_part
-                if (
-                    quote_byte not in complete_part
-                    and b"\n\n" not in complete_part
-                    and b"\n\r\n" not in complete_part
-                    and not complete_part.startswith((b"\n", b"\r\n"))
-                ):
-                    n_lines = complete_part.count(b"\n")
-                    physical_lines_total += n_lines
-                    physical_data_lines += n_lines
-                    logical_data_records += n_lines
-                else:
-                    for raw_line in complete_part.splitlines(keepends=False):
-                        physical_lines_total += 1
-                        physical_data_lines += 1
-                        logical_data_records += 1
-                        if not raw_line.strip():
-                            blank_lines_count += 1
-                            continue
-                        if quote_byte in raw_line:
-                            if not _is_quote_balanced_line(raw_line, quote_byte, escape_byte):
-                                unclosed_quote_count += 1
+        while True:
+            chunk = f.read(1024 * 1024)
+            if not chunk:
+                if pending_quote_close:
+                    in_quotes = False
+                    pending_quote_close = False
+                break
 
-            if carry:
-                physical_lines_total += 1
-                physical_data_lines += 1
-                logical_data_records += 1
-                if not carry.strip():
-                    blank_lines_count += 1
-                elif quote_byte in carry and not _is_quote_balanced_line(carry, quote_byte, escape_byte):
-                    unclosed_quote_count += 1
-        else:
-            # Multi-line mode (RFC-4180 quoted fields may span physical lines)
-            in_quotes = False
-            i_prev_escape = False
-            pending_quote_close = False
-            line_has_non_ws = False
-            record_has_content = False
+            # C-speed fast-path when not in an open quote/line and chunk has no quotes or blank lines
+            if (
+                not in_quotes
+                and not pending_quote_close
+                and not pending_embedded_nl
+                and not current_line_buf
+                and quote_byte not in chunk
+                and b"\n\n" not in chunk
+                and b"\n\r\n" not in chunk
+                and not chunk.startswith((b"\n", b"\r\n"))
+                and chunk.endswith(b"\n")
+            ):
+                n_lines = chunk.count(b"\n")
+                physical_lines_total += n_lines
+                physical_data_lines += n_lines
+                logical_data_records += n_lines
+                continue
 
-            while True:
-                chunk = f.read(1024 * 1024)
-                if not chunk:
-                    if pending_quote_close:
+            idx = 0
+            n = len(chunk)
+            while idx < n:
+                b_val = chunk[idx]
+                if pending_quote_close:
+                    pending_quote_close = False
+                    if escape_byte == quote_byte and b_val == quote_byte:
+                        # Doubled quote inside quoted field -> stays in_quotes
+                        current_line_buf.append(b_val)
+                        idx += 1
+                        continue
+                    else:
+                        # Previous quote closed the quoted field; re-process current byte
                         in_quotes = False
-                        pending_quote_close = False
-                    break
-                idx = 0
-                n = len(chunk)
-                while idx < n:
-                    b_val = chunk[idx]
-                    if pending_quote_close:
-                        pending_quote_close = False
-                        if escape_byte == quote_byte and b_val == quote_byte:
-                            # Doubled quote inside quoted field -> stays in_quotes
-                            idx += 1
-                            continue
-                        else:
-                            # Previous quote actually closed the quoted field; re-process current byte
-                            in_quotes = False
 
+                if pending_embedded_nl:
+                    # At least one byte exists after a newline inside an open quoted field,
+                    # proving that the quoted record spans across physical lines.
+                    embedded_newline_count += 1
+                    pending_embedded_nl = False
+
+                if b_val == 10:  # '\n'
+                    if line_saw_quote and not _is_quote_balanced_line(current_line_buf, quote_byte, escape_byte):
+                        unclosed_quote_count += 1
+                    current_line_buf.clear()
+                    line_saw_quote = False
+
+                    physical_lines_total += 1
+                    physical_data_lines += 1
+                    if in_quotes:
+                        pending_embedded_nl = True
+                        line_has_non_ws = False
+                    else:
+                        logical_data_records += 1
+                        if not line_has_non_ws and not record_has_content:
+                            blank_lines_count += 1
+                        line_has_non_ws = False
+                        record_has_content = False
+                else:
+                    if b_val != 13:  # Ignore '\r' for physical line quote balance buffer
+                        current_line_buf.append(b_val)
                     if b_val == quote_byte:
+                        line_saw_quote = True
                         if in_quotes:
                             if i_prev_escape:
                                 i_prev_escape = False
@@ -412,31 +429,33 @@ def scan_csv_logical_records(
                             record_has_content = True
                     elif in_quotes and escape_byte != quote_byte and b_val == escape_byte:
                         i_prev_escape = not i_prev_escape
-                    elif b_val == 10:  # '\n'
-                        physical_lines_total += 1
-                        physical_data_lines += 1
-                        if in_quotes:
-                            embedded_newline_count += 1
-                        else:
-                            logical_data_records += 1
-                            if not line_has_non_ws and not record_has_content:
-                                blank_lines_count += 1
-                            line_has_non_ws = False
-                            record_has_content = False
+                        line_has_non_ws = True
+                        record_has_content = True
                     elif b_val not in (13, 32, 9):  # not '\r', ' ', '\t'
                         line_has_non_ws = True
                         record_has_content = True
                         i_prev_escape = False
-                    idx += 1
+                idx += 1
 
-            # Handle trailing record without final newline
-            if line_has_non_ws or record_has_content or in_quotes:
-                physical_lines_total += 1
-                physical_data_lines += 1
-                logical_data_records += 1
-                if in_quotes:
-                    unclosed_quote_count += 1
-                    has_unclosed_quote_eof = True
+        # Handle EOF state
+        if pending_embedded_nl:
+            # File ended with '\n' while in_quotes was True and zero bytes followed '\n'.
+            # Physical line was already counted at '\n'; close the trailing unclosed logical record.
+            logical_data_records += 1
+            has_unclosed_quote_eof = True
+            pending_embedded_nl = False
+        elif line_has_non_ws or record_has_content or in_quotes or len(current_line_buf) > 0:
+            # Trailing physical line without final '\n'
+            if line_saw_quote and not _is_quote_balanced_line(current_line_buf, quote_byte, escape_byte):
+                unclosed_quote_count += 1
+            current_line_buf.clear()
+            physical_lines_total += 1
+            physical_data_lines += 1
+            logical_data_records += 1
+            if not line_has_non_ws and not record_has_content:
+                blank_lines_count += 1
+            if in_quotes:
+                has_unclosed_quote_eof = True
 
     is_verifiable = True
     unverified_reason = None
@@ -445,6 +464,14 @@ def scan_csv_logical_records(
         unverified_reason = (
             f"ACCOUNTING_UNVERIFIED: Source file {path.name} contains {blank_lines_count} blank line(s) "
             "which Univocity CSV parser silently drops, violating strict 1-to-1 record accounting."
+        )
+    elif not opts.multi_line and (embedded_newline_count > 0 or physical_data_lines != logical_data_records):
+        is_verifiable = False
+        unverified_reason = (
+            f"ACCOUNTING_UNVERIFIED: Source file {path.name} contains quoted multiline record(s) or "
+            f"multi-line unclosed quotes (embedded_newline_count={embedded_newline_count}, "
+            f"physical_data_lines={physical_data_lines}, logical_data_records={logical_data_records}) "
+            "which cannot be parsed without record boundary splitting when multiLine=False."
         )
     elif opts.multi_line and has_unclosed_quote_eof:
         is_verifiable = False
@@ -470,7 +497,7 @@ def scan_csv_logical_records(
     )
 
 
-def _is_quote_balanced_line(raw_line: bytes, quote_byte: int, escape_byte: int) -> bool:
+def _is_quote_balanced_line(raw_line: Union[bytes, bytearray], quote_byte: int, escape_byte: int) -> bool:
     """Verify whether quotes on a single physical CSV line are properly closed according to RFC-4180."""
     in_quotes = False
     i = 0
@@ -514,6 +541,8 @@ class RawCsvReader:
         source_path: Union[str, Path],
         source_year: Optional[int] = None,
         attach_lineage: bool = False,
+        scan_result: Optional[SourceScanResult] = None,
+        enforce_record_boundaries: bool = False,
     ) -> DataFrame:
         """
         Validate physical 34-column header and read raw CSV file using canonical 35-field parser schema.
@@ -523,6 +552,9 @@ class RawCsvReader:
             source_year: Optional integer year for source-year lineage and date consistency validation.
             attach_lineage: If True, attaches deterministic `_source_year`, `_source_file`, and
                 `_record_lineage_id` columns.
+            scan_result: Optional pre-computed `SourceScanResult` from `scan_csv_logical_records`.
+            enforce_record_boundaries: If True (or when `scan_result` is provided), fails closed with
+                `AccountingUnverifiedError` immediately if `scan_result.is_verifiable` is False.
             
         Returns:
             DataFrame with 34 business string columns plus technical _corrupt_record (and lineage columns
@@ -531,6 +563,14 @@ class RawCsvReader:
         path_obj = Path(source_path)
         if self.options.header:
             validate_physical_csv_header(path_obj, self.options)
+
+        if enforce_record_boundaries or scan_result is not None:
+            sr = scan_result or scan_csv_logical_records(path_obj, options=self.options, source_year=source_year)
+            if not sr.is_verifiable:
+                raise AccountingUnverifiedError(
+                    sr.unverified_reason
+                    or f"ACCOUNTING_UNVERIFIED: Source file {path_obj.name} failed record boundary verification."
+                )
 
         path_str = str(path_obj)
         # Ensure column pruning is disabled so Univocity parser verifies all tokens
@@ -793,18 +833,24 @@ def compute_row_accounting(
     classified_df: DataFrame,
     independent_raw_count: Optional[int] = None,
     scan_result: Optional[SourceScanResult] = None,
+    source_path: Optional[Union[str, Path]] = None,
+    options: Optional[CsvReadOptions] = None,
 ) -> RowAccounting:
     """
-    Compute and verify DC-11 row accounting from a classified DataFrame (FIX-F02).
+    Compute and verify DC-11 row accounting from a classified DataFrame (FIX-F02 / BLOCKER-01).
     
-    When `independent_raw_count` or `scan_result` is supplied:
-    - Verifies `scan_result.is_verifiable` (e.g., no blank lines silently dropped by Spark and no
-      unclosed multiLine quotes at EOF).
-    - Uses the independently observed source record count as `raw_row_count` (never tautologically
-      summing accepted + quarantined + rejected to define raw_row_count).
-    - Raises `AccountingUnverifiedError("ACCOUNTING_UNVERIFIED: ...")` if the classifier output sum
-      does not equal the independent source record count or if any records lack a valid DC-11 status.
+    Requires an independent ground-truth source record count (`scan_result`, `source_path`, or
+    `independent_raw_count`):
+    - Never tautologically derives `raw_row_count` by summing `accepted + quarantined + rejected`.
+    - Verifies `scan_result.is_verifiable` (e.g., no blank lines silently dropped by Spark, no quoted
+      multiline records split in `multiLine=False` mode, and no unclosed multiLine quotes at EOF).
+    - Raises `AccountingUnverifiedError("ACCOUNTING_UNVERIFIED: ...")` if no independent source count
+      is provided, if the source fails record boundary verification, if the classifier output sum
+      does not equal the independent source record count, or if any records lack a valid DC-11 status.
     """
+    if scan_result is None and source_path is not None:
+        scan_result = scan_csv_logical_records(source_path, options=options)
+
     if scan_result is not None:
         if not scan_result.is_verifiable:
             raise AccountingUnverifiedError(
@@ -813,6 +859,13 @@ def compute_row_accounting(
             )
         if independent_raw_count is None:
             independent_raw_count = scan_result.logical_data_records
+
+    if independent_raw_count is None:
+        raise AccountingUnverifiedError(
+            "ACCOUNTING_UNVERIFIED: Independent source record count (scan_result, source_path, or "
+            "independent_raw_count) is required; deriving raw_row_count tautologically from "
+            "accepted + quarantined + rejected is prohibited by DC-11."
+        )
 
     status_counts_df = (
         classified_df
@@ -846,7 +899,7 @@ def compute_row_accounting(
     rejected = status_counts.get(RecordStatus.REJECTED.value, 0)
     classifier_total = accepted + quarantined + rejected
 
-    raw_total = independent_raw_count if independent_raw_count is not None else classifier_total
+    raw_total = int(independent_raw_count)
 
     if raw_total != classifier_total:
         raise AccountingUnverifiedError(

@@ -575,6 +575,315 @@ class TestT007PipelineIntegration(unittest.TestCase):
             self.assertIn("ACCOUNTING_UNVERIFIED", res_blk.error_message)
             self.assertEqual(coordinator_blk.publisher.get_current_pointer(), "run_base_ok")
 
+    def test_blocker02_parquet_type_contract_verification_and_pipeline_guard(self):
+        """
+        INT-06 (BLOCKER-02): Exact 34-column Parquet schema, physical order, Arrow data type, and nullability verification:
+        - Rejects all-string 34-column Parquet (e.g. DEP_DELAY as string instead of float64).
+        - Rejects LongType column stored as int32, float64, or string.
+        - Rejects DoubleType column stored as float32, int64, or string.
+        - Rejects StringType column stored as int64 or binary.
+        - Rejects temporal string column (FL_DATE / DEP_TIME) stored as date32 or timestamp.
+        - Rejects nullable=False on any canonical curated column.
+        - Rejects leaked technical columns (_record_status, _corrupt_record, etc.).
+        - Accepts canonical 34-column schema (including large_string on StringType).
+        - Coordinator fault injection replacing staging Parquet with wrong-typed 34-column Parquet aborts publication
+          and preserves previous live pointer.
+        """
+        from datetime import date, datetime
+        import pyarrow as pa
+        import pyarrow.parquet as pq
+        from pyspark.sql.types import DoubleType, LongType, StringType as SparkStringType
+        from flight_pipeline.ingestion.schema import get_curated_parquet_schema
+
+        curated_spark_schema = get_curated_parquet_schema()
+
+        def make_canonical_arrow_fields(overrides=None, nullable_overrides=None):
+            overrides = overrides or {}
+            nullable_overrides = nullable_overrides or {}
+            fields = []
+            for sf in curated_spark_schema.fields:
+                if sf.name in overrides:
+                    pa_t = overrides[sf.name]
+                elif isinstance(sf.dataType, SparkStringType):
+                    pa_t = pa.string()
+                elif isinstance(sf.dataType, DoubleType):
+                    pa_t = pa.float64()
+                elif isinstance(sf.dataType, LongType):
+                    pa_t = pa.int64()
+                else:
+                    raise AssertionError(f"Unexpected Spark type: {sf.dataType}")
+                is_null = nullable_overrides.get(sf.name, True)
+                fields.append(pa.field(sf.name, pa_t, nullable=is_null))
+            return pa.schema(fields)
+
+        def write_one_row_parquet(dir_path: Path, schema: pa.Schema):
+            dir_path.mkdir(parents=True, exist_ok=True)
+            for old_f in dir_path.glob("*.parquet"):
+                old_f.unlink()
+            arrays = []
+            for f in schema:
+                t = f.type
+                if pa.types.is_string(t) or pa.types.is_large_string(t):
+                    arrays.append(pa.array(["2016-01-01"], type=t))
+                elif pa.types.is_floating(t):
+                    arrays.append(pa.array([1.0], type=t))
+                elif pa.types.is_integer(t):
+                    arrays.append(pa.array([1], type=t))
+                elif pa.types.is_date32(t):
+                    arrays.append(pa.array([date(2016, 1, 1)], type=t))
+                elif pa.types.is_timestamp(t):
+                    arrays.append(pa.array([datetime(2016, 1, 1, 8, 0)], type=t))
+                elif pa.types.is_binary(t):
+                    arrays.append(pa.array([b"AA"], type=t))
+                else:
+                    arrays.append(pa.array([None], type=t))
+            tbl = pa.Table.from_arrays(arrays, schema=schema)
+            pq.write_table(tbl, str(dir_path / "part-00000.parquet"))
+
+        with tempfile.TemporaryDirectory() as td:
+            td_path = Path(td)
+
+            # 1. Valid canonical 34-column schema passes
+            valid_dir = td_path / "valid_canonical"
+            write_one_row_parquet(valid_dir, make_canonical_arrow_fields())
+            self.assertEqual(
+                verify_parquet_directory_integrity(valid_dir, expected_row_count=1, verify_curated_schema=True),
+                1,
+            )
+
+            # 2. Valid canonical schema with large_string on StringType passes
+            large_str_dir = td_path / "valid_large_str"
+            write_one_row_parquet(
+                large_str_dir,
+                make_canonical_arrow_fields(overrides={"OP_CARRIER": pa.large_string(), "FL_DATE": pa.large_string()}),
+            )
+            self.assertEqual(
+                verify_parquet_directory_integrity(large_str_dir, expected_row_count=1, verify_curated_schema=True),
+                1,
+            )
+
+            # 3. All-string 34-column Parquet (pre-fix BLOCKER-02 reproduction) fails closed
+            all_str_dir = td_path / "all_str"
+            all_str_schema = pa.schema([pa.field(c, pa.string(), nullable=True) for c in CANONICAL_COLUMN_NAMES])
+            write_one_row_parquet(all_str_dir, all_str_schema)
+            with self.assertRaises(RuntimeError) as ctx_all_str:
+                verify_parquet_directory_integrity(all_str_dir, expected_row_count=1, verify_curated_schema=True)
+            self.assertIn("FAILED_STAGING_CONTENT_INVALID", str(ctx_all_str.exception))
+            self.assertIn("OP_CARRIER_FL_NUM", str(ctx_all_str.exception))
+
+            # 4. Matrix of wrong physical Arrow types across LongType, DoubleType, StringType, and temporal strings
+            mismatch_cases = [
+                ("MONTH", pa.int32(), "LongType as int32"),
+                ("ORIGIN_INDEX", pa.float64(), "LongType as float64"),
+                ("DAY_OF_WEEK", pa.string(), "LongType as string"),
+                ("DEP_DELAY", pa.float32(), "DoubleType as float32"),
+                ("ARR_DELAY", pa.int64(), "DoubleType as int64"),
+                ("FLIGHTS", pa.string(), "DoubleType as string"),
+                ("OP_CARRIER", pa.int64(), "StringType as int64"),
+                ("ORIGIN", pa.binary(), "StringType as binary"),
+                ("FL_DATE", pa.date32(), "Temporal string FL_DATE as date32"),
+                ("DEP_TIME", pa.timestamp("us"), "Temporal string DEP_TIME as timestamp"),
+            ]
+            for idx, (col_name, wrong_pa_type, label) in enumerate(mismatch_cases):
+                case_dir = td_path / f"mismatch_{idx}_{col_name}"
+                write_one_row_parquet(case_dir, make_canonical_arrow_fields(overrides={col_name: wrong_pa_type}))
+                with self.assertRaises(RuntimeError, msg=f"Failed to reject {label}") as ctx_m:
+                    verify_parquet_directory_integrity(case_dir, expected_row_count=1, verify_curated_schema=True)
+                self.assertIn("FAILED_STAGING_CONTENT_INVALID", str(ctx_m.exception))
+                self.assertIn(col_name, str(ctx_m.exception))
+
+            # 5. Nullability mismatch (nullable=False on MONTH) fails closed
+            non_null_dir = td_path / "non_null_month"
+            write_one_row_parquet(
+                non_null_dir,
+                make_canonical_arrow_fields(nullable_overrides={"MONTH": False}),
+            )
+            with self.assertRaises(RuntimeError) as ctx_nn:
+                verify_parquet_directory_integrity(non_null_dir, expected_row_count=1, verify_curated_schema=True)
+            self.assertIn("nullability mismatch", str(ctx_nn.exception))
+
+            # 6. Coordinator integration: fault injector replaces staging Parquet with wrong-typed 34-column Parquet
+            env_root = td_path / "coord_env"
+            data_root, inventory, approved_hashes = self._setup_synthetic_environment(env_root, years=(2016,))
+            validator = SourceValidator(base_dir=env_root, inventory=inventory, approved_baseline_hashes=approved_hashes)
+            coordinator = IngestionCoordinator(self.spark, data_root, validator)
+
+            res_good = coordinator.run_ingestion(run_id="run_type_good_01", years=[2016])
+            self.assertTrue(res_good.success)
+            self.assertEqual(coordinator.publisher.get_current_pointer(), "run_type_good_01")
+
+            def inject_wrong_parquet_type(state_name: str):
+                if state_name == PipelineState.INGESTION_COMPLETED.value:
+                    stg_dir = coordinator.staging_root / "run_type_bad_02"
+                    # Write 2 rows (matching accepted_row_count=2) with 34 canonical names, but DEP_DELAY as string!
+                    bad_schema = make_canonical_arrow_fields(overrides={"DEP_DELAY": pa.string()})
+                    arrays = []
+                    for f in bad_schema:
+                        if pa.types.is_string(f.type):
+                            arrays.append(pa.array(["2016-01-01", "2016-01-02"], type=f.type))
+                        elif pa.types.is_float64(f.type):
+                            arrays.append(pa.array([1.0, 2.0], type=f.type))
+                        else:
+                            arrays.append(pa.array([1, 2], type=f.type))
+                    for old_pf in stg_dir.rglob("*.parquet"):
+                        old_pf.unlink()
+                    pq.write_table(pa.Table.from_arrays(arrays, schema=bad_schema), str(stg_dir / "part-00000.parquet"))
+
+            res_bad_type = coordinator.run_ingestion(
+                run_id="run_type_bad_02",
+                years=[2016],
+                fault_injector=inject_wrong_parquet_type,
+            )
+            self.assertFalse(res_bad_type.success)
+            self.assertEqual(res_bad_type.final_state, PipelineState.TERMINAL_FAILURE)
+            self.assertIn("FAILED_STAGING_CONTENT_INVALID", res_bad_type.error_message)
+            self.assertIn("DEP_DELAY", res_bad_type.error_message)
+            self.assertEqual(coordinator.publisher.get_current_pointer(), "run_type_good_01")
+
+    def test_blocker03_post_pointer_missing_manifest_and_fail_closed_manual_reconciliation(self):
+        """
+        INT-07 (BLOCKER-03): Full post-publication recovery & fail-closed matrix:
+        1. Pointer switched + run_manifest.json missing + execution_receipt.json missing
+           (fault at POST_POINTER_PRE_MANIFEST_WRITE) -> reconcile_published_run reconstructs both from
+           authoritative sidecars and returns PUBLISHED without mutating published Parquet files.
+        2. Receipt write failure during first reconcile_published_run (RECONCILE_PRE_RECEIPT_WRITE) ->
+           returns PUBLISHED_RECEIPT_PENDING_RECONCILIATION; second retry succeeds with PUBLISHED.
+        3. Repeated reconcile_published_run on an already PUBLISHED run -> idempotent, preserves manifest SHA-256
+           and published Parquet files.
+        4. Corrupted run_manifest.json -> fail-closed with MANUAL_RECONCILIATION_REQUIRED, no fake receipt.
+        5. Missing required authoritative sidecar (anomaly_summary.json / source_verification.json / forensic_manifest.json)
+           when manifest is missing -> fail-closed with MANUAL_RECONCILIATION_REQUIRED, no fake manifest/receipt.
+        """
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            data_root, inventory, approved_hashes = self._setup_synthetic_environment(root, years=(2016, 2024))
+            validator = SourceValidator(base_dir=root, inventory=inventory, approved_baseline_hashes=approved_hashes)
+            coordinator = IngestionCoordinator(self.spark, data_root, validator)
+
+            # Establish prior published run so previous_pointer is non-null
+            res_prior = coordinator.run_ingestion(run_id="run_prior_00", years=[2016])
+            self.assertTrue(res_prior.success)
+            self.assertEqual(coordinator.publisher.get_current_pointer(), "run_prior_00")
+
+            # -----------------------------------------------------------------
+            # Scenario 1: Pointer switched + manifest missing + receipt missing
+            # -----------------------------------------------------------------
+            def fail_before_manifest_write(hook_name: str):
+                if hook_name == "POST_POINTER_PRE_MANIFEST_WRITE":
+                    raise OSError("Simulated power/disk fault immediately after pointer switch before manifest write")
+
+            outcome_no_manifest = coordinator.run_ingestion(
+                run_id="run_case_b_01",
+                years=[2016, 2024],
+                fault_injector=fail_before_manifest_write,
+            )
+            self.assertFalse(outcome_no_manifest.success)
+            self.assertEqual(outcome_no_manifest.final_state, PipelineState.PUBLISHED_RECEIPT_PENDING_RECONCILIATION)
+            self.assertEqual(coordinator.publisher.get_current_pointer(), "run_case_b_01")
+
+            meta_dir_b1 = coordinator.metadata_root / "run_case_b_01"
+            manifest_path_b1 = meta_dir_b1 / "run_manifest.json"
+            receipt_path_b1 = meta_dir_b1 / "execution_receipt.json"
+            self.assertFalse(manifest_path_b1.exists(), "run_manifest.json must be absent on disk in Case B")
+            self.assertFalse(receipt_path_b1.exists(), "execution_receipt.json must be absent on disk in Case B")
+
+            pub_dir_b1 = coordinator.publisher.runs_root / "run_case_b_01"
+            parquet_hashes_before = {
+                pf.name: compute_file_sha256(pf) for pf in sorted(pub_dir_b1.rglob("*.parquet"))
+            }
+
+            # -----------------------------------------------------------------
+            # Scenario 2: First reconcile attempt fails when writing receipt -> stays PUBLISHED_RECEIPT_PENDING_RECONCILIATION
+            # -----------------------------------------------------------------
+            def fail_reconcile_receipt(hook_name: str):
+                if hook_name == "RECONCILE_PRE_RECEIPT_WRITE":
+                    raise OSError("Simulated disk error during first reconcile receipt write")
+
+            reconcile_fail_1 = coordinator.reconcile_published_run(
+                "run_case_b_01",
+                fault_injector=fail_reconcile_receipt,
+            )
+            self.assertFalse(reconcile_fail_1.success)
+            self.assertEqual(reconcile_fail_1.final_state, PipelineState.PUBLISHED_RECEIPT_PENDING_RECONCILIATION)
+            self.assertFalse(receipt_path_b1.exists())
+
+            # Remove manifest_path_b1 again so the retry exercises full Case B reconstruction end-to-end
+            if manifest_path_b1.exists():
+                manifest_path_b1.unlink()
+
+            # Retry reconcile_published_run without fault -> succeeds and reconstructs both manifest and receipt!
+            reconcile_ok = coordinator.reconcile_published_run("run_case_b_01")
+            self.assertTrue(reconcile_ok.success)
+            self.assertEqual(reconcile_ok.final_state, PipelineState.PUBLISHED)
+            self.assertTrue(manifest_path_b1.is_file())
+            self.assertTrue(receipt_path_b1.is_file())
+
+            reconstructed_manifest = json.loads(manifest_path_b1.read_text(encoding="utf-8"))
+            reconstructed_receipt = json.loads(receipt_path_b1.read_text(encoding="utf-8"))
+
+            self.assertEqual(reconstructed_manifest["status"], "PUBLISHED")
+            self.assertEqual(reconstructed_manifest["run_id"], "run_case_b_01")
+            self.assertEqual(reconstructed_manifest["row_accounting"]["raw_row_count"], 6)
+            self.assertEqual(reconstructed_manifest["row_accounting"]["accepted_row_count"], 4)
+            self.assertEqual(reconstructed_manifest["row_accounting"]["quarantined_row_count"], 1)
+            self.assertEqual(reconstructed_manifest["row_accounting"]["rejected_row_count"], 1)
+            self.assertEqual(len(reconstructed_manifest["inputs"]), 2)
+            self.assertGreaterEqual(len(reconstructed_manifest["outputs"]), 1)
+            self.assertEqual(reconstructed_manifest["configuration"]["previous_pointer"], "run_prior_00")
+            self.assertEqual(reconstructed_receipt["previous_pointer"], "run_prior_00")
+            self.assertEqual(reconstructed_receipt["manifest_sha256"], compute_file_sha256(manifest_path_b1))
+
+            parquet_hashes_after = {
+                pf.name: compute_file_sha256(pf) for pf in sorted(pub_dir_b1.rglob("*.parquet"))
+            }
+            self.assertEqual(parquet_hashes_before, parquet_hashes_after)
+
+            # -----------------------------------------------------------------
+            # Scenario 3: Idempotent re-execution on an already PUBLISHED run
+            # -----------------------------------------------------------------
+            manifest_sha_before_idem = compute_file_sha256(manifest_path_b1)
+            reconcile_idem = coordinator.reconcile_published_run("run_case_b_01")
+            self.assertTrue(reconcile_idem.success)
+            self.assertEqual(reconcile_idem.final_state, PipelineState.PUBLISHED)
+            self.assertEqual(compute_file_sha256(manifest_path_b1), manifest_sha_before_idem)
+            self.assertEqual(
+                {pf.name: compute_file_sha256(pf) for pf in sorted(pub_dir_b1.rglob("*.parquet"))},
+                parquet_hashes_before,
+            )
+
+            # -----------------------------------------------------------------
+            # Scenario 4: Corrupted manifest file -> fail-closed MANUAL_RECONCILIATION_REQUIRED
+            # -----------------------------------------------------------------
+            receipt_path_b1.unlink()
+            manifest_path_b1.write_text("{CORRUPTED_NOT_VALID_JSON", encoding="utf-8")
+            corrupt_res = coordinator.reconcile_published_run("run_case_b_01")
+            self.assertFalse(corrupt_res.success)
+            self.assertEqual(corrupt_res.final_state, PipelineState.MANUAL_RECONCILIATION_REQUIRED)
+            self.assertIn("MANUAL_RECONCILIATION_REQUIRED", corrupt_res.error_message)
+            self.assertFalse(receipt_path_b1.exists(), "Must NEVER create a receipt when manifest is corrupted")
+            self.assertEqual(coordinator.publisher.get_current_pointer(), "run_case_b_01")
+
+            # -----------------------------------------------------------------
+            # Scenario 5: Missing required authoritative sidecar -> fail-closed MANUAL_RECONCILIATION_REQUIRED
+            # -----------------------------------------------------------------
+            manifest_path_b1.unlink()
+            anomaly_path_b1 = meta_dir_b1 / "anomaly_summary.json"
+            anomaly_backup = anomaly_path_b1.read_bytes()
+            anomaly_path_b1.unlink()
+
+            missing_sidecar_res = coordinator.reconcile_published_run("run_case_b_01")
+            self.assertFalse(missing_sidecar_res.success)
+            self.assertEqual(missing_sidecar_res.final_state, PipelineState.MANUAL_RECONCILIATION_REQUIRED)
+            self.assertIn("anomaly_summary.json", missing_sidecar_res.error_message)
+            self.assertFalse(manifest_path_b1.exists(), "Must NEVER fabricate manifest when sidecar is missing")
+            self.assertFalse(receipt_path_b1.exists(), "Must NEVER fabricate receipt when sidecar is missing")
+
+            # Restore anomaly_summary.json and verify recovery succeeds again
+            anomaly_path_b1.write_bytes(anomaly_backup)
+            recovered_again = coordinator.reconcile_published_run("run_case_b_01")
+            self.assertTrue(recovered_again.success)
+            self.assertEqual(recovered_again.final_state, PipelineState.PUBLISHED)
+
 
 if __name__ == "__main__":
     unittest.main()

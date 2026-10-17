@@ -212,7 +212,7 @@ class TestT007Reader(unittest.TestCase):
             raw_df = reader.read_raw(csv_path)
             classified_df = IngestionRecordClassifier.classify(raw_df)
 
-            accounting = compute_row_accounting(classified_df)
+            accounting = compute_row_accounting(classified_df, source_path=csv_path)
             self.assertEqual(accounting.raw_row_count, 1)
             self.assertEqual(accounting.accepted_row_count, 1)
             self.assertEqual(accounting.rejected_row_count, 0)
@@ -239,7 +239,7 @@ class TestT007Reader(unittest.TestCase):
             raw_df = reader.read_raw(csv_path)
             classified_df = IngestionRecordClassifier.classify(raw_df)
 
-            accounting = compute_row_accounting(classified_df)
+            accounting = compute_row_accounting(classified_df, source_path=csv_path)
             self.assertEqual(accounting.raw_row_count, 2)
             self.assertEqual(accounting.accepted_row_count, 2)
             self.assertEqual(accounting.quarantined_row_count, 0)
@@ -260,7 +260,7 @@ class TestT007Reader(unittest.TestCase):
             raw_df = reader.read_raw(csv_path)
             classified_df = IngestionRecordClassifier.classify(raw_df)
 
-            accounting = compute_row_accounting(classified_df)
+            accounting = compute_row_accounting(classified_df, source_path=csv_path)
             self.assertEqual(accounting.raw_row_count, 2)
             self.assertEqual(accounting.accepted_row_count, 1)
             self.assertEqual(accounting.quarantined_row_count, 1)
@@ -338,7 +338,7 @@ class TestT007Reader(unittest.TestCase):
             reader = RawCsvReader(self.spark)
             raw_df = reader.read_raw(csv_path)
             classified_df = IngestionRecordClassifier.classify(raw_df)
-            accounting = compute_row_accounting(classified_df)
+            accounting = compute_row_accounting(classified_df, source_path=csv_path)
 
             self.assertEqual(accounting.raw_row_count, 1)
             self.assertEqual(accounting.accepted_row_count, 1)
@@ -564,19 +564,21 @@ class TestT007Reader(unittest.TestCase):
             self.assertIn("ACCOUNTING_UNVERIFIED", str(ctx_tamp.exception))
 
     def test_fix_f02_deterministic_lineage_and_duplicate_yx3624_disambiguation(self):
-        """RDR-15 (FIX-F02 / TS-020): Deterministic content-hash lineage disambiguates exact duplicate rows (YX 3624)."""
+        """RDR-15 (FIX-F02 / TS-020): Deterministic content-hash lineage disambiguates exact duplicate rows (2018-06-21 YX 3624 DEN->XNA & 2022)."""
         with tempfile.TemporaryDirectory() as td:
-            dup_row = self._make_valid_34_col_row(
-                fl_date="2022-05-05", op_carrier="YX", fl_num="3624.0", origin="JFK", dest="BOS"
+            dup_row_2018 = self._make_valid_34_col_row(
+                fl_date="2018-06-21", op_carrier="YX", fl_num="3624.0", origin="DEN", dest="XNA", month="6", day_of_month="21"
             )
-            other_row = self._make_valid_34_col_row(
-                fl_date="2022-05-05", op_carrier="AA", fl_num="100.0", origin="JFK", dest="LAX"
+            other_row_2018 = self._make_valid_34_col_row(
+                fl_date="2018-06-21", op_carrier="AA", fl_num="100.0", origin="JFK", dest="LAX", month="6", day_of_month="21"
             )
-            csv_path = self._create_synthetic_csv(Path(td), [dup_row, other_row, dup_row], "flight_2022.csv")
+            csv_path = self._create_synthetic_csv(
+                Path(td), [dup_row_2018, other_row_2018, dup_row_2018], "flight_2018.csv"
+            )
 
             reader = RawCsvReader(self.spark)
-            df1 = reader.read_raw(csv_path, source_year=2022, attach_lineage=True).repartition(1)
-            df2 = reader.read_raw(csv_path, source_year=2022, attach_lineage=True).repartition(4)
+            df1 = reader.read_raw(csv_path, source_year=2018, attach_lineage=True).repartition(1)
+            df2 = reader.read_raw(csv_path, source_year=2018, attach_lineage=True).repartition(4)
 
             ids1 = sorted(r[LINEAGE_ID_COLUMN] for r in df1.collect())
             ids2 = sorted(r[LINEAGE_ID_COLUMN] for r in df2.collect())
@@ -585,6 +587,120 @@ class TestT007Reader(unittest.TestCase):
             self.assertEqual(len(ids1), 3)
             self.assertEqual(len(set(ids1)), 3)
             self.assertEqual(ids1, ids2)
+
+    def test_blocker01_quoted_embedded_newline_multimode_and_fail_closed(self):
+        """
+        RDR-16 (BLOCKER-01): 34-column 2-record CSV where 1 field is quoted with an embedded newline:
+        - csv.reader returns 2 logical data records.
+        - scan_csv_logical_records(multi_line=True) returns logical_data_records=2, physical_data_lines=3, is_verifiable=True.
+        - scan_csv_logical_records(multi_line=False) returns logical_data_records=2 (NEVER 3!), physical_data_lines=3,
+          embedded_newline_count=1, is_verifiable=False (ACCOUNTING_UNVERIFIED).
+        - RawCsvReader(multi_line=False).read_raw(..., enforce_record_boundaries=True) fails closed.
+        - If Spark parses 3 physical lines with multiLine=False, compute_row_accounting fails closed on 2 != 3.
+        - Calling compute_row_accounting without an independent source count fails closed.
+        """
+        import csv as py_csv
+
+        with tempfile.TemporaryDirectory() as td:
+            row1 = self._make_valid_34_col_row(op_carrier="AA", fl_num="100.0")
+            row2 = self._make_valid_34_col_row(op_carrier='"AMERICAN\nAIRLINES"', fl_num="200.0")
+            csv_path = self._create_synthetic_csv(Path(td), [row1, row2], "multiline_2rec.csv")
+
+            # 1. Python csv.reader ground truth: 1 header + 2 logical data records
+            with open(csv_path, "r", encoding="utf-8", newline="") as f:
+                py_rows = list(py_csv.reader(f))
+            self.assertEqual(len(py_rows) - 1, 2)
+
+            # 2. scan_csv_logical_records with multi_line=True
+            scan_true = scan_csv_logical_records(csv_path, CsvReadOptions(multi_line=True), source_year=2016)
+            self.assertEqual(scan_true.logical_data_records, 2)
+            self.assertEqual(scan_true.physical_data_lines, 3)
+            self.assertEqual(scan_true.embedded_newline_count, 1)
+            self.assertTrue(scan_true.is_verifiable)
+
+            # 3. scan_csv_logical_records with multi_line=False (default contract mode)
+            scan_false = scan_csv_logical_records(csv_path, CsvReadOptions(multi_line=False), source_year=2016)
+            self.assertEqual(scan_false.logical_data_records, 2)
+            self.assertEqual(scan_false.physical_data_lines, 3)
+            self.assertEqual(scan_false.embedded_newline_count, 1)
+            self.assertFalse(scan_false.is_verifiable)
+            self.assertIn("ACCOUNTING_UNVERIFIED", scan_false.unverified_reason or "")
+
+            # 4. RawCsvReader(multi_line=False).read_raw(..., enforce_record_boundaries=True) fails closed
+            reader_false = RawCsvReader(self.spark, CsvReadOptions(multi_line=False))
+            with self.assertRaises(AccountingUnverifiedError) as ctx_enforced:
+                reader_false.read_raw(csv_path, source_year=2016, enforce_record_boundaries=True)
+            self.assertIn("ACCOUNTING_UNVERIFIED", str(ctx_enforced.exception))
+
+            # 5. Even if read_raw is called with enforce_record_boundaries=False (so Spark splits into 3 rows),
+            # compute_row_accounting fails closed both via scan_false and via independent_raw_count=2
+            raw_split_df = reader_false.read_raw(csv_path, source_year=2016, enforce_record_boundaries=False)
+            cls_split_df = IngestionRecordClassifier.classify(raw_split_df)
+            self.assertEqual(cls_split_df.count(), 3)
+
+            with self.assertRaises(AccountingUnverifiedError) as ctx_scan:
+                compute_row_accounting(cls_split_df, scan_result=scan_false)
+            self.assertIn("ACCOUNTING_UNVERIFIED", str(ctx_scan.exception))
+
+            with self.assertRaises(AccountingUnverifiedError) as ctx_ind:
+                compute_row_accounting(cls_split_df, independent_raw_count=2)
+            self.assertIn("ACCOUNTING_UNVERIFIED", str(ctx_ind.exception))
+
+            # 6. Calling compute_row_accounting with NO independent source count fails closed
+            with self.assertRaises(AccountingUnverifiedError) as ctx_no_src:
+                compute_row_accounting(cls_split_df)
+            self.assertIn("ACCOUNTING_UNVERIFIED", str(ctx_no_src.exception))
+
+    def test_blocker01_spark_401_multiline_quoted_escaped_and_eof_no_trailing_newline(self):
+        """
+        RDR-17 (BLOCKER-01): Real Spark 4.0.1 verification on 34-column synthetic fixtures covering:
+        1. Quoted field with embedded newline (multiLine=True) -> 2 logical records, 2 accepted.
+        2. Quoted field with escaped quotes (\"\"\") -> exact string preserved, 2 logical records == 2 Spark rows.
+        3. EOF without trailing newline -> 2 logical records == 2 Spark rows, is_verifiable=True.
+        """
+        with tempfile.TemporaryDirectory() as td:
+            td_path = Path(td)
+
+            # 1. Quoted field with escaped quotes ("DELTA ""AIR"" LINES")
+            row_clean = self._make_valid_34_col_row(op_carrier="AA", fl_num="101.0")
+            row_escaped = self._make_valid_34_col_row(op_carrier='"DELTA ""AIR"" LINES"', fl_num="202.0")
+            csv_escaped = self._create_synthetic_csv(td_path, [row_clean, row_escaped], "escaped_quotes.csv")
+
+            scan_esc = scan_csv_logical_records(csv_escaped, CsvReadOptions(multi_line=False), source_year=2016)
+            self.assertEqual(scan_esc.logical_data_records, 2)
+            self.assertEqual(scan_esc.physical_data_lines, 2)
+            self.assertTrue(scan_esc.is_verifiable)
+
+            reader_single = RawCsvReader(self.spark, CsvReadOptions(multi_line=False))
+            cls_esc = IngestionRecordClassifier.classify(
+                reader_single.read_raw(csv_escaped, source_year=2016, scan_result=scan_esc, enforce_record_boundaries=True)
+            )
+            acc_esc = compute_row_accounting(cls_esc, scan_result=scan_esc)
+            self.assertEqual(acc_esc.raw_row_count, 2)
+            self.assertEqual(acc_esc.accepted_row_count, 2)
+            cur_esc = IngestionTransformer.to_curated(cls_esc)
+            carriers = sorted(r["OP_CARRIER"] for r in cur_esc.collect())
+            self.assertEqual(carriers, ["AA", 'DELTA "AIR" LINES'])
+
+            # 2. EOF without trailing newline
+            eof_path = td_path / "no_trailing_newline.csv"
+            header_line = ",".join(CANONICAL_COLUMN_NAMES)
+            r1 = self._make_valid_34_col_row(op_carrier="UA", fl_num="301.0")
+            r2 = self._make_valid_34_col_row(op_carrier="WN", fl_num="302.0")
+            eof_path.write_bytes((header_line + "\n" + r1 + "\n" + r2).encode("utf-8"))
+
+            scan_eof = scan_csv_logical_records(eof_path, CsvReadOptions(multi_line=False), source_year=2016)
+            self.assertEqual(scan_eof.physical_lines_total, 3)
+            self.assertEqual(scan_eof.physical_data_lines, 2)
+            self.assertEqual(scan_eof.logical_data_records, 2)
+            self.assertTrue(scan_eof.is_verifiable)
+
+            cls_eof = IngestionRecordClassifier.classify(
+                reader_single.read_raw(eof_path, source_year=2016, scan_result=scan_eof, enforce_record_boundaries=True)
+            )
+            acc_eof = compute_row_accounting(cls_eof, scan_result=scan_eof)
+            self.assertEqual(acc_eof.raw_row_count, 2)
+            self.assertEqual(acc_eof.accepted_row_count, 2)
 
 
 if __name__ == "__main__":
