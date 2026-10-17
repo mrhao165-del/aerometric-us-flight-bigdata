@@ -1,8 +1,8 @@
 {
   "registry_version": "1.0",
   "task_id": "T-007",
-  "updated_at": "2026-10-17T16:40:00+07:00",
-  "description": "Evidence Deliverable Register updated for T007-01-FINAL-CLOSURE Schema Factory and Closure Evidence Reconciliation",
+  "updated_at": "2026-10-17T17:00:00+07:00",
+  "description": "Evidence Deliverable Register updated for T007-01-HUMAN-SIGNOFF and T007-02 Entry Preparation",
   "governed_living_docs": [
     {
       "path": "docs/01-planning/BACKLOG.md",
@@ -1274,8 +1274,8 @@
       "path": "tools/qa/verify_t006_contract_consistency.py",
       "task_id": "T-009",
       "artifact_type": "TEST_SUITE",
-      "bytes": 37263,
-      "sha256": "671b190a6a59648494c7dc4ffef932366fcbab4f39228e2f155283a64cb81eff",
+      "bytes": 38273,
+      "sha256": "b8b2bc2b08096e44a629a62bad505ed4c152b55cc5cb15c6c62650f02b1e1dea",
       "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/T009_HUMAN_SIGNOFF_20261017.md"
     },
     {
@@ -2973,6 +2973,46 @@
       "bytes": 6735,
       "sha256": "abef125e9fbc539b01638cba36f5ce6c64f6787828eafd7c65366c1b202c0168",
       "authorization_ref": "Project Lead T007-01-FINAL-CLOSURE instruction (2026-10-17); recorded in docs/05-evidence/T007_01_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_HUMAN_SIGNOFF_20261017.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9120,
+      "sha256": "b1e6b17736faa7a38e16a4c5a4e918a39687b9e750a1fd3e30841bed51ea42d0",
+      "authorization_ref": "Project Lead T007-01-HUMAN-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/T007_01_HUMAN_SIGNOFF_20261017.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02_ENTRY_PREPARATION.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7722,
+      "sha256": "a09914210b249a1f277476a904fce2cd7273a765095ebeda014e18dcc2fc34d5",
+      "authorization_ref": "Project Lead T007-01-HUMAN-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/T007_01_HUMAN_SIGNOFF_20261017.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_SIGNOFF_LOG_CONSISTENCY.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "04f7c874449cc765d50d426c88a6449168a788e01e2a8f02e59723c67a6460a0",
+      "authorization_ref": "Project Lead T007-01-HUMAN-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/T007_01_HUMAN_SIGNOFF_20261017.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_SIGNOFF_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2057,
+      "sha256": "868cc53789a2d6c36178c7284bbe063f9dcf0ff2aa51fe6ffda647546d24d9e0",
+      "authorization_ref": "Project Lead T007-01-HUMAN-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/T007_01_HUMAN_SIGNOFF_20261017.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_01_SIGNOFF_LOG_T006_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6746,
+      "sha256": "28bc2a7a6c7f55e351ebda86e2644d0bbebd7eab4150b79e6f922286e141c7ad",
+      "authorization_ref": "Project Lead T007-01-HUMAN-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/T007_01_HUMAN_SIGNOFF_20261017.md"
     }
   ]
 }
