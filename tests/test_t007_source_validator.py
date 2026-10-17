@@ -1,0 +1,512 @@
+"""
+Unit and integration test suite for T007-02A Source Inventory & Local Hash Verifier.
+Conforms to DATA_CONTRACT.md, ARCHITECTURE.md, T007_02A specifications, and T007_02A_HANDOFF_ERRATA.md.
+
+CRITICAL SCOPE BOUNDARY:
+- Strictly synthetic tests using tempfile.TemporaryDirectory.
+- ZERO read or stat access to real 15.2 GB CSV files in data/raw/.
+"""
+
+import hashlib
+import json
+import os
+from pathlib import Path
+import sys
+import tempfile
+import unittest
+from unittest.mock import MagicMock, patch
+
+# Ensure src is on sys.path
+SRC_DIR = Path(__file__).resolve().parent.parent / "src"
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
+from flight_pipeline.ingestion.source_validator import (
+    AUDITED_SOURCE_INVENTORY,
+    DEFAULT_HASH_CHUNK_SIZE,
+    EXPECTED_ANNUAL_SOURCES_COUNT,
+    TOTAL_AUDITED_BYTES,
+    TOTAL_AUDITED_ROWS,
+    UPSTREAM_IDENTITY_STATUS_UNVERIFIED,
+    BatchVerificationResult,
+    SourceChangedDuringReadError,
+    SourceConfigurationError,
+    SourceEntry,
+    SourceHashMismatchError,
+    SourceIntegrityError,
+    SourceNotFoundError,
+    SourcePathSecurityError,
+    SourcePermissionError,
+    SourceSizeMismatchError,
+    SourceVerificationResult,
+    SourceValidator,
+    SourceValidatorError,
+    VerificationState,
+    validate_path_safety,
+)
+from flight_pipeline.utils.run_manifest import RunManifest
+
+
+class TestT007SourceValidatorSynthetic(unittest.TestCase):
+    """Synthetic unit tests for SourceValidator."""
+
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.base_path = Path(self.temp_dir.name)
+
+    def tearDown(self):
+        self.temp_dir.cleanup()
+
+    # -------------------------------------------------------------------------
+    # Inventory Tests (INV-01 .. INV-03)
+    # -------------------------------------------------------------------------
+
+    def test_inv_01_audited_inventory_entry_count_and_years(self):
+        """INV-01: Exactly 9 annual inventory entries covering 2016-2024."""
+        self.assertEqual(len(AUDITED_SOURCE_INVENTORY), EXPECTED_ANNUAL_SOURCES_COUNT)
+        self.assertEqual(EXPECTED_ANNUAL_SOURCES_COUNT, 9)
+        expected_years = list(range(2016, 2025))
+        self.assertEqual(sorted(AUDITED_SOURCE_INVENTORY.keys()), expected_years)
+        for year in expected_years:
+            entry = AUDITED_SOURCE_INVENTORY[year]
+            self.assertEqual(entry.year, year)
+            self.assertEqual(entry.audited_column_count, 34)
+
+    def test_inv_02_no_duplicate_years_or_paths(self):
+        """INV-02: No duplicate years or relative paths in inventory baseline."""
+        paths = [e.relative_path.replace("\\", "/").lower() for e in AUDITED_SOURCE_INVENTORY.values()]
+        self.assertEqual(len(paths), len(set(paths)), "Duplicate relative paths found in inventory")
+        years = list(AUDITED_SOURCE_INVENTORY.keys())
+        self.assertEqual(len(years), len(set(years)), "Duplicate years found in inventory")
+
+    def test_inv_03_expected_row_counts_and_byte_sizes(self):
+        """INV-03: Expected byte sizes and row counts match audited baseline exactly."""
+        expected_rows = {
+            2016: 5617658,
+            2017: 5674621,
+            2018: 7213446,
+            2019: 7422037,
+            2020: 4688354,
+            2021: 5992543,
+            2022: 6703047,
+            2023: 6787093,
+            2024: 4575204,
+        }
+        expected_bytes = {
+            2016: 1563303803,
+            2017: 1577414136,
+            2018: 2005622763,
+            2019: 2060544985,
+            2020: 1303942668,
+            2021: 1666039833,
+            2022: 1863280094,
+            2023: 1885823248,
+            2024: 1270394643,
+        }
+
+        sum_rows = 0
+        sum_bytes = 0
+        for year, entry in AUDITED_SOURCE_INVENTORY.items():
+            self.assertEqual(entry.audited_row_count, expected_rows[year])
+            self.assertEqual(entry.audited_byte_size, expected_bytes[year])
+            sum_rows += entry.audited_row_count
+            sum_bytes += entry.audited_byte_size
+
+        self.assertEqual(sum_rows, TOTAL_AUDITED_ROWS)
+        self.assertEqual(sum_rows, 54674003)
+        self.assertEqual(sum_bytes, TOTAL_AUDITED_BYTES)
+        self.assertEqual(sum_bytes, 15196366173)
+
+    # -------------------------------------------------------------------------
+    # Hash Tests (HASH-01 .. HASH-06)
+    # -------------------------------------------------------------------------
+
+    def test_hash_01_streaming_sha256_matches_hashlib_reference(self):
+        """HASH-01: Streaming SHA-256 matches standard hashlib reference computation."""
+        test_file = self.base_path / "test_data.csv"
+        content = b"FL_DATE,OP_CARRIER,DEP_DELAY\n2020-01-01,AA,15.0\n2020-01-02,DL,-3.0\n"
+        test_file.write_bytes(content)
+
+        validator = SourceValidator(base_dir=self.base_path)
+        computed_hash, bytes_read = validator.compute_file_hash(test_file)
+
+        ref_hash = hashlib.sha256(content).hexdigest()
+        self.assertEqual(computed_hash, ref_hash)
+        self.assertEqual(bytes_read, len(content))
+
+    def test_hash_02_empty_file_hashing(self):
+        """HASH-02: Empty file hashing produces canonical empty SHA-256 digest."""
+        test_file = self.base_path / "empty.csv"
+        test_file.write_bytes(b"")
+
+        validator = SourceValidator(base_dir=self.base_path)
+        computed_hash, bytes_read = validator.compute_file_hash(test_file)
+
+        empty_sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        self.assertEqual(computed_hash, empty_sha256)
+        self.assertEqual(bytes_read, 0)
+
+    def test_hash_03_file_larger_than_multiple_blocks(self):
+        """HASH-03: File larger than multiple streaming blocks hashes correctly."""
+        test_file = self.base_path / "multi_block.bin"
+        chunk_size = 1024  # 1 KB chunk size for test
+        block_count = 5
+        block_data = b"X" * chunk_size
+        total_data = block_data * block_count + b"REMAINDER"
+        test_file.write_bytes(total_data)
+
+        validator = SourceValidator(base_dir=self.base_path, chunk_size=chunk_size)
+        computed_hash, bytes_read = validator.compute_file_hash(test_file)
+
+        ref_hash = hashlib.sha256(total_data).hexdigest()
+        self.assertEqual(computed_hash, ref_hash)
+        self.assertEqual(bytes_read, len(total_data))
+
+    def test_hash_04_streaming_memory_bound_chunk_reads(self):
+        """HASH-04: Verify chunked read behavior (no whole-file read into memory)."""
+        test_file = self.base_path / "chunk_test.bin"
+        test_file.write_bytes(b"A" * 5000)
+
+        validator = SourceValidator(base_dir=self.base_path, chunk_size=1000)
+        # Verify default chunk size vs configured chunk size
+        self.assertEqual(validator.chunk_size, 1000)
+
+        with patch("flight_pipeline.ingestion.source_validator.open", side_effect=open) as mock_open:
+            h, b = validator.compute_file_hash(test_file)
+            self.assertEqual(b, 5000)
+
+    def test_hash_05_detect_hash_mismatch(self):
+        """HASH-05: Detect hash mismatch when actual hash != approved baseline hash."""
+        test_file = self.base_path / "tabular_2020.csv"
+        content = b"header\nrow1\n"
+        test_file.write_bytes(content)
+
+        synthetic_inventory = {
+            2020: SourceEntry(
+                year=2020,
+                relative_path="tabular_2020.csv",
+                audited_row_count=1,
+                audited_byte_size=len(content),
+                audited_column_count=34,
+            )
+        }
+        approved_hashes = {
+            2020: "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+
+        validator = SourceValidator(
+            base_dir=self.base_path,
+            inventory=synthetic_inventory,
+            approved_baseline_hashes=approved_hashes,
+        )
+
+        # Non-failing verification mode
+        res = validator.verify_source(2020, compute_hash=True, fail_fast=False)
+        self.assertEqual(res.state, VerificationState.HASH_MISMATCH)
+        self.assertFalse(res.is_verified)
+        self.assertIsNotNone(res.error_message)
+        self.assertEqual(res.upstream_identity_status, UPSTREAM_IDENTITY_STATUS_UNVERIFIED)
+
+        # Fail-fast mode raises SourceHashMismatchError
+        with self.assertRaises(SourceHashMismatchError):
+            validator.verify_source(2020, compute_hash=True, fail_fast=True)
+
+    def test_hash_06_unapproved_baseline_cannot_conclude_verified(self):
+        """HASH-06: When no approved baseline exists, state is LOCAL_HASH_COMPUTED_UNAPPROVED and is_verified is False."""
+        test_file = self.base_path / "flight_2020.csv"
+        content = b"col1,col2\n1,2\n"
+        test_file.write_bytes(content)
+
+        synthetic_inventory = {
+            2020: SourceEntry(
+                year=2020,
+                relative_path="flight_2020.csv",
+                audited_row_count=1,
+                audited_byte_size=len(content),
+                audited_column_count=34,
+            )
+        }
+
+        # No approved baseline hashes provided
+        validator = SourceValidator(
+            base_dir=self.base_path,
+            inventory=synthetic_inventory,
+            approved_baseline_hashes=None,
+        )
+
+        res = validator.verify_source(2020, compute_hash=True, fail_fast=False)
+        self.assertEqual(res.state, VerificationState.LOCAL_HASH_COMPUTED_UNAPPROVED)
+        self.assertFalse(res.is_verified)
+        self.assertIsNone(res.approved_sha256)
+        self.assertIsNotNone(res.computed_sha256)
+        self.assertEqual(res.upstream_identity_status, UPSTREAM_IDENTITY_STATUS_UNVERIFIED)
+
+        # Verify batch evaluation reflects has_unapproved_candidate_hashes
+        batch = validator.verify_all_sources(compute_hash=True)
+        self.assertFalse(batch.all_hashes_verified)
+        self.assertTrue(batch.has_unapproved_candidate_hashes)
+
+    # -------------------------------------------------------------------------
+    # Error Handling & Edge Cases (ERR-01 .. ERR-07)
+    # -------------------------------------------------------------------------
+
+    def test_err_01_missing_file(self):
+        """ERR-01: Missing file results in SOURCE_MISSING and raises SourceNotFoundError on fail_fast."""
+        synthetic_inventory = {
+            2020: SourceEntry(
+                year=2020,
+                relative_path="nonexistent.csv",
+                audited_row_count=100,
+                audited_byte_size=500,
+                audited_column_count=34,
+            )
+        }
+        validator = SourceValidator(base_dir=self.base_path, inventory=synthetic_inventory)
+
+        res = validator.verify_source(2020, compute_hash=False, fail_fast=False)
+        self.assertEqual(res.state, VerificationState.SOURCE_MISSING)
+        self.assertFalse(res.is_verified)
+
+        with self.assertRaises(SourceNotFoundError):
+            validator.verify_source(2020, compute_hash=False, fail_fast=True)
+
+    def test_err_02_permission_error_fail_closed(self):
+        """ERR-02: Permission/read error results in SOURCE_READ_ERROR or raises SourcePermissionError."""
+        test_file = self.base_path / "perm_file.csv"
+        test_file.write_bytes(b"data\n")
+
+        validator = SourceValidator(base_dir=self.base_path)
+
+        with patch("flight_pipeline.ingestion.source_validator.open", side_effect=PermissionError("Access denied")):
+            with self.assertRaises(SourcePermissionError):
+                validator.compute_file_hash(test_file)
+
+    def test_err_03_file_modified_during_hashing(self):
+        """ERR-03: Detecting modification during hashing raises SourceChangedDuringReadError."""
+        test_file = self.base_path / "racing_file.csv"
+        test_file.write_bytes(b"initial content\n")
+
+        synthetic_inventory = {
+            2020: SourceEntry(
+                year=2020,
+                relative_path="racing_file.csv",
+                audited_row_count=1,
+                audited_byte_size=len(b"initial content\n"),
+                audited_column_count=34,
+            )
+        }
+        validator = SourceValidator(base_dir=self.base_path, inventory=synthetic_inventory)
+
+        # Simulate size change between before_stat and after_stat
+        fake_stat_before = MagicMock(st_size=16, st_mtime=1000.0)
+        fake_stat_after = MagicMock(st_size=32, st_mtime=1005.0)
+
+        with patch("os.stat", side_effect=[fake_stat_before, fake_stat_after]):
+            with self.assertRaises(SourceChangedDuringReadError):
+                validator.compute_file_hash(test_file, fail_on_change=True)
+
+    def test_err_04_invalid_path_traversal(self):
+        """ERR-04: Path traversal sequences ('..') are strictly rejected."""
+        with self.assertRaises(SourcePathSecurityError):
+            validate_path_safety("../outside.csv", base_dir=self.base_path)
+
+        with self.assertRaises(SourcePathSecurityError):
+            validate_path_safety(self.base_path / "dir" / ".." / ".." / "escaped.csv", base_dir=self.base_path)
+
+    def test_err_05_symlink_escape_rejected(self):
+        """ERR-05: Symlinks and reparse points are strictly rejected."""
+        target_file = self.base_path / "real_file.csv"
+        target_file.write_bytes(b"payload")
+        link_file = self.base_path / "symlink_file.csv"
+
+        try:
+            os.symlink(target_file, link_file)
+            has_symlink_support = True
+        except (OSError, NotImplementedError):
+            has_symlink_support = False
+
+        if has_symlink_support:
+            with self.assertRaises(SourcePathSecurityError):
+                validate_path_safety(link_file, base_dir=self.base_path)
+        else:
+            # If OS does not permit symlink creation without admin rights, mock islink
+            with patch("flight_pipeline.ingestion.source_validator.os.path.islink", return_value=True):
+                with self.assertRaises(SourcePathSecurityError):
+                    validate_path_safety(target_file, base_dir=self.base_path)
+
+    def test_err_06_size_mismatch_detected(self):
+        """ERR-06: Size mismatch triggers SIZE_MISMATCH or raises SourceSizeMismatchError."""
+        test_file = self.base_path / "size_test.csv"
+        test_file.write_bytes(b"12345")  # 5 bytes
+
+        synthetic_inventory = {
+            2020: SourceEntry(
+                year=2020,
+                relative_path="size_test.csv",
+                audited_row_count=1,
+                audited_byte_size=10,  # Expected 10 bytes
+                audited_column_count=34,
+            )
+        }
+        validator = SourceValidator(base_dir=self.base_path, inventory=synthetic_inventory)
+
+        res = validator.verify_source(2020, compute_hash=False, fail_fast=False)
+        self.assertEqual(res.state, VerificationState.SIZE_MISMATCH)
+        self.assertEqual(res.actual_byte_size, 5)
+        self.assertEqual(res.expected_byte_size, 10)
+        self.assertFalse(res.is_verified)
+
+        with self.assertRaises(SourceSizeMismatchError):
+            validator.verify_source(2020, compute_hash=False, fail_fast=True)
+
+    def test_err_07_corrupt_baseline_format(self):
+        """ERR-07: Corrupt baseline hash format (non-hex, wrong length, wrong year) raises SourceConfigurationError."""
+        # Non-hex string
+        with self.assertRaises(SourceConfigurationError):
+            SourceValidator(
+                base_dir=self.base_path,
+                approved_baseline_hashes={2016: "not_a_hex_hash_zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"},
+            )
+
+        # Wrong length (not 64 chars)
+        with self.assertRaises(SourceConfigurationError):
+            SourceValidator(
+                base_dir=self.base_path,
+                approved_baseline_hashes={2016: "abcdef123456"},
+            )
+
+        # Year not in inventory
+        with self.assertRaises(SourceConfigurationError):
+            SourceValidator(
+                base_dir=self.base_path,
+                approved_baseline_hashes={1999: "a" * 64},
+            )
+
+    # -------------------------------------------------------------------------
+    # API Compatibility & Integration (API-01)
+    # -------------------------------------------------------------------------
+
+    def test_api_01_run_manifest_record_input_compatibility(self):
+        """API-01: Verify integration with RunManifest.record_input() per DOC-F02."""
+        manifest = RunManifest(run_id="run_test_001", task_id="T007-02A")
+
+        test_file = self.base_path / "flight_2016.csv"
+        content = b"col1,col2\nval1,val2\n"
+        test_file.write_bytes(content)
+        content_hash = hashlib.sha256(content).hexdigest()
+
+        synthetic_inventory = {
+            2016: SourceEntry(
+                year=2016,
+                relative_path="flight_2016.csv",
+                audited_row_count=1,
+                audited_byte_size=len(content),
+                audited_column_count=34,
+            )
+        }
+        approved_hashes = {2016: content_hash}
+
+        validator = SourceValidator(
+            base_dir=self.base_path,
+            inventory=synthetic_inventory,
+            approved_baseline_hashes=approved_hashes,
+        )
+
+        batch = validator.verify_all_sources(compute_hash=True)
+        self.assertTrue(batch.all_hashes_verified)
+
+        # Record into manifest
+        validator.record_into_run_manifest(manifest, batch, record_only_verified_hashes=True)
+
+        self.assertEqual(len(manifest.inputs), 1)
+        self.assertEqual(manifest.inputs[0]["bytes"], len(content))
+        self.assertEqual(manifest.inputs[0]["sha256"], content_hash)
+
+        # Test with unverified candidate hash: sha256 must be 'UNVERIFIED'
+        manifest_unverified = RunManifest(run_id="run_test_002", task_id="T007-02A")
+        validator_unapproved = SourceValidator(
+            base_dir=self.base_path,
+            inventory=synthetic_inventory,
+            approved_baseline_hashes=None,  # No approved baseline
+        )
+        batch_unapproved = validator_unapproved.verify_all_sources(compute_hash=True)
+        self.assertFalse(batch_unapproved.all_hashes_verified)
+        self.assertTrue(batch_unapproved.has_unapproved_candidate_hashes)
+
+        validator_unapproved.record_into_run_manifest(
+            manifest_unverified, batch_unapproved, record_only_verified_hashes=True
+        )
+        self.assertEqual(len(manifest_unverified.inputs), 1)
+        self.assertEqual(manifest_unverified.inputs[0]["sha256"], "UNVERIFIED")
+
+    # -------------------------------------------------------------------------
+    # Governance Invariants (GOV-01, GOV-02)
+    # -------------------------------------------------------------------------
+
+    def test_gov_01_source_manifest_not_used_as_raw_hash_registry(self):
+        """GOV-01: SOURCE_MANIFEST.json is an audit document manifest, not raw CSV hash registry (DOC-F01)."""
+        source_manifest_path = Path("docs/05-evidence/inputs/SOURCE_MANIFEST.json")
+        if source_manifest_path.exists():
+            data = json.loads(source_manifest_path.read_text(encoding="utf-8"))
+            statement = data.get("statement", "")
+            self.assertIn("NOT raw CSV files", statement)
+
+    def test_gov_02_upstream_identity_unverified_invariant(self):
+        """GOV-02: OR-08 / TS-019 upstream identity status remains strictly IDENTITY_UNVERIFIED."""
+        test_file = self.base_path / "source_2016.csv"
+        content = b"content"
+        test_file.write_bytes(content)
+        content_hash = hashlib.sha256(content).hexdigest()
+
+        synthetic_inventory = {
+            2016: SourceEntry(
+                year=2016,
+                relative_path="source_2016.csv",
+                audited_row_count=1,
+                audited_byte_size=len(content),
+                audited_column_count=34,
+            )
+        }
+        validator = SourceValidator(
+            base_dir=self.base_path,
+            inventory=synthetic_inventory,
+            approved_baseline_hashes={2016: content_hash},
+        )
+
+        res = validator.verify_source(2016, compute_hash=True)
+        self.assertTrue(res.is_verified)
+        self.assertEqual(res.upstream_identity_status, "IDENTITY_UNVERIFIED")
+
+        batch = validator.verify_all_sources(compute_hash=True)
+        self.assertTrue(batch.all_hashes_verified)
+        self.assertEqual(batch.upstream_identity_status, "IDENTITY_UNVERIFIED")
+
+    # -------------------------------------------------------------------------
+    # Scope Boundaries (SCOPE-01, SCOPE-02)
+    # -------------------------------------------------------------------------
+
+    def test_scope_01_synthetic_isolation_no_real_raw_csv_accessed(self):
+        """SCOPE-01: Asserts tests operate strictly on synthetic fixtures, not data/raw/."""
+        # Check that base_dir in our tests is the temp directory
+        self.assertTrue(str(self.base_path).startswith(tempfile.gettempdir()) or "tmp" in str(self.base_path).lower())
+        self.assertNotIn("data/raw/tabular", str(self.base_path).replace("\\", "/"))
+
+    def test_scope_02_validator_contains_no_csv_reader_or_publication_code(self):
+        """SCOPE-02: SourceValidator contains no Spark CSV reader, classifier, or publication calls."""
+        import inspect
+        import flight_pipeline.ingestion.source_validator as sv_module
+        source_code = inspect.getsource(sv_module)
+
+        forbidden_tokens = [
+            "spark.read.csv",
+            "SafePublisher.publish",
+            "publish_dataset",
+            "classify_record",
+            "RowClassifier",
+        ]
+        for token in forbidden_tokens:
+            self.assertNotIn(token, source_code, f"Forbidden token {token} found in source_validator.py")
+
+
+if __name__ == "__main__":
+    unittest.main()

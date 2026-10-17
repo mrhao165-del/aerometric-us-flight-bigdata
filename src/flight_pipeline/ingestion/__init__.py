@@ -1,6 +1,6 @@
 """
 Ingestion package for US Flight Performance Analysis (2016-2024).
-Provides canonical schema definitions, field mappings, and typing boundaries.
+Provides canonical schema definitions, field mappings, source inventory, and streaming hash verifier.
 """
 
 from flight_pipeline.ingestion.schema import (
@@ -20,7 +20,32 @@ from flight_pipeline.ingestion.schema import (
     validate_column_names,
 )
 
+from flight_pipeline.ingestion.source_validator import (
+    AUDITED_SOURCE_INVENTORY,
+    DEFAULT_HASH_CHUNK_SIZE,
+    EXPECTED_ANNUAL_SOURCES_COUNT,
+    TOTAL_AUDITED_BYTES,
+    TOTAL_AUDITED_ROWS,
+    UPSTREAM_IDENTITY_STATUS_UNVERIFIED,
+    BatchVerificationResult,
+    SourceChangedDuringReadError,
+    SourceConfigurationError,
+    SourceEntry,
+    SourceHashMismatchError,
+    SourceIntegrityError,
+    SourceNotFoundError,
+    SourcePathSecurityError,
+    SourcePermissionError,
+    SourceSizeMismatchError,
+    SourceVerificationResult,
+    SourceValidator,
+    SourceValidatorError,
+    VerificationState,
+    validate_path_safety,
+)
+
 __all__ = [
+    # Schema definitions
     "CANONICAL_COLUMNS_COUNT",
     "CANONICAL_COLUMN_NAMES",
     "CORRUPT_RECORD_COLUMN",
@@ -35,4 +60,26 @@ __all__ = [
     "get_raw_parser_schema",
     "get_curated_parquet_schema",
     "validate_column_names",
+    # Source Validator definitions
+    "AUDITED_SOURCE_INVENTORY",
+    "DEFAULT_HASH_CHUNK_SIZE",
+    "EXPECTED_ANNUAL_SOURCES_COUNT",
+    "TOTAL_AUDITED_BYTES",
+    "TOTAL_AUDITED_ROWS",
+    "UPSTREAM_IDENTITY_STATUS_UNVERIFIED",
+    "BatchVerificationResult",
+    "SourceChangedDuringReadError",
+    "SourceConfigurationError",
+    "SourceEntry",
+    "SourceHashMismatchError",
+    "SourceIntegrityError",
+    "SourceNotFoundError",
+    "SourcePathSecurityError",
+    "SourcePermissionError",
+    "SourceSizeMismatchError",
+    "SourceVerificationResult",
+    "SourceValidator",
+    "SourceValidatorError",
+    "VerificationState",
+    "validate_path_safety",
 ]

@@ -1,7 +1,7 @@
 {
   "registry_version": "1.0",
   "task_id": "T-007",
-  "updated_at": "2026-10-17T17:00:00+07:00",
+  "updated_at": "2026-10-17",
   "description": "Evidence Deliverable Register updated for T007-01-HUMAN-SIGNOFF and T007-02 Entry Preparation",
   "governed_living_docs": [
     {
@@ -2810,9 +2810,9 @@
       "path": "src/flight_pipeline/ingestion/__init__.py",
       "task_id": "T-007",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 1013,
-      "sha256": "61091def20d43c6d72ce02d9cbdbf522cd5fb58069ff7929bff6feaa0f381a96",
-      "authorization_ref": "Project Lead T007-CP1A instruction (2026-10-17); recorded in docs/05-evidence/T007_01_FINAL_VERDICT.md"
+      "bytes": 2369,
+      "sha256": "53ab52bd58b57ea5ea003992e4814a0977267e6e8d73ef88e861a512135daed1",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
     },
     {
       "path": "src/flight_pipeline/ingestion/schema.py",
@@ -3013,6 +3013,126 @@
       "bytes": 6746,
       "sha256": "28bc2a7a6c7f55e351ebda86e2644d0bbebd7eab4150b79e6f922286e141c7ad",
       "authorization_ref": "Project Lead T007-01-HUMAN-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/T007_01_HUMAN_SIGNOFF_20261017.md"
+    },
+    {
+      "path": "src/flight_pipeline/ingestion/source_validator.py",
+      "task_id": "T-007",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 25955,
+      "sha256": "9e403314c685815b9d887c76e12d357e534266ae85e3d2bfe7a989edd7d5d412",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "tests/test_t007_source_validator.py",
+      "task_id": "T-007",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 21787,
+      "sha256": "f9849bf6ca68e3f7cdd6ebf2af28fa2185cdc0c87e009ef6ac69e218971bf3ad",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_HANDOFF_ERRATA.md",
+      "task_id": "T-007",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 5112,
+      "sha256": "e4a463149d2393ca1f80e21dc5fddf9a9b931040335f891e3dcbc5e76f14fbd6",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_BASELINE_AND_AUTHORIZATION.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4053,
+      "sha256": "90a2f18319908d05a0f281af16d31f4073ad600fd829627090656a749ea36b41",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SOURCE_VALIDATOR_DESIGN.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8691,
+      "sha256": "745ff97f80e474719f324eb2ef51f774e1221921b07dc467b962e2db3e8bd9d5",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_HASH_AND_INVENTORY_TESTS.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7850,
+      "sha256": "feabfd40a4d00179f48402210c9618eac34137eaa31794dd4243978c3dfd347b",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SOURCE_INTEGRITY_THREAT_MODEL.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5098,
+      "sha256": "fb93187e86c0ff689a80052497182ac6db7062f4532ee8ea8c09d486934ca204",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_T009_API_COMPATIBILITY.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4051,
+      "sha256": "337f653d85a7ec6641610a5ffa3cd4e655ba7c82a7649ee9295a467726786fd4",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_SCOPE_AND_DIFF_AUDIT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3801,
+      "sha256": "cbac388aab19174b407cfe032b26d14312f31f63ff5ef84fe0c3f5bfd2cb7cf8",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_FINAL_TEST_MATRIX.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4176,
+      "sha256": "767e36c2b91c90f45b0e81c50d98aefa45d94d29db8ed8139eea60f52ac894df",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_FINAL_VERDICT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3948,
+      "sha256": "93f1a6ea93a472f1016a00b1629cb059a9f1c989ccd680d81669603678d8c7b8",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_LOG_TESTS.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 5027,
+      "sha256": "20f4f42f5f8ea5c5a1378ed7a82f68511e3cc7e2649946065901fd3e194bb614",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_LOG_T006_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6812,
+      "sha256": "7577a9adcc254291e81a21c74a70ea0188200df741af6ae19a03a19f0978d85a",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2063,
+      "sha256": "ec219c8fbcd4826365e5f1b1438e1147e6f3df202f6cd38fcd1a5c87eae75166",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_02A_LOG_CONSISTENCY.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 77,
+      "sha256": "e56183939234051e1aae671876d7cbcb21309e5680c496bd7b971ff23edbe758",
+      "authorization_ref": "Project Lead T007-02A instruction (2026-10-17); recorded in docs/05-evidence/T007_02A_FINAL_VERDICT.md"
     }
   ]
 }
