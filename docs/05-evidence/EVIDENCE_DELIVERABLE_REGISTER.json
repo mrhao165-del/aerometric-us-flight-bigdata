@@ -1,7 +1,7 @@
 {
   "registry_version": "1.0",
   "task_id": "T-007",
-  "updated_at": "2026-10-17T15:20:00+07:00",
+  "updated_at": "2026-10-17T15:40:00+07:00",
   "description": "Evidence Deliverable Register updated for T009-UNBLOCK-R2 Git metadata exclusion & validator reconciliation",
   "governed_living_docs": [
     {
@@ -2629,6 +2629,94 @@
       "bytes": 2349,
       "sha256": "0bdf2e72d1c2fcfd62269358210ad8cbd5d312b3a60bba94e861488694b499ec",
       "authorization_ref": "Project Lead T007-DESIGN-R1 instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_POLICY_DECISION_MATRIX.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6471,
+      "sha256": "881fcffb7423c33215bec4892470322f301c4e330c47136d32c79142a49d3bbb",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_CSV_ACCOUNTING_PROOF_PLAN.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8020,
+      "sha256": "da0523036cf03485c3526d4b5c14852c4760b757713327e205961396d8039430",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_T009_API_MANIFEST_RECONCILIATION.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7181,
+      "sha256": "92a59357f8f0a672de5a11c9e5e0024e0b21d2bc8343d4cb0d71f4140e4fadc8",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_DATE_TIME_FINAL_RULES.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4821,
+      "sha256": "deb35fc8afd90b82eca4c9338c336919dc21cefc7fdcdf77716e312e0db54a41",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_CHECKPOINT_SCOPE.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5541,
+      "sha256": "c9a700777949bcfad57342864cc547a9b9f25a1f9b410552164c131f7dc0343f",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_FINAL_VERDICT.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5856,
+      "sha256": "d15429428f48823e14857c783fa1251d9cb9a089a1c3fd0a36a5edd8eac4be7b",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_LOG_SPARK_POC.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2642,
+      "sha256": "c93bd9b8f50c2c8152eac6810b6a4b7f2150ef281caaecd72cb851a27700813d",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_LOG_CONSISTENCY.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "a798c36e389143877098885dcf347629a81d5056e0d3ec8302385b482d7fa63a",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_LOG_CI_CLEAN_CHECKOUT.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "a798c36e389143877098885dcf347629a81d5056e0d3ec8302385b482d7fa63a",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_LOG_REGISTRY_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2057,
+      "sha256": "868cc53789a2d6c36178c7284bbe063f9dcf0ff2aa51fe6ffda647546d24d9e0",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
+    },
+    {
+      "path": "docs/05-evidence/T007_DESIGN_EXIT_LOG_T006_REGRESSION.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2349,
+      "sha256": "0bdf2e72d1c2fcfd62269358210ad8cbd5d312b3a60bba94e861488694b499ec",
+      "authorization_ref": "Project Lead T007-DESIGN-R1-EXIT instruction"
     }
   ]
 }

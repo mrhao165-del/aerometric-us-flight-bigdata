@@ -1,0 +1,41 @@
+================================================================================
+PYSPARK 4.0.1 CSV PARSER EMPIRICAL BEHAVIOR & CATALYST PRUNING PROOF-OF-CONCEPT
+================================================================================
+Runtime: Apache Spark / PySpark 4.0.1 on Python 3.10.11 (64-bit Windows)
+Execution: task-2575 (scratch/test_spark_csv_poc.py)
+
+--- FULL READ (WITH _corrupt_record) ---
++----------+----------+------+-------+----+---------------------------------------+
+|FL_DATE   |OP_CARRIER|FL_NUM|ORIGIN |DEST|_corrupt_record                        |
++----------+----------+------+-------+----+---------------------------------------+
+|2016-01-01|AA        |100   |JFK    |LAX |NULL                                   |
+|2016-01-02|DL        |200   |NULL   |NULL|2016-01-02,DL,200                      |
+|2016-01-03|UA        |300   |ORD    |SFO |2016-01-03,UA,300,ORD,SFO,EXTRA1,EXTRA2|
+|2016-01-04|WN        |400   |MDW,CHI|LAS |NULL                                   |
+|2016-01-07|AA        |NULL  |DFW    |ATL |2016-01-07,AA,NOTNUM,DFW,ATL           |
++----------+----------+------+-------+----+---------------------------------------+
+
+--- COLUMN PRUNING TEST (SELECT ONLY BUSINESS COLS) ---
++----------+----------+------+-------+----+
+|FL_DATE   |OP_CARRIER|FL_NUM|ORIGIN |DEST|
++----------+----------+------+-------+----+
+|2016-01-01|AA        |100   |JFK    |LAX |
+|2016-01-02|DL        |200   |NULL   |NULL|
+|2016-01-03|UA        |300   |ORD    |SFO |
+|2016-01-04|WN        |400   |MDW,CHI|LAS |
+|2016-01-07|AA        |NULL  |DFW    |ATL |
++----------+----------+------+-------+----+
+
+Physical plan of pruned:
+== Physical Plan ==
+FileScan csv [FL_DATE#0,OP_CARRIER#1,FL_NUM#2,ORIGIN#3,DEST#4] Batched: false, DataFilters: [], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/C:/Users/Heikapu/AppData/Local/Temp/tmpww_x2v1a/test_sample.csv], PartitionFilters: [], PushedFilters: [], ReadSchema: struct<FL_DATE:string,OP_CARRIER:string,FL_NUM:int,ORIGIN:string,DEST:string>
+
+FINDINGS:
+1. Short row (Row 2, 3 tokens) is captured in _corrupt_record.
+2. Long row (Row 3, 7 tokens) is captured in _corrupt_record.
+3. Quoted comma (Row 4, "MDW,CHI") parsed correctly as a single field.
+4. Numeric failure (Row 5, "NOTNUM") sets FL_NUM to NULL and captures line in _corrupt_record.
+5. Catalyst column pruning prunes _corrupt_record from ReadSchema when not projected in actions.
+6. Two-action staged evaluation required to prevent silent corrupt record pruning.
+================================================================================
+POC VERIFICATION RESULT: EMPIRICALLY CONFIRMED AND REPRODUCIBLE.
