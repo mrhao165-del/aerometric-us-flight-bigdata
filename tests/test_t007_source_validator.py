@@ -123,26 +123,26 @@ class TestT007SourceValidatorSynthetic(unittest.TestCase):
     def test_inv_03_expected_row_counts_and_byte_sizes(self):
         """INV-03: Expected byte sizes and row counts match audited baseline exactly."""
         expected_rows = {
-            2016: 5617658,
-            2017: 5674621,
-            2018: 7213446,
-            2019: 7422037,
-            2020: 4688354,
-            2021: 5992543,
-            2022: 6703047,
-            2023: 6787093,
-            2024: 4575204,
+            2016: 5537987,
+            2017: 5575872,
+            2018: 6986842,
+            2019: 7161827,
+            2020: 4312091,
+            2021: 5755666,
+            2022: 6413416,
+            2023: 6645461,
+            2024: 6284841,
         }
         expected_bytes = {
-            2016: 1563303803,
-            2017: 1577414136,
-            2018: 2005622763,
-            2019: 2060544985,
-            2020: 1303942668,
-            2021: 1666039833,
-            2022: 1863280094,
-            2023: 1885823248,
-            2024: 1270394643,
+            2016: 1538427452,
+            2017: 1549837485,
+            2018: 1941406432,
+            2019: 1990370667,
+            2020: 1197858795,
+            2021: 1600032487,
+            2022: 1782648882,
+            2023: 1847433387,
+            2024: 1748350586,
         }
 
         sum_rows = 0
@@ -157,6 +157,28 @@ class TestT007SourceValidatorSynthetic(unittest.TestCase):
         self.assertEqual(sum_rows, 54674003)
         self.assertEqual(sum_bytes, TOTAL_AUDITED_BYTES)
         self.assertEqual(sum_bytes, 15196366173)
+
+    def test_inv_04_inventory_matches_g1_canonical_schema_manifests(self):
+        """INV-04: AUDITED_SOURCE_INVENTORY per-year rows and sizes match G1 schema_YYYY.json inputs."""
+        import json
+        repo_root = Path(__file__).resolve().parent.parent
+        for year, entry in AUDITED_SOURCE_INVENTORY.items():
+            schema_file = repo_root / "docs" / "05-evidence" / "inputs" / f"schema_{year}.json"
+            self.assertTrue(schema_file.is_file(), f"Missing G1 schema manifest: {schema_file}")
+            with open(schema_file, "r", encoding="utf-8") as f:
+                schema_data = json.load(f)
+            expected_rows = schema_data["row_count"]
+            expected_bytes = schema_data["source_signature"]["file_size_bytes"]
+            self.assertEqual(
+                entry.audited_row_count,
+                expected_rows,
+                f"Year {year} row count mismatch: {entry.audited_row_count} vs canonical G1 {expected_rows}"
+            )
+            self.assertEqual(
+                entry.audited_byte_size,
+                expected_bytes,
+                f"Year {year} byte size mismatch: {entry.audited_byte_size} vs canonical G1 {expected_bytes}"
+            )
 
     # -------------------------------------------------------------------------
     # Hash Tests (HASH-01 .. HASH-06)

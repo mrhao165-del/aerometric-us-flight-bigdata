@@ -1,0 +1,126 @@
+{
+  "manifest_version": "1.0",
+  "task_id": "T-007",
+  "subtask_id": "T007-02B",
+  "baseline_status": "CANDIDATE_PENDING_HUMAN_ACCEPTANCE",
+  "upstream_identity_status": "IDENTITY_UNVERIFIED",
+  "generated_at": "2026-10-17T12:21:17.477526+00:00",
+  "total_sources_count": 9,
+  "total_audited_bytes": 15196366173,
+  "total_audited_rows": 54674003,
+  "governance_invariants": {
+    "OR-08": "Upstream identity status is strictly IDENTITY_UNVERIFIED; local hash verifies local snapshot integrity only.",
+    "FP-DEC-014": "Size/mtime do not prove identity; full streaming SHA-256 computed.",
+    "DOC-F01": "SOURCE_MANIFEST.json is untouched; candidate raw hashes stored in separate governed candidate manifest."
+  },
+  "sources": {
+    "2016": {
+      "year": 2016,
+      "relative_source_path": "data/raw/tabular/2016/flight_with_weather_2016.csv",
+      "file_size": 1538427452,
+      "audited_row_count": 5537987,
+      "sha256_calculated": "4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34",
+      "mtime_utc": "2026-08-23T11:33:29.868570+00:00",
+      "validation_timestamp": "2026-10-17T12:21:04.600307+00:00",
+      "source_stability_status": "STABLE_DURING_READ",
+      "approval_status": "CANDIDATE_PENDING_HUMAN_ACCEPTANCE",
+      "upstream_identity_status": "IDENTITY_UNVERIFIED"
+    },
+    "2017": {
+      "year": 2017,
+      "relative_source_path": "data/raw/tabular/2017/flight_with_weather_2017.csv",
+      "file_size": 1549837485,
+      "audited_row_count": 5575872,
+      "sha256_calculated": "67b8dbd6678576b1a2229ef2dbeec065e0f64d31d688ab8a2ca59c88d2a656f9",
+      "mtime_utc": "2026-08-23T11:34:01.257975+00:00",
+      "validation_timestamp": "2026-10-17T12:21:05.989806+00:00",
+      "source_stability_status": "STABLE_DURING_READ",
+      "approval_status": "CANDIDATE_PENDING_HUMAN_ACCEPTANCE",
+      "upstream_identity_status": "IDENTITY_UNVERIFIED"
+    },
+    "2018": {
+      "year": 2018,
+      "relative_source_path": "data/raw/tabular/2018/flight_with_weather_2018.csv",
+      "file_size": 1941406432,
+      "audited_row_count": 6986842,
+      "sha256_calculated": "0398bab8f1b79a5f3bea628b707e18c3af628f37a1daa52de6849fb8bdfc71a3",
+      "mtime_utc": "2026-08-23T11:34:33.177224+00:00",
+      "validation_timestamp": "2026-10-17T12:21:07.802347+00:00",
+      "source_stability_status": "STABLE_DURING_READ",
+      "approval_status": "CANDIDATE_PENDING_HUMAN_ACCEPTANCE",
+      "upstream_identity_status": "IDENTITY_UNVERIFIED"
+    },
+    "2019": {
+      "year": 2019,
+      "relative_source_path": "data/raw/tabular/2019/flight_with_weather_2019.csv",
+      "file_size": 1990370667,
+      "audited_row_count": 7161827,
+      "sha256_calculated": "eec50211a1a63f37b840977be5ab2e99a008a8d5234c2a12df8eb50862f93b4a",
+      "mtime_utc": "2026-08-23T11:36:57.859942+00:00",
+      "validation_timestamp": "2026-10-17T12:21:09.581207+00:00",
+      "source_stability_status": "STABLE_DURING_READ",
+      "approval_status": "CANDIDATE_PENDING_HUMAN_ACCEPTANCE",
+      "upstream_identity_status": "IDENTITY_UNVERIFIED"
+    },
+    "2020": {
+      "year": 2020,
+      "relative_source_path": "data/raw/tabular/2020/flight_with_weather_2020.csv",
+      "file_size": 1197858795,
+      "audited_row_count": 4312091,
+      "sha256_calculated": "787981046c9fe0f4884ac207a3d28ea6a7fae98e89535cb9f8a37debb5c7fa5d",
+      "mtime_utc": "2026-08-23T11:36:18.106841+00:00",
+      "validation_timestamp": "2026-10-17T12:21:10.716872+00:00",
+      "source_stability_status": "STABLE_DURING_READ",
+      "approval_status": "CANDIDATE_PENDING_HUMAN_ACCEPTANCE",
+      "upstream_identity_status": "IDENTITY_UNVERIFIED"
+    },
+    "2021": {
+      "year": 2021,
+      "relative_source_path": "data/raw/tabular/2021/flight_with_weather_2021.csv",
+      "file_size": 1600032487,
+      "audited_row_count": 5755666,
+      "sha256_calculated": "5b7cc4801a6ff5cf432137632209ebd7aecd3d4a0f83e8920e3525116e88defc",
+      "mtime_utc": "2026-08-23T11:37:00.664679+00:00",
+      "validation_timestamp": "2026-10-17T12:21:12.244144+00:00",
+      "source_stability_status": "STABLE_DURING_READ",
+      "approval_status": "CANDIDATE_PENDING_HUMAN_ACCEPTANCE",
+      "upstream_identity_status": "IDENTITY_UNVERIFIED"
+    },
+    "2022": {
+      "year": 2022,
+      "relative_source_path": "data/raw/tabular/2022/flight_with_weather_2022.csv",
+      "file_size": 1782648882,
+      "audited_row_count": 6413416,
+      "sha256_calculated": "45eb45e801d6eeeb16167306fc69a8449177191cfff29bfb5d22285827f53140",
+      "mtime_utc": "2026-08-23T11:37:18.113783+00:00",
+      "validation_timestamp": "2026-10-17T12:21:14.034256+00:00",
+      "source_stability_status": "STABLE_DURING_READ",
+      "approval_status": "CANDIDATE_PENDING_HUMAN_ACCEPTANCE",
+      "upstream_identity_status": "IDENTITY_UNVERIFIED"
+    },
+    "2023": {
+      "year": 2023,
+      "relative_source_path": "data/raw/tabular/2023/flight_with_weather_2023.csv",
+      "file_size": 1847433387,
+      "audited_row_count": 6645461,
+      "sha256_calculated": "9c9e20f55d3dd10a127bcdd28680df6547a01a82ad71999b794aff3e1075d7bd",
+      "mtime_utc": "2026-08-23T11:39:27.768559+00:00",
+      "validation_timestamp": "2026-10-17T12:21:15.793258+00:00",
+      "source_stability_status": "STABLE_DURING_READ",
+      "approval_status": "CANDIDATE_PENDING_HUMAN_ACCEPTANCE",
+      "upstream_identity_status": "IDENTITY_UNVERIFIED"
+    },
+    "2024": {
+      "year": 2024,
+      "relative_source_path": "data/raw/tabular/2024/flight_with_weather_2024.csv",
+      "file_size": 1748350586,
+      "audited_row_count": 6284841,
+      "sha256_calculated": "f938ade95a031088467ab5e75abea2021e541eaf4a4288e564066e100541d5f7",
+      "mtime_utc": "2026-08-23T11:39:32.792665+00:00",
+      "validation_timestamp": "2026-10-17T12:21:17.477526+00:00",
+      "source_stability_status": "STABLE_DURING_READ",
+      "approval_status": "CANDIDATE_PENDING_HUMAN_ACCEPTANCE",
+      "upstream_identity_status": "IDENTITY_UNVERIFIED"
+    }
+  }
+}
