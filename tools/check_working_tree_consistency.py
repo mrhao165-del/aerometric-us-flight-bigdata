@@ -53,9 +53,22 @@ ALLOWED_ARTIFACT_TYPES = {
     "AUTOMATED_VERIFICATION_SCRIPT",
     "TEST_SUITE",
     "EXECUTION_MANIFEST",
+    "SOURCE_CODE",
+    "TEST_MODULE",
+    "DEPENDENCY_SPEC",
+    "CI_CONFIG",
 }
 
-ALLOWED_DELIVERABLE_EXTENSIONS = {".md", ".csv", ".json", ".py", ".bak", ".txt"}
+ALLOWED_DELIVERABLE_EXTENSIONS = {
+    ".md",
+    ".csv",
+    ".json",
+    ".py",
+    ".bak",
+    ".txt",
+    ".yml",
+    ".yaml",
+}
 ALLOWED_LIVING_DOC_EXTENSIONS = {".md"}
 HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 EVIDENCE_FILENAME_RE = re.compile(
@@ -502,6 +515,14 @@ def run_consistency_check(root_dir: Path):
                     loc_ok = True
                 elif dp.startswith("tools/audit/") or dp.startswith("tools/qa/"):
                     loc_ok = ext in (".py", ".json") and "/" not in dp.split("/", 2)[2]
+                elif dp.startswith("src/flight_pipeline/"):
+                    loc_ok = ext == ".py"
+                elif dp.startswith("tests/"):
+                    loc_ok = ext == ".py"
+                elif dp == "requirements.txt":
+                    loc_ok = True
+                elif dp.startswith(".github/workflows/"):
+                    loc_ok = ext in (".yml", ".yaml")
 
                 meta_ok = (
                     isinstance(item, dict)

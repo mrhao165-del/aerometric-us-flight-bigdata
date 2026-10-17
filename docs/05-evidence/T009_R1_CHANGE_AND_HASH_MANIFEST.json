@@ -1,0 +1,269 @@
+{
+  "manifest_version": "1.0",
+  "task_id": "T-009",
+  "gate": "G4",
+  "timestamp": "2026-10-17T09:05:00+07:00",
+  "auditor": "Senior Software Engineer & QA Engineer",
+  "total_files": 37,
+  "files": [
+    {
+      "path": "tools/check_working_tree_consistency.py",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 24155,
+      "sha256": "41ac4c1ba33d49da76b806f7dfca957f60b7a9bf94b1f83b27e9c2b10aeb5d1c",
+      "role": "Modified working tree consistency validator with T-009 policy extension"
+    },
+    {
+      "path": "src/flight_pipeline/__init__.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 216,
+      "sha256": "41becc9dc684ed718be0f2af59899830b36c338956f7b62a8d0186b272ab991c",
+      "role": "Flight pipeline root package init"
+    },
+    {
+      "path": "src/flight_pipeline/config/__init__.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 222,
+      "sha256": "1d6223c8ab4d594cd5051c1ea8945738852b544c089ddc4a64a80a9bf8d84715",
+      "role": "Configuration subpackage init"
+    },
+    {
+      "path": "src/flight_pipeline/config/spark_config.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 3221,
+      "sha256": "27e294f460de3b7c99e5cfd3aa9ea4f5ac43e13d2ada6121590dc2d2f7d36403",
+      "role": "SparkSession builder, dynamic memory budget, scratch dir, and process-level python setup"
+    },
+    {
+      "path": "src/flight_pipeline/quality/__init__.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 543,
+      "sha256": "66bb045e629cb4088e277f0efffa2025001bf158120121535432b4b3e92f2e0e",
+      "role": "Quality subpackage init"
+    },
+    {
+      "path": "src/flight_pipeline/quality/predicates.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 3290,
+      "sha256": "b0cb88bf316231229eaba3afd07c34b5f0d65ae9cf240a3ccc6b63de1041f715",
+      "role": "Finite numeric predicate (FIX-02) and 7 core continuous metrics validators"
+    },
+    {
+      "path": "src/flight_pipeline/storage/__init__.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 174,
+      "sha256": "1c6552b05566c7d00c979617cbee78f1817a903d7ee34c36826d09fd01b98195",
+      "role": "Storage subpackage init"
+    },
+    {
+      "path": "src/flight_pipeline/storage/publication.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 7533,
+      "sha256": "2b1427cbbd347ddb88829ad4f32e6f6a6769545e05f3e88086abfb981a696b7a",
+      "role": "7-step safe Windows NTFS publication engine with atomic pointer switch and TS-013 hook (FIX-03)"
+    },
+    {
+      "path": "src/flight_pipeline/utils/__init__.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 267,
+      "sha256": "81d522e8d4f5d8d7800b97dae11440fe05eccf418c533f2c2a86e07480534a8f",
+      "role": "Utilities subpackage init"
+    },
+    {
+      "path": "src/flight_pipeline/utils/logging_config.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 1236,
+      "sha256": "f3229120f70872e56623b55c9ade61f7d3c4ba0fd3e2b3f27f5533b729358e63",
+      "role": "Standardized logging configuration with console and file handlers"
+    },
+    {
+      "path": "src/flight_pipeline/utils/run_manifest.py",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 4809,
+      "sha256": "a8e1ab84244533fb5c29be29524f714bb1c462182b3513637c6bde5075d1c34d",
+      "role": "RowAccounting (DC-11/12) and RunManifest audit models"
+    },
+    {
+      "path": "tests/__init__.py",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 70,
+      "sha256": "184a8f936b70ba9788f85fc8af7955a24252acf09c32f6b4006740d79c4c86d4",
+      "role": "Test root package init"
+    },
+    {
+      "path": "tests/test_manifest.py",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 2557,
+      "sha256": "92c40ffcb2475cd90d5b9a5becb5ba1ef8a125d83821de9421d44e376d4f58be",
+      "role": "Unit tests for RowAccounting balance and RunManifest serialization"
+    },
+    {
+      "path": "tests/test_numeric_predicates.py",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 5375,
+      "sha256": "72b5306ddd98cea8ff061eb8d6ef2a95049b38c6f7236d92410718e5b1d560b3",
+      "role": "Unit tests for is_finite_numeric and 7 continuous metrics truth table"
+    },
+    {
+      "path": "tests/test_publication_safety.py",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 5221,
+      "sha256": "60e89db3d29d741f1c5702e7e938bb41c8ea77f493a7dd5ff7dd2b47fe7c3b78",
+      "role": "Unit tests for safe 7-step publication and TS-013 fault injection"
+    },
+    {
+      "path": "tests/test_spark_env.py",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 1438,
+      "sha256": "53e2eb01db1249f84a43eac4c0c1a6d23cedd22d98175127af0ecbdec389dcc3",
+      "role": "Unit tests for SparkSession local bootstrap, memory config, and distributed parallelize"
+    },
+    {
+      "path": "requirements.txt",
+      "artifact_type": "DEPENDENCY_SPEC",
+      "bytes": 122,
+      "sha256": "773dac6609bcace405a865ce0fb6235b276da4ee2352ecd241f30b8a2e590112",
+      "role": "Pinned project dependencies: PySpark 4.0.1, PyArrow 25.0.1, Pandas 2.3.3"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "artifact_type": "CI_CONFIG",
+      "bytes": 888,
+      "sha256": "175d30047113cb100154cbf53a6d910c57811dd0c45e5c3c009639107721be37",
+      "role": "Continuous Integration GitHub Actions workflow skeleton"
+    },
+    {
+      "path": "tools/qa/test_t009_r1_validator_extension.py",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 9768,
+      "sha256": "9f440b20ff3474091b582706c04bd2fc3894cbdb15655088ed46c0ee177e6337",
+      "role": "Security and compatibility regression suite for validator policy extension"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_DOCUMENT_AND_ENTRY_AUDIT.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7233,
+      "sha256": "865ebff5b163adaac34f90899871d21a1a9630146c1118176d0dfc9df0605acd",
+      "role": "Preflight document reading and entry gate condition verification"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_R2_EVIDENCE_RECONCILIATION.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8214,
+      "sha256": "7e32f4aae6c883348d4aaa12732aae95aa034aa4c9595a365cbe616d5884b3ec",
+      "role": "Root cause reconciliation of R2 negative test log and mathematical 409 assertion proof"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_VALIDATOR_EXTENSION_REVIEW.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7410,
+      "sha256": "7688293fe15fa27b7c0e943a3f93fad6d2c2b0933f6f6d351f8bc0eb30ef1fed",
+      "role": "Audit and safety review of validator policy extension"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_IMPLEMENTATION_REPORT.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9098,
+      "sha256": "cda9452eb27fc5b833d4ea31b95901cb6d0700ec81a8f46984944ef39580cb73",
+      "role": "Implementation details and architectural conformance report"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_RUNTIME_VERIFICATION.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5624,
+      "sha256": "6197054b075375426c30b359c976b8100ec06ea276e23daa3f2ba195561c75e2",
+      "role": "Runtime environment, SparkSession local mode, and JVM isolation audit"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_TEST_RESULTS.md",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6037,
+      "sha256": "fe02229b94e6e88140eedbf0eade13e16ffa7c797f9e05f319a354b0d0c743cf",
+      "role": "Automated unit test execution matrix and test results report"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_REGRESSION_REPORT.md",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 5323,
+      "sha256": "e4907f7187627e541cbe3254982f76f2260bb3394708989aefe0fce22363c8c0",
+      "role": "Audit report of all 5 regression suites"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_G3_CONDITION_RECONCILIATION.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5816,
+      "sha256": "cf9bee349e37a71177395b0c4247d5493e9bb82cfa2dee440d96d7098246d5cb",
+      "role": "Full satisfaction report of mandatory G3-COND-A/B/C conditions"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_RISK_AND_DEVIATIONS.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4648,
+      "sha256": "42e4f8b8fcde7d2fb8389f9ac903e75c7d1905fe867b20e870cc2228f300d53b",
+      "role": "Residual risks, mitigations, and downstream obligations audit"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_ROLLBACK_PLAN.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3741,
+      "sha256": "2a6b22d6c43aa524a1be64f1dc5878441ee3bffa921b894bb0e5ef67a9df6f93",
+      "role": "Step-by-step non-destructive rollback procedure"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4765,
+      "sha256": "acb1ab2346a29bb2ce200bb57b3d8baccb773bcba6cda8840e384c4f4e0bb4ca",
+      "role": "Final independent technical review and Gate G4 readiness verdict"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_LOG_UNITTESTS.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6408,
+      "sha256": "f43cfbb2d65cdf3ebe439225a00e1058a1f456c4e416082331343bbece59548e",
+      "role": "Terminal log of 10 automated unit tests"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_LOG_SPARK_SMOKE.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2602,
+      "sha256": "663c1364cd1116b1b0daf06ea221dc281621d0f775753b9693ded380caaa2725",
+      "role": "Terminal log of Spark smoke test"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_LOG_VALIDATOR_EXTENSION.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 1947,
+      "sha256": "f7e8dec75a54859c07a120eea10caf724eb91bb42ecd572fedfd248d6d9ce216",
+      "role": "Terminal log of validator extension test suite"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_LOG_R2_TEST_RERUN.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 1585,
+      "sha256": "6f59e4ed619d458411f0c3eb00412243e79ca98b124b2c50d6d2ad9a04febd3b",
+      "role": "Terminal log of R2 test rerun"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_LOG_T006_REGRESSION.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 2348,
+      "sha256": "5b8387eaebc6cc1dc67ace8954d0f8192c99d2461353f53fbcf79d0e0021b495",
+      "role": "Terminal log of T-006 contract consistency verification"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_LOG_REGISTRY_REGRESSION.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6004,
+      "sha256": "7865a956bf5ddc757cd6515aa6336a5b3eb2187842cb6a310318206f5b4654b4",
+      "role": "Terminal log of registry regression test suite"
+    },
+    {
+      "path": "docs/05-evidence/T009_R1_LOG_CONSISTENCY.txt",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 75,
+      "sha256": "d2131e3ad4d2d3cc18a22f1d345f90ea0842f2042e1ad442131c5d13e50cf14e",
+      "role": "Terminal log of working tree consistency check"
+    }
+  ]
+}

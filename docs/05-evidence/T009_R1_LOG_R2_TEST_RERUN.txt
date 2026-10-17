@@ -1,0 +1,13 @@
+[FAIL] POS-01: Isolated repo with root `.git/` metadata is cleanly accepted with 0 errors -> Issues: ['Registered deliverable physical size/SHA-256 verified: tools/check_working_tree_consistency.py', "No unrecognized stray files in working-tree: ['tools/check_working_tree_consistency.py']", 'All extra working-tree files cleanly accounted for']
+[FAIL] POS-02: Markdown file inside root `.git/` is ignored by active docs checks and accounting -> Issues: ['Registered deliverable physical size/SHA-256 verified: tools/check_working_tree_consistency.py', "No unrecognized stray files in working-tree: ['tools/check_working_tree_consistency.py']", 'All extra working-tree files cleanly accounted for']
+================================================================================
+RUNNING T009-UNBLOCK-R2 GIT EXCLUSION POSITIVE & NEGATIVE VERIFICATION SUITE
+================================================================================
+[PASS] NEG-01: Unrecognized stray file at repository root is strictly rejected
+[PASS] NEG-02: Unrecognized stray file in docs/ subfolder is strictly rejected
+[PASS] NEG-03: Unrecognized stray Python script in tools/ subfolder is strictly rejected
+[PASS] NEG-04: Nested `.git/` outside repository root is NOT ignored and strictly rejected
+[PASS] NEG-05: Tampered deliverable with SHA-256/size mismatch is strictly detected and rejected
+================================================================================
+VERIFICATION SUMMARY: 5 PASS, 2 FAIL
+================================================================================

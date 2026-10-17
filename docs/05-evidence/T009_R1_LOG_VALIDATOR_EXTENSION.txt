@@ -1,0 +1,14 @@
+[FAIL] BASE-01: Base fixture satisfies all checks -> Issues: ['Registered deliverable physical size/SHA-256 verified: tools/check_working_tree_consistency.py', "No unrecognized stray files in working-tree: ['tools/check_working_tree_consistency.py']", 'All extra working-tree files cleanly accounted for']
+[FAIL] POS-01: Registered .py in src/flight_pipeline/ is accepted -> Issues: ['Registered deliverable physical size/SHA-256 verified: tools/check_working_tree_consistency.py', "No unrecognized stray files in working-tree: ['tools/check_working_tree_consistency.py']", 'All extra working-tree files cleanly accounted for']
+[FAIL] POS-02: Registered requirements.txt at root is accepted -> Issues: ['Registered deliverable physical size/SHA-256 verified: tools/check_working_tree_consistency.py', "No unrecognized stray files in working-tree: ['tools/check_working_tree_consistency.py']", 'All extra working-tree files cleanly accounted for']
+[FAIL] POS-03: Registered .github/workflows/ci.yml is accepted -> Issues: ['Registered deliverable physical size/SHA-256 verified: tools/check_working_tree_consistency.py', "No unrecognized stray files in working-tree: ['tools/check_working_tree_consistency.py']", 'All extra working-tree files cleanly accounted for']
+================================================================================
+RUNNING T009-R1 VALIDATOR POLICY EXTENSION SECURITY & COMPATIBILITY SUITE
+================================================================================
+[PASS] NEG-01: Unregistered .py in src/ is rejected
+[PASS] NEG-02: Unregistered .py in tests/ is rejected
+[PASS] NEG-03: Non-.py extension in src/ is strictly rejected
+[PASS] NEG-04: Unauthorized root .env file is strictly rejected
+================================================================================
+VERIFICATION SUMMARY: 4 PASS, 4 FAIL
+================================================================================
