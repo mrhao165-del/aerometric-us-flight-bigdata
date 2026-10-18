@@ -9,10 +9,10 @@
       "task_id": "G2-REPO-APPLY",
       "original_v1_1_bytes": 5026,
       "original_v1_1_sha256": "6525a1735338f80c5a4ad1d4260cab1b43646a342799c8fb300f9db9adc787ed",
-      "current_bytes": 11013,
-      "current_sha256": "68770e5d88fd5cb7d70dcb3afb6a0eda66772f8f045976c29b9caffe2076ef43",
+      "current_bytes": 11373,
+      "current_sha256": "24f7963245396cae3d92ccfec044cb6c1b99ddf0e23e2d6c2afd00f0968d015f",
       "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__01-planning__BACKLOG.md.pre_g2_repo_apply.bak",
-      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md"
     },
     {
       "path": "docs/02-design/DECISIONS.md",
@@ -3570,9 +3570,9 @@
       "path": "tools/qa/verify_g2_repo_apply_r1_semantic_invariants.py",
       "task_id": "G3-OFFICIAL-SIGNOFF",
       "artifact_type": "AUTOMATED_VERIFICATION_SCRIPT",
-      "bytes": 39292,
-      "sha256": "5cd9bab5568be9ad91befd28044d1866519d70da605fa5d73f24f50a71eeab34",
-      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_EXECUTION_MANIFEST.md"
+      "bytes": 40533,
+      "sha256": "db6a3b563928689f0d7fd8cdc5c02ef27d842d719adf019ecceebe4453c1edd3",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md"
     },
     {
       "path": "tools/qa/verify_t003_contract_consistency.py",
@@ -3594,9 +3594,49 @@
       "path": "tools/qa/verify_t006_contract_consistency.py",
       "task_id": "T-009",
       "artifact_type": "TEST_SUITE",
-      "bytes": 38273,
-      "sha256": "b8b2bc2b08096e44a629a62bad505ed4c152b55cc5cb15c6c62650f02b1e1dea",
-      "authorization_ref": "Project Lead T009-HUMAN-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/T009_HUMAN_SIGNOFF_20261017.md"
+      "bytes": 39116,
+      "sha256": "f88e6665ffd07ba907b34d6e5f8fdc186500fe477ab38be3a2dadb935e371563",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_SIGNOFF_DOCUMENTATION_ERRATA.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
+      "bytes": 13041,
+      "sha256": "46380ecdf8681b4d3bcc8f9a04764d1d35746f10c79b4a53d18deddce0d1888c"
+    },
+    {
+      "path": "docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
+      "bytes": 11293,
+      "sha256": "c479046bcc76431f7df34a37339ef8e153f93bf91853759178702467094d3b88"
+    },
+    {
+      "path": "docs/05-evidence/T008_ENTRY_HANDOFF.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T008_ENTRY_HANDOFF.md",
+      "bytes": 12061,
+      "sha256": "b7fa10b2ce0aa78f9a97cadea61147a46b0b533e351a7abcbaa4a7e7111fe741"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_SIGNOFF_LOG_UNITTEST_SUITE.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
+      "bytes": 73461,
+      "sha256": "04e3d3b63ae75981af326eaf71e0cf268cfd0095340a522e0c857247258b4510"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_SIGNOFF_LOG_QA_VERIFIERS.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 12711,
+      "sha256": "36702c622cb32e8f5db75274e670e06f61ef49afc92ec2822d495e6b15cf2058",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md"
     }
   ]
 }

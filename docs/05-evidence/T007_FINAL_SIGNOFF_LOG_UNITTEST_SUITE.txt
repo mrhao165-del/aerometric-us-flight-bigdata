@@ -1,0 +1,1184 @@
+python : test_dc11_negative_counts_rejected (test_manifest.TestRunManifest)
+At line:1 char:1
++ python -m unittest discover -s tests -p 'test_*.py' -v 2>&1 | Tee-Obj ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_dc11_negat...estRunManifest):String) [], R 
+   emoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+F-04: Test DC-11 rejects negative row counts and does not declare balanced. ... ok
+test_dc12_ingest_acceptance_rate (test_manifest.TestRunManifest)
+Test DC-12 ingest_acceptance_rate = accepted / raw with zero-denominator handling. ... ok
+test_dc12_metric_accounting (test_manifest.TestRunManifest)
+Test DC-12 per-submetric accounting, excluded_count, and valid rate. ... ok
+test_dc12_valid_exceeding_records_rejected (test_manifest.TestRunManifest)
+F-04: Test DC-12 rejects count_metric_valid exceeding count_records. ... ok
+test_row_accounting_balance_invariant (test_manifest.TestRunManifest)
+Test DC-11 three-state disjoint row accounting balance check. ... ok
+test_run_manifest_lifecycle_and_hashing (test_manifest.TestRunManifest)
+F-01: Test RunManifest creation, input/output tracking, close, and SHA-256 disk 
+synchronization. ... ok
+WARNING: Using incubator modules: jdk.incubator.vector
+26/10/18 14:29:59 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: 
+java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see 
+https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/18 14:30:01 WARN NativeCodeLoader: Unable to load native-hadoop library for your 
+platform... using builtin-java classes where applicable
+26/10/18 14:30:01 WARN SparkConf: Note that spark.local.dir will be overridden by the value 
+set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in 
+YARN).
+test_delay_predicates_preserve_signed_negative 
+(test_numeric_predicates.TestNumericPredicates)
+Test that ARR_DELAY and DEP_DELAY preserve signed negative values. ... 
+[Stage 0:>                                                          (0 + 4) / 4]
+
+[Stage 0:============================================>              (3 + 1) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2252, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49381), raddr=('127.0.0.1', 49380)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_duration_predicates_require_strictly_positive 
+(test_numeric_predicates.TestNumericPredicates)
+Test AIR_TIME, ACTUAL_ELAPSED_TIME, CRS_ELAPSED_TIME domain constraints (> 0.0). ... 
+[Stage 1:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2200, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49392), raddr=('127.0.0.1', 49391)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_is_finite_numeric_matrix (test_numeric_predicates.TestNumericPredicates)
+Test is_finite_numeric against None, NaN, +inf, -inf, 0, negative and positive numbers. ... 
+[Stage 2:>                                                          (0 + 4) / 4]
+
+[Stage 2:============================================>              (3 + 1) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1916, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49402), raddr=('127.0.0.1', 49401)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_taxi_predicates_require_non_negative (test_numeric_predicates.TestNumericPredicates)
+Test TAXI_OUT and TAXI_IN domain constraints (>= 0.0). ... 
+[Stage 3:>                                                          (0 + 4) / 4]
+
+[Stage 3:============================================>              (3 + 1) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1960, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49412), raddr=('127.0.0.1', 49411)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_f05_01_pointer_verification_mismatch_triggers_atomic_rollback 
+(test_publication_safety.TestPublicationSafety)
+F05-01: Step 6 detects pointer mismatch on read-back and rolls back to previous pointer. ... 
+ok
+test_f05_02_pointer_verification_rollback_failure_reporting 
+(test_publication_safety.TestPublicationSafety)
+F05-02: Step 6 reports FAILED_POINTER_VERIFICATION_ROLLBACK_ERROR when rollback replacement 
+fails. ... ok
+test_f05_03_preservation_of_previous_version_and_failure_artifacts 
+(test_publication_safety.TestPublicationSafety)
+F05-03: Non-destructive policy preserves previous version data, staging data, and promoted 
+artifacts on failure. ... ok
+test_f05_04_single_writer_operational_assumption_and_version_collision 
+(test_publication_safety.TestPublicationSafety)
+F05-04: Batch architecture assumes a single writer; concurrent/duplicate version publication 
+is strictly rejected. ... ok
+test_fault_injection_step5_preserves_previous_pointer_and_staging 
+(test_publication_safety.TestPublicationSafety)
+Test TS-013 fault injection at Step 5 triggers Step 6 non-destructive rollback. ... ok
+test_initial_pointer_missing_is_not_treated_as_error 
+(test_publication_safety.TestPublicationSafety)
+PUB-01: When pointer does not exist initially, get_current_pointer returns None and publish 
+proceeds. ... ok
+test_initial_pointer_read_persistent_exception 
+(test_publication_safety.TestPublicationSafety)
+PUB-01: When get_current_pointer raises persistent OSError, publish aborts at step 0 without 
+side effects. ... ok
+test_initial_pointer_read_transient_retry_success 
+(test_publication_safety.TestPublicationSafety)
+PUB-01: Transient OSError on initial read is retried by get_current_pointer and succeeds. 
+... ok
+test_parquet_with_valid_magic_bytes_but_corrupted_footer_rejected 
+(test_publication_safety.TestPublicationSafety)
+Verify is_valid_parquet_file and SafePublisher reject files with valid PAR1 magic bytes but 
+corrupt Thrift footers. ... ok
+test_post_switch_pointer_read_exception_with_previous_pointer 
+(test_publication_safety.TestPublicationSafety)
+FIX-S02: Step 6 pointer read OSError must be caught, rollback to previous pointer, and 
+return error result. ... ok
+test_post_switch_pointer_read_exception_with_rollback_failure 
+(test_publication_safety.TestPublicationSafety)
+FIX-S02: If post-switch read fails AND rollback fails, report 
+FAILED_POINTER_VERIFICATION_ROLLBACK_ERROR. ... ok
+test_post_switch_pointer_read_exception_without_previous_pointer 
+(test_publication_safety.TestPublicationSafety)
+FIX-S02: Step 6 pointer read OSError with previous_pointer=None must rollback cleanly to 
+None. ... ok
+test_rejection_of_fake_parquet_content (test_publication_safety.TestPublicationSafety)
+F-02: SafePublisher strictly rejects non-Parquet files masquerading as .parquet. ... ok
+test_rejection_of_path_traversal_run_id (test_publication_safety.TestPublicationSafety)
+F-03: SafePublisher strictly rejects path traversal in run_id before writing. ... ok
+test_streaming_sha256_matches_hashlib_and_handles_blocks 
+(test_publication_safety.TestPublicationSafety)
+FIX-S03: Streaming SHA-256 calculation matches hashlib on empty, small, and multi-block 
+files. ... ok
+test_successful_publication_sequence (test_publication_safety.TestPublicationSafety)
+Test complete 7-step safe publication with balanced row accounting and valid Parquet. ... ok
+test_unbalanced_accounting_aborts_publication (test_publication_safety.TestPublicationSafety)
+Test Step 2 aborts publication with ACCOUNTING_UNVERIFIED when accounting is unbalanced. ... 
+ok
+test_version_immutability_rejection (test_publication_safety.TestPublicationSafety)
+Test Step 3 strictly rejects promotion if versioned directory already exists (immutability). 
+... ok
+test_spark_scratch_dir_fallback_never_uses_repo (test_spark_env.TestSparkEnv)
+CI-01: If scratch path creation fails, fallback uses OS temp directory and NEVER '.' or 
+workspace. ... ok
+test_spark_scratch_dir_posix_compliance (test_spark_env.TestSparkEnv)
+CI-01: On POSIX environments, scratch directory must be absolute, outside checkout, and 
+never create 'D:'. ... ok
+test_spark_scratch_dir_windows_compliance (test_spark_env.TestSparkEnv)
+CI-01: On Windows environments, approved D: drive path is preserved. ... ok
+test_spark_session_creation_and_config (test_spark_env.TestSparkEnv)
+Verify SparkSession factory instantiates session with proper configuration. ... 26/10/18 
+14:30:18 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by 
+the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+
+[Stage 0:>                                                          (0 + 2) / 4]
+
+[Stage 0:==============>                                            (1 + 2) / 4]
+
+[Stage 0:=============================>                             (2 + 2) / 4]
+
+[Stage 0:============================================>              (3 + 1) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2244, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49426), raddr=('127.0.0.1', 49425)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 1:>                                                          (0 + 2) / 2]
+
+                                                                                
+ok
+test_concurrent_lock_attempts (test_t007_locking.TestT007Locking)
+LCK-08: Multiple threads contending for lock results in exactly one winner. ... ok
+test_context_manager_usage (test_t007_locking.TestT007Locking)
+LCK-02: SingleWriterLock functions as a safe context manager. ... ok
+test_duplicate_run_id_detection (test_t007_locking.TestT007Locking)
+LCK-04: Contending writer with same run_id raises DuplicateRunIdError. ... ok
+test_lock_contention_between_two_writers (test_t007_locking.TestT007Locking)
+LCK-03: Two writers contend for lock; second writer raises LockContentionError. ... ok
+test_lock_owner_mismatch_prevents_release (test_t007_locking.TestT007Locking)
+LCK-05: Instance with different token cannot delete another owner's lock. ... ok
+test_refuse_to_break_active_lock (test_t007_locking.TestT007Locking)
+LCK-07: Refuse to break lock held by currently living PID even with force=True. ... ok
+test_single_writer_acquire_and_release (test_t007_locking.TestT007Locking)
+LCK-01: Single writer acquires lock, writes metadata, and releases cleanly. ... ok
+test_stale_lock_with_dead_pid_requires_manual_recovery (test_t007_locking.TestT007Locking)
+LCK-06: Stale lock from dead PID is not stolen automatically (fail-closed). ... ok
+26/10/18 14:30:23 WARN SparkConf: Note that spark.local.dir will be overridden by the value 
+set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in 
+YARN).
+test_blocker02_parquet_type_contract_verification_and_pipeline_guard 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+INT-06 (BLOCKER-02): Exact 34-column Parquet schema, physical order, Arrow data type, and 
+nullability verification: ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2232, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49436), raddr=('127.0.0.1', 49435)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+26/10/18 14:30:25 WARN SparkStringUtils: Truncated the string representation of a plan since 
+it was too large. This behavior can be adjusted by setting 
+'spark.sql.debug.maxToStringFields'.
+
+[Stage 5:>                                                          (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=896, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49441), raddr=('127.0.0.1', 49440)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 8:>                                                          (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1964, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49445), raddr=('127.0.0.1', 49444)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2188, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49447), raddr=('127.0.0.1', 49446)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 12:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2016, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49452), raddr=('127.0.0.1', 49451)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2028, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49454), raddr=('127.0.0.1', 49453)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 18:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2144, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49458), raddr=('127.0.0.1', 49457)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 21:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2064, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49462), raddr=('127.0.0.1', 49461)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2140, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49464), raddr=('127.0.0.1', 49463)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 25:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2256, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49468), raddr=('127.0.0.1', 49467)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_blocker03_post_pointer_missing_manifest_and_fail_closed_manual_reconciliation 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+INT-07 (BLOCKER-03): Full post-publication recovery & fail-closed matrix: ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2320, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49470), raddr=('127.0.0.1', 49469)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 31:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=856, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49474), raddr=('127.0.0.1', 49473)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 34:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2352, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49478), raddr=('127.0.0.1', 49477)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2380, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49480), raddr=('127.0.0.1', 49479)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 38:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2380, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49484), raddr=('127.0.0.1', 49483)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=856, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49486), raddr=('127.0.0.1', 49485)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 46:>                                                         (0 + 2) / 2]
+
+[Stage 46:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2320, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49492), raddr=('127.0.0.1', 49491)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 51:>                                                         (0 + 2) / 2]
+
+[Stage 51:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1440, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49498), raddr=('127.0.0.1', 49497)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2064, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49500), raddr=('127.0.0.1', 49499)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 55:>                                                         (0 + 2) / 2]
+
+[Stage 55:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2312, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49506), raddr=('127.0.0.1', 49505)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_int_01_full_end_to_end_synthetic_pipeline_success 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+INT-01: Full multi-year synthetic ingestion lifecycle transitions cleanly to PUBLISHED. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2308, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49508), raddr=('127.0.0.1', 49507)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 63:>                                                         (0 + 2) / 2]
+
+[Stage 63:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2312, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49514), raddr=('127.0.0.1', 49513)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 68:>                                                         (0 + 2) / 2]
+
+[Stage 68:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1968, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49520), raddr=('127.0.0.1', 49519)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2252, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49522), raddr=('127.0.0.1', 49521)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 72:>                                                         (0 + 2) / 2]
+
+[Stage 72:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2136, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49528), raddr=('127.0.0.1', 49527)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_int_02_unapproved_candidate_hashes_guard 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+INT-02: Unapproved candidate hashes fail-closed when require_verified_hashes=True, succeed 
+when allowed. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49530), raddr=('127.0.0.1', 49529)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 88:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2320, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49536), raddr=('127.0.0.1', 49535)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 91:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2264, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49540), raddr=('127.0.0.1', 49539)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1952, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49542), raddr=('127.0.0.1', 49541)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 95:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2304, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49546), raddr=('127.0.0.1', 49545)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_int_03_fix_f03_forensic_quarantine_and_rejected_persistence_readback 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+INT-03 (FIX-F03): Quarantined and rejected records are persisted with full raw diagnostic 
+context in data/quarantine/<run_id>/. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2332, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49548), raddr=('127.0.0.1', 49547)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 103:>                                                        (0 + 2) / 2]
+
+[Stage 103:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49554), raddr=('127.0.0.1', 49553)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 108:>                                                        (0 + 2) / 2]
+
+[Stage 108:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2064, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49560), raddr=('127.0.0.1', 49559)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2264, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49562), raddr=('127.0.0.1', 49561)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 112:>                                                        (0 + 2) / 2]
+
+[Stage 112:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49568), raddr=('127.0.0.1', 49567)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_int_04_fix_f04_parquet_two_phase_attempt_cleanup_and_verification 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+INT-04 (FIX-F04): Two-phase Parquet writer purges orphan task attempts / .tmp files and 
+verifies row counts & schema. ... 
+[Stage 121:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2264, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49573), raddr=('127.0.0.1', 49572)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_int_05_fix_f05_post_pointer_sidecar_failure_and_reconciliation 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+INT-05 (FIX-F05): Post-pointer sidecar failure enters 
+PUBLISHED_RECEIPT_PENDING_RECONCILIATION (never FAILED) and reconciles cleanly. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1964, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49575), raddr=('127.0.0.1', 49574)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 129:>                                                        (0 + 2) / 2]
+
+[Stage 129:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1964, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49582), raddr=('127.0.0.1', 49581)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 134:>                                                        (0 + 2) / 2]
+
+[Stage 134:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2320, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49588), raddr=('127.0.0.1', 49587)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2020, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49590), raddr=('127.0.0.1', 49589)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 138:>                                                        (0 + 2) / 2]
+
+[Stage 138:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=856, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49596), raddr=('127.0.0.1', 49595)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_neg_01_missing_source_file_fails_closed 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+NEG-01: Missing source CSV aborts at SOURCE_VERIFICATION and preserves previous pointer. ... 
+ok
+test_neg_02_source_size_mismatch_fails_closed 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+NEG-02: Source byte size mismatch aborts at SOURCE_VERIFICATION. ... ok
+test_neg_03_source_hash_mismatch_fails_closed 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+NEG-03: Same byte size but modified content triggers SHA-256 mismatch and aborts. ... ok
+test_neg_04_duplicate_run_id_and_lock_contention 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+NEG-04: Duplicate run_id and active lock contention fail-closed while preserving prior 
+publication and manifest. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2020, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49598), raddr=('127.0.0.1', 49597)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 144:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1440, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49602), raddr=('127.0.0.1', 49601)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 147:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2396, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49606), raddr=('127.0.0.1', 49605)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2400, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49608), raddr=('127.0.0.1', 49607)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 151:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1952, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49612), raddr=('127.0.0.1', 49611)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_neg_05_fault_injection_corrupt_staging_and_recovery_retry 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+NEG-05: Fault injection corrupting staging Parquet aborts publication and preserves prior 
+pointer; retry succeeds. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2256, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49614), raddr=('127.0.0.1', 49613)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 157:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2384, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49618), raddr=('127.0.0.1', 49617)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 160:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2392, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49622), raddr=('127.0.0.1', 49621)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1952, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49624), raddr=('127.0.0.1', 49623)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 164:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2020, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49628), raddr=('127.0.0.1', 49627)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1964, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49630), raddr=('127.0.0.1', 49629)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 170:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=856, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49634), raddr=('127.0.0.1', 49633)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 173:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49638), raddr=('127.0.0.1', 49637)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2412, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49640), raddr=('127.0.0.1', 49639)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 177:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2412, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49645), raddr=('127.0.0.1', 49644)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2420, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49647), raddr=('127.0.0.1', 49646)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 183:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2416, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49651), raddr=('127.0.0.1', 49650)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 186:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2424, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49655), raddr=('127.0.0.1', 49654)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2304, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49657), raddr=('127.0.0.1', 49656)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 190:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2412, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49661), raddr=('127.0.0.1', 49660)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_neg_06_fix_f01_f02_header_drift_and_blank_line_abort_before_publication 
+(test_t007_pipeline_integration.TestT007PipelineIntegration)
+NEG-06 (FIX-F01 / FIX-F02): Physical header drift or blank line in CSV aborts run and 
+preserves previous pointer. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49663), raddr=('127.0.0.1', 49662)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 196:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2256, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49673), raddr=('127.0.0.1', 49672)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 199:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2420, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49677), raddr=('127.0.0.1', 49676)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2412, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49679), raddr=('127.0.0.1', 49678)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 203:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2416, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49683), raddr=('127.0.0.1', 49682)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+26/10/18 14:31:32 WARN SparkConf: Note that spark.local.dir will be overridden by the value 
+set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in 
+YARN).
+test_blocker01_quoted_embedded_newline_multimode_and_fail_closed 
+(test_t007_reader.TestT007Reader)
+RDR-16 (BLOCKER-01): 34-column 2-record CSV where 1 field is quoted with an embedded 
+newline: ... C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: 
+ResourceWarning: unclosed <socket.socket fd=1952, family=AddressFamily.AF_INET, 
+type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49688), raddr=('127.0.0.1', 49687)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_blocker01_spark_401_multiline_quoted_escaped_and_eof_no_trailing_newline 
+(test_t007_reader.TestT007Reader)
+RDR-17 (BLOCKER-01): Real Spark 4.0.1 verification on 34-column synthetic fixtures covering: 
+... C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: 
+ResourceWarning: unclosed <socket.socket fd=1964, family=AddressFamily.AF_INET, 
+type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49690), raddr=('127.0.0.1', 49689)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1952, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49692), raddr=('127.0.0.1', 49691)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2312, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49694), raddr=('127.0.0.1', 49693)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_curated_schema_preserves_canonical_types (test_t007_reader.TestT007Reader)
+RDR-07: Curated DataFrame exactly matches canonical 34-column types. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2344, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49696), raddr=('127.0.0.1', 49695)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_dc12_non_numeric_metric_accepted_in_raw_and_null_in_curated 
+(test_t007_reader.TestT007Reader)
+RDR-04: Non-numeric metric string is ACCEPTED (DC-12) with flag and cast to NULL in curated 
+schema. ... C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: 
+ResourceWarning: unclosed <socket.socket fd=2064, family=AddressFamily.AF_INET, 
+type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49698), raddr=('127.0.0.1', 49697)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2136, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49700), raddr=('127.0.0.1', 49699)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2264, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49702), raddr=('127.0.0.1', 49701)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_extra_tokens_captured_as_corrupt (test_t007_reader.TestT007Reader)
+RDR-03: Extra tokens (> 34 tokens) captured in _corrupt_record and classified as REJECTED. 
+... C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: 
+ResourceWarning: unclosed <socket.socket fd=2392, family=AddressFamily.AF_INET, 
+type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49704), raddr=('127.0.0.1', 49703)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_fix_f01_physical_header_validation_all_failure_modes (test_t007_reader.TestT007Reader)
+RDR-12 (FIX-F01): Physical header validation rejects missing, extra, reordered, duplicate, 
+unknown, and BOM headers. ... ok
+test_fix_f02_deterministic_lineage_and_duplicate_yx3624_disambiguation 
+(test_t007_reader.TestT007Reader)
+RDR-15 (FIX-F02 / TS-020): Deterministic content-hash lineage disambiguates exact duplicate 
+rows (2018-06-21 YX 3624 DEN->XNA & 2022). ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1964, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49706), raddr=('127.0.0.1', 49705)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2344, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49708), raddr=('127.0.0.1', 49707)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_fix_f02_unclosed_quote_blank_line_and_accounting_unverified 
+(test_t007_reader.TestT007Reader)
+RDR-14 (FIX-F02): Unclosed quotes, blank lines, and tampered classifier counts raise 
+AccountingUnverifiedError. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2312, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49710), raddr=('127.0.0.1', 49709)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1960, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49712), raddr=('127.0.0.1', 49711)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_fix_f06_calendar_dates_and_core_identity_anchors (test_t007_reader.TestT007Reader)
+RDR-13 (FIX-F06): Real calendar dates, leap year, timestamp suffix, source year mismatch, 
+and core identity anchors. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49714), raddr=('127.0.0.1', 49713)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=1452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49716), raddr=('127.0.0.1', 49715)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=856, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49718), raddr=('127.0.0.1', 49717)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_g3_cond_b_non_positive_flight_num_not_quarantined (test_t007_reader.TestT007Reader)
+RDR-05: OP_CARRIER_FL_NUM <= 0 is NOT quarantined per G3-COND-A; remains ACCEPTED with 
+provisional flag. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2436, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49720), raddr=('127.0.0.1', 49719)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2356, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49722), raddr=('127.0.0.1', 49721)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_header_only_csv_handling (test_t007_reader.TestT007Reader)
+RDR-10: Header-only CSV file yields 0 rows with balanced accounting (0 = 0 + 0 + 0). ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2456, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49724), raddr=('127.0.0.1', 49723)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_malformed_fl_date_quarantined (test_t007_reader.TestT007Reader)
+RDR-06: Row with malformed FL_DATE is classified as QUARANTINED. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2064, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49726), raddr=('127.0.0.1', 49725)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2412, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49728), raddr=('127.0.0.1', 49727)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_negative_delay_values_preserved (test_t007_reader.TestT007Reader)
+RDR-11: Early arrivals/departures with negative signed delays are preserved exactly 
+(KPI-03). ... C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: 
+ResourceWarning: unclosed <socket.socket fd=1440, family=AddressFamily.AF_INET, 
+type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49730), raddr=('127.0.0.1', 49729)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_null_weather_columns_accepted (test_t007_reader.TestT007Reader)
+RDR-09: Absence of weather data (nulls) preserves record as ACCEPTED per FP-DEC-017. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2264, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49732), raddr=('127.0.0.1', 49731)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2392, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49734), raddr=('127.0.0.1', 49733)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_quoted_commas_and_embedded_newlines (test_t007_reader.TestT007Reader)
+RDR-08: Quoted fields with commas and embedded newlines parse and scan accurately with 
+multi_line=True. ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2256, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49736), raddr=('127.0.0.1', 49735)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2476, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49738), raddr=('127.0.0.1', 49737)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_read_valid_34_columns_parses_cleanly (test_t007_reader.TestT007Reader)
+RDR-01: Valid 34-column row parses cleanly into 35 fields (34 business + corrupt=None). ... 
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2492, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49740), raddr=('127.0.0.1', 49739)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_short_row_token_mismatch_captured_as_corrupt (test_t007_reader.TestT007Reader)
+RDR-02: Short row (< 34 tokens) is captured in _corrupt_record and classified as REJECTED. 
+... C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: 
+ResourceWarning: unclosed <socket.socket fd=2064, family=AddressFamily.AF_INET, 
+type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49742), raddr=('127.0.0.1', 49741)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: 
+unclosed <socket.socket fd=2488, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, 
+proto=0, laddr=('127.0.0.1', 49744), raddr=('127.0.0.1', 49743)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_01_exact_34_canonical_names_and_count (test_t007_schema.TestCanonicalSchemaModule)
+Verify exactly 34 canonical column names are defined. ... ok
+test_02_exact_physical_column_order (test_t007_schema.TestCanonicalSchemaModule)
+Verify canonical physical sequence matches DATA_DICTIONARY and BTS sources. ... ok
+test_03_no_fabricated_columns (test_t007_schema.TestCanonicalSchemaModule)
+Verify no unapproved fabricated columns exist in schema definitions. ... ok
+test_04_flights_column_retained_with_prohibited_weight_metadata 
+(test_t007_schema.TestCanonicalSchemaModule)
+Verify FLIGHTS is preserved but metadata strictly forbids KPI weighting. ... ok
+test_05_six_weather_fields_retained_as_optional (test_t007_schema.TestCanonicalSchemaModule)
+Verify all 6 weather fields are preserved and marked CONDITIONAL_NO_GO. ... ok
+test_06_raw_csv_business_schema_all_stringtype (test_t007_schema.TestCanonicalSchemaModule)
+Verify raw CSV schema defines all 34 business fields as StringType (DC-12 protection). ... ok
+test_07_corrupt_record_separation_from_34_columns 
+(test_t007_schema.TestCanonicalSchemaModule)
+Verify _corrupt_record is strictly separate from the 34 physical BTS columns. ... ok
+test_08_curated_schema_exact_type_mapping (test_t007_schema.TestCanonicalSchemaModule)
+Verify curated storage schema matches DATA_DICTIONARY and T-006 agreements. ... ok
+test_09_nullable_int64_calendar_fields (test_t007_schema.TestCanonicalSchemaModule)
+Verify MONTH, DAY_OF_MONTH, DAY_OF_WEEK, ORIGIN_INDEX, DEST_INDEX are LongType and nullable. 
+... ok
+test_10_op_carrier_fl_num_float64_boundary (test_t007_schema.TestCanonicalSchemaModule)
+Verify OP_CARRIER_FL_NUM preserves float64 (DoubleType) without truncating integer cast. ... 
+ok
+test_11_date_time_schema_preservation (test_t007_schema.TestCanonicalSchemaModule)
+Verify date and wall-clock times are StringType per FP-DEC-007 (no rollover/timezone). ... ok
+test_12_pure_schema_no_side_effects (test_t007_schema.TestCanonicalSchemaModule)
+Verify importing and calling schema functions produces zero disk I/O and has no quality 
+engine calls. ... ok
+test_13_schema_deterministic_on_repeated_calls (test_t007_schema.TestCanonicalSchemaModule)
+Verify schema instances are idempotent and deterministic across repeated invocations. ... ok
+test_14_negative_validation_tests (test_t007_schema.TestCanonicalSchemaModule)
+Verify validate_column_names rejects reordered, missing, extra, or invalid columns. ... ok
+test_15_compatibility_with_existing_t009_modules (test_t007_schema.TestCanonicalSchemaModule)
+Verify importing schema does not conflict with existing T-009 storage and manifest modules. 
+... ok
+test_contract_01_exact_34_column_snapshot (test_t007_schema.TestCanonicalSchemaModule)
+CONTRACT-01: Compare all 34 names and physical positions against an independent snapshot. 
+... ok
+test_contract_02_scope_isolation_no_io_or_executors 
+(test_t007_schema.TestCanonicalSchemaModule)
+CONTRACT-02: Verify schema module does not import or execute readers, publishers, or raw 
+I/O. ... ok
+test_mut_01_raw_business_isolation (test_t007_schema.TestCanonicalSchemaModule)
+MUT-01: Verify mutating a returned raw business schema does not affect subsequent calls. ... 
+ok
+test_mut_02_raw_parser_isolation (test_t007_schema.TestCanonicalSchemaModule)
+MUT-02: Verify mutating a returned raw parser schema does not affect subsequent calls. ... ok
+test_mut_03_curated_isolation (test_t007_schema.TestCanonicalSchemaModule)
+MUT-03: Verify mutating a returned curated schema does not affect subsequent calls. ... ok
+test_mut_04_cross_schema_independence (test_t007_schema.TestCanonicalSchemaModule)
+MUT-04: Verify mutating raw schema does not alter parser schema or curated schema. ... ok
+test_mut_05_repeatability_and_immutability (test_t007_schema.TestCanonicalSchemaModule)
+MUT-05: Verify schemas are deterministic across repeated invocations and immune to mutation. 
+... ok
+test_api_01_run_manifest_record_input_compatibility 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+API-01: Verify integration with RunManifest.record_input() per DOC-F02. ... ok
+test_closure_fix_a01_empty_inventory_rejected_in_init 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-A01: SourceValidator rejects empty inventory in constructor. ... ok
+test_closure_fix_a01_production_completeness_guard 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-A01: Enforcing production completeness rejects partial (subset) inventory. ... ok
+test_closure_fix_a02_all_verification_states_fail_closed_matrix 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-A02: Exhaustively test that error states properly fail-closed in batch flags. ... ok
+test_closure_fix_a02_directory_source_read_error_batch_fail_closed 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-A02: Directory source resulting in SOURCE_READ_ERROR sets all_present=False and 
+all_sizes_match=False. ... ok
+test_closure_fix_a03_intermediate_directory_symlink_rejected 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-A03: Symlink in intermediate directory path must be rejected by validate_path_safety. 
+... ok
+test_closure_fix_a03_windows_junction_rejected 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-A03: Windows NTFS junction point in path hierarchy must be rejected. ... ok
+test_closure_fix_a04_run_manifest_partial_mode_rejects_failed_sources 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-A04: In allow_partial=True mode, failed sources are excluded from manifest.inputs and 
+returned in rejection report. ... ok
+test_closure_fix_a04_run_manifest_rejects_failed_batch 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-A04: record_into_run_manifest fails-closed when batch contains unverified/failed 
+sources. ... ok
+test_err_01_missing_file (test_t007_source_validator.TestT007SourceValidatorSynthetic)
+ERR-01: Missing file results in SOURCE_MISSING and raises SourceNotFoundError on fail_fast. 
+... ok
+test_err_02_permission_error_fail_closed 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+ERR-02: Permission/read error results in SOURCE_READ_ERROR or raises SourcePermissionError. 
+... ok
+test_err_03_file_modified_during_hashing 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+ERR-03: Detecting modification during hashing raises SourceChangedDuringReadError. ... ok
+test_err_04_invalid_path_traversal 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+ERR-04: Path traversal sequences ('..') are strictly rejected. ... ok
+test_err_05_symlink_escape_rejected 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+ERR-05: Symlinks and reparse points are strictly rejected. ... ok
+test_err_06_size_mismatch_detected 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+ERR-06: Size mismatch triggers SIZE_MISMATCH or raises SourceSizeMismatchError. ... ok
+test_err_07_corrupt_baseline_format 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+ERR-07: Corrupt baseline hash format (non-hex, wrong length, wrong year) raises 
+SourceConfigurationError. ... ok
+test_gov_01_source_manifest_not_used_as_raw_hash_registry 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+GOV-01: SOURCE_MANIFEST.json is an audit document manifest, not raw CSV hash registry 
+(DOC-F01). ... ok
+test_gov_02_upstream_identity_unverified_invariant 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+GOV-02: OR-08 / TS-019 upstream identity status remains strictly IDENTITY_UNVERIFIED. ... ok
+test_hash_01_streaming_sha256_matches_hashlib_reference 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+HASH-01: Streaming SHA-256 matches standard hashlib reference computation. ... ok
+test_hash_02_empty_file_hashing (test_t007_source_validator.TestT007SourceValidatorSynthetic)
+HASH-02: Empty file hashing produces canonical empty SHA-256 digest. ... ok
+test_hash_03_file_larger_than_multiple_blocks 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+HASH-03: File larger than multiple streaming blocks hashes correctly. ... ok
+test_hash_04_streaming_memory_bound_chunk_reads 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+HASH-04: Verify chunked read behavior (no whole-file read into memory). ... ok
+test_hash_05_detect_hash_mismatch 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+HASH-05: Detect hash mismatch when actual hash != approved baseline hash. ... ok
+test_hash_06_unapproved_baseline_cannot_conclude_verified 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+HASH-06: When no approved baseline exists, state is LOCAL_HASH_COMPUTED_UNAPPROVED and 
+is_verified is False. ... ok
+test_inv_01_audited_inventory_entry_count_and_years 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+INV-01: Exactly 9 annual inventory entries covering 2016-2024. ... ok
+test_inv_02_no_duplicate_years_or_paths 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+INV-02: No duplicate years or relative paths in inventory baseline. ... ok
+test_inv_03_expected_row_counts_and_byte_sizes 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+INV-03: Expected byte sizes and row counts match audited baseline exactly. ... ok
+test_inv_04_inventory_matches_g1_canonical_schema_manifests 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+INV-04: AUDITED_SOURCE_INVENTORY per-year rows and sizes match G1 schema_YYYY.json inputs. 
+... ok
+test_scope_01_synthetic_isolation_no_real_raw_csv_accessed 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+SCOPE-01: Asserts tests operate strictly on synthetic fixtures, not data/raw/. ... ok
+test_scope_02_mutation_detection_fails_on_forbidden_constructs 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+SCOPE-02 Negative/Mutation: Verifier detects forbidden imports and calls on mutant snippet. 
+... ok
+test_scope_02_validator_contains_no_csv_reader_or_publication_code 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+SCOPE-02: SourceValidator contains no Spark CSV reader, classifier, or publication calls. 
+... ok
+test_secdelta_fix_sec01_inaccessible_intermediate_path_fails_closed 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-SEC01: Inaccessible intermediate ancestor directory fails closed. ... ok
+test_secdelta_fix_sec01_lstat_eio_error_raises_security_error 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-SEC01: EIO during os.lstat fails closed with SourcePathSecurityError. ... ok
+test_secdelta_fix_sec01_lstat_permission_error_raises_security_error 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-SEC01: PermissionError during os.lstat fails closed with SourcePathSecurityError. ... ok
+test_secdelta_fix_sec01_missing_file_differentiated_and_returns_source_missing 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-SEC01: Genuine non-existent source file is not a security error; returns SOURCE_MISSING. 
+... ok
+test_secdelta_fix_sec03_batch_aggregation_fail_closed_on_io_error 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-SEC03: Batch aggregation sets all flags False when metadata I/O failure occurs. ... ok
+test_secdelta_fix_sec03_metadata_io_error_fail_fast_raises_source_integrity_error 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-SEC03: Fail-fast mode raises SourceIntegrityError on metadata I/O failure. ... ok
+test_secdelta_fix_sec03_metadata_io_error_returns_source_read_error 
+(test_t007_source_validator.TestT007SourceValidatorSynthetic)
+FIX-SEC03: Non-PermissionError OSError during stat/getsize returns SOURCE_READ_ERROR. ... ok
+test_f01_manifest_save_sha256_matches_disk_bytes 
+(test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-01: Returned sha256 from RunManifest.save() must match exact disk bytes. ... ok
+test_f02_publication_rejects_fake_parquet_content 
+(test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-02: SafePublisher must reject non-Parquet files masquerading as .parquet. ... ok
+test_f03_run_id_path_traversal_strictly_rejected 
+(test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-03: SafePublisher must strictly reject path traversal in run_id before writing. ... ok
+test_f04_dc11_rejects_negative_counts 
+(test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-04: RowAccounting must reject negative counts and not declare balanced. ... ok
+test_f04_dc12_rejects_valid_exceeding_records 
+(test_t009_r3_defect_reproductions.TestT009R3DefectReproductions)
+F-04: MetricAccounting must reject count_metric_valid > count_records. ... ok
+
+----------------------------------------------------------------------
+Ran 135 tests in 106.238s
+
+OK
+SUCCESS: The process with PID 26484 (child process of PID 5264) has been terminated.
+SUCCESS: The process with PID 5264 (child process of PID 16308) has been terminated.
+SUCCESS: The process with PID 16308 (child process of PID 27488) has been terminated.

@@ -329,11 +329,28 @@ def verify_semantic_invariants(root: Path) -> list:
         if t006_status != "NOT_STARTED":
             raise SemanticVerificationError("INV-12 FAIL: T-006 must be NOT_STARTED when G2 is not PASS")
 
-    # 4. Guard: Downstream tasks T-007, T-008, T-009 MUST be NOT_STARTED / TODO
+    # 4. Guard: Downstream tasks T-007, T-008, T-009 status in BACKLOG.md
     for down_t in ("T-007", "T-008", "T-009"):
         m_down = re.search(rf"\|\s*{down_t}\s*\|\s*G4\s*\|[^|]+\|[^|]+\|[^|]+\|\s*([^|]+)\s*\|", backlog_txt)
-        if m_down and m_down.group(1).strip() not in ("TODO", "NOT_STARTED"):
-            raise SemanticVerificationError(f"INV-12 FAIL: Downstream task {down_t} unauthorized start ({m_down.group(1).strip()}) before G3 completion")
+        if m_down:
+            st = m_down.group(1).strip()
+            if down_t == "T-008":
+                if st not in ("TODO", "NOT_STARTED"):
+                    raise SemanticVerificationError(f"INV-12 FAIL: Downstream task {down_t} unauthorized start ({st}) before G3 completion")
+            elif down_t == "T-007":
+                if any(w in st for w in ("PASS", "COMPLETED")):
+                    signoff_p = root / "docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md"
+                    if not signoff_p.is_file():
+                        raise SemanticVerificationError("INV-12 FAIL: Task T-007 cannot be PASS in BACKLOG.md without human signoff record")
+                elif st not in ("TODO", "NOT_STARTED"):
+                    raise SemanticVerificationError(f"INV-12 FAIL: Downstream task {down_t} unauthorized start ({st}) before G3 completion")
+            elif down_t == "T-009":
+                if any(w in st for w in ("PASS", "COMPLETED")):
+                    signoff_p = root / "docs/05-evidence/T009_HUMAN_SIGNOFF_20261017.md"
+                    if not signoff_p.is_file():
+                        raise SemanticVerificationError("INV-12 FAIL: Task T-009 cannot be PASS in BACKLOG.md without human signoff record")
+                elif st not in ("TODO", "NOT_STARTED"):
+                    raise SemanticVerificationError(f"INV-12 FAIL: Downstream task {down_t} unauthorized start ({st}) before G3 completion")
 
     passed.append(f"INV-12: Gate G2 confirmed PASS, Gate G3 confirmed {('PASS with human record' if g3_is_pass else 'IN_PROGRESS')}, and T-006 controlled ({t006_status})")
 
@@ -535,7 +552,7 @@ def run_mutation_tests(root: Path) -> list:
         make_fixture()
         mut_bl = tmp_root / "docs/01-planning/BACKLOG.md"
         mut_bl.write_text(
-            mut_bl.read_text(encoding="utf-8").replace("| T-009 | G4 | Khởi tạo project Python/Spark, test runner, lint, CI skeleton, run manifest (`FP-DEC-005`) | T-006 | Có lệnh thực tế chạy tests khởi tạo và evidence | TODO |",
+            mut_bl.read_text(encoding="utf-8").replace("| T-009 | G4 | Khởi tạo project Python/Spark, test runner, lint, CI skeleton, run manifest (`FP-DEC-005`) | T-006 | Có lệnh thực tế chạy tests khởi tạo và evidence | PASS (Controlled) |",
                                                        "| T-009 | G4 | Khởi tạo project Python/Spark, test runner, lint, CI skeleton, run manifest (`FP-DEC-005`) | T-006 | Có lệnh thực tế chạy tests khởi tạo và evidence | IN_PROGRESS |"),
             encoding="utf-8",
         )
@@ -549,7 +566,7 @@ def run_mutation_tests(root: Path) -> list:
         make_fixture()
         mut_bl = tmp_root / "docs/01-planning/BACKLOG.md"
         mut_bl.write_text(
-            mut_bl.read_text(encoding="utf-8").replace("| T-007 | G4 | Viết ingestion read-only (`data/raw/tabular/{year}/flight_with_weather_{year}.csv`), explicit schema (giữ nguyên 34 cột gồm 6 cột Weather `O_TEMP..D_WSPD` theo `DC-07` / `FP-DEC-017`), tính SHA-256 cục bộ cho 9 CSV (`OR-08` -> `R-16` / `TS-019`) & synthetic tests | T-009 | Unit tests PASS (`TS-001`), mismatch metadata fail-closed đúng chính sách, lưu local SHA-256 baseline vào manifest (`TS-019`), không ghi raw | TODO |",
+            mut_bl.read_text(encoding="utf-8").replace("| T-007 | G4 | Viết ingestion read-only (`data/raw/tabular/{year}/flight_with_weather_{year}.csv`), explicit schema (giữ nguyên 34 cột gồm 6 cột Weather `O_TEMP..D_WSPD` theo `DC-07` / `FP-DEC-017`), tính SHA-256 cục bộ cho 9 CSV (`OR-08` -> `R-16` / `TS-019`) & synthetic tests | T-009 | Unit tests PASS (`TS-001`), mismatch metadata fail-closed đúng chính sách, lưu local SHA-256 baseline vào manifest (`TS-019`), không ghi raw | PASS / COMPLETED — CONTROLLED |",
                                                        "| T-007 | G4 | Viết ingestion read-only (`data/raw/tabular/{year}/flight_with_weather_{year}.csv`), explicit schema (giữ nguyên 34 cột gồm 6 cột Weather `O_TEMP..D_WSPD` theo `DC-07` / `FP-DEC-017`), tính SHA-256 cục bộ cho 9 CSV (`OR-08` -> `R-16` / `TS-019`) & synthetic tests | T-009 | Unit tests PASS (`TS-001`), mismatch metadata fail-closed đúng chính sách, lưu local SHA-256 baseline vào manifest (`TS-019`), không ghi raw | IN_PROGRESS |"),
             encoding="utf-8",
         )
