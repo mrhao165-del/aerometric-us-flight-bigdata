@@ -1,0 +1,146 @@
+================================================================================
+G6 FINAL TARGETED PRODUCTION SAFETY CORRECTION — RAW EXECUTION LOG
+Date: 2026-10-20
+Evaluator: Principal Big Data Architect & Senior PySpark Reliability Engineer
+Environment: Windows 11 / NTFS / Python 3.11.9
+Target Defects Addressed: S01, S02, S03 (Snapshot Validation & Accounting), S04 (Storage Root Alignment)
+================================================================================
+
+[CMD 01] Multi-Year Snapshot Policy Regression Suite (20 Tests)
+Command: python -m unittest tests/test_multiyear_snapshot_policy.py
+Timestamp: 2026-10-20T19:07:07+07:00
+Exit Code: 0
+Stdout/Stderr:
+....................
+----------------------------------------------------------------------
+Ran 20 tests in 0.839s
+
+OK
+
+Test inventory:
+- test_01_complete_valid_snapshot_passes ... ok
+- test_02_empty_run_dir_fails_closed ... ok
+- test_03_fake_parquet_corrupt_fails_closed ... ok
+- test_04_missing_manifest_fails_closed ... ok
+- test_05_corrupted_json_manifest_fails_closed ... ok
+- test_06_manifest_run_id_mismatch_fails_closed ... ok
+- test_07_manifest_year_mismatch_fails_closed ... ok
+- test_08_path_traversal_relative_fails_closed ... ok
+- test_09_path_traversal_absolute_fails_closed ... ok
+- test_10_symlink_escape_fails_closed ... ok
+- test_11_manifest_checksum_mismatch_fails_closed ... ok
+- test_12_duplicate_physical_path_fails_closed ... ok
+- test_13_unbalanced_row_accounting_fails_closed ... ok
+- test_14_non_integer_row_accounting_fails_closed ... ok
+- test_15_negative_row_accounting_fails_closed ... ok
+- test_16_canonical_raw_row_mismatch_fails_closed ... ok
+- test_17_manifest_unpublished_fails_closed ... ok
+- test_18_missing_required_year_fails_closed ... ok
+- test_19_year_2024_requires_partial_coverage_status ... ok
+- test_20_valid_snapshot_with_nonzero_quarantine_passes ... ok
+
+--------------------------------------------------------------------------------
+
+[CMD 02] Lock State vs Pointer State Integration Regression Suite (9 Tests)
+Command: python -m unittest tests/test_lock_state_vs_pointer_state.py
+Timestamp: 2026-10-20T19:06:59+07:00
+Exit Code: 0
+Stdout/Stderr:
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.058s
+
+OK
+
+Test inventory:
+- test_01_clean_state_admits_writer ... ok
+- test_02_active_live_lock_blocks_writer ... ok
+- test_03_active_stale_lock_blocks_writer_without_recovery ... ok
+- test_04_recovery_marker_blocks_writer ... ok
+- test_05_active_lock_with_recovery_blocks_writer ... ok
+- test_06_uninitialized_curated_dir_blocks_writer_fail_closed ... ok
+- test_07_storage_root_mismatch_blocks_writer_admission ... ok
+- test_08_pointer_corruption_fails_closed ... ok
+- test_09_unified_tools_integration_consistency ... ok
+
+--------------------------------------------------------------------------------
+
+[CMD 03] Combined All 29 Unit Regression Tests
+Command: python -m unittest tests/test_multiyear_snapshot_policy.py tests/test_lock_state_vs_pointer_state.py
+Timestamp: 2026-10-20T19:11:36+07:00
+Exit Code: 0
+Stdout/Stderr:
+.............................
+----------------------------------------------------------------------
+Ran 29 tests in 0.926s
+
+OK
+
+--------------------------------------------------------------------------------
+
+[CMD 04] Standalone Operational Preflight Writer Safety Check
+Command: python tools/qa/check_writer_preflight_safety.py --base-dir data --expected-storage-root data --run-id preflight_probe
+Timestamp: 2026-10-20T19:10:50+07:00
+Exit Code: 0
+Stdout/Stderr:
+=================================================================
+  G6 OPERATIONAL WRITER PREFLIGHT SAFETY CHECK (READ-ONLY)       
+=================================================================
+Base Data Directory:  D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data
+Curated Directory:    D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/curated
+Pointer File:         D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/curated/latest_run_id.txt
+Lock Directory:       D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/locks
+Lock File:            None
+Pointer Status:       UNINITIALIZED_POINTER_ALLOWED
+Lock State:           CLEAN
+Active PID:           None (None)
+Recovery Artifacts:   0
+Storage Root Matched: True
+Safe To Start Writer: True
+Summary Verdict:      SAFE_TO_PROCEED_TO_LOCK_ACQUISITION
+Exit Code:            0
+=================================================================
+
+--------------------------------------------------------------------------------
+
+[CMD 05] Standalone Staging Pointer Audit
+Command: python tools/qa/verify_staging_pointer.py --base-dir data --allow-uninitialized
+Timestamp: 2026-10-20T19:10:53+07:00
+Exit Code: 0
+Stdout/Stderr:
+================================================================================
+STAGING / CURATED POINTER AUDIT: [PASS] UNINITIALIZED_POINTER_ALLOWED
+================================================================================
+Base Directory:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+Pointer File:         D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\curated\latest_run_id.txt
+Pointer Value:        None
+Target Directory:     None
+Parquet Files Found:  0 (Valid: 0)
+Manifest Verified:    False (Run ID: None)
+================================================================================
+
+--------------------------------------------------------------------------------
+
+[CMD 06] Standalone Multi-Year Snapshot Registry CLI Help & Entrypoint Test
+Command: python tools/qa/verify_multiyear_snapshot.py --help
+Timestamp: 2026-10-20T19:11:31+07:00
+Exit Code: 0
+Stdout/Stderr:
+usage: verify_multiyear_snapshot.py [-h] [--registry-path REGISTRY_PATH]
+                                    [--base-dir BASE_DIR]
+                                    [--skip-parquet-check]
+
+Verify multi-year snapshot registry against physical Parquet runs, manifests,
+and DC-11/12 accounting.
+
+options:
+  -h, --help            show this help message and exit
+  --registry-path REGISTRY_PATH
+                        Path to snapshot_registry.json (default:
+                        data/curated/snapshot_registry.json)
+  --base-dir BASE_DIR   Base data directory (default: data)
+  --skip-parquet-check  Skip PyArrow Parquet Thrift metadata inspection
+
+================================================================================
+FINAL VERDICT: ALL TARGETED TESTS AND PREFLIGHT COMMANDS PASSED WITH 0 FAILURES
+================================================================================

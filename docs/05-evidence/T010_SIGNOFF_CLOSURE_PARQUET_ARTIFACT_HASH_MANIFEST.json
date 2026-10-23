@@ -1,0 +1,625 @@
+{
+  "manifest_schema": "T010_PARQUET_FORENSIC_HASH_MANIFEST_V1",
+  "generated_at": "2026-10-18T19:25:00+07:00",
+  "staging_base_path": "D:\\Study\\Code\\Apache\\Flight_Analyzt\\staging",
+  "runs": {
+    "smoke_2016_20261018_110720": {
+      "run_id": "smoke_2016_20261018_110720",
+      "staging_relative_dir": "smoke_2016_20261018_110720",
+      "parquet_files_count": 12,
+      "total_run_bytes": 332018057,
+      "total_metadata_rows": 5537987,
+      "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a",
+      "compression_codec": "SNAPPY",
+      "files": [
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00000.parquet",
+          "file_name": "part-00000.parquet",
+          "bytes": 28414121,
+          "sha256": "6349e23a90d7291a42b12a0e29b3c44d8bda9e705a98306dd9156a268251e5dc",
+          "metadata_num_rows": 481510,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00001.parquet",
+          "file_name": "part-00001.parquet",
+          "bytes": 28603245,
+          "sha256": "c8f6ed6d879a1284621ac245134aa46995d38ce837b4a596526507e94d6d970c",
+          "metadata_num_rows": 482498,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00002.parquet",
+          "file_name": "part-00002.parquet",
+          "bytes": 28637691,
+          "sha256": "e45f2573fc64969778559c43556c9c9d4bf476e839e48d07a7b1422530e94579",
+          "metadata_num_rows": 483549,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00003.parquet",
+          "file_name": "part-00003.parquet",
+          "bytes": 28540494,
+          "sha256": "c74b4837c44b1a8eb9ae9549f5e7bc6cd041848da72c777a5d9c8cfe61bb9fa3",
+          "metadata_num_rows": 480737,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00004.parquet",
+          "file_name": "part-00004.parquet",
+          "bytes": 29314492,
+          "sha256": "06a43a9025eb28c5f878d488951e12d31a66ecbc2b31a8e18ab34050e25991a7",
+          "metadata_num_rows": 482975,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00005.parquet",
+          "file_name": "part-00005.parquet",
+          "bytes": 28892448,
+          "sha256": "89304e6d890eed377ff12abd7d59fd2a2517eca275d48b6e4dea3ff9fc4e3124",
+          "metadata_num_rows": 483367,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00006.parquet",
+          "file_name": "part-00006.parquet",
+          "bytes": 28688181,
+          "sha256": "e614d23011b0204d1841ed33999e9beb6a69e6492d2532bf85c3871d0886fed0",
+          "metadata_num_rows": 484026,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00007.parquet",
+          "file_name": "part-00007.parquet",
+          "bytes": 29227574,
+          "sha256": "68e0509f524235d4efaf7ea16f027c3a12079897d1c33191cad160e5c348c6ae",
+          "metadata_num_rows": 483940,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00008.parquet",
+          "file_name": "part-00008.parquet",
+          "bytes": 29156297,
+          "sha256": "3f6806512c75beb08d78fe42e93e308a7f4a1ce3d6b2db0f692f3cd7564df102",
+          "metadata_num_rows": 483772,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00009.parquet",
+          "file_name": "part-00009.parquet",
+          "bytes": 29369525,
+          "sha256": "882b743ba4db29ff83991c01cd3e5ce95b4a9d1aa056191e419ccb9920e433e1",
+          "metadata_num_rows": 483235,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00010.parquet",
+          "file_name": "part-00010.parquet",
+          "bytes": 29439506,
+          "sha256": "6c07dbcd391eac97488ce73ee6998815159c9a2a221929a81e71b9949f530a23",
+          "metadata_num_rows": 484297,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_110720/part-00011.parquet",
+          "file_name": "part-00011.parquet",
+          "bytes": 13734483,
+          "sha256": "e677d6505f89b9c758e70cb4aefd76182291cfbd1ec2888e49d8d085f2e4eb2f",
+          "metadata_num_rows": 224081,
+          "num_row_groups": 23,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        }
+      ]
+    },
+    "smoke_2016_20261018_122236": {
+      "run_id": "smoke_2016_20261018_122236",
+      "staging_relative_dir": "smoke_2016_20261018_122236",
+      "parquet_files_count": 12,
+      "total_run_bytes": 332018057,
+      "total_metadata_rows": 5537987,
+      "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a",
+      "compression_codec": "SNAPPY",
+      "files": [
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00000.parquet",
+          "file_name": "part-00000.parquet",
+          "bytes": 28414121,
+          "sha256": "6349e23a90d7291a42b12a0e29b3c44d8bda9e705a98306dd9156a268251e5dc",
+          "metadata_num_rows": 481510,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00001.parquet",
+          "file_name": "part-00001.parquet",
+          "bytes": 28603245,
+          "sha256": "c8f6ed6d879a1284621ac245134aa46995d38ce837b4a596526507e94d6d970c",
+          "metadata_num_rows": 482498,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00002.parquet",
+          "file_name": "part-00002.parquet",
+          "bytes": 28637691,
+          "sha256": "e45f2573fc64969778559c43556c9c9d4bf476e839e48d07a7b1422530e94579",
+          "metadata_num_rows": 483549,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00003.parquet",
+          "file_name": "part-00003.parquet",
+          "bytes": 28540494,
+          "sha256": "c74b4837c44b1a8eb9ae9549f5e7bc6cd041848da72c777a5d9c8cfe61bb9fa3",
+          "metadata_num_rows": 480737,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00004.parquet",
+          "file_name": "part-00004.parquet",
+          "bytes": 29314492,
+          "sha256": "06a43a9025eb28c5f878d488951e12d31a66ecbc2b31a8e18ab34050e25991a7",
+          "metadata_num_rows": 482975,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00005.parquet",
+          "file_name": "part-00005.parquet",
+          "bytes": 28892448,
+          "sha256": "89304e6d890eed377ff12abd7d59fd2a2517eca275d48b6e4dea3ff9fc4e3124",
+          "metadata_num_rows": 483367,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00006.parquet",
+          "file_name": "part-00006.parquet",
+          "bytes": 28688181,
+          "sha256": "e614d23011b0204d1841ed33999e9beb6a69e6492d2532bf85c3871d0886fed0",
+          "metadata_num_rows": 484026,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00007.parquet",
+          "file_name": "part-00007.parquet",
+          "bytes": 29227574,
+          "sha256": "68e0509f524235d4efaf7ea16f027c3a12079897d1c33191cad160e5c348c6ae",
+          "metadata_num_rows": 483940,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00008.parquet",
+          "file_name": "part-00008.parquet",
+          "bytes": 29156297,
+          "sha256": "3f6806512c75beb08d78fe42e93e308a7f4a1ce3d6b2db0f692f3cd7564df102",
+          "metadata_num_rows": 483772,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00009.parquet",
+          "file_name": "part-00009.parquet",
+          "bytes": 29369525,
+          "sha256": "882b743ba4db29ff83991c01cd3e5ce95b4a9d1aa056191e419ccb9920e433e1",
+          "metadata_num_rows": 483235,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00010.parquet",
+          "file_name": "part-00010.parquet",
+          "bytes": 29439506,
+          "sha256": "6c07dbcd391eac97488ce73ee6998815159c9a2a221929a81e71b9949f530a23",
+          "metadata_num_rows": 484297,
+          "num_row_groups": 49,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_20261018_122236/part-00011.parquet",
+          "file_name": "part-00011.parquet",
+          "bytes": 13734483,
+          "sha256": "e677d6505f89b9c758e70cb4aefd76182291cfbd1ec2888e49d8d085f2e4eb2f",
+          "metadata_num_rows": 224081,
+          "num_row_groups": 23,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        }
+      ]
+    },
+    "smoke_2016_jan_20261018_110720": {
+      "run_id": "smoke_2016_jan_20261018_110720",
+      "staging_relative_dir": "smoke_2016_jan_20261018_110720",
+      "parquet_files_count": 12,
+      "total_run_bytes": 23124812,
+      "total_metadata_rows": 433298,
+      "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a",
+      "compression_codec": "SNAPPY",
+      "files": [
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00000.parquet",
+          "file_name": "part-00000.parquet",
+          "bytes": 1953184,
+          "sha256": "69d214b64d25059e458b3dbd2b495c2724e4f562d9591a1c00e6bbe179fda984",
+          "metadata_num_rows": 36750,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00001.parquet",
+          "file_name": "part-00001.parquet",
+          "bytes": 2106465,
+          "sha256": "d12bf97b6683550ada863630dbc4baac8c46f8bc32de3fb67f2ad7fc201865a9",
+          "metadata_num_rows": 39806,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00002.parquet",
+          "file_name": "part-00002.parquet",
+          "bytes": 1993799,
+          "sha256": "4d940208bcaccead003f9e89ea0cc6aa1d7e7073e0c5b2d7c215a667563affe0",
+          "metadata_num_rows": 37205,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00003.parquet",
+          "file_name": "part-00003.parquet",
+          "bytes": 2069715,
+          "sha256": "5f7bc94dbce17c73bd3eb71d98b8c228ca31af16999c5460806b1b895833d5a4",
+          "metadata_num_rows": 38723,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00004.parquet",
+          "file_name": "part-00004.parquet",
+          "bytes": 2042328,
+          "sha256": "0fb4f9097ece272d3683d69af603f20b3fc27426cfec0d784afca0639fda397c",
+          "metadata_num_rows": 37985,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00005.parquet",
+          "file_name": "part-00005.parquet",
+          "bytes": 1998682,
+          "sha256": "46324dc04fc7fd3e4a9277d195f84da14546666517b754e12d07653a683f502b",
+          "metadata_num_rows": 37838,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00006.parquet",
+          "file_name": "part-00006.parquet",
+          "bytes": 1961819,
+          "sha256": "5fc4f7a0af02cb8f305cad22733f3d9f92a30ed19d0b5e1976932993c0bf0363",
+          "metadata_num_rows": 37145,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00007.parquet",
+          "file_name": "part-00007.parquet",
+          "bytes": 2026330,
+          "sha256": "1f481a7be1194c0863d71853f5e53c0068a7142148c87ee199f7a0067c763f73",
+          "metadata_num_rows": 37857,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00008.parquet",
+          "file_name": "part-00008.parquet",
+          "bytes": 1986689,
+          "sha256": "1efc905a3c349422bdcab99ac32f2652302bda500af20e47e53e066851cdba57",
+          "metadata_num_rows": 36881,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00009.parquet",
+          "file_name": "part-00009.parquet",
+          "bytes": 2008759,
+          "sha256": "8f20c57578228b66006dce60a0a0230bbe7aef9af31a0558a36a25f95df8bd12",
+          "metadata_num_rows": 37572,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00010.parquet",
+          "file_name": "part-00010.parquet",
+          "bytes": 2039044,
+          "sha256": "b571ac6b5ec8cba83db499ebd1d67632123c113652a7f7f5febd468ba5d1d0a0",
+          "metadata_num_rows": 38163,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_110720/part-00011.parquet",
+          "file_name": "part-00011.parquet",
+          "bytes": 937998,
+          "sha256": "ce3238b907a7aa331ba2ec024bd17e8dc34387f5806d6ec3f9bf4d413d50d137",
+          "metadata_num_rows": 17373,
+          "num_row_groups": 2,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        }
+      ]
+    },
+    "smoke_2016_jan_20261018_122236": {
+      "run_id": "smoke_2016_jan_20261018_122236",
+      "staging_relative_dir": "smoke_2016_jan_20261018_122236",
+      "parquet_files_count": 12,
+      "total_run_bytes": 23124812,
+      "total_metadata_rows": 433298,
+      "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a",
+      "compression_codec": "SNAPPY",
+      "files": [
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00000.parquet",
+          "file_name": "part-00000.parquet",
+          "bytes": 1953184,
+          "sha256": "69d214b64d25059e458b3dbd2b495c2724e4f562d9591a1c00e6bbe179fda984",
+          "metadata_num_rows": 36750,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00001.parquet",
+          "file_name": "part-00001.parquet",
+          "bytes": 2106465,
+          "sha256": "d12bf97b6683550ada863630dbc4baac8c46f8bc32de3fb67f2ad7fc201865a9",
+          "metadata_num_rows": 39806,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00002.parquet",
+          "file_name": "part-00002.parquet",
+          "bytes": 1993799,
+          "sha256": "4d940208bcaccead003f9e89ea0cc6aa1d7e7073e0c5b2d7c215a667563affe0",
+          "metadata_num_rows": 37205,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00003.parquet",
+          "file_name": "part-00003.parquet",
+          "bytes": 2069715,
+          "sha256": "5f7bc94dbce17c73bd3eb71d98b8c228ca31af16999c5460806b1b895833d5a4",
+          "metadata_num_rows": 38723,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00004.parquet",
+          "file_name": "part-00004.parquet",
+          "bytes": 2042328,
+          "sha256": "0fb4f9097ece272d3683d69af603f20b3fc27426cfec0d784afca0639fda397c",
+          "metadata_num_rows": 37985,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00005.parquet",
+          "file_name": "part-00005.parquet",
+          "bytes": 1998682,
+          "sha256": "46324dc04fc7fd3e4a9277d195f84da14546666517b754e12d07653a683f502b",
+          "metadata_num_rows": 37838,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00006.parquet",
+          "file_name": "part-00006.parquet",
+          "bytes": 1961819,
+          "sha256": "5fc4f7a0af02cb8f305cad22733f3d9f92a30ed19d0b5e1976932993c0bf0363",
+          "metadata_num_rows": 37145,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00007.parquet",
+          "file_name": "part-00007.parquet",
+          "bytes": 2026330,
+          "sha256": "1f481a7be1194c0863d71853f5e53c0068a7142148c87ee199f7a0067c763f73",
+          "metadata_num_rows": 37857,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00008.parquet",
+          "file_name": "part-00008.parquet",
+          "bytes": 1986689,
+          "sha256": "1efc905a3c349422bdcab99ac32f2652302bda500af20e47e53e066851cdba57",
+          "metadata_num_rows": 36881,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00009.parquet",
+          "file_name": "part-00009.parquet",
+          "bytes": 2008759,
+          "sha256": "8f20c57578228b66006dce60a0a0230bbe7aef9af31a0558a36a25f95df8bd12",
+          "metadata_num_rows": 37572,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00010.parquet",
+          "file_name": "part-00010.parquet",
+          "bytes": 2039044,
+          "sha256": "b571ac6b5ec8cba83db499ebd1d67632123c113652a7f7f5febd468ba5d1d0a0",
+          "metadata_num_rows": 38163,
+          "num_row_groups": 4,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        },
+        {
+          "relative_path": "smoke_2016_jan_20261018_122236/part-00011.parquet",
+          "file_name": "part-00011.parquet",
+          "bytes": 937998,
+          "sha256": "ce3238b907a7aa331ba2ec024bd17e8dc34387f5806d6ec3f9bf4d413d50d137",
+          "metadata_num_rows": 17373,
+          "num_row_groups": 2,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        }
+      ]
+    },
+    "smoke_2016_micro_20261018_110720": {
+      "run_id": "smoke_2016_micro_20261018_110720",
+      "staging_relative_dir": "smoke_2016_micro_20261018_110720",
+      "parquet_files_count": 1,
+      "total_run_bytes": 64814,
+      "total_metadata_rows": 1000,
+      "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a",
+      "compression_codec": "SNAPPY",
+      "files": [
+        {
+          "relative_path": "smoke_2016_micro_20261018_110720/part-00000.parquet",
+          "file_name": "part-00000.parquet",
+          "bytes": 64814,
+          "sha256": "ca9c9a7e93b3a5fbe28409d9baa4c140bc6d43c48d4f4f722beb66d550cba0a5",
+          "metadata_num_rows": 1000,
+          "num_row_groups": 1,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        }
+      ]
+    },
+    "smoke_2016_micro_20261018_122236": {
+      "run_id": "smoke_2016_micro_20261018_122236",
+      "staging_relative_dir": "smoke_2016_micro_20261018_122236",
+      "parquet_files_count": 1,
+      "total_run_bytes": 64814,
+      "total_metadata_rows": 1000,
+      "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a",
+      "compression_codec": "SNAPPY",
+      "files": [
+        {
+          "relative_path": "smoke_2016_micro_20261018_122236/part-00000.parquet",
+          "file_name": "part-00000.parquet",
+          "bytes": 64814,
+          "sha256": "ca9c9a7e93b3a5fbe28409d9baa4c140bc6d43c48d4f4f722beb66d550cba0a5",
+          "metadata_num_rows": 1000,
+          "num_row_groups": 1,
+          "compression": "SNAPPY",
+          "schema_columns_count": 34,
+          "schema_fingerprint": "b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a"
+        }
+      ]
+    }
+  },
+  "total_files_audited": 50,
+  "total_bytes_audited": 710415366
+}

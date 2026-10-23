@@ -1,0 +1,106 @@
+================================================================================
+  G6 FINAL PRODUCTION PREAUTHORIZATION & READINESS RAW EXECUTION LOG            
+  Generated: 2026-10-20T11:45:52.519170+00:00
+  Environment: Windows NTFS, Python 3.10, PySpark Ingestion Pipeline            
+================================================================================
+
+>>> COMMAND: python -m unittest tests/test_g6_annual_source_counts.py
+    DESCRIPTION: Annual Source Count & SHA-256 Anti-Masking Test
+    EXIT CODE: 0 (Duration: 0.38s)
+    [STDERR]:
+      .....
+      ----------------------------------------------------------------------
+      Ran 5 tests in 0.002s
+      
+      OK
+--------------------------------------------------------------------------------
+
+>>> COMMAND: python -m unittest tests/test_g6_kpi_contract_consistency.py
+    DESCRIPTION: Canonical 8 CORE KPI Contract Consistency Test
+    EXIT CODE: 0 (Duration: 0.37s)
+    [STDERR]:
+      .......
+      ----------------------------------------------------------------------
+      Ran 7 tests in 0.000s
+      
+      OK
+--------------------------------------------------------------------------------
+
+>>> COMMAND: python -m unittest tests/test_multiyear_snapshot_policy.py
+    DESCRIPTION: Multi-Year Snapshot Registry & Wildcard Duplication Prevention Test
+    EXIT CODE: 0 (Duration: 0.14s)
+    [STDERR]:
+      ....
+      ----------------------------------------------------------------------
+      Ran 4 tests in 0.032s
+      
+      OK
+--------------------------------------------------------------------------------
+
+>>> COMMAND: python -m unittest tests/test_lock_state_vs_pointer_state.py
+    DESCRIPTION: Dual-Gate Lock vs Pointer Preflight 6-State Regression Test
+    EXIT CODE: 0 (Duration: 0.21s)
+    [STDERR]:
+      ......
+      ----------------------------------------------------------------------
+      Ran 6 tests in 0.046s
+      
+      OK
+--------------------------------------------------------------------------------
+
+>>> COMMAND: python tools/qa/check_writer_preflight_safety.py --base-dir data
+    DESCRIPTION: Operational Lock Preflight CLI Text Mode
+    EXIT CODE: 0 (Duration: 0.11s)
+    [STDOUT]:
+      =================================================================
+        G6 OPERATIONAL WRITER PREFLIGHT SAFETY CHECK (READ-ONLY)       
+      =================================================================
+      Base Directory:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+      Pointer Status:       UNINITIALIZED_POINTER_ALLOWED
+      Lock State:           CLEAN
+      Active PID:           None (None)
+      Recovery Artifacts:   0
+      Safe To Start Writer: True
+      Summary Verdict:      SAFE_TO_PROCEED_TO_LOCK_ACQUISITION
+      Exit Code:            0
+      =================================================================
+--------------------------------------------------------------------------------
+
+>>> COMMAND: python tools/qa/check_writer_preflight_safety.py --base-dir data --json
+    DESCRIPTION: Operational Lock Preflight CLI JSON Mode
+    EXIT CODE: 0 (Duration: 0.11s)
+    [STDOUT]:
+      {
+        "safe_to_start_writer": true,
+        "exit_code": 0,
+        "summary_verdict": "SAFE_TO_PROCEED_TO_LOCK_ACQUISITION",
+        "pointer_status": "UNINITIALIZED_POINTER_ALLOWED",
+        "pointer_error": null,
+        "lock_state": "CLEAN",
+        "active_pid": null,
+        "liveness_status": null,
+        "recovery_artifacts_count": 0,
+        "recovery_artifacts": [],
+        "lock_file_path": null,
+        "curated_dir": "D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/curated",
+        "lock_dir": "D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/locks"
+      }
+--------------------------------------------------------------------------------
+
+>>> COMMAND: python tools/qa/verify_staging_pointer.py --allow-uninitialized
+    DESCRIPTION: Staging Pointer Readiness Verification
+    EXIT CODE: 0 (Duration: 0.11s)
+    [STDOUT]:
+      ================================================================================
+      STAGING / CURATED POINTER AUDIT: [PASS] UNINITIALIZED_POINTER_ALLOWED
+      ================================================================================
+      Base Directory:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1
+      Pointer File:         D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\curated\latest_run_id.txt
+      Pointer Value:        None
+      Target Directory:     None
+      Parquet Files Found:  0 (Valid: 0)
+      Manifest Verified:    False (Run ID: None)
+      ================================================================================
+--------------------------------------------------------------------------------
+
+SUMMARY STATUS: ALL_TESTS_PASS

@@ -1,0 +1,1791 @@
+================================================================================
+T011-R6 COMPREHENSIVE UNITTEST DISCOVERY SUITE LOG
+Timestamp: 2026-10-19T11:05:51.002175+00:00
+Task: T-011 R6 — Controlled Final Lock Safety Closure
+Gate: G5 (IN_PROGRESS)
+Command: python -m unittest discover -s tests -p "test_*.py"
+Exit Code: 0
+Total Process Duration: 417.533 seconds
+Status: ALL PASS (Exit Code 0)
+================================================================================
+
+......WARNING: Using incubator modules: jdk.incubator.vector
+26/10/19 17:59:00 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/19 17:59:00 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/19 17:59:00 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+
+[Stage 0:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1932, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54155), raddr=('127.0.0.1', 54154)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 1:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2036, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54165), raddr=('127.0.0.1', 54164)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 2:>                                                          (0 + 4) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2036, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54175), raddr=('127.0.0.1', 54174)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 3:>                                                          (0 + 4) / 4]
+
+[Stage 3:============================================>              (3 + 1) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1932, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54185), raddr=('127.0.0.1', 54184)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+......................26/10/19 17:59:16 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+
+[Stage 0:>                                                          (0 + 2) / 4]
+
+[Stage 0:==============>                                            (1 + 2) / 4]
+
+[Stage 0:=============================>                             (2 + 2) / 4]
+
+[Stage 0:============================================>              (3 + 1) / 4]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2008, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54199), raddr=('127.0.0.1', 54198)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 1:>                                                          (0 + 2) / 2]
+
+                                                                                
+.........26/10/19 17:59:21 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2060, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54208), raddr=('127.0.0.1', 54207)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+26/10/19 17:59:23 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+
+[Stage 5:>                                                          (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2132, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54213), raddr=('127.0.0.1', 54212)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 8:>                                                          (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2096, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54217), raddr=('127.0.0.1', 54216)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1952, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54219), raddr=('127.0.0.1', 54218)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 12:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2084, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54223), raddr=('127.0.0.1', 54222)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2060, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54225), raddr=('127.0.0.1', 54224)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 18:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2088, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54229), raddr=('127.0.0.1', 54228)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 21:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2136, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54233), raddr=('127.0.0.1', 54232)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2136, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54235), raddr=('127.0.0.1', 54234)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 25:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2064, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54241), raddr=('127.0.0.1', 54240)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2072, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54243), raddr=('127.0.0.1', 54242)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 31:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54247), raddr=('127.0.0.1', 54246)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 34:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2208, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54251), raddr=('127.0.0.1', 54250)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2064, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54253), raddr=('127.0.0.1', 54252)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 38:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2096, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54257), raddr=('127.0.0.1', 54256)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54259), raddr=('127.0.0.1', 54258)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 46:>                                                         (0 + 2) / 2]
+
+[Stage 46:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2112, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54265), raddr=('127.0.0.1', 54264)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 51:>                                                         (0 + 2) / 2]
+
+[Stage 51:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2076, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54271), raddr=('127.0.0.1', 54270)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54273), raddr=('127.0.0.1', 54272)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 55:>                                                         (0 + 2) / 2]
+
+[Stage 55:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2096, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54279), raddr=('127.0.0.1', 54278)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2008, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54281), raddr=('127.0.0.1', 54280)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 63:>                                                         (0 + 2) / 2]
+
+[Stage 63:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1980, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54287), raddr=('127.0.0.1', 54286)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 68:>                                                         (0 + 2) / 2]
+
+[Stage 68:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2208, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54293), raddr=('127.0.0.1', 54292)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2212, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54295), raddr=('127.0.0.1', 54294)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 72:>                                                         (0 + 2) / 2]
+
+[Stage 72:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54301), raddr=('127.0.0.1', 54300)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2096, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54303), raddr=('127.0.0.1', 54302)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 88:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2136, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54307), raddr=('127.0.0.1', 54306)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 91:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2136, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54311), raddr=('127.0.0.1', 54310)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2088, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54313), raddr=('127.0.0.1', 54312)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 95:>                                                         (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54317), raddr=('127.0.0.1', 54316)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1956, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54319), raddr=('127.0.0.1', 54318)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 103:>                                                        (0 + 2) / 2]
+
+[Stage 103:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1848, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54325), raddr=('127.0.0.1', 54324)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 108:>                                                        (0 + 2) / 2]
+
+[Stage 108:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1852, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54331), raddr=('127.0.0.1', 54330)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2088, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54333), raddr=('127.0.0.1', 54332)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 112:>                                                        (0 + 2) / 2]
+
+[Stage 112:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1980, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54339), raddr=('127.0.0.1', 54338)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 121:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2000, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54343), raddr=('127.0.0.1', 54342)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2216, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54348), raddr=('127.0.0.1', 54347)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 129:>                                                        (0 + 2) / 2]
+
+[Stage 129:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1988, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54354), raddr=('127.0.0.1', 54353)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 134:>                                                        (0 + 2) / 2]
+
+[Stage 134:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2000, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54360), raddr=('127.0.0.1', 54359)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2056, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54362), raddr=('127.0.0.1', 54361)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 138:>                                                        (0 + 2) / 2]
+
+[Stage 138:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2076, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54368), raddr=('127.0.0.1', 54367)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+....C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2224, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54370), raddr=('127.0.0.1', 54369)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 144:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1976, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54374), raddr=('127.0.0.1', 54373)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 147:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1964, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54378), raddr=('127.0.0.1', 54377)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2008, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54380), raddr=('127.0.0.1', 54379)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 151:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2224, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54384), raddr=('127.0.0.1', 54383)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2104, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54386), raddr=('127.0.0.1', 54385)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 157:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2112, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54390), raddr=('127.0.0.1', 54389)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 160:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2012, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54394), raddr=('127.0.0.1', 54393)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2084, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54396), raddr=('127.0.0.1', 54395)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 164:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2044, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54400), raddr=('127.0.0.1', 54399)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2224, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54403), raddr=('127.0.0.1', 54402)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 170:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2044, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54407), raddr=('127.0.0.1', 54406)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 173:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1964, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54411), raddr=('127.0.0.1', 54410)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2112, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54413), raddr=('127.0.0.1', 54412)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 177:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54417), raddr=('127.0.0.1', 54416)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2036, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54419), raddr=('127.0.0.1', 54418)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 183:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2012, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54423), raddr=('127.0.0.1', 54422)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 186:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2084, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54427), raddr=('127.0.0.1', 54426)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2036, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54429), raddr=('127.0.0.1', 54428)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 190:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54433), raddr=('127.0.0.1', 54432)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2088, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54435), raddr=('127.0.0.1', 54434)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 196:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2044, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54439), raddr=('127.0.0.1', 54438)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 199:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2084, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54444), raddr=('127.0.0.1', 54443)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54446), raddr=('127.0.0.1', 54445)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 203:>                                                        (0 + 1) / 1]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2044, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54450), raddr=('127.0.0.1', 54449)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.26/10/19 18:00:30 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2008, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54455), raddr=('127.0.0.1', 54454)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2104, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54457), raddr=('127.0.0.1', 54456)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2060, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54459), raddr=('127.0.0.1', 54458)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2208, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54461), raddr=('127.0.0.1', 54460)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2060, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54463), raddr=('127.0.0.1', 54462)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2104, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54465), raddr=('127.0.0.1', 54464)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2060, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54467), raddr=('127.0.0.1', 54466)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2044, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54469), raddr=('127.0.0.1', 54468)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2084, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54471), raddr=('127.0.0.1', 54470)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1920, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54473), raddr=('127.0.0.1', 54472)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=916, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54475), raddr=('127.0.0.1', 54474)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1920, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54477), raddr=('127.0.0.1', 54476)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2032, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54479), raddr=('127.0.0.1', 54478)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54481), raddr=('127.0.0.1', 54480)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1920, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54483), raddr=('127.0.0.1', 54482)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2012, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54485), raddr=('127.0.0.1', 54484)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=524, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54487), raddr=('127.0.0.1', 54486)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1916, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54489), raddr=('127.0.0.1', 54488)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54491), raddr=('127.0.0.1', 54490)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=916, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54493), raddr=('127.0.0.1', 54492)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54495), raddr=('127.0.0.1', 54494)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1968, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54497), raddr=('127.0.0.1', 54496)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1852, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54499), raddr=('127.0.0.1', 54498)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54501), raddr=('127.0.0.1', 54500)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1852, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54503), raddr=('127.0.0.1', 54502)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2072, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54505), raddr=('127.0.0.1', 54504)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1852, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54507), raddr=('127.0.0.1', 54506)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2072, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54509), raddr=('127.0.0.1', 54508)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2064, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54511), raddr=('127.0.0.1', 54510)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.............................................................26/10/19 18:00:36 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54516), raddr=('127.0.0.1', 54515)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2064, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54518), raddr=('127.0.0.1', 54517)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.....
+[Stage 6:>                                                          (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1956, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54525), raddr=('127.0.0.1', 54524)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 9:>                                                          (0 + 2) / 2]
+
+[Stage 9:=============================>                             (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54531), raddr=('127.0.0.1', 54530)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 12:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1996, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54537), raddr=('127.0.0.1', 54536)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 15:>                                                         (0 + 2) / 2]
+
+[Stage 15:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1988, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54543), raddr=('127.0.0.1', 54542)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 18:>                                                         (0 + 2) / 2]
+
+[Stage 18:=============================>                            (1 + 1) / 2]
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1968, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54549), raddr=('127.0.0.1', 54548)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 19:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=916, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54555), raddr=('127.0.0.1', 54554)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 22:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2212, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54561), raddr=('127.0.0.1', 54560)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 25:>                                                         (0 + 2) / 2]
+
+[Stage 25:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=928, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54567), raddr=('127.0.0.1', 54566)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2044, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54569), raddr=('127.0.0.1', 54568)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54571), raddr=('127.0.0.1', 54570)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2032, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54573), raddr=('127.0.0.1', 54572)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2100, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54575), raddr=('127.0.0.1', 54574)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2044, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54577), raddr=('127.0.0.1', 54576)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=772, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54579), raddr=('127.0.0.1', 54578)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.....
+[Stage 47:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2100, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54585), raddr=('127.0.0.1', 54584)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 50:>                                                         (0 + 2) / 2]
+
+[Stage 50:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=772, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54591), raddr=('127.0.0.1', 54590)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1956, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54593), raddr=('127.0.0.1', 54592)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=916, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54596), raddr=('127.0.0.1', 54595)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2224, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54598), raddr=('127.0.0.1', 54597)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54601), raddr=('127.0.0.1', 54600)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2224, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54603), raddr=('127.0.0.1', 54602)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1916, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54605), raddr=('127.0.0.1', 54604)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54607), raddr=('127.0.0.1', 54606)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2072, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54609), raddr=('127.0.0.1', 54608)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54611), raddr=('127.0.0.1', 54610)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=524, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54613), raddr=('127.0.0.1', 54612)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2036, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54615), raddr=('127.0.0.1', 54614)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54617), raddr=('127.0.0.1', 54616)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2036, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54619), raddr=('127.0.0.1', 54618)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2124, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54621), raddr=('127.0.0.1', 54620)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1988, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54623), raddr=('127.0.0.1', 54622)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=524, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54625), raddr=('127.0.0.1', 54624)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1920, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54627), raddr=('127.0.0.1', 54626)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=524, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54629), raddr=('127.0.0.1', 54628)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2108, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54631), raddr=('127.0.0.1', 54630)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1980, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54633), raddr=('127.0.0.1', 54632)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1956, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54636), raddr=('127.0.0.1', 54635)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1920, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54638), raddr=('127.0.0.1', 54637)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2036, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54640), raddr=('127.0.0.1', 54639)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1996, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54642), raddr=('127.0.0.1', 54641)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2108, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54644), raddr=('127.0.0.1', 54643)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=524, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54646), raddr=('127.0.0.1', 54645)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2132, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54648), raddr=('127.0.0.1', 54647)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+......26/10/19 18:00:57 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+
+[Stage 0:>                                                          (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54663), raddr=('127.0.0.1', 54662)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 3:>                                                          (0 + 2) / 2]
+
+[Stage 3:=============================>                             (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2036, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54683), raddr=('127.0.0.1', 54682)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 6:>                                                          (0 + 2) / 2]
+
+[Stage 6:=============================>                             (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1920, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54693), raddr=('127.0.0.1', 54692)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 9:>                                                          (0 + 2) / 2]
+
+[Stage 9:=============================>                             (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2120, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54701), raddr=('127.0.0.1', 54700)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 12:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1848, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54709), raddr=('127.0.0.1', 54708)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 15:>                                                         (0 + 2) / 2]
+
+[Stage 15:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2136, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54715), raddr=('127.0.0.1', 54714)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 18:>                                                         (0 + 2) / 2]
+
+[Stage 18:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2040, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54722), raddr=('127.0.0.1', 54721)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 21:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2136, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54728), raddr=('127.0.0.1', 54727)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 24:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1920, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54734), raddr=('127.0.0.1', 54733)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+....
+[Stage 27:>                                                         (0 + 2) / 2]
+
+[Stage 27:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1980, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54740), raddr=('127.0.0.1', 54739)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 30:>                                                         (0 + 2) / 2]
+
+[Stage 30:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=524, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54746), raddr=('127.0.0.1', 54745)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+....
+[Stage 33:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2096, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54752), raddr=('127.0.0.1', 54751)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..........26/10/19 18:01:17 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+
+[Stage 0:>                                                          (0 + 2) / 2]
+
+[Stage 0:=============================>                             (1 + 1) / 2]
+
+                                                                                
+
+[Stage 3:>    (0 + 2) / 2][Stage 4:>    (0 + 0) / 2][Stage 5:>    (0 + 0) / 2]
+
+[Stage 3:==>  (1 + 1) / 2][Stage 4:>    (0 + 1) / 2][Stage 5:>    (0 + 0) / 2]
+
+[Stage 4:>    (0 + 2) / 2][Stage 5:>    (0 + 0) / 2][Stage 6:>    (0 + 0) / 2]
+
+[Stage 4:==>  (1 + 1) / 2][Stage 5:>    (0 + 1) / 2][Stage 6:>    (0 + 0) / 2]
+
+[Stage 5:>    (0 + 2) / 2][Stage 6:>    (0 + 0) / 2][Stage 7:>    (0 + 0) / 2]
+
+[Stage 5:==>  (1 + 1) / 2][Stage 6:>    (0 + 1) / 2][Stage 7:>    (0 + 0) / 2]
+
+[Stage 6:>    (0 + 2) / 2][Stage 7:>    (0 + 0) / 2][Stage 8:>    (0 + 0) / 2]
+
+[Stage 6:==>  (1 + 1) / 2][Stage 7:>    (0 + 1) / 2][Stage 8:>    (0 + 0) / 2]
+
+[Stage 7:>    (0 + 2) / 2][Stage 8:>    (0 + 0) / 2][Stage 9:>    (0 + 0) / 2]
+
+[Stage 7:==>  (1 + 1) / 2][Stage 8:>    (0 + 1) / 2][Stage 9:>    (0 + 0) / 2]
+
+[Stage 8:>    (0 + 2) / 2][Stage 9:>    (0 + 0) / 2][Stage 10:>   (0 + 0) / 2]
+
+[Stage 8:==>  (1 + 1) / 2][Stage 9:>    (0 + 1) / 2][Stage 10:>   (0 + 0) / 2]
+
+[Stage 9:>    (0 + 2) / 2][Stage 10:>   (0 + 0) / 2][Stage 11:>   (0 + 0) / 2]
+
+[Stage 9:==>  (1 + 1) / 2][Stage 10:>   (0 + 1) / 2][Stage 11:>   (0 + 0) / 2]
+
+[Stage 10:>   (0 + 2) / 2][Stage 11:>   (0 + 0) / 2][Stage 12:>   (0 + 0) / 2]
+
+[Stage 10:==> (1 + 1) / 2][Stage 11:>   (0 + 1) / 2][Stage 12:>   (0 + 0) / 2]
+
+[Stage 11:>   (0 + 2) / 2][Stage 12:>   (0 + 0) / 2][Stage 13:>   (0 + 0) / 2]
+
+[Stage 11:==> (1 + 1) / 2][Stage 12:>   (0 + 1) / 2][Stage 13:>   (0 + 0) / 2]
+
+[Stage 12:>                 (0 + 2) / 2][Stage 13:>                 (0 + 0) / 2]
+
+[Stage 12:=========>        (1 + 1) / 2][Stage 13:>                 (0 + 1) / 2]
+
+[Stage 13:>                                                         (0 + 2) / 2]
+
+[Stage 13:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1988, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54808), raddr=('127.0.0.1', 54807)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 26:>                                                         (0 + 2) / 2]
+
+[Stage 26:=============================>                            (1 + 1) / 2]
+
+                                                                                
+
+[Stage 29:>   (0 + 2) / 2][Stage 30:>   (0 + 0) / 2][Stage 31:>   (0 + 0) / 2]
+
+[Stage 29:==> (1 + 1) / 2][Stage 30:>   (0 + 1) / 2][Stage 31:>   (0 + 0) / 2]
+
+[Stage 30:>   (0 + 2) / 2][Stage 31:>   (0 + 0) / 2][Stage 32:>   (0 + 0) / 2]
+
+[Stage 30:==> (1 + 1) / 2][Stage 31:>   (0 + 0) / 2][Stage 32:>   (0 + 1) / 2]
+
+[Stage 31:>   (0 + 0) / 2][Stage 32:>   (0 + 2) / 2][Stage 33:>   (0 + 0) / 2]
+
+[Stage 31:>   (0 + 1) / 2][Stage 32:==> (1 + 1) / 2][Stage 33:>   (0 + 0) / 2]
+
+[Stage 31:>   (0 + 2) / 2][Stage 33:>   (0 + 0) / 2][Stage 34:>   (0 + 0) / 2]
+
+[Stage 31:==> (1 + 1) / 2][Stage 33:>   (0 + 1) / 2][Stage 34:>   (0 + 0) / 2]
+
+[Stage 33:>   (0 + 2) / 2][Stage 34:>   (0 + 0) / 2][Stage 35:>   (0 + 0) / 2]
+
+[Stage 33:==> (1 + 1) / 2][Stage 34:>   (0 + 1) / 2][Stage 35:>   (0 + 0) / 2]
+
+[Stage 34:>   (0 + 2) / 2][Stage 35:>   (0 + 0) / 2][Stage 36:>   (0 + 0) / 2]
+
+[Stage 34:==> (1 + 1) / 2][Stage 35:>   (0 + 1) / 2][Stage 36:>   (0 + 0) / 2]
+
+[Stage 35:>   (0 + 2) / 2][Stage 36:>   (0 + 0) / 2][Stage 37:>   (0 + 0) / 2]
+
+[Stage 35:==> (1 + 1) / 2][Stage 36:>   (0 + 1) / 2][Stage 37:>   (0 + 0) / 2]
+
+[Stage 36:>   (0 + 2) / 2][Stage 37:>   (0 + 0) / 2][Stage 38:>   (0 + 0) / 2]
+
+[Stage 36:==> (1 + 1) / 2][Stage 37:>   (0 + 1) / 2][Stage 38:>   (0 + 0) / 2]
+
+[Stage 37:>   (0 + 2) / 2][Stage 38:>   (0 + 0) / 2][Stage 39:>   (0 + 0) / 2]
+
+[Stage 37:==> (1 + 1) / 2][Stage 38:>   (0 + 1) / 2][Stage 39:>   (0 + 0) / 2]
+
+[Stage 38:>                 (0 + 2) / 2][Stage 39:>                 (0 + 0) / 2]
+
+[Stage 38:=========>        (1 + 1) / 2][Stage 39:>                 (0 + 1) / 2]
+
+[Stage 39:>                                                         (0 + 2) / 2]
+
+[Stage 39:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54858), raddr=('127.0.0.1', 54857)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 52:>                                                         (0 + 2) / 2]
+
+[Stage 52:=============================>                            (1 + 1) / 2]
+
+                                                                                
+
+[Stage 55:>   (0 + 2) / 2][Stage 56:>   (0 + 0) / 2][Stage 57:>   (0 + 0) / 2]
+
+[Stage 55:==> (1 + 1) / 2][Stage 56:>   (0 + 1) / 2][Stage 57:>   (0 + 0) / 2]
+
+[Stage 56:>   (0 + 2) / 2][Stage 57:>   (0 + 0) / 2][Stage 58:>   (0 + 0) / 2]
+
+[Stage 56:==> (1 + 1) / 2][Stage 57:>   (0 + 0) / 2][Stage 58:>   (0 + 1) / 2]
+
+[Stage 57:>   (0 + 0) / 2][Stage 58:>   (0 + 2) / 2][Stage 59:>   (0 + 0) / 2]
+
+[Stage 57:>   (0 + 1) / 2][Stage 58:==> (1 + 1) / 2][Stage 59:>   (0 + 0) / 2]
+
+[Stage 57:>   (0 + 2) / 2][Stage 59:>   (0 + 0) / 2][Stage 60:>   (0 + 0) / 2]
+
+[Stage 57:==> (1 + 1) / 2][Stage 59:>   (0 + 1) / 2][Stage 60:>   (0 + 0) / 2]
+
+[Stage 59:>   (0 + 2) / 2][Stage 60:>   (0 + 0) / 2][Stage 61:>   (0 + 0) / 2]
+
+[Stage 59:==> (1 + 1) / 2][Stage 60:>   (0 + 1) / 2][Stage 61:>   (0 + 0) / 2]
+
+[Stage 60:>   (0 + 2) / 2][Stage 61:>   (0 + 0) / 2][Stage 62:>   (0 + 0) / 2]
+
+[Stage 60:==> (1 + 1) / 2][Stage 61:>   (0 + 1) / 2][Stage 62:>   (0 + 0) / 2]
+
+[Stage 61:>   (0 + 2) / 2][Stage 62:>   (0 + 0) / 2][Stage 63:>   (0 + 0) / 2]
+
+[Stage 61:==> (1 + 1) / 2][Stage 62:>   (0 + 1) / 2][Stage 63:>   (0 + 0) / 2]
+
+[Stage 62:>   (0 + 2) / 2][Stage 63:>   (0 + 0) / 2][Stage 64:>   (0 + 0) / 2]
+
+[Stage 62:==> (1 + 1) / 2][Stage 63:>   (0 + 1) / 2][Stage 64:>   (0 + 0) / 2]
+
+[Stage 63:>   (0 + 2) / 2][Stage 64:>   (0 + 0) / 2][Stage 65:>   (0 + 0) / 2]
+
+[Stage 63:==> (1 + 1) / 2][Stage 64:>   (0 + 1) / 2][Stage 65:>   (0 + 0) / 2]
+
+[Stage 64:>                 (0 + 2) / 2][Stage 65:>                 (0 + 0) / 2]
+
+[Stage 64:=========>        (1 + 1) / 2][Stage 65:>                 (0 + 1) / 2]
+
+[Stage 65:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1912, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54913), raddr=('127.0.0.1', 54912)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 78:>                                                         (0 + 2) / 2]
+
+                                                                                
+
+[Stage 81:>   (0 + 2) / 2][Stage 82:>   (0 + 0) / 2][Stage 83:>   (0 + 0) / 2]
+
+[Stage 81:==> (1 + 1) / 2][Stage 82:>   (0 + 1) / 2][Stage 83:>   (0 + 0) / 2]
+
+[Stage 82:>   (0 + 2) / 2][Stage 83:>   (0 + 0) / 2][Stage 84:>   (0 + 0) / 2]
+
+[Stage 82:==> (1 + 1) / 2][Stage 83:>   (0 + 1) / 2][Stage 84:>   (0 + 0) / 2]
+
+[Stage 83:>   (0 + 2) / 2][Stage 84:>   (0 + 0) / 2][Stage 85:>   (0 + 0) / 2]
+
+[Stage 83:==> (1 + 1) / 2][Stage 84:>   (0 + 1) / 2][Stage 85:>   (0 + 0) / 2]
+
+[Stage 84:>   (0 + 2) / 2][Stage 85:>   (0 + 0) / 2][Stage 86:>   (0 + 0) / 2]
+
+[Stage 84:==> (1 + 1) / 2][Stage 85:>   (0 + 1) / 2][Stage 86:>   (0 + 0) / 2]
+
+[Stage 85:>   (0 + 2) / 2][Stage 86:>   (0 + 0) / 2][Stage 87:>   (0 + 0) / 2]
+
+[Stage 85:==> (1 + 1) / 2][Stage 86:>   (0 + 1) / 2][Stage 87:>   (0 + 0) / 2]
+
+[Stage 86:>   (0 + 2) / 2][Stage 87:>   (0 + 0) / 2][Stage 88:>   (0 + 0) / 2]
+
+[Stage 86:==> (1 + 1) / 2][Stage 87:>   (0 + 1) / 2][Stage 88:>   (0 + 0) / 2]
+
+[Stage 87:>   (0 + 2) / 2][Stage 88:>   (0 + 0) / 2][Stage 89:>   (0 + 0) / 2]
+
+[Stage 87:==> (1 + 1) / 2][Stage 88:>   (0 + 1) / 2][Stage 89:>   (0 + 0) / 2]
+
+[Stage 88:>   (0 + 2) / 2][Stage 89:>   (0 + 0) / 2][Stage 90:>   (0 + 0) / 2]
+
+[Stage 88:==> (1 + 1) / 2][Stage 89:>   (0 + 1) / 2][Stage 90:>   (0 + 0) / 2]
+
+[Stage 89:>   (0 + 2) / 2][Stage 90:>   (0 + 0) / 2][Stage 91:>   (0 + 0) / 2]
+
+[Stage 89:==> (1 + 1) / 2][Stage 90:>   (0 + 1) / 2][Stage 91:>   (0 + 0) / 2]
+
+[Stage 90:>                 (0 + 2) / 2][Stage 91:>                 (0 + 0) / 2]
+
+[Stage 90:=========>        (1 + 1) / 2][Stage 91:>                 (0 + 1) / 2]
+
+[Stage 91:>                                                         (0 + 2) / 2]
+
+[Stage 91:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1988, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54963), raddr=('127.0.0.1', 54962)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 104:>                                                        (0 + 2) / 2]
+
+[Stage 104:============================>                            (1 + 1) / 2]
+
+                                                                                
+
+[Stage 107:>  (0 + 2) / 2][Stage 108:>  (0 + 0) / 2][Stage 109:>  (0 + 0) / 2]
+
+[Stage 107:=> (1 + 1) / 2][Stage 108:>  (0 + 1) / 2][Stage 109:>  (0 + 0) / 2]
+
+[Stage 108:>  (0 + 2) / 2][Stage 109:>  (0 + 0) / 2][Stage 110:>  (0 + 0) / 2]
+
+[Stage 108:=> (1 + 1) / 2][Stage 109:>  (0 + 1) / 2][Stage 110:>  (0 + 0) / 2]
+
+[Stage 109:>  (0 + 2) / 2][Stage 110:>  (0 + 0) / 2][Stage 111:>  (0 + 0) / 2]
+
+[Stage 109:=> (1 + 1) / 2][Stage 110:>  (0 + 1) / 2][Stage 111:>  (0 + 0) / 2]
+
+[Stage 110:>  (0 + 2) / 2][Stage 111:>  (0 + 0) / 2][Stage 112:>  (0 + 0) / 2]
+
+[Stage 110:=> (1 + 1) / 2][Stage 111:>  (0 + 1) / 2][Stage 112:>  (0 + 0) / 2]
+
+[Stage 111:>  (0 + 2) / 2][Stage 112:>  (0 + 0) / 2][Stage 113:>  (0 + 0) / 2]
+
+[Stage 111:=> (1 + 1) / 2][Stage 112:>  (0 + 1) / 2][Stage 113:>  (0 + 0) / 2]
+
+[Stage 112:>  (0 + 2) / 2][Stage 113:>  (0 + 0) / 2][Stage 114:>  (0 + 0) / 2]
+
+[Stage 112:=> (1 + 1) / 2][Stage 113:>  (0 + 1) / 2][Stage 114:>  (0 + 0) / 2]
+
+[Stage 113:>  (0 + 2) / 2][Stage 114:>  (0 + 0) / 2][Stage 115:>  (0 + 0) / 2]
+
+[Stage 113:=> (1 + 1) / 2][Stage 114:>  (0 + 0) / 2][Stage 115:>  (0 + 1) / 2]
+
+[Stage 114:>  (0 + 0) / 2][Stage 115:>  (0 + 2) / 2][Stage 116:>  (0 + 0) / 2]
+
+[Stage 114:>  (0 + 1) / 2][Stage 115:=> (1 + 1) / 2][Stage 116:>  (0 + 0) / 2]
+
+[Stage 114:>  (0 + 2) / 2][Stage 116:>  (0 + 0) / 2][Stage 117:>  (0 + 0) / 2]
+
+[Stage 114:=> (1 + 1) / 2][Stage 116:>  (0 + 1) / 2][Stage 117:>  (0 + 0) / 2]
+
+[Stage 116:>                (0 + 2) / 2][Stage 117:>                (0 + 0) / 2]
+
+[Stage 116:========>        (1 + 1) / 2][Stage 117:>                (0 + 1) / 2]
+
+[Stage 117:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55014), raddr=('127.0.0.1', 55013)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 130:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2212, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55020), raddr=('127.0.0.1', 55019)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 131:>                                                        (0 + 2) / 2]
+
+[Stage 131:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2124, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55026), raddr=('127.0.0.1', 55025)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 132:>                                                        (0 + 2) / 2]
+
+[Stage 132:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=524, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55032), raddr=('127.0.0.1', 55031)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 133:>                                                        (0 + 2) / 2]
+
+[Stage 133:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55038), raddr=('127.0.0.1', 55037)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 134:>                                                        (0 + 2) / 2]
+
+[Stage 134:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=524, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55044), raddr=('127.0.0.1', 55043)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 135:>                                                        (0 + 2) / 2]
+
+[Stage 135:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1848, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55052), raddr=('127.0.0.1', 55051)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 136:>                                                        (0 + 2) / 2]
+
+[Stage 136:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1920, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55060), raddr=('127.0.0.1', 55059)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 137:>                                                        (0 + 2) / 2]
+
+[Stage 137:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2072, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55066), raddr=('127.0.0.1', 55065)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 138:>                                                        (0 + 2) / 2]
+
+[Stage 138:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1848, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55072), raddr=('127.0.0.1', 55071)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 139:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2108, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55078), raddr=('127.0.0.1', 55077)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 140:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2112, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55084), raddr=('127.0.0.1', 55083)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 141:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55090), raddr=('127.0.0.1', 55089)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 142:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2004, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55096), raddr=('127.0.0.1', 55095)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 143:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1848, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55102), raddr=('127.0.0.1', 55101)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 144:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2136, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55108), raddr=('127.0.0.1', 55107)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 145:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1988, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55114), raddr=('127.0.0.1', 55113)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 146:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2012, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55121), raddr=('127.0.0.1', 55120)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 147:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1916, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55127), raddr=('127.0.0.1', 55126)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 148:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55133), raddr=('127.0.0.1', 55132)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 149:>                                                        (0 + 2) / 2]
+
+[Stage 149:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=524, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55139), raddr=('127.0.0.1', 55138)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 150:>                                                        (0 + 2) / 2]
+
+[Stage 150:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2132, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55145), raddr=('127.0.0.1', 55144)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 151:>                                                        (0 + 2) / 2]
+
+[Stage 151:============================>                            (1 + 1) / 2]
+
+                                                                                
+
+[Stage 154:>  (0 + 2) / 2][Stage 155:>  (0 + 0) / 2][Stage 156:>  (0 + 0) / 2]
+
+[Stage 154:=> (1 + 1) / 2][Stage 155:>  (0 + 1) / 2][Stage 156:>  (0 + 0) / 2]
+
+[Stage 155:>  (0 + 2) / 2][Stage 156:>  (0 + 0) / 2][Stage 157:>  (0 + 0) / 2]
+
+[Stage 155:=> (1 + 1) / 2][Stage 156:>  (0 + 1) / 2][Stage 157:>  (0 + 0) / 2]
+
+[Stage 156:>  (0 + 2) / 2][Stage 157:>  (0 + 0) / 2][Stage 158:>  (0 + 0) / 2]
+
+[Stage 156:=> (1 + 1) / 2][Stage 157:>  (0 + 1) / 2][Stage 158:>  (0 + 0) / 2]
+
+[Stage 157:>  (0 + 2) / 2][Stage 158:>  (0 + 0) / 2][Stage 159:>  (0 + 0) / 2]
+
+[Stage 157:=> (1 + 1) / 2][Stage 158:>  (0 + 1) / 2][Stage 159:>  (0 + 0) / 2]
+
+[Stage 158:>  (0 + 2) / 2][Stage 159:>  (0 + 0) / 2][Stage 160:>  (0 + 0) / 2]
+
+[Stage 158:=> (1 + 1) / 2][Stage 159:>  (0 + 1) / 2][Stage 160:>  (0 + 0) / 2]
+
+[Stage 159:>  (0 + 2) / 2][Stage 160:>  (0 + 0) / 2][Stage 161:>  (0 + 0) / 2]
+
+[Stage 159:=> (1 + 1) / 2][Stage 160:>  (0 + 1) / 2][Stage 161:>  (0 + 0) / 2]
+
+[Stage 160:>  (0 + 2) / 2][Stage 161:>  (0 + 0) / 2][Stage 162:>  (0 + 0) / 2]
+
+[Stage 160:=> (1 + 1) / 2][Stage 161:>  (0 + 1) / 2][Stage 162:>  (0 + 0) / 2]
+
+[Stage 161:>  (0 + 2) / 2][Stage 162:>  (0 + 0) / 2][Stage 163:>  (0 + 0) / 2]
+
+[Stage 161:=> (1 + 1) / 2][Stage 162:>  (0 + 1) / 2][Stage 163:>  (0 + 0) / 2]
+
+[Stage 162:>  (0 + 2) / 2][Stage 163:>  (0 + 0) / 2][Stage 164:>  (0 + 0) / 2]
+
+[Stage 162:=> (1 + 1) / 2][Stage 163:>  (0 + 1) / 2][Stage 164:>  (0 + 0) / 2]
+
+[Stage 163:>                (0 + 2) / 2][Stage 164:>                (0 + 0) / 2]
+
+[Stage 163:========>        (1 + 1) / 2][Stage 164:>                (0 + 1) / 2]
+
+[Stage 164:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55197), raddr=('127.0.0.1', 55196)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 177:>                                                        (0 + 2) / 2]
+
+[Stage 177:============================>                            (1 + 1) / 2]
+
+                                                                                
+
+[Stage 180:>  (0 + 2) / 2][Stage 181:>  (0 + 0) / 2][Stage 182:>  (0 + 0) / 2]
+
+[Stage 180:=> (1 + 1) / 2][Stage 181:>  (0 + 1) / 2][Stage 182:>  (0 + 0) / 2]
+
+[Stage 181:>  (0 + 2) / 2][Stage 182:>  (0 + 0) / 2][Stage 183:>  (0 + 0) / 2]
+
+[Stage 181:=> (1 + 1) / 2][Stage 182:>  (0 + 1) / 2][Stage 183:>  (0 + 0) / 2]
+
+[Stage 182:>  (0 + 2) / 2][Stage 183:>  (0 + 0) / 2][Stage 184:>  (0 + 0) / 2]
+
+[Stage 182:=> (1 + 1) / 2][Stage 183:>  (0 + 0) / 2][Stage 184:>  (0 + 1) / 2]
+
+[Stage 183:>  (0 + 0) / 2][Stage 184:>  (0 + 2) / 2][Stage 185:>  (0 + 0) / 2]
+
+[Stage 183:>  (0 + 1) / 2][Stage 184:=> (1 + 1) / 2][Stage 185:>  (0 + 0) / 2]
+
+[Stage 183:>  (0 + 2) / 2][Stage 185:>  (0 + 0) / 2][Stage 186:>  (0 + 0) / 2]
+
+[Stage 183:=> (1 + 1) / 2][Stage 185:>  (0 + 1) / 2][Stage 186:>  (0 + 0) / 2]
+
+[Stage 185:>  (0 + 2) / 2][Stage 186:>  (0 + 0) / 2][Stage 187:>  (0 + 0) / 2]
+
+[Stage 185:=> (1 + 1) / 2][Stage 186:>  (0 + 1) / 2][Stage 187:>  (0 + 0) / 2]
+
+[Stage 186:>  (0 + 2) / 2][Stage 187:>  (0 + 0) / 2][Stage 188:>  (0 + 0) / 2]
+
+[Stage 186:=> (1 + 1) / 2][Stage 187:>  (0 + 1) / 2][Stage 188:>  (0 + 0) / 2]
+
+[Stage 187:=> (1 + 1) / 2][Stage 188:>  (0 + 1) / 2][Stage 189:>  (0 + 0) / 2]
+
+[Stage 187:=> (1 + 1) / 2][Stage 188:=> (1 + 1) / 2][Stage 189:>  (0 + 0) / 2]
+
+[Stage 188:=> (1 + 1) / 2][Stage 189:>  (0 + 1) / 2][Stage 190:>  (0 + 0) / 2]
+
+[Stage 189:>                (0 + 2) / 2][Stage 190:>                (0 + 0) / 2]
+
+[Stage 189:========>        (1 + 1) / 2][Stage 190:>                (0 + 1) / 2]
+
+[Stage 190:>                                                        (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2080, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55247), raddr=('127.0.0.1', 55246)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 203:>                                                        (0 + 2) / 2]
+
+[Stage 203:============================>                            (1 + 1) / 2]
+
+                                                                                
+.26/10/19 18:03:46 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+...
+[Stage 0:>                                                          (0 + 2) / 2]
+
+[Stage 0:=============================>                             (1 + 1) / 2]
+
+                                                                                
+
+[Stage 3:>    (0 + 2) / 2][Stage 4:>    (0 + 0) / 2][Stage 5:>    (0 + 0) / 2]
+
+[Stage 3:==>  (1 + 1) / 2][Stage 4:>    (0 + 1) / 2][Stage 5:>    (0 + 0) / 2]
+
+[Stage 4:>    (0 + 2) / 2][Stage 5:>    (0 + 0) / 2][Stage 6:>    (0 + 0) / 2]
+
+[Stage 4:==>  (1 + 1) / 2][Stage 5:>    (0 + 1) / 2][Stage 6:>    (0 + 0) / 2]
+
+[Stage 5:>    (0 + 2) / 2][Stage 6:>    (0 + 0) / 2][Stage 7:>    (0 + 0) / 2]
+
+[Stage 5:==>  (1 + 1) / 2][Stage 6:>    (0 + 1) / 2][Stage 7:>    (0 + 0) / 2]
+
+[Stage 6:>    (0 + 2) / 2][Stage 7:>    (0 + 0) / 2][Stage 8:>    (0 + 0) / 2]
+
+[Stage 6:==>  (1 + 1) / 2][Stage 7:>    (0 + 1) / 2][Stage 8:>    (0 + 0) / 2]
+
+[Stage 7:>    (0 + 2) / 2][Stage 8:>    (0 + 0) / 2][Stage 9:>    (0 + 0) / 2]
+
+[Stage 7:==>  (1 + 1) / 2][Stage 8:>    (0 + 1) / 2][Stage 9:>    (0 + 0) / 2]
+
+[Stage 8:>    (0 + 2) / 2][Stage 9:>    (0 + 0) / 2][Stage 10:>   (0 + 0) / 2]
+
+[Stage 8:==>  (1 + 1) / 2][Stage 9:>    (0 + 1) / 2][Stage 10:>   (0 + 0) / 2]
+
+[Stage 9:>    (0 + 2) / 2][Stage 10:>   (0 + 0) / 2][Stage 11:>   (0 + 0) / 2]
+
+[Stage 9:==>  (1 + 1) / 2][Stage 10:>   (0 + 1) / 2][Stage 11:>   (0 + 0) / 2]
+
+[Stage 10:>   (0 + 2) / 2][Stage 11:>   (0 + 0) / 2][Stage 12:>   (0 + 0) / 2]
+
+[Stage 10:==> (1 + 1) / 2][Stage 11:>   (0 + 1) / 2][Stage 12:>   (0 + 0) / 2]
+
+[Stage 11:>   (0 + 2) / 2][Stage 12:>   (0 + 0) / 2][Stage 13:>   (0 + 0) / 2]
+
+[Stage 11:==> (1 + 1) / 2][Stage 12:>   (0 + 1) / 2][Stage 13:>   (0 + 0) / 2]
+
+[Stage 12:>                 (0 + 2) / 2][Stage 13:>                 (0 + 0) / 2]
+
+[Stage 12:=========>        (1 + 1) / 2][Stage 13:>                 (0 + 1) / 2]
+
+[Stage 13:>                                                         (0 + 2) / 2]
+
+[Stage 13:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2108, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55305), raddr=('127.0.0.1', 55304)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 26:>                                                         (0 + 2) / 2]
+
+[Stage 26:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1952, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55311), raddr=('127.0.0.1', 55310)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 27:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2040, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55317), raddr=('127.0.0.1', 55316)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 28:>                                                         (0 + 2) / 2]
+
+[Stage 28:=============================>                            (1 + 1) / 2]
+
+                                                                                
+
+[Stage 31:>   (0 + 2) / 2][Stage 32:>   (0 + 0) / 2][Stage 33:>   (0 + 0) / 2]
+
+[Stage 31:==> (1 + 1) / 2][Stage 32:>   (0 + 1) / 2][Stage 33:>   (0 + 0) / 2]
+
+[Stage 32:>   (0 + 2) / 2][Stage 33:>   (0 + 0) / 2][Stage 34:>   (0 + 0) / 2]
+
+[Stage 32:==> (1 + 1) / 2][Stage 33:>   (0 + 1) / 2][Stage 34:>   (0 + 0) / 2]
+
+[Stage 33:>   (0 + 2) / 2][Stage 34:>   (0 + 0) / 2][Stage 35:>   (0 + 0) / 2]
+
+[Stage 33:==> (1 + 1) / 2][Stage 34:>   (0 + 1) / 2][Stage 35:>   (0 + 0) / 2]
+
+[Stage 34:>   (0 + 2) / 2][Stage 35:>   (0 + 0) / 2][Stage 36:>   (0 + 0) / 2]
+
+[Stage 34:==> (1 + 1) / 2][Stage 35:>   (0 + 1) / 2][Stage 36:>   (0 + 0) / 2]
+
+[Stage 35:>   (0 + 2) / 2][Stage 36:>   (0 + 0) / 2][Stage 37:>   (0 + 0) / 2]
+
+[Stage 35:==> (1 + 1) / 2][Stage 36:>   (0 + 1) / 2][Stage 37:>   (0 + 0) / 2]
+
+[Stage 36:>   (0 + 2) / 2][Stage 37:>   (0 + 0) / 2][Stage 38:>   (0 + 0) / 2]
+
+[Stage 36:==> (1 + 1) / 2][Stage 37:>   (0 + 1) / 2][Stage 38:>   (0 + 0) / 2]
+
+[Stage 37:>   (0 + 2) / 2][Stage 38:>   (0 + 0) / 2][Stage 39:>   (0 + 0) / 2]
+
+[Stage 37:==> (1 + 1) / 2][Stage 38:>   (0 + 1) / 2][Stage 39:>   (0 + 0) / 2]
+
+[Stage 38:>   (0 + 2) / 2][Stage 39:>   (0 + 0) / 2][Stage 40:>   (0 + 0) / 2]
+
+[Stage 38:==> (1 + 1) / 2][Stage 39:>   (0 + 1) / 2][Stage 40:>   (0 + 0) / 2]
+
+[Stage 39:>   (0 + 2) / 2][Stage 40:>   (0 + 0) / 2][Stage 41:>   (0 + 0) / 2]
+
+[Stage 39:==> (1 + 1) / 2][Stage 40:>   (0 + 1) / 2][Stage 41:>   (0 + 0) / 2]
+
+[Stage 40:>                 (0 + 2) / 2][Stage 41:>                 (0 + 0) / 2]
+
+[Stage 40:=========>        (1 + 1) / 2][Stage 41:>                 (0 + 1) / 2]
+
+[Stage 41:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=1960, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55368), raddr=('127.0.0.1', 55367)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 54:>                                                         (0 + 2) / 2]
+
+[Stage 54:=============================>                            (1 + 1) / 2]
+
+                                                                                
+.............................................................................................26/10/19 18:04:26 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+26/10/19 18:04:26 WARN TaskSetManager: Stage 0 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 0:>                                                          (0 + 2) / 2]
+
+[Stage 0:=============================>                             (1 + 1) / 2]
+
+                                                                                
+26/10/19 18:04:28 WARN TaskSetManager: Stage 3 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 3:>    (0 + 2) / 2][Stage 4:>    (0 + 0) / 2][Stage 5:>    (0 + 0) / 2]
+26/10/19 18:04:30 WARN TaskSetManager: Stage 4 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 3:==>  (1 + 1) / 2][Stage 4:>    (0 + 1) / 2][Stage 5:>    (0 + 0) / 2]
+
+[Stage 4:>    (0 + 2) / 2][Stage 5:>    (0 + 0) / 2][Stage 6:>    (0 + 0) / 2]
+26/10/19 18:04:31 WARN TaskSetManager: Stage 5 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 4:==>  (1 + 1) / 2][Stage 5:>    (0 + 1) / 2][Stage 6:>    (0 + 0) / 2]
+
+[Stage 5:>    (0 + 2) / 2][Stage 6:>    (0 + 0) / 2][Stage 7:>    (0 + 0) / 2]
+26/10/19 18:04:32 WARN TaskSetManager: Stage 6 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 5:==>  (1 + 1) / 2][Stage 6:>    (0 + 1) / 2][Stage 7:>    (0 + 0) / 2]
+
+[Stage 6:>    (0 + 2) / 2][Stage 7:>    (0 + 0) / 2][Stage 8:>    (0 + 0) / 2]
+26/10/19 18:04:33 WARN TaskSetManager: Stage 7 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 6:==>  (1 + 1) / 2][Stage 7:>    (0 + 1) / 2][Stage 8:>    (0 + 0) / 2]
+
+[Stage 7:>    (0 + 2) / 2][Stage 8:>    (0 + 0) / 2][Stage 9:>    (0 + 0) / 2]
+26/10/19 18:04:35 WARN TaskSetManager: Stage 8 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 7:==>  (1 + 1) / 2][Stage 8:>    (0 + 1) / 2][Stage 9:>    (0 + 0) / 2]
+
+[Stage 8:>    (0 + 2) / 2][Stage 9:>    (0 + 0) / 2][Stage 10:>   (0 + 0) / 2]
+26/10/19 18:04:36 WARN TaskSetManager: Stage 9 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 8:==>  (1 + 1) / 2][Stage 9:>    (0 + 1) / 2][Stage 10:>   (0 + 0) / 2]
+
+[Stage 9:>    (0 + 2) / 2][Stage 10:>   (0 + 0) / 2][Stage 11:>   (0 + 0) / 2]
+26/10/19 18:04:37 WARN TaskSetManager: Stage 10 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 9:==>  (1 + 1) / 2][Stage 10:>   (0 + 1) / 2][Stage 11:>   (0 + 0) / 2]
+
+[Stage 10:>   (0 + 2) / 2][Stage 11:>   (0 + 0) / 2][Stage 12:>   (0 + 0) / 2]
+26/10/19 18:04:38 WARN TaskSetManager: Stage 11 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 10:==> (1 + 1) / 2][Stage 11:>   (0 + 1) / 2][Stage 12:>   (0 + 0) / 2]
+
+[Stage 11:>   (0 + 2) / 2][Stage 12:>   (0 + 0) / 2][Stage 13:>   (0 + 0) / 2]
+26/10/19 18:04:39 WARN TaskSetManager: Stage 12 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 11:==> (1 + 1) / 2][Stage 12:>   (0 + 1) / 2][Stage 13:>   (0 + 0) / 2]
+
+[Stage 12:>                 (0 + 2) / 2][Stage 13:>                 (0 + 0) / 2]
+26/10/19 18:04:41 WARN TaskSetManager: Stage 13 contains a task of very large size (1006 KiB). The maximum recommended task size is 1000 KiB.
+
+[Stage 12:=========>        (1 + 1) / 2][Stage 13:>                 (0 + 1) / 2]
+
+[Stage 13:>                                                         (0 + 2) / 2]
+
+[Stage 13:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2060, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55426), raddr=('127.0.0.1', 55425)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 26:>                                                         (0 + 2) / 2]
+
+[Stage 26:=============================>                            (1 + 1) / 2]
+
+                                                                                
+
+[Stage 29:>   (0 + 2) / 2][Stage 30:>   (0 + 0) / 2][Stage 31:>   (0 + 0) / 2]
+
+[Stage 29:==> (1 + 1) / 2][Stage 30:>   (0 + 1) / 2][Stage 31:>   (0 + 0) / 2]
+
+[Stage 30:>   (0 + 2) / 2][Stage 31:>   (0 + 0) / 2][Stage 32:>   (0 + 0) / 2]
+
+[Stage 30:==> (1 + 1) / 2][Stage 31:>   (0 + 1) / 2][Stage 32:>   (0 + 0) / 2]
+
+[Stage 31:>   (0 + 2) / 2][Stage 32:>   (0 + 0) / 2][Stage 33:>   (0 + 0) / 2]
+
+[Stage 31:==> (1 + 1) / 2][Stage 32:>   (0 + 1) / 2][Stage 33:>   (0 + 0) / 2]
+
+[Stage 32:>   (0 + 2) / 2][Stage 33:>   (0 + 0) / 2][Stage 34:>   (0 + 0) / 2]
+
+[Stage 32:==> (1 + 1) / 2][Stage 33:>   (0 + 1) / 2][Stage 34:>   (0 + 0) / 2]
+
+[Stage 33:>   (0 + 2) / 2][Stage 34:>   (0 + 0) / 2][Stage 35:>   (0 + 0) / 2]
+
+[Stage 33:==> (1 + 1) / 2][Stage 34:>   (0 + 1) / 2][Stage 35:>   (0 + 0) / 2]
+
+[Stage 34:>   (0 + 2) / 2][Stage 35:>   (0 + 0) / 2][Stage 36:>   (0 + 0) / 2]
+
+[Stage 34:==> (1 + 1) / 2][Stage 35:>   (0 + 1) / 2][Stage 36:>   (0 + 0) / 2]
+
+[Stage 35:>   (0 + 2) / 2][Stage 36:>   (0 + 0) / 2][Stage 37:>   (0 + 0) / 2]
+
+[Stage 35:==> (1 + 1) / 2][Stage 36:>   (0 + 1) / 2][Stage 37:>   (0 + 0) / 2]
+
+[Stage 36:>   (0 + 2) / 2][Stage 37:>   (0 + 0) / 2][Stage 38:>   (0 + 0) / 2]
+
+[Stage 36:==> (1 + 1) / 2][Stage 37:>   (0 + 1) / 2][Stage 38:>   (0 + 0) / 2]
+
+[Stage 37:>   (0 + 2) / 2][Stage 38:>   (0 + 0) / 2][Stage 39:>   (0 + 0) / 2]
+
+[Stage 37:==> (1 + 1) / 2][Stage 38:>   (0 + 0) / 2][Stage 39:>   (0 + 1) / 2]
+
+[Stage 38:>                 (0 + 0) / 2][Stage 39:>                 (0 + 2) / 2]
+
+[Stage 38:>                 (0 + 1) / 2][Stage 39:=========>        (1 + 1) / 2]
+
+[Stage 38:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2120, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55478), raddr=('127.0.0.1', 55477)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+[Stage 52:>                                                         (0 + 2) / 2]
+
+[Stage 52:=============================>                            (1 + 1) / 2]
+
+                                                                                
+
+[Stage 55:>                                                         (0 + 2) / 2]
+
+[Stage 55:>   (0 + 2) / 2][Stage 56:>   (0 + 0) / 2][Stage 57:>   (0 + 0) / 2]
+
+[Stage 55:==> (1 + 1) / 2][Stage 56:>   (0 + 1) / 2][Stage 57:>   (0 + 0) / 2]
+
+[Stage 56:>   (0 + 2) / 2][Stage 57:>   (0 + 0) / 2][Stage 58:>   (0 + 0) / 2]
+
+[Stage 56:==> (1 + 1) / 2][Stage 57:>   (0 + 1) / 2][Stage 58:>   (0 + 0) / 2]
+
+[Stage 57:>   (0 + 2) / 2][Stage 58:>   (0 + 0) / 2][Stage 59:>   (0 + 0) / 2]
+
+[Stage 57:==> (1 + 1) / 2][Stage 58:>   (0 + 1) / 2][Stage 59:>   (0 + 0) / 2]
+
+[Stage 58:>   (0 + 2) / 2][Stage 59:>   (0 + 0) / 2][Stage 60:>   (0 + 0) / 2]
+
+[Stage 58:==> (1 + 1) / 2][Stage 59:>   (0 + 1) / 2][Stage 60:>   (0 + 0) / 2]
+
+[Stage 59:>   (0 + 2) / 2][Stage 60:>   (0 + 0) / 2][Stage 61:>   (0 + 0) / 2]
+
+[Stage 59:==> (1 + 1) / 2][Stage 60:>   (0 + 1) / 2][Stage 61:>   (0 + 0) / 2]
+
+[Stage 60:>   (0 + 2) / 2][Stage 61:>   (0 + 0) / 2][Stage 62:>   (0 + 0) / 2]
+
+[Stage 60:==> (1 + 1) / 2][Stage 61:>   (0 + 1) / 2][Stage 62:>   (0 + 0) / 2]
+
+[Stage 61:>   (0 + 2) / 2][Stage 62:>   (0 + 0) / 2][Stage 63:>   (0 + 0) / 2]
+
+[Stage 61:==> (1 + 1) / 2][Stage 62:>   (0 + 1) / 2][Stage 63:>   (0 + 0) / 2]
+
+[Stage 62:>   (0 + 2) / 2][Stage 63:>   (0 + 0) / 2][Stage 64:>   (0 + 0) / 2]
+
+[Stage 62:==> (1 + 1) / 2][Stage 63:>   (0 + 1) / 2][Stage 64:>   (0 + 0) / 2]
+
+[Stage 63:>   (0 + 2) / 2][Stage 64:>   (0 + 0) / 2][Stage 65:>   (0 + 0) / 2]
+
+[Stage 63:==> (1 + 1) / 2][Stage 64:>   (0 + 1) / 2][Stage 65:>   (0 + 0) / 2]
+
+[Stage 64:>                 (0 + 2) / 2][Stage 65:>                 (0 + 0) / 2]
+
+[Stage 64:=========>        (1 + 1) / 2][Stage 65:>                 (0 + 1) / 2]
+
+[Stage 65:>                                                         (0 + 2) / 2]
+
+[Stage 65:=============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2124, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55529), raddr=('127.0.0.1', 55528)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 78:>                                                         (0 + 2) / 2]
+
+                                                                                
+
+[Stage 81:>   (0 + 2) / 2][Stage 82:>   (0 + 0) / 2][Stage 83:>   (0 + 0) / 2]
+
+[Stage 81:==> (1 + 1) / 2][Stage 82:>   (0 + 1) / 2][Stage 83:>   (0 + 0) / 2]
+
+[Stage 82:>   (0 + 2) / 2][Stage 83:>   (0 + 0) / 2][Stage 84:>   (0 + 0) / 2]
+
+[Stage 82:==> (1 + 1) / 2][Stage 83:>   (0 + 0) / 2][Stage 84:>   (0 + 1) / 2]
+
+[Stage 83:>   (0 + 0) / 2][Stage 84:>   (0 + 2) / 2][Stage 85:>   (0 + 0) / 2]
+
+[Stage 83:>   (0 + 0) / 2][Stage 84:==> (1 + 1) / 2][Stage 85:>   (0 + 1) / 2]
+
+[Stage 83:>   (0 + 0) / 2][Stage 85:>   (0 + 2) / 2][Stage 86:>   (0 + 0) / 2]
+
+[Stage 83:>   (0 + 0) / 2][Stage 85:==> (1 + 1) / 2][Stage 86:>   (0 + 1) / 2]
+
+[Stage 83:>   (0 + 0) / 2][Stage 86:>   (0 + 2) / 2][Stage 87:>   (0 + 0) / 2]
+
+[Stage 83:>   (0 + 1) / 2][Stage 86:==> (1 + 1) / 2][Stage 87:>   (0 + 0) / 2]
+
+[Stage 83:>   (0 + 2) / 2][Stage 87:>   (0 + 0) / 2][Stage 88:>   (0 + 0) / 2]
+
+[Stage 83:==> (1 + 1) / 2][Stage 87:>   (0 + 1) / 2][Stage 88:>   (0 + 0) / 2]
+
+[Stage 87:>   (0 + 2) / 2][Stage 88:>   (0 + 0) / 2][Stage 89:>   (0 + 0) / 2]
+
+[Stage 87:==> (1 + 1) / 2][Stage 88:>   (0 + 1) / 2][Stage 89:>   (0 + 0) / 2]
+
+[Stage 88:>   (0 + 2) / 2][Stage 89:>   (0 + 0) / 2][Stage 90:>   (0 + 0) / 2]
+
+[Stage 88:==> (1 + 1) / 2][Stage 89:>   (0 + 1) / 2][Stage 90:>   (0 + 0) / 2]
+
+[Stage 89:>   (0 + 2) / 2][Stage 90:>   (0 + 0) / 2][Stage 91:>   (0 + 0) / 2]
+
+[Stage 89:==> (1 + 1) / 2][Stage 90:>   (0 + 1) / 2][Stage 91:>   (0 + 0) / 2]
+
+[Stage 90:>                 (0 + 2) / 2][Stage 91:>                 (0 + 0) / 2]
+
+[Stage 90:=========>        (1 + 1) / 2][Stage 91:>                 (0 + 1) / 2]
+
+[Stage 91:>                                                         (0 + 2) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2040, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55581), raddr=('127.0.0.1', 55580)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.
+[Stage 104:>                                                        (0 + 2) / 2]
+
+[Stage 104:============================>                            (1 + 1) / 2]
+
+                                                                                
+
+[Stage 107:>  (0 + 2) / 2][Stage 108:>  (0 + 0) / 2][Stage 109:>  (0 + 0) / 2]
+
+[Stage 107:=> (1 + 1) / 2][Stage 108:>  (0 + 1) / 2][Stage 109:>  (0 + 0) / 2]
+
+[Stage 108:>  (0 + 2) / 2][Stage 109:>  (0 + 0) / 2][Stage 110:>  (0 + 0) / 2]
+
+[Stage 108:=> (1 + 1) / 2][Stage 109:>  (0 + 1) / 2][Stage 110:>  (0 + 0) / 2]
+
+[Stage 109:>  (0 + 2) / 2][Stage 110:>  (0 + 0) / 2][Stage 111:>  (0 + 0) / 2]
+
+[Stage 109:=> (1 + 1) / 2][Stage 110:>  (0 + 1) / 2][Stage 111:>  (0 + 0) / 2]
+
+[Stage 110:>  (0 + 2) / 2][Stage 111:>  (0 + 0) / 2][Stage 112:>  (0 + 0) / 2]
+
+[Stage 110:=> (1 + 1) / 2][Stage 111:>  (0 + 1) / 2][Stage 112:>  (0 + 0) / 2]
+
+[Stage 111:>  (0 + 2) / 2][Stage 112:>  (0 + 0) / 2][Stage 113:>  (0 + 0) / 2]
+
+[Stage 111:=> (1 + 1) / 2][Stage 112:>  (0 + 1) / 2][Stage 113:>  (0 + 0) / 2]
+
+[Stage 112:>  (0 + 2) / 2][Stage 113:>  (0 + 0) / 2][Stage 114:>  (0 + 0) / 2]
+
+[Stage 112:=> (1 + 1) / 2][Stage 113:>  (0 + 1) / 2][Stage 114:>  (0 + 0) / 2]
+
+[Stage 113:>  (0 + 2) / 2][Stage 114:>  (0 + 0) / 2][Stage 115:>  (0 + 0) / 2]
+
+[Stage 113:=> (1 + 1) / 2][Stage 114:>  (0 + 1) / 2][Stage 115:>  (0 + 0) / 2]
+
+[Stage 114:>  (0 + 2) / 2][Stage 115:>  (0 + 0) / 2][Stage 116:>  (0 + 0) / 2]
+
+[Stage 114:=> (1 + 1) / 2][Stage 115:>  (0 + 1) / 2][Stage 116:>  (0 + 0) / 2]
+
+[Stage 115:>  (0 + 2) / 2][Stage 116:>  (0 + 0) / 2][Stage 117:>  (0 + 0) / 2]
+
+[Stage 115:=> (1 + 1) / 2][Stage 116:>  (0 + 1) / 2][Stage 117:>  (0 + 0) / 2]
+
+[Stage 116:>                (0 + 2) / 2][Stage 117:>                (0 + 0) / 2]
+
+[Stage 116:========>        (1 + 1) / 2][Stage 117:>                (0 + 1) / 2]
+
+[Stage 117:>                                                        (0 + 2) / 2]
+
+[Stage 117:============================>                            (1 + 1) / 2]
+
+                                                                                
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\socket.py:776: ResourceWarning: unclosed <socket.socket fd=2084, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55632), raddr=('127.0.0.1', 55631)>
+  self._sock = None
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+................
+----------------------------------------------------------------------
+Ran 316 tests in 416.996s
+
+OK
+SUCCESS: The process with PID 26272 (child process of PID 9136) has been terminated.
+SUCCESS: The process with PID 9136 (child process of PID 1496) has been terminated.
+SUCCESS: The process with PID 1496 (child process of PID 18280) has been terminated.

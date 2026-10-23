@@ -1,0 +1,103 @@
+{
+  "archive_name": "G5_OFFICIAL_SIGNOFF_REVIEW.zip",
+  "archive_byte_size": 81282,
+  "archive_sha256": "122b9561045668f53f3dccf080bbe128040e6d3be11fde54bb52972e8fd3838d",
+  "archive_crc32": "1a4a0dd0",
+  "generated_at": "2026-10-21T10:35:33Z",
+  "task": "OFFICIAL-G5-HUMAN-SIGNOFF",
+  "verdict": "G5_PASS_CONTROLLED",
+  "governance_status": {
+    "G5": "PASS (CONTROLLED)",
+    "G6": "READY_FOR_PREPARATION / BLOCKED_ON_D5",
+    "T011": "PASS / COMPLETED (FULL_CONTRACT_CLOSED)",
+    "T012": "NOT_STARTED",
+    "D1_BTS_PROVENANCE": "PASS (CONTROLLED)",
+    "D2_FP_DEC_019_OPTION_B": "APPROVED_WITH_CONDITIONS",
+    "D3_TS018_HUMAN_SIGNOFF": "PASS (CONTROLLED)",
+    "D4_G5_HUMAN_GATE_SIGNOFF": "APPROVED",
+    "G2_EXC_001": "RESOLVED_BY_TS018_APPROVED_OPTION_B",
+    "D5_PRODUCTION_EXECUTION": "NOT_AUTHORIZED",
+    "G6_ARCH_2016": "APPROVED_OPTION_B_BY_PROJECT_LEAD_INSTRUCTION"
+  },
+  "residual_limitations": [
+    "PARQUET_PARITY_NOT_TESTED",
+    "OR-05: 2024 source_coverage_status = PARTIAL (missing March 2024, 335/366 days)",
+    "OR-08: Kaggle upstream identity unverified (local SHA-256 baseline used)",
+    "FP-DEC-017: Weather conditional branch excluded from CORE",
+    "TS-018 sample bounded to January 2019 (does not verify identity across 9 years)"
+  ],
+  "files": [
+    {
+      "relative_path": "docs/01-planning/BACKLOG.md",
+      "byte_size": 13830,
+      "sha256": "4c0ca02a86401244eea855b7757a6ef2b11e925e20e11c23f89ffbee832d8c50",
+      "crc32": "5b6c233e"
+    },
+    {
+      "relative_path": "docs/02-design/DECISIONS.md",
+      "byte_size": 26492,
+      "sha256": "b7a5db2c215d11ef019b201906ae7177c39743d87997ba73017da6f33b7a8037",
+      "crc32": "26f29817"
+    },
+    {
+      "relative_path": "docs/03-quality/CHANGELOG.md",
+      "byte_size": 10843,
+      "sha256": "65defe4e09c5793b77f8b17fa92660184cb557d1189b93b140730dcb32713ee7",
+      "crc32": "5154fdc7"
+    },
+    {
+      "relative_path": "docs/04-execution/AI_HANDOFF.md",
+      "byte_size": 20754,
+      "sha256": "bfa8bfefddb619a296559188835254e4991f55f4ece588e8c87f6278d193a404",
+      "crc32": "428bf62d"
+    },
+    {
+      "relative_path": "docs/04-execution/PROJECT_STATE.md",
+      "byte_size": 40894,
+      "sha256": "168d3427b07cd9cd92efea71727adf25d5bf9ff71eb67c34e54c57e737c24dd6",
+      "crc32": "8df9ff34"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_D1_BTS_PROVENANCE_ATTESTATION_DRAFT.md",
+      "byte_size": 5531,
+      "sha256": "2dd370aebdf6d69083dedfeff47b38e988caeefa42d5c36c969319f77654e2a2",
+      "crc32": "5e275a49"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_D2_FP_DEC_019_OPTION_B_APPROVAL_DRAFT.md",
+      "byte_size": 6013,
+      "sha256": "415426db9fbf530f6e87698431651f2b3cdaa9545cf1a2a838562648bf9cd7ee",
+      "crc32": "6d40007d"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_D3_TS018_HUMAN_TECHNICAL_SIGNOFF_DRAFT.md",
+      "byte_size": 6903,
+      "sha256": "c0a8c4c3de8e660cc09ab73e4e390dc1b6c9c61f339a1be559dcc7901670a3e0",
+      "crc32": "104e5ee8"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_D4_G5_HUMAN_GATE_SIGNOFF_DRAFT.md",
+      "byte_size": 8092,
+      "sha256": "1b1eb50ebe14f89a7bd235bc2719ec6e4df7c3760e9278a21aa77e5dec661282",
+      "crc32": "292ef167"
+    },
+    {
+      "relative_path": "docs/05-evidence/G6_T012_2016_BASELINE_INTEGRATION_DECISION_DRAFT.md",
+      "byte_size": 8815,
+      "sha256": "0b742617f56973e93e2da893efaf8b8f18bc9d31bfd7abee4a57e4205f1d0ef9",
+      "crc32": "ca1233b9"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_OFFICIAL_HUMAN_SIGNOFF_REPORT.md",
+      "byte_size": 11336,
+      "sha256": "459651cdabba547910e535dc4efb8e34c477456fb7d9b65a90165a9214a6ef4f",
+      "crc32": "d0cd5d50"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_OFFICIAL_HUMAN_SIGNOFF_CHANGES.patch",
+      "byte_size": 78904,
+      "sha256": "384314aeae21fd18cbab762ca71fc97d5bcd5ba20af28e1a74cc29134f28ebe3",
+      "crc32": "ac4bfeb6"
+    }
+  ]
+}

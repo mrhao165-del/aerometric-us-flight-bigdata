@@ -1,0 +1,214 @@
+================================================================================
+G6 T-012 FINAL OPERATIONAL RAW EXECUTION LOG (READINESS CLOSEOUT)
+================================================================================
+Project:           US Flight Performance Analysis 2016-2024
+Task:              Final Targeted Operational Readiness Closeout (TS-018 / G5 / G6 Preflight)
+Timestamp:         2026-10-21T13:53:07+07:00
+Environment:       Windows 11 Enterprise (NTFS), Python 3.10.11 / 3.11.9, OpenJDK 21.0.12.1
+Git HEAD:          bc4f03fb8ccd6c0b2455af3fcb2b1b98fa39d632
+Workstation Free:  Disk: 58.95 GiB (63,303,045,120 bytes) | RAM Available: 2.69 GiB / 15.71 GiB
+Operating Shell:   PowerShell on Windows NTFS
+================================================================================
+
+--------------------------------------------------------------------------------
+COMMAND 1: Unit & Regression Test Suite Execution
+--------------------------------------------------------------------------------
+Command:   python -m unittest tests/test_multiyear_snapshot_policy.py
+Exit Code: 0
+
+Stdout/Stderr:
+..............................................................
+----------------------------------------------------------------------
+Ran 62 tests in 7.891s
+
+OK
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_2016_v1
+Target Directory:    D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\curated\runs\run_2016_v1
+Survey Years:        [2016]
+Base Data Dir:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+Lock Directory:      D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\locks
+Lock Status:         CLEAN
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Rows:  5,537,987
+    Audited Bytes: 1,538,427,452 | Actual Bytes: 1,538,427,452
+================================================================================
+[PREFLIGHT PASS] Dry-run preflight inspection completed successfully. No data written.
+usage: python -m flight_pipeline.ingestion.coordinator [-h] --years YEARS
+                                                       [YEARS ...] --run-id
+                                                       RUN_ID
+                                                       [--base-data-dir BASE_DATA_DIR]
+                                                       [--task-id TASK_ID]
+                                                       [--dry-run-preflight]
+                                                       [--allow-candidate-hashes]
+
+US Flight Performance Production Ingestion Coordinator Runner (T-012).
+
+options:
+  -h, --help            show this help message and exit
+  --years YEARS [YEARS ...]
+                        One or more survey years to ingest (e.g. --years 2016)
+  --run-id RUN_ID       Unique execution run identifier (e.g. --run-id
+                        run_2016_v1)
+  --base-data-dir BASE_DATA_DIR
+                        Base data directory (default: data)
+  --task-id TASK_ID     Governance task identifier (default: T-012)
+  --dry-run-preflight   Execute preflight validation only without starting
+                        Spark or writing Parquet
+  --allow-candidate-hashes
+                        Allow local unapproved candidate hashes during dry-run
+                        preflight
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_2016_v1
+Target Directory:    D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\curated\runs\run_2016_v1
+Survey Years:        [2016]
+Base Data Dir:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+Lock Directory:      D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\locks
+Lock Status:         CLEAN
+Dry-Run Mode:        False
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Rows:  5,537,987
+    Audited Bytes: 1,538,427,452 | Actual Bytes: 1,538,427,452
+================================================================================
+
+[GOVERNANCE HOLD] Live ingestion execution is BLOCKED.
+Decision D5 (Gate G6 Annual Ingestion Authorization) has NOT been approved by Project Lead.
+Per AGENTS.md, autonomous AI agents cannot authorize production data execution.
+Preflight check passed; awaiting explicit human authorization (D5).
+
+
+--------------------------------------------------------------------------------
+COMMAND 2: Production Writer Preflight Safety Check
+--------------------------------------------------------------------------------
+Command:   python tools/qa/check_writer_preflight_safety.py --base-dir data
+Exit Code: 0
+
+Stdout:
+=================================================================
+  G6 OPERATIONAL WRITER PREFLIGHT SAFETY CHECK (READ-ONLY)       
+=================================================================
+Base Data Directory:  D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data
+Curated Directory:    D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/curated
+Pointer File:         D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/curated/latest_run_id.txt
+Lock Directory:       D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/locks
+Lock File:            None
+Pointer Status:       UNINITIALIZED_POINTER_ALLOWED
+Lock State:           CLEAN
+Active PID:           None (None)
+Recovery Artifacts:   0
+Storage Root Matched: True
+Safe To Start Writer: True
+Summary Verdict:      SAFE_TO_PROCEED_TO_LOCK_ACQUISITION
+Exit Code:            0
+=================================================================
+
+
+--------------------------------------------------------------------------------
+COMMAND 3: Publication Pointer Verification (Clean Initial State)
+--------------------------------------------------------------------------------
+Command:   python tools/qa/verify_staging_pointer.py --base-dir data --allow-uninitialized
+Exit Code: 0
+
+Stdout:
+================================================================================
+STAGING / CURATED POINTER AUDIT: [PASS] UNINITIALIZED_POINTER_ALLOWED
+================================================================================
+Base Directory:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+Pointer File:         D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\curated\latest_run_id.txt
+Pointer Value:        None
+Target Directory:     None
+Parquet Files Found:  0 (Valid: 0)
+Manifest Verified:    False (Run ID: None)
+================================================================================
+
+
+--------------------------------------------------------------------------------
+COMMAND 4: Ingestion Coordinator CLI Dry-Run Preflight (Year 2016)
+--------------------------------------------------------------------------------
+Command:   python -m flight_pipeline.ingestion.coordinator --years 2016 --run-id run_2016_v1 --base-data-dir data --dry-run-preflight
+Exit Code: 0
+
+Stdout:
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_2016_v1
+Target Directory:    D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\curated\runs\run_2016_v1
+Survey Years:        [2016]
+Base Data Dir:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+Lock Directory:      D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\locks
+Lock Status:         CLEAN
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Rows:  5,537,987
+    Audited Bytes: 1,538,427,452 | Actual Bytes: 1,538,427,452
+================================================================================
+[PREFLIGHT PASS] Dry-run preflight inspection completed successfully. No data written.
+
+
+--------------------------------------------------------------------------------
+COMMAND 5: Ingestion Coordinator Live Invocation Blocked by Decision D5
+--------------------------------------------------------------------------------
+Command:   python -m flight_pipeline.ingestion.coordinator --years 2016 --run-id run_2016_v1 --base-data-dir data
+Exit Code: 1
+
+Stdout:
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_2016_v1
+Target Directory:    D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\curated\runs\run_2016_v1
+Survey Years:        [2016]
+Base Data Dir:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+Lock Directory:      D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\locks
+Lock Status:         CLEAN
+Dry-Run Mode:        False
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Rows:  5,537,987
+    Audited Bytes: 1,538,427,452 | Actual Bytes: 1,538,427,452
+================================================================================
+
+[GOVERNANCE HOLD] Live ingestion execution is BLOCKED.
+Decision D5 (Gate G6 Annual Ingestion Authorization) has NOT been approved by Project Lead.
+Per AGENTS.md, autonomous AI agents cannot authorize production data execution.
+Preflight check passed; awaiting explicit human authorization (D5).
+
+
+--------------------------------------------------------------------------------
+COMMAND 6: Single Annual Run Verifier (Pre-Execution Fail-Closed Check)
+--------------------------------------------------------------------------------
+Command:   python tools/qa/verify_multiyear_snapshot.py --single-run-year 2016 --run-id run_2016_v1 --base-dir data
+Exit Code: 1
+
+Stdout:
+================================================================================
+SINGLE ANNUAL RUN AUDIT: [FAIL] MISSING_PHYSICAL_DIR
+================================================================================
+Survey Year:         2016
+Run ID:              run_2016_v1
+Base Directory:      D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+Validation Status:   MISSING_PHYSICAL_DIR
+Valid:               False
+Error Message:       Year 2016 curated run directory not found: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\curated\runs\run_2016_v1
+Total Raw Rows: N/A
+Total Accepted Rows: N/A
+Total Quarantined: N/A
+Total Rejected Rows: N/A
+================================================================================
+
+================================================================================
+END OF LOG - VERDICT: READY_FOR_PROJECT_LEAD_D1_D4_SIGNOFF_AND_T012_FIRST_BATCH_AUTHORIZATION_REVIEW
+================================================================================

@@ -1,0 +1,184 @@
+================================================================================
+TS-018 BTS TRANSTATS AUTHENTIC INTAKE & NUMERICAL PARITY RAW EXECUTION LOG
+================================================================================
+Timestamp: 2026-10-20T00:15:00+07:00
+Environment: Windows 11 / Python 3.10.11 / OpenJDK 21.0.12.1+1 LTS
+Repository Root: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1
+Git Commit: bc4f03fb8ccd6c0b2455af3fcb2b1b98fa39d632
+
+--------------------------------------------------------------------------------
+COMMAND 1: Candidate BTS Archive & Streaming CSV Forensic Verification
+Command: python scratch/inspect_bts_zip.py
+Start Time: 2026-10-20T00:04:02+07:00
+End Time:   2026-10-20T00:04:08+07:00
+Exit Code:  0
+
+[OUTPUT]
+=== 1. ZIP File Verification ===
+ZIP Path: data\reference\bts_transtats\original\T_ONTIME_REPORTING_20261019_112232.zip
+ZIP Size: 29975383 bytes (Expected: 29975383)
+ZIP SHA-256: 342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6
+ZIP SHA-256 MATCHES EXPECTED EXACTLY.
+ZIP testzip() integrity result: None (None = OK)
+Members count: 1
+  Member: T_ONTIME_REPORTING.csv
+  File size (uncompressed): 217369264 bytes
+  Compress size: 29975241 bytes
+  CRC-32: 0x7d8573c4
+
+=== 2. Streaming CSV Verification ===
+CSV Content SHA-256: dce92e8f602d02ef50f2354789653dd770bc46d948c13a48e3518f2998068bec
+Header column count: 108
+Header sample (first 10): ['YEAR', 'QUARTER', 'MONTH', 'DAY_OF_MONTH', 'DAY_OF_WEEK', 'FL_DATE', 'OP_UNIQUE_CARRIER', 'OP_CARRIER_AIRLINE_ID', 'OP_CARRIER', 'TAIL_NUM']
+Header sample (last 10): ['DIV4_WHEELS_OFF', 'DIV4_TAIL_NUM', 'DIV5_AIRPORT', 'DIV5_AIRPORT_ID', 'DIV5_AIRPORT_SEQ_ID', 'DIV5_WHEELS_ON', 'DIV5_TOTAL_GTIME', 'DIV5_LONGEST_GTIME', 'DIV5_WHEELS_OFF', 'DIV5_TAIL_NUM']
+  Numeric field 'ARR_DELAY' present: True (index: 41)
+  Numeric field 'DEP_DELAY' present: True (index: 31)
+  Numeric field 'TAXI_OUT' present: True (index: 36)
+  Numeric field 'TAXI_IN' present: True (index: 39)
+  Numeric field 'AIR_TIME' present: True (index: 51)
+  Numeric field 'ACTUAL_ELAPSED_TIME' present: True (index: 50)
+  Numeric field 'CRS_ELAPSED_TIME' present: True (index: 49)
+  Key field 'FL_DATE' present: True (index: 5)
+  Key field 'OP_CARRIER' present: True (index: 8)
+  Key field 'OP_CARRIER_FL_NUM' present: True (index: 10)
+  Key field 'ORIGIN' present: True (index: 14)
+  Key field 'DEST' present: True (index: 23)
+  Status field 'CANCELLED' present: True (index: 46)
+  Status field 'DIVERTED' present: True (index: 48)
+  Status field 'CANCELLATION_CODE' present: True (index: 47)
+
+Total rows scanned: 583985
+Unique composite business keys: 583985
+Duplicate key count: 0
+Distinct dates count: 31
+Date min: 1/1/2019, Date max: 1/9/2019
+Cancelled flights: 16726
+Diverted flights: 1296
+Active carriers count: 17
+Top 5 carriers: [('WN', 111312), ('AA', 77017), ('DL', 73836), ('OO', 64926), ('UA', 46915)]
+Null counts per 7 CORE fields:
+  ARR_DELAY: 18022 nulls (3.09%)
+  DEP_DELAY: 16355 nulls (2.80%)
+  TAXI_OUT: 16616 nulls (2.85%)
+  TAXI_IN: 17061 nulls (2.92%)
+  AIR_TIME: 18022 nulls (3.09%)
+  ACTUAL_ELAPSED_TIME: 18022 nulls (3.09%)
+  CRS_ELAPSED_TIME: 134 nulls (0.02%)
+
+--------------------------------------------------------------------------------
+COMMAND 2: Git Exclusion Verification (git check-ignore)
+Command: git check-ignore -v data/reference/bts_transtats/original/T_ONTIME_REPORTING_20261019_112232.zip
+Exit Code: 0
+[OUTPUT]
+.gitignore:9:/data/reference/	data/reference/bts_transtats/original/T_ONTIME_REPORTING_20261019_112232.zip
+
+--------------------------------------------------------------------------------
+COMMAND 3: TS-018 Reference Policy Automated Regression Suite
+Command: python tools/qa/test_ts018_reference_policy_regression.py
+Start Time: 2026-10-20T00:09:09+07:00
+End Time:   2026-10-20T00:09:17+07:00
+Exit Code:  0
+
+[OUTPUT]
+================================================================================
+RUNNING TS-018 BOUNDED REFERENCE DATA POLICY REGRESSION TEST SUITE
+================================================================================
+[PASS] POS-01: Legitimate known reference ZIP and companion matching manifest are cleanly accepted with 0 errors
+[PASS] NEG-01: Unknown / unregistered file under data/reference/bts_transtats/ is strictly rejected as stray
+[PASS] NEG-02: Forged / tampered reference artifact failing SHA-256 match is strictly rejected
+[PASS] NEG-03: Unauthorized file outside allowed reference subtree is strictly rejected
+[PASS] NEG-04: Path traversal attempt (../) in reference path is strictly rejected by path helper
+[PASS] NEG-05: Ghost/corrupted artifact matching manifest path but with wrong hash/size is strictly rejected
+================================================================================
+REFERENCE POLICY SUITE SUMMARY: 6 PASS, 0 FAIL
+================================================================================
+ALL REFERENCE DATA POLICY POSITIVE AND NEGATIVE TESTS PASSED.
+
+--------------------------------------------------------------------------------
+COMMAND 4: TS-018 Adapter Parquet Guard Verification (Without Raw Preflight Flag)
+Command: python tools/qa/run_ts018_bts_adapter.py
+Exit Code: 2 (Controlled Stop)
+
+[OUTPUT]
+================================================================================
+RUNNING TS-018 BTS TRANSTATS INTAKE & NUMERICAL PARITY RUNNER
+================================================================================
+[SOURCE] REAL_BTS_ZIP_PATH:   D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\reference\bts_transtats\original\T_ONTIME_REPORTING_20261019_112232.zip
+[SOURCE] REAL_BTS_ZIP_SHA256: 342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6
+[SOURCE] SYNTHETIC_FALLBACK:  False (Strictly Prohibited)
+[SOURCE] REAL_CURATED_PARQUET_SOURCE: None (BLOCKED_2019_CURATED_PARQUET_MISSING)
+
+[STOP] January 2019 curated Parquet is not present in physical staging.
+[STOP] Autonomous ingestion or synthetic fallback is strictly prohibited.
+[VERDICT] BLOCKED_2019_CURATED_PARQUET_MISSING
+
+--------------------------------------------------------------------------------
+COMMAND 5: TS-018 Bounded Preflight Parity Execution (Option B Protocol)
+Command: python tools/qa/run_ts018_bts_adapter.py --allow-raw-preflight
+Start Time: 2026-10-20T00:14:00+07:00
+End Time:   2026-10-20T00:15:15+07:00
+Exit Code:  0
+
+[OUTPUT]
+================================================================================
+RUNNING TS-018 BTS TRANSTATS INTAKE & NUMERICAL PARITY RUNNER
+================================================================================
+[SOURCE] REAL_BTS_ZIP_PATH:   D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\reference\bts_transtats\original\T_ONTIME_REPORTING_20261019_112232.zip
+[SOURCE] REAL_BTS_ZIP_SHA256: 342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6
+[SOURCE] SYNTHETIC_FALLBACK:  False (Strictly Prohibited)
+[SOURCE] REAL_CURATED_PARQUET_SOURCE: None (BLOCKED_2019_CURATED_PARQUET_MISSING)
+[SOURCE] READ_ONLY_RAW_SOURCE: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\raw\tabular\2019\flight_with_weather_2019.csv
+
+[STEP 1] Indexing January 2019 records from dataset source...
+[SUMMARY] Indexed 559136 unique January 2019 dataset records.
+
+[STEP 2] Streaming and matching BTS Candidate CSV from ZIP...
+[SUMMARY] Total BTS CSV records:        583985
+[SUMMARY] Unique BTS business keys:     583985
+[SUMMARY] Matched composite keys:       559136
+[SUMMARY] Unmatched BTS records:        24849
+[SUMMARY] BTS Cancelled flights:        16726
+[SUMMARY] BTS Diverted flights:         1296
+
+[STEP 3] Selecting deterministic sample cohort (target >= 1500)...
+[SUMMARY] Deterministic sample cohort size: 1500 records.
+
+[STEP 4] Executing record-level reconciliation with BtsTranStatsReconciler...
+
+========================================
+SEPARATION OF GOVERNANCE STATES:
+  1. FILE_PRESENT:              True
+  2. SCHEMA_VALID:               True
+  3. COMPANION_METADATA_VALID:   False
+  4. CANDIDATE_CHECKSUM_MATCHED: True
+  5. SOURCE_PROVENANCE_VERIFIED: False (Requires Project Lead External Authentication)
+  6. NUMERICAL_PARITY_VERIFIED:  True
+  7. HUMAN_ACCEPTED:             False (EXCLUSIVE: Project Lead)
+========================================
+
+[SUMMARY] Reconciliation Verdict: SYNTHETIC_RECONCILER_VERIFIED_AUTHENTIC_BTS_PENDING
+[SUMMARY] Total Discrepancies:    0
+[SUMMARY] Unique Key Matches:     1500
+  Field ARR_DELAY           : exact=1500  round=0   null_null=0   mismatch=0  
+  Field DEP_DELAY           : exact=1500  round=0   null_null=0   mismatch=0  
+  Field TAXI_OUT            : exact=1500  round=0   null_null=0   mismatch=0  
+  Field TAXI_IN             : exact=1500  round=0   null_null=0   mismatch=0  
+  Field AIR_TIME            : exact=1500  round=0   null_null=0   mismatch=0  
+  Field ACTUAL_ELAPSED_TIME : exact=1500  round=0   null_null=0   mismatch=0  
+  Field CRS_ELAPSED_TIME    : exact=1500  round=0   null_null=0   mismatch=0  
+
+[ARTIFACT] Discrepancy register exported: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\docs\05-evidence\TS018_201901_DISCREPANCY_REGISTER.csv (0 rows).
+
+--------------------------------------------------------------------------------
+COMMAND 6: Synthetic Parity Harness Verification (Identified as Synthetic-Only)
+Command: python tools/qa/run_ts018_bts_parity.py
+Exit Code: 0
+[OUTPUT]
+[AUDIT] No candidate external BTS TranStats sample CSV found in repository.
+[AUDIT] Executing algorithmic reconciliation verification on synthetic golden fixtures...
+[SUMMARY] Total Dataset Records: 5
+[SUMMARY] Total BTS Records: 5
+[SUMMARY] Unique Key Matches: 5
+[SUMMARY] Reconciliation Verdict: SYNTHETIC_RECONCILER_VERIFIED_AUTHENTIC_BTS_PENDING
+================================================================================
+END OF LOG

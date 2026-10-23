@@ -64,6 +64,7 @@ from flight_pipeline.ingestion.schema import (
     get_curated_parquet_schema,
 )
 from flight_pipeline.ingestion.source_validator import (
+    AUDITED_SOURCE_INVENTORY,
     BatchVerificationResult,
     SourceEntry,
     SourceValidator,
@@ -72,7 +73,10 @@ from flight_pipeline.ingestion.source_validator import (
 )
 from flight_pipeline.storage.locking import (
     LockError,
+    LockMetadata,
+    PidLivenessStatus,
     SingleWriterLock,
+    get_pid_liveness,
 )
 from flight_pipeline.storage.publication import (
     PublicationResult,
@@ -140,7 +144,7 @@ class ExecutionReceipt:
     forensic_quarantine_dir: Optional[str] = None
     upstream_identity_status: str = UPSTREAM_IDENTITY_STATUS_UNVERIFIED
     weather_branch_status: str = "CONDITIONAL_NO_GO"
-    core_measures_unit_status: str = "G2-EXC-001_PROVISIONAL"
+    core_measures_unit_status: str = "RESOLVED_BY_TS018_APPROVED_OPTION_B"
     or05_coverage_warning: Optional[str] = None
     completed_at: str = field(
         default_factory=lambda: datetime.now(timezone.utc).isoformat()
@@ -169,6 +173,8 @@ class PipelineRunOutcome:
     anomaly_summary: Dict[str, int] = field(default_factory=dict)
     governance_warnings: List[str] = field(default_factory=list)
     error_message: Optional[str] = None
+    release_error: Optional[str] = None
+    release_incident: Optional[Dict[str, Any]] = None
 
 
 def write_json_atomic(target_path: Path, data: Dict[str, Any]) -> Tuple[int, str]:
@@ -787,20 +793,23 @@ class IngestionCoordinator:
                 "allow_candidate_hashes": allow_candidate_hashes,
                 "upstream_identity_status": UPSTREAM_IDENTITY_STATUS_UNVERIFIED,
                 "weather_status": "CONDITIONAL_NO_GO",
-                "core_units_status": "G2-EXC-001_PROVISIONAL",
+                "core_units_status": "RESOLVED_BY_TS018_APPROVED_OPTION_B",
             },
         )
 
         governance_warnings: List[str] = [
             "OR-08: Raw source upstream identity is IDENTITY_UNVERIFIED (local SHA-256 proves snapshot integrity only).",
             "FP-DEC-017: Weather columns are CONDITIONAL_NO_GO and optional for CORE.",
-            "G2-EXC-001: 7 CORE delay/time measures carry provisional minute units pending G5 TS-018 verification.",
+            "G2-EXC-001: 7 CORE delay/time measures resolved to official minutes via TS-018 Approved Option B (FP-DEC-019).",
         ]
 
         if 2024 in target_years:
             governance_warnings.append(
                 "OR-05: OPEN_QUALITY_DEFECT — Year 2024 has partial coverage (335/366 days; March 2024 missing)."
             )
+            manifest.configuration["source_coverage_status"] = "PARTIAL"
+        else:
+            manifest.configuration["source_coverage_status"] = "VERIFIED_WITH_SCOPE"
 
         lock = SingleWriterLock(self.lock_dir, run_id=run_id)
         pointer_switched = False
@@ -812,6 +821,7 @@ class IngestionCoordinator:
         per_year_accounting: Dict[int, RowAccounting] = {}
         forensic_res: Optional[ForensicPersistenceResult] = None
         anomaly_summary: Dict[str, int] = {}
+        outcome: Optional[PipelineRunOutcome] = None
 
         try:
             # Acquire single-writer lock before any critical state
@@ -1035,7 +1045,7 @@ class IngestionCoordinator:
 
             transition(PipelineState.PUBLISHED)
 
-            return PipelineRunOutcome(
+            outcome = PipelineRunOutcome(
                 success=True,
                 run_id=run_id,
                 final_state=PipelineState.PUBLISHED,
@@ -1052,6 +1062,7 @@ class IngestionCoordinator:
                 anomaly_summary=anomaly_summary,
                 governance_warnings=governance_warnings,
             )
+            return outcome
 
         except Exception as exc:
             err_msg = str(exc)
@@ -1074,7 +1085,7 @@ class IngestionCoordinator:
                     except Exception:
                         pass
 
-                return PipelineRunOutcome(
+                outcome = PipelineRunOutcome(
                     success=False,
                     run_id=run_id,
                     final_state=PipelineState.PUBLISHED_RECEIPT_PENDING_RECONCILIATION,
@@ -1094,6 +1105,7 @@ class IngestionCoordinator:
                         f"but sidecar finalization failed ({err_msg}). Run reconcile_published_run('{run_id}')."
                     ),
                 )
+                return outcome
 
             # PRE-POINTER-SWITCH FAILURE:
             state_history.append(PipelineState.TERMINAL_FAILURE)
@@ -1104,7 +1116,7 @@ class IngestionCoordinator:
                 except Exception:
                     pass
 
-            return PipelineRunOutcome(
+            outcome = PipelineRunOutcome(
                 success=False,
                 run_id=run_id,
                 final_state=PipelineState.TERMINAL_FAILURE,
@@ -1120,12 +1132,58 @@ class IngestionCoordinator:
                 governance_warnings=governance_warnings,
                 error_message=err_msg,
             )
+            return outcome
         finally:
             if lock.is_acquired:
                 try:
                     lock.release()
-                except Exception:
-                    pass
+                except Exception as rel_err:
+                    inc_res = lock.persist_release_incident(
+                        release_err=rel_err,
+                        pipeline_err=Exception(outcome.error_message) if (outcome and outcome.error_message) else None,
+                    )
+                    rel_diag = f"{type(rel_err).__name__}: {rel_err}"
+                    if inc_res.success and inc_res.verified:
+                        inc_file_str = str(inc_res.incident_file)
+                        inc_diag_str = f"Incident persisted at {inc_file_str}"
+                        inc_persisted = True
+                        inc_err_str = None
+                    else:
+                        inc_file_str = None
+                        inc_diag_str = f"INCIDENT_PERSISTENCE_FAILED ({inc_res.error})"
+                        inc_persisted = False
+                        inc_err_str = inc_res.error
+
+                    incident_info = {
+                        "incident_persisted": inc_persisted,
+                        "incident_file": inc_file_str,
+                        "incident_persistence_error": inc_err_str,
+                        "run_id": run_id,
+                        "release_error": rel_diag,
+                        "publication_preserved": outcome.success if outcome else False,
+                        "recovery_required": True,
+                        "recovery_state": "MANUAL_RECOVERY_REQUIRED",
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                    }
+                    try:
+                        coord_inc = run_meta_dir / f"lock_release_incident_{run_id}.json"
+                        write_json_atomic_with_retry(coord_inc, incident_info)
+                    except Exception:
+                        pass
+
+                    if outcome is not None:
+                        outcome.release_error = rel_diag
+                        outcome.release_incident = incident_info
+                        outcome.governance_warnings.append(
+                            f"CRITICAL_LOCK_RELEASE_FAILURE: Lock release failed ({rel_diag}). "
+                            f"{inc_diag_str}. FAIL_CLOSED — MANUAL_RECOVERY_REQUIRED"
+                        )
+                        if not outcome.success:
+                            outcome.error_message = (
+                                f"{outcome.error_message} [LockReleaseFailure: {rel_diag}]"
+                                if outcome.error_message
+                                else f"LockReleaseFailure: {rel_diag}"
+                            )
 
     def reconcile_published_run(
         self,
@@ -1154,16 +1212,19 @@ class IngestionCoordinator:
         validate_run_id(run_id, self.staging_root)
         lock = SingleWriterLock(self.lock_dir, run_id=f"reconcile_{run_id}")
         state_history = [PipelineState.PUBLISHED_RECEIPT_PENDING_RECONCILIATION]
+        outcome: Optional[PipelineRunOutcome] = None
 
         def fail_manual_reconciliation(reason: str) -> PipelineRunOutcome:
+            nonlocal outcome
             state_history.append(PipelineState.MANUAL_RECONCILIATION_REQUIRED)
-            return PipelineRunOutcome(
+            outcome = PipelineRunOutcome(
                 success=False,
                 run_id=run_id,
                 final_state=PipelineState.MANUAL_RECONCILIATION_REQUIRED,
                 state_history=state_history,
                 error_message=f"MANUAL_RECONCILIATION_REQUIRED: {reason}",
             )
+            return outcome
 
         try:
             lock.acquire()
@@ -1378,7 +1439,8 @@ class IngestionCoordinator:
                             "upstream_identity_status", UPSTREAM_IDENTITY_STATUS_UNVERIFIED
                         ),
                         "weather_status": "CONDITIONAL_NO_GO",
-                        "core_units_status": "G2-EXC-001_PROVISIONAL",
+                        "core_units_status": "RESOLVED_BY_TS018_APPROVED_OPTION_B",
+                        "source_coverage_status": "PARTIAL" if 2024 in [int(y) for y in sorted_yr_keys] else "VERIFIED_WITH_SCOPE",
                         "per_year_accounting": per_yr_dict,
                         "source_scan_results": scan_dict,
                         "forensic_persistence": forensic_data,
@@ -1393,7 +1455,7 @@ class IngestionCoordinator:
                     runtime_versions=(
                         anom_data["runtime_versions"]
                         if isinstance(anom_data.get("runtime_versions"), dict)
-                        else RunManifest._collect_runtime_versions()
+                        else RunManifest._detect_runtime_versions()
                     ),
                     configuration=reconstructed_cfg,
                     inputs=reconstructed_inputs,
@@ -1481,7 +1543,7 @@ class IngestionCoordinator:
                 )
                 write_json_atomic_with_retry(receipt_path, receipt.to_dict())
             except Exception as write_exc:
-                return PipelineRunOutcome(
+                outcome = PipelineRunOutcome(
                     success=False,
                     run_id=run_id,
                     final_state=PipelineState.PUBLISHED_RECEIPT_PENDING_RECONCILIATION,
@@ -1494,6 +1556,7 @@ class IngestionCoordinator:
                         f"for '{run_id}' ({write_exc}). Retry reconcile_published_run('{run_id}')."
                     ),
                 )
+                return outcome
 
             state_history.append(PipelineState.PUBLISHED)
             pub_res = PublicationResult(
@@ -1505,7 +1568,7 @@ class IngestionCoordinator:
                 previous_pointer=previous_ptr,
             )
 
-            return PipelineRunOutcome(
+            outcome = PipelineRunOutcome(
                 success=True,
                 run_id=run_id,
                 final_state=PipelineState.PUBLISHED,
@@ -1516,12 +1579,52 @@ class IngestionCoordinator:
                 receipt_path=receipt_path,
                 receipt=receipt,
             )
+            return outcome
         finally:
             if lock.is_acquired:
                 try:
                     lock.release()
-                except Exception:
-                    pass
+                except Exception as rel_err:
+                    inc_res = lock.persist_release_incident(
+                        release_err=rel_err,
+                        pipeline_err=Exception(outcome.error_message) if (outcome and outcome.error_message) else None,
+                    )
+                    rel_diag = f"{type(rel_err).__name__}: {rel_err}"
+                    if inc_res.success and inc_res.verified:
+                        inc_file_str = str(inc_res.incident_file)
+                        inc_diag_str = f"Incident persisted at {inc_file_str}"
+                        inc_persisted = True
+                        inc_err_str = None
+                    else:
+                        inc_file_str = None
+                        inc_diag_str = f"INCIDENT_PERSISTENCE_FAILED ({inc_res.error})"
+                        inc_persisted = False
+                        inc_err_str = inc_res.error
+
+                    incident_info = {
+                        "incident_persisted": inc_persisted,
+                        "incident_file": inc_file_str,
+                        "incident_persistence_error": inc_err_str,
+                        "run_id": run_id,
+                        "release_error": rel_diag,
+                        "publication_preserved": outcome.success if outcome else False,
+                        "recovery_required": True,
+                        "recovery_state": "MANUAL_RECOVERY_REQUIRED",
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                    }
+                    if outcome is not None:
+                        outcome.release_error = rel_diag
+                        outcome.release_incident = incident_info
+                        outcome.governance_warnings.append(
+                            f"CRITICAL_LOCK_RELEASE_FAILURE: Lock release failed during reconciliation ({rel_diag}). "
+                            f"{inc_diag_str}. FAIL_CLOSED — MANUAL_RECOVERY_REQUIRED"
+                        )
+                        if not outcome.success:
+                            outcome.error_message = (
+                                f"{outcome.error_message} [LockReleaseFailure: {rel_diag}]"
+                                if outcome.error_message
+                                else f"LockReleaseFailure: {rel_diag}"
+                            )
 
     def _verify_target_sources(
         self,
@@ -1568,3 +1671,365 @@ class IngestionCoordinator:
             upstream_identity_status=UPSTREAM_IDENTITY_STATUS_UNVERIFIED,
             has_unapproved_candidate_hashes=has_candidates,
         )
+
+
+APPROVED_BASELINE_HASHES: Dict[int, str] = {
+    2016: "4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34",
+    2017: "67b8dbd6678576b1a2229ef2dbeec065e0f64d31d688ab8a2ca59c88d2a656f9",
+    2018: "0398bab8f1b79a5f3bea628b707e18c3af628f37a1daa52de6849fb8bdfc71a3",
+    2019: "eec50211a1a63f37b840977be5ab2e99a008a8d5234c2a12df8eb50862f93b4a",
+    2020: "787981046c9fe0f4884ac207a3d28ea6a7fae98e89535cb9f8a37debb5c7fa5d",
+    2021: "5b7cc4801a6ff5cf432137632209ebd7aecd3d4a0f83e8920e3525116e88defc",
+    2022: "45eb45e801d6eeeb16167306fc69a8449177191cfff29bfb5d22285827f53140",
+    2023: "9c9e20f55d3dd10a127bcdd28680df6547a01a82ad71999b794aff3e1075d7bd",
+    2024: "f938ade95a031088467ab5e75abea2021e541eaf4a4288e564066e100541d5f7",
+}
+
+
+def _resolve_source_validator_base_dir(
+    base_data_dir: Path,
+    inventory: Mapping[int, SourceEntry],
+) -> Path:
+    """
+    Resolve the correct base directory for SourceValidator.
+
+    SourceEntry.relative_path in AUDITED_SOURCE_INVENTORY starts with 'data/raw/...'.
+    If base_data_dir is pointing directly to the 'data' directory (e.g. repo_root/data),
+    initializing SourceValidator with base_dir=base_data_dir would erroneously resolve
+    to 'data/data/raw/...'.
+    When relative_path starts with 'data/' and base_data_dir is named 'data',
+    SourceValidator.base_dir must be base_data_dir.parent.
+    """
+    base_data_dir = base_data_dir.resolve()
+    first_entry = next(iter(inventory.values())) if inventory else None
+    if first_entry and (
+        first_entry.relative_path.startswith("data/")
+        or first_entry.relative_path.startswith("data\\")
+    ):
+        if base_data_dir.name == "data":
+            return base_data_dir.parent
+    return base_data_dir
+
+
+def main(
+    argv: Optional[Sequence[str]] = None,
+    approved_baseline_hashes: Optional[Mapping[int, str]] = None,
+    custom_inventory: Optional[Mapping[int, SourceEntry]] = None,
+) -> int:
+    """
+    Production CLI runner for IngestionCoordinator (Findings E03, R05, Scope A & B).
+    Supports fail-closed dry-run preflight validation without Spark execution.
+    Enforces fail-closed governance: live execution is blocked until Decision D5 authorization.
+    """
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(
+        prog="python -m flight_pipeline.ingestion.coordinator",
+        description="US Flight Performance Production Ingestion Coordinator Runner (T-012).",
+    )
+    parser.add_argument(
+        "--years",
+        nargs="+",
+        type=int,
+        required=True,
+        help="One or more survey years to ingest (e.g. --years 2016)",
+    )
+    parser.add_argument(
+        "--run-id",
+        type=str,
+        required=True,
+        help="Unique execution run identifier (e.g. --run-id run_2016_v1)",
+    )
+    parser.add_argument(
+        "--base-data-dir",
+        "--base-dir",
+        dest="base_data_dir",
+        type=str,
+        default="data",
+        help="Base data directory (default: data)",
+    )
+    parser.add_argument(
+        "--task-id",
+        type=str,
+        default="T-012",
+        help="Governance task identifier (default: T-012)",
+    )
+    parser.add_argument(
+        "--dry-run-preflight",
+        action="store_true",
+        help="Execute preflight validation only without starting Spark or writing Parquet",
+    )
+    parser.add_argument(
+        "--allow-candidate-hashes",
+        action="store_true",
+        help="Allow local unapproved candidate hashes during dry-run preflight",
+    )
+    parser.add_argument(
+        "--verify-hashes",
+        action="store_true",
+        help="Force full streaming SHA-256 computation and verification during preflight",
+    )
+
+    args = parser.parse_args(argv)
+
+    base_dir = Path(args.base_data_dir).resolve()
+    curated_runs_root = base_dir / "curated" / "runs"
+    preflight_errors: List[str] = []
+
+    # 1. Validate run_id format and confinement
+    try:
+        target_run_dir = validate_run_id(args.run_id, curated_runs_root)
+    except ValueError as exc:
+        print(f"Error: Invalid run_id {args.run_id!r}: {exc}", file=sys.stderr)
+        return 1
+
+    # 2. Check for duplicate run_id collision (staging, curated, or metadata)
+    target_curated_run = curated_runs_root / args.run_id
+    target_staging_run = base_dir / "staging" / args.run_id
+    target_meta_run = base_dir / "metadata" / args.run_id / "run_manifest.json"
+    if target_curated_run.exists():
+        preflight_errors.append(f"Duplicate run_id: Curated published directory already exists at {target_curated_run}")
+    if target_staging_run.exists():
+        preflight_errors.append(f"Duplicate run_id: Staging directory already exists at {target_staging_run}")
+    if target_meta_run.exists():
+        preflight_errors.append(f"Duplicate run_id: Metadata run manifest already exists at {target_meta_run}")
+
+    # 3. Lock & Storage Root Safety preflight check
+    lock_dir = base_dir / "locks"
+    lock_file = lock_dir / ".pipeline.lock"
+    lock_obj = SingleWriterLock(lock_dir, run_id=args.run_id)
+    recovery_artifacts = lock_obj.get_unresolved_recovery_artifacts()
+    if lock_dir.is_dir():
+        for pat in [".recovery_required*", ".del_*", ".quarantine_*", ".failed_acq_*"]:
+            for p in lock_dir.glob(pat):
+                if p.is_file() and p not in recovery_artifacts:
+                    recovery_artifacts.append(p)
+
+    lock_status_str = "CLEAN"
+    if recovery_artifacts:
+        preflight_errors.append(
+            f"Unresolved recovery artifacts detected in {lock_dir}: {[p.name for p in recovery_artifacts]}"
+        )
+        lock_status_str = f"BLOCKED_UNRESOLVED_RECOVERY ({len(recovery_artifacts)} artifacts)"
+    elif lock_file.exists():
+        if not lock_file.is_file():
+            preflight_errors.append(f"Lock path exists but is not a regular file: {lock_file}")
+            lock_status_str = "CORRUPT_LOCK_NOT_A_FILE"
+        else:
+            try:
+                raw_meta = lock_file.read_text(encoding="utf-8")
+                meta = LockMetadata.from_json(raw_meta)
+                pid = meta.pid
+            except Exception as exc:
+                preflight_errors.append(f"Corrupt or unreadable lock file at {lock_file}: {exc}")
+                lock_status_str = f"CORRUPT_LOCK_METADATA ({exc})"
+                pid = None
+
+            if pid is not None:
+                liveness = get_pid_liveness(pid)
+                if liveness == PidLivenessStatus.PROCESS_ALIVE:
+                    preflight_errors.append(f"Active writer lock held by PID {pid} (run_id={meta.run_id!r})")
+                    lock_status_str = f"ACTIVE_WRITER_RUNNING (PID {pid}, run_id={meta.run_id})"
+                elif liveness == PidLivenessStatus.PROCESS_DEAD:
+                    preflight_errors.append(
+                        f"Stale writer lock detected from dead PID {pid} (run_id={meta.run_id!r}). Governed recovery required."
+                    )
+                    lock_status_str = f"STALE_LOCK_DEAD_PID (PID {pid}, run_id={meta.run_id})"
+                elif liveness == PidLivenessStatus.INVALID_PID:
+                    preflight_errors.append(f"Invalid PID {pid!r} in lock metadata at {lock_file}")
+                    lock_status_str = f"INVALID_PID (PID {pid}, run_id={meta.run_id})"
+                else:  # PidLivenessStatus.PROCESS_STATUS_UNKNOWN
+                    preflight_errors.append(f"Ambiguous writer lock state for PID {pid} (liveness={liveness.value})")
+                    lock_status_str = f"AMBIGUOUS_LOCK (PID {pid}, status={liveness.value})"
+
+    # 4. Pointer preflight verification (SafePublisher read-only inspection)
+    curated_dir = base_dir / "curated"
+    pointer_file = curated_dir / "latest_run_id.txt"
+    pointer_status_str = "UNINITIALIZED"
+    if pointer_file.exists():
+        if not pointer_file.is_file():
+            preflight_errors.append(f"Pointer path exists but is not a regular file: {pointer_file}")
+            pointer_status_str = "POINTER_NOT_A_FILE"
+        else:
+            try:
+                raw_ptr = pointer_file.read_text(encoding="utf-8")
+                ptr_val = raw_ptr.strip()
+                if not ptr_val:
+                    preflight_errors.append(f"Empty or whitespace-only pointer file detected at {pointer_file}")
+                    pointer_status_str = "EMPTY_POINTER_FILE"
+                else:
+                    validate_run_id(ptr_val, curated_dir / "runs")
+                    target_dir = curated_dir / "runs" / ptr_val
+                    if not target_dir.is_dir():
+                        preflight_errors.append(
+                            f"Dangling pointer detected: '{ptr_val}' points to non-existent directory {target_dir}"
+                        )
+                        pointer_status_str = f"DANGLING_POINTER ({ptr_val})"
+                    else:
+                        pointer_status_str = f"VALID_POINTER ({ptr_val})"
+            except Exception as exc:
+                preflight_errors.append(f"Unsafe or corrupt pointer file at {pointer_file}: {exc}")
+                pointer_status_str = f"CORRUPT_POINTER ({exc})"
+
+    # 5. Source inventory & integrity check (via SourceValidator)
+    inventory = custom_inventory if custom_inventory is not None else AUDITED_SOURCE_INVENTORY
+    effective_baseline_hashes = (
+        dict(approved_baseline_hashes)
+        if approved_baseline_hashes is not None
+        else dict(APPROVED_BASELINE_HASHES)
+    )
+    sv_base_dir = _resolve_source_validator_base_dir(base_dir, inventory)
+    sv = SourceValidator(
+        base_dir=sv_base_dir,
+        inventory=inventory,
+        approved_baseline_hashes=effective_baseline_hashes if effective_baseline_hashes else None,
+    )
+
+    source_audit_report = []
+    for yr in args.years:
+        if yr not in inventory:
+            preflight_errors.append(f"Survey year {yr} not recognized in source inventory")
+            continue
+
+        entry = inventory[yr]
+        should_compute_hash = (yr in effective_baseline_hashes) or args.verify_hashes
+        res = sv.verify_source(yr, compute_hash=should_compute_hash, fail_fast=False)
+
+        if res.state == VerificationState.SOURCE_MISSING:
+            preflight_errors.append(f"Year {yr}: Source file missing at {res.path}")
+            status_str = "FAIL (MISSING)"
+        elif res.state == VerificationState.SIZE_MISMATCH:
+            preflight_errors.append(
+                f"Year {yr}: Source byte size mismatch: actual {res.actual_byte_size:,} bytes, "
+                f"expected {entry.audited_byte_size:,} bytes"
+            )
+            status_str = "FAIL (SIZE_MISMATCH)"
+        elif res.state == VerificationState.HASH_MISMATCH:
+            preflight_errors.append(
+                f"Year {yr}: Source SHA-256 mismatch: computed {res.computed_sha256}, "
+                f"approved baseline {res.approved_sha256}"
+            )
+            status_str = "FAIL (HASH_MISMATCH)"
+        elif res.state in (VerificationState.SOURCE_READ_ERROR, VerificationState.SOURCE_CHANGED_DURING_READ):
+            preflight_errors.append(f"Year {yr}: Source read error: {res.error_message}")
+            status_str = f"FAIL ({res.state.value})"
+        else:
+            status_str = "OK"
+
+        if res.state == VerificationState.LOCAL_HASH_VERIFIED:
+            hash_status_str = f"VERIFIED_MATCH ({res.computed_sha256[:16]}...)"
+        elif res.state == VerificationState.LOCAL_HASH_COMPUTED_UNAPPROVED:
+            hash_status_str = f"CANDIDATE_UNAPPROVED ({res.computed_sha256[:16]}...)"
+        elif res.state == VerificationState.HASH_MISMATCH:
+            hash_status_str = f"MISMATCH (computed {res.computed_sha256[:16]}... != approved {res.approved_sha256[:16]}...)"
+        elif not should_compute_hash:
+            hash_status_str = "METADATA_MATCH_ONLY (Hash calculation deferred)"
+        else:
+            hash_status_str = res.state.value
+
+        source_audit_report.append({
+            "year": yr,
+            "path": res.path,
+            "status": status_str,
+            "audited_rows": entry.audited_row_count,
+            "audited_bytes": entry.audited_byte_size,
+            "actual_bytes": res.actual_byte_size if res.actual_byte_size is not None else 0,
+            "hash_status": hash_status_str,
+        })
+
+    # 6. Output Preflight Inspection Report
+    print("=" * 80)
+    print("INGESTION COORDINATOR PREFLIGHT REPORT (T-012)")
+    print("=" * 80)
+    print(f"Run ID:              {args.run_id}")
+    print(f"Target Directory:    {target_run_dir}")
+    print(f"Survey Years:        {args.years}")
+    print(f"Base Data Dir:       {base_dir}")
+    print(f"Lock Directory:      {lock_dir}")
+    print(f"Lock Status:         {lock_status_str}")
+    print(f"Pointer Status:      {pointer_status_str}")
+    print(f"Dry-Run Mode:        {args.dry_run_preflight}")
+    print("-" * 80)
+    print("Source Files Inventory:")
+    for rep in source_audit_report:
+        print(f"  Year {rep['year']}: {rep['path']} [{rep['status']}]")
+        print(f"    Audited Expected Rows: {rep['audited_rows']:,}")
+        print(f"    Audited Bytes:         {rep['audited_bytes']:,} | Actual Bytes: {rep['actual_bytes']:,}")
+        print(f"    SHA-256 Status:        {rep['hash_status']}")
+    print("-" * 80)
+    print("Row Count Verification Boundary:")
+    print("  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts")
+    print("  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.")
+    print("=" * 80)
+
+    # 7. Evaluate Preflight Verdict
+    if preflight_errors:
+        print("\nPREFLIGHT FAILURES DETECTED:")
+        for err in preflight_errors:
+            print(f"  [ERROR] {err}")
+        print(f"\n[PREFLIGHT FAIL] Preflight safety inspection failed with {len(preflight_errors)} error(s). No data written.")
+        return 1
+
+    # Preflight passed
+    if args.dry_run_preflight:
+        print("[PREFLIGHT PASS] Preflight safety inspection completed successfully. All mandatory safety criteria PASSED. No data written.")
+        return 0
+
+    # 8. Live execution requested: Preflight passed, evaluate Decision D5 authorization
+    print("[PREFLIGHT PASS] Preflight safety inspection completed successfully.")
+
+    # Reject --allow-candidate-hashes in live execution (permitted only during --dry-run-preflight)
+    if args.allow_candidate_hashes:
+        print("\n[GOVERNANCE HOLD] Live ingestion execution is BLOCKED.")
+        print("Flag --allow-candidate-hashes is strictly prohibited during live ingestion (permitted only with --dry-run-preflight).")
+        return 1
+
+    # Decision D5 Controlled Batch Authorization EXPIRED / CLOSED upon successful completion of T-012.
+    # Execution environment returned to fail-closed state per Section 11.
+    AUTHORIZED_D5_RUN_PAIRS: Dict[int, str] = {}
+
+    if len(args.years) != 1:
+        print("\n[GOVERNANCE HOLD] Live ingestion execution is BLOCKED.")
+        print(f"Batch multi-year invocation in a single process is prohibited. Got years: {args.years}")
+        return 1
+
+    invoked_year = args.years[0]
+    expected_run_id = AUTHORIZED_D5_RUN_PAIRS.get(invoked_year)
+
+    if expected_run_id is None:
+        print("\n[GOVERNANCE HOLD] Live ingestion execution is BLOCKED.")
+        print(f"Decision D5 (Gate G6 Annual Ingestion Authorization) is NOT approved for year {invoked_year}.")
+        print("Status: PENDING_D5")
+        return 1
+
+    if args.run_id != expected_run_id:
+        print("\n[GOVERNANCE HOLD] Live ingestion execution is BLOCKED.")
+        print(f"Run ID mismatch for year {invoked_year}: expected '{expected_run_id}', got '{args.run_id}'.")
+        return 1
+
+    # Production coordinator execution path (wired and active ONLY when D5 is authorized)
+    spark = get_spark_session(SparkConfig())
+    coordinator = IngestionCoordinator(
+        spark=spark,
+        base_data_dir=base_dir,
+        source_validator=sv,
+        task_id=args.task_id,
+    )
+    outcome = coordinator.run_ingestion(
+        run_id=args.run_id,
+        years=args.years,
+        require_verified_hashes=True,
+        allow_candidate_hashes=False,
+    )
+    if outcome.success:
+        print(f"\n[INGESTION SUCCESS] Run {args.run_id} published successfully.")
+        return 0
+    else:
+        print(f"\n[INGESTION FAILED] Run {args.run_id} failed: {outcome.error_message}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(main())

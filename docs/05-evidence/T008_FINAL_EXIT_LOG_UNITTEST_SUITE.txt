@@ -1,0 +1,37 @@
+================================================================================
+T008 FINAL EXIT — COMPLETE UNIT & INTEGRATION TEST LOG
+Timestamp: 2026-10-18T15:53:10.125432+07:00
+Task: MASTER-T008-FINAL-EXIT
+Gate: G4
+================================================================================
+
+>>> COMMAND 1: python -m unittest tests/test_t008_quality_engine.py
+--------------------------------------------------------------------------------
+WARNING: Using incubator modules: jdk.incubator.vector
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+....................................
+----------------------------------------------------------------------
+Ran 36 tests in 37.256s
+
+OK
+>>> EXIT CODE: 0
+--------------------------------------------------------------------------------
+
+>>> COMMAND 2: python -m unittest discover tests
+--------------------------------------------------------------------------------
+WARNING: Using incubator modules: jdk.incubator.vector
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+................................................................................
+................................................................................
+...........
+----------------------------------------------------------------------
+Ran 171 tests in 123.808s
+
+OK
+>>> EXIT CODE: 0
+================================================================================
+FINAL SUMMARY: 171 TESTS EXECUTED, 171 PASSED, 0 FAILED, 0 ERRORS.
+STATUS: ALL UNIT & INTEGRATION TESTS PASSED (100%).
+================================================================================

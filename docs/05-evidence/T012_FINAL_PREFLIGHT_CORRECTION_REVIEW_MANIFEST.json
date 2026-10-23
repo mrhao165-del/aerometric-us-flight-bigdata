@@ -1,0 +1,55 @@
+{
+  "archive_name": "T012_FINAL_PREFLIGHT_CORRECTION_REVIEW.zip",
+  "archive_byte_size": 43646,
+  "archive_sha256": "6c01c51d8427253c9ed6ebf85ee88cbc23bd17224841ce017f948483071431f8",
+  "archive_crc32": "8e28d7c9",
+  "generated_at": "2026-10-21T15:31:00Z",
+  "task": "T012-FINAL-TARGETED-PREFLIGHT-CORRECTION",
+  "governance_status": {
+    "G5": "IN_PROGRESS",
+    "G6": "BLOCKED",
+    "T012": "NOT_STARTED",
+    "D1_BTS_PROVENANCE": "PENDING",
+    "D2_FP_DEC_019_OPTION_B": "PENDING",
+    "D3_TS018_HUMAN_SIGNOFF": "PENDING",
+    "D4_G5_HUMAN_SIGNOFF": "PENDING",
+    "D5_PRODUCTION_EXECUTION": "NOT_AUTHORIZED",
+    "G6_ARCH_2016": "PENDING"
+  },
+  "defects_resolved": [
+    "DEFECT_1_INCORRECT_PID_ENUM_MEMBERS",
+    "DEFECT_2_EMPTY_POINTER_FALSE_PASS"
+  ],
+  "files": [
+    {
+      "relative_path": "src/flight_pipeline/ingestion/coordinator.py",
+      "byte_size": 92260,
+      "sha256": "c5107bdb7bc3de92aca6bf2474baa05a977ec0f535b0070756147d7b6051b82b",
+      "crc32": "6aa78bf9"
+    },
+    {
+      "relative_path": "tests/test_coordinator_preflight_unblock.py",
+      "byte_size": 21454,
+      "sha256": "cee2ddfc3a941b16f443bd3548248ba264b584adbf412544c09f3f1b412d7eda",
+      "crc32": "bfbe9fe5"
+    },
+    {
+      "relative_path": "docs/05-evidence/T012_FINAL_PREFLIGHT_CORRECTION.md",
+      "byte_size": 11214,
+      "sha256": "a9ba449ade649fa19922ed5719b717a3452dda70d771d581a43f8345f45e9f10",
+      "crc32": "04b2812c"
+    },
+    {
+      "relative_path": "docs/05-evidence/T012_FINAL_PREFLIGHT_CORRECTION.patch",
+      "byte_size": 100836,
+      "sha256": "5bb4a27b4d96cc456f04f9e4ab8507916df904e9d49cef95d8d1f8456ad00b16",
+      "crc32": "f9458abc"
+    },
+    {
+      "relative_path": "docs/05-evidence/T012_FINAL_PREFLIGHT_CORRECTION_TEST_LOG.txt",
+      "byte_size": 17725,
+      "sha256": "3223a083aafaf35cd9e775f3e460c09df1ab93c130fab58453075c73bd73a106",
+      "crc32": "f4297d2b"
+    }
+  ]
+}

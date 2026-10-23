@@ -1,0 +1,267 @@
+test_01_valid_preflight_synthetic_approved (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 1: Valid preflight using synthetic approved source metadata exits 0. ... ok
+test_02_missing_raw_source_fails (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 2: Missing RAW source fails preflight with exit code 1. ... ok
+test_03_byte_size_mismatch_fails (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 3: Byte-size mismatch fails preflight with exit code 1. ... ok
+test_04_sha256_mismatch_with_approved_baseline_fails (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 4: Same size but SHA-256 mismatch with approved baseline fails preflight. ... ok
+test_05_active_writer_lock_blocked (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 5: Active writer lock held blocks preflight with exit code 1 and accurate status. ... ok
+test_05b_stale_dead_pid_writer_lock_blocked (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 5B: Stale writer lock held by dead PID is classified as STALE_LOCK_DEAD_PID. ... ok
+test_05c_corrupt_lock_metadata_blocked (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 5C: Corrupt lock metadata file is correctly classified as CORRUPT_LOCK_METADATA. ... ok
+test_05d_ambiguous_and_invalid_pid_lock_blocked (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 5D: Ambiguous and invalid PID states are classified as AMBIGUOUS_LOCK and INVALID_PID. ... ok
+test_06_unsafe_pointer_or_recovery_marker_blocked (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 6: Unresolved recovery state (.del_*) or dangling pointer blocks preflight. ... ok
+test_06b_empty_or_whitespace_pointer_fails_preflight (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 6B: Existing empty or whitespace-only pointer causes preflight FAIL and nonzero exit. ... ok
+test_06c_absent_pointer_uninitialized_passes_preflight (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 6C: Absent latest_run_id.txt pointer is valid UNINITIALIZED state and passes preflight. ... ok
+test_06d_path_traversal_pointer_fails_preflight (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 6D: Pointer file with path traversal fails preflight with CORRUPT_POINTER. ... ok
+test_07_duplicate_run_id_blocked (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 7: Duplicate run_id (already existing curated or staging run) blocks preflight. ... ok
+test_08_invalid_survey_year_or_run_id_blocked (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 8: Invalid survey year or directory-traversal run_id blocks preflight. ... Error: Invalid run_id '../escape_run': Invalid run_id format: '../escape_run'
+ok
+test_09_unauthorized_live_execution_blocked (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 9: Unauthorized live execution without D5 returns 1 under governance hold without writing data. ... ok
+test_10_cli_root_path_resolution_matches_storage_configuration (tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock)
+Scenario 10: CLI --base-dir alias and path resolution correctly handles data/ root without data/data/raw. ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.197s
+
+OK
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_synthetic_v1
+Target Directory:    C:\Users\Heikapu\AppData\Local\Temp\tmp0k28sv8t\data\curated\runs\run_synthetic_v1
+Survey Years:        [2016]
+Base Data Dir:       C:\Users\Heikapu\AppData\Local\Temp\tmp0k28sv8t\data
+Lock Directory:      C:\Users\Heikapu\AppData\Local\Temp\tmp0k28sv8t\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: C:\Users\Heikapu\AppData\Local\Temp\tmp0k28sv8t\data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Expected Rows: 1
+    Audited Bytes:         62 | Actual Bytes: 62
+    SHA-256 Status:        VERIFIED_MATCH (4002a956ddc66d4c...)
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+[PREFLIGHT PASS] Preflight safety inspection completed successfully. All mandatory safety criteria PASSED. No data written.
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_synthetic_v1
+Target Directory:    C:\Users\Heikapu\AppData\Local\Temp\tmp40l5rvpi\data\curated\runs\run_synthetic_v1
+Survey Years:        [2016]
+Base Data Dir:       C:\Users\Heikapu\AppData\Local\Temp\tmp40l5rvpi\data
+Lock Directory:      C:\Users\Heikapu\AppData\Local\Temp\tmp40l5rvpi\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: C:\Users\Heikapu\AppData\Local\Temp\tmp40l5rvpi\data\raw\tabular\2016\flight_with_weather_2016.csv [FAIL (MISSING)]
+    Audited Expected Rows: 1
+    Audited Bytes:         62 | Actual Bytes: 0
+    SHA-256 Status:        SOURCE_MISSING
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+
+PREFLIGHT FAILURES DETECTED:
+  [ERROR] Year 2016: Source file missing at C:\Users\Heikapu\AppData\Local\Temp\tmp40l5rvpi\data\raw\tabular\2016\flight_with_weather_2016.csv
+
+[PREFLIGHT FAIL] Preflight safety inspection failed with 1 error(s). No data written.
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_synthetic_v1
+Target Directory:    C:\Users\Heikapu\AppData\Local\Temp\tmp8km0z1ag\data\curated\runs\run_synthetic_v1
+Survey Years:        [2016]
+Base Data Dir:       C:\Users\Heikapu\AppData\Local\Temp\tmp8km0z1ag\data
+Lock Directory:      C:\Users\Heikapu\AppData\Local\Temp\tmp8km0z1ag\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: C:\Users\Heikapu\AppData\Local\Temp\tmp8km0z1ag\data\raw\tabular\2016\flight_with_weather_2016.csv [FAIL (SIZE_MISMATCH)]
+    Audited Expected Rows: 1
+    Audited Bytes:         62 | Actual Bytes: 63
+    SHA-256 Status:        SIZE_MISMATCH
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+
+PREFLIGHT FAILURES DETECTED:
+  [ERROR] Year 2016: Source byte size mismatch: actual 63 bytes, expected 62 bytes
+
+[PREFLIGHT FAIL] Preflight safety inspection failed with 1 error(s). No data written.
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_synthetic_v1
+Target Directory:    C:\Users\Heikapu\AppData\Local\Temp\tmped8js5v1\data\curated\runs\run_synthetic_v1
+Survey Years:        [2016]
+Base Data Dir:       C:\Users\Heikapu\AppData\Local\Temp\tmped8js5v1\data
+Lock Directory:      C:\Users\Heikapu\AppData\Local\Temp\tmped8js5v1\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: C:\Users\Heikapu\AppData\Local\Temp\tmped8js5v1\data\raw\tabular\2016\flight_with_weather_2016.csv [FAIL (HASH_MISMATCH)]
+    Audited Expected Rows: 1
+    Audited Bytes:         62 | Actual Bytes: 62
+    SHA-256 Status:        MISMATCH (computed bfa69a69a01334ac... != approved 4002a956ddc66d4c...)
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+
+PREFLIGHT FAILURES DETECTED:
+  [ERROR] Year 2016: Source SHA-256 mismatch: computed bfa69a69a01334ac5c1b383a88dcaa8c785f00b7db107a8b300972872b0f645d, approved baseline 4002a956ddc66d4cb0425eea4221dc8c221bf321849819d47f47a89a650d24d6
+
+[PREFLIGHT FAIL] Preflight safety inspection failed with 1 error(s). No data written.
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_synthetic_v1
+Target Directory:    C:\Users\Heikapu\AppData\Local\Temp\tmplsh3mhs1\data\curated\runs\run_synthetic_v1
+Survey Years:        [2016]
+Base Data Dir:       C:\Users\Heikapu\AppData\Local\Temp\tmplsh3mhs1\data
+Lock Directory:      C:\Users\Heikapu\AppData\Local\Temp\tmplsh3mhs1\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: C:\Users\Heikapu\AppData\Local\Temp\tmplsh3mhs1\data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Expected Rows: 1
+    Audited Bytes:         62 | Actual Bytes: 62
+    SHA-256 Status:        VERIFIED_MATCH (4002a956ddc66d4c...)
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+
+PREFLIGHT FAILURES DETECTED:
+  [ERROR] Duplicate run_id: Curated published directory already exists at C:\Users\Heikapu\AppData\Local\Temp\tmplsh3mhs1\data\curated\runs\run_synthetic_v1
+
+[PREFLIGHT FAIL] Preflight safety inspection failed with 1 error(s). No data written.
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_synthetic_v1
+Target Directory:    C:\Users\Heikapu\AppData\Local\Temp\tmpz535klql\data\curated\runs\run_synthetic_v1
+Survey Years:        [1999]
+Base Data Dir:       C:\Users\Heikapu\AppData\Local\Temp\tmpz535klql\data
+Lock Directory:      C:\Users\Heikapu\AppData\Local\Temp\tmpz535klql\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+
+PREFLIGHT FAILURES DETECTED:
+  [ERROR] Survey year 1999 not recognized in source inventory
+
+[PREFLIGHT FAIL] Preflight safety inspection failed with 1 error(s). No data written.
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_synthetic_v1
+Target Directory:    C:\Users\Heikapu\AppData\Local\Temp\tmpwcecjxjr\data\curated\runs\run_synthetic_v1
+Survey Years:        [2016]
+Base Data Dir:       C:\Users\Heikapu\AppData\Local\Temp\tmpwcecjxjr\data
+Lock Directory:      C:\Users\Heikapu\AppData\Local\Temp\tmpwcecjxjr\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        False
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: C:\Users\Heikapu\AppData\Local\Temp\tmpwcecjxjr\data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Expected Rows: 1
+    Audited Bytes:         62 | Actual Bytes: 62
+    SHA-256 Status:        VERIFIED_MATCH (4002a956ddc66d4c...)
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+[PREFLIGHT PASS] Preflight safety inspection completed successfully.
+
+[GOVERNANCE HOLD] Live ingestion execution is BLOCKED.
+Decision D5 (Gate G6 Annual Ingestion Authorization) has NOT been approved by Project Lead.
+Status: PENDING_D5
+Per AGENTS.md, autonomous AI agents cannot authorize production data execution.
+To execute live ingestion, Project Lead must explicitly approve Decision D5.
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_synthetic_alias1
+Target Directory:    C:\Users\Heikapu\AppData\Local\Temp\tmpfhwrumu1\data\curated\runs\run_synthetic_alias1
+Survey Years:        [2016]
+Base Data Dir:       C:\Users\Heikapu\AppData\Local\Temp\tmpfhwrumu1\data
+Lock Directory:      C:\Users\Heikapu\AppData\Local\Temp\tmpfhwrumu1\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: C:\Users\Heikapu\AppData\Local\Temp\tmpfhwrumu1\data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Expected Rows: 1
+    Audited Bytes:         62 | Actual Bytes: 62
+    SHA-256 Status:        VERIFIED_MATCH (4002a956ddc66d4c...)
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+[PREFLIGHT PASS] Preflight safety inspection completed successfully. All mandatory safety criteria PASSED. No data written.
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_synthetic_alias2
+Target Directory:    C:\Users\Heikapu\AppData\Local\Temp\tmpfhwrumu1\data\curated\runs\run_synthetic_alias2
+Survey Years:        [2016]
+Base Data Dir:       C:\Users\Heikapu\AppData\Local\Temp\tmpfhwrumu1\data
+Lock Directory:      C:\Users\Heikapu\AppData\Local\Temp\tmpfhwrumu1\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: C:\Users\Heikapu\AppData\Local\Temp\tmpfhwrumu1\data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Expected Rows: 1
+    Audited Bytes:         62 | Actual Bytes: 62
+    SHA-256 Status:        VERIFIED_MATCH (4002a956ddc66d4c...)
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+[PREFLIGHT PASS] Preflight safety inspection completed successfully. All mandatory safety criteria PASSED. No data written.

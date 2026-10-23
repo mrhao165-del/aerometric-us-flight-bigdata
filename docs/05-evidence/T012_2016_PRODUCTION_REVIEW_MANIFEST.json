@@ -1,0 +1,90 @@
+{
+  "archive_name": "T012_2016_PRODUCTION_REVIEW.zip",
+  "archive_byte_size": 43940,
+  "archive_sha256": "422fb3603b775b4d355252b94eb8c9059f96cad593241cf55ebb70519e1bf9e4",
+  "archive_crc32": "33edf270",
+  "generated_at": "2026-10-21T11:19:20Z",
+  "task": "T-012 \u2014 Controlled Annual Ingestion, Year 2016",
+  "verdict": "T012_2016_PASS_CONTROLLED",
+  "governance_status": {
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS (CONTROLLED)",
+    "G5": "PASS (CONTROLLED)",
+    "G6": "IN_PROGRESS (2016_VERIFIED)",
+    "T010": "PASS / COMPLETED (CONTROLLED)",
+    "T011": "PASS / COMPLETED (FULL_CONTRACT_CLOSED)",
+    "T012_2016": "PASS (CONTROLLED)",
+    "T012_2017_2024": "NOT_STARTED / NOT_AUTHORIZED",
+    "D1_BTS_PROVENANCE": "PASS (CONTROLLED)",
+    "D2_FP_DEC_019_OPTION_B": "APPROVED_WITH_CONDITIONS",
+    "D3_TS018_HUMAN_SIGNOFF": "PASS (CONTROLLED)",
+    "D4_G5_HUMAN_GATE_SIGNOFF": "APPROVED",
+    "G2_EXC_001": "RESOLVED_BY_TS018_APPROVED_OPTION_B",
+    "G6_ARCH_2016": "APPROVED Option B (FP-DEC-020)",
+    "D5_2016_RUN1": "PASS (CONTROLLED)",
+    "D5_CURRENT_STATE": "FAIL_CLOSED / NOT_AUTHORIZED"
+  },
+  "execution_summary": {
+    "target_run_id": "run_2016_v1",
+    "year": 2016,
+    "raw_csv_path": "data/raw/tabular/2016/flight_with_weather_2016.csv",
+    "raw_csv_bytes": 1538427452,
+    "raw_csv_sha256": "4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34",
+    "curated_output_dir": "data/curated/runs/run_2016_v1",
+    "curated_parquet_files": 12,
+    "curated_parquet_total_bytes": 332018057,
+    "curated_parquet_total_rows": 5537987,
+    "dc11_raw_rows": 5537987,
+    "dc11_accepted_rows": 5537987,
+    "dc11_quarantined_rows": 0,
+    "dc11_rejected_rows": 0,
+    "dc11_is_balanced": true,
+    "ingest_acceptance_rate": 1.0,
+    "publisher_pointer_file": "data/curated/latest_run_id.txt",
+    "publisher_pointer_value": "run_2016_v1",
+    "run_manifest_sha256": "636c9b7fbb7df81be751fbd0220e8a8a209409a471c31e71de269f94bd7bf340",
+    "execution_receipt_status": "PUBLISHED",
+    "active_locks": 0,
+    "recovery_markers": 0,
+    "single_run_validation_status": "VALID_SINGLE_RUN_ANNUAL_BATCH"
+  },
+  "files": [
+    {
+      "relative_path": "docs/05-evidence/T012_2016_PRODUCTION_EXECUTION_REPORT.md",
+      "byte_size": 12790,
+      "sha256": "4849acfb113a7462378dd997327adf66b12b4a6c69628c72308c08c3c3e9779c",
+      "crc32": "31a84f4c"
+    },
+    {
+      "relative_path": "docs/05-evidence/T012_2016_PRODUCTION_EXECUTION_LOG.txt",
+      "byte_size": 8257,
+      "sha256": "cc381925db338277ddd75d63e9f34e8fc7cbaa71589a886f0d94f4851d7e7bd3",
+      "crc32": "c418a5ae"
+    },
+    {
+      "relative_path": "data/metadata/run_2016_v1/run_manifest.json",
+      "byte_size": 5401,
+      "sha256": "636c9b7fbb7df81be751fbd0220e8a8a209409a471c31e71de269f94bd7bf340",
+      "crc32": "9275378a"
+    },
+    {
+      "relative_path": "data/metadata/run_2016_v1/execution_receipt.json",
+      "byte_size": 1399,
+      "sha256": "48203d8dac3f8ffb8634c17f761a1fda6951b00bdf703f6e0cdd5c8804fac307",
+      "crc32": "db822e16"
+    },
+    {
+      "relative_path": "src/flight_pipeline/ingestion/coordinator.py",
+      "byte_size": 92277,
+      "sha256": "1a8ae68e8b98b4110b1a6fbcd22dbe513906eb6a7e7b292a8039b6e393fdaa4e",
+      "crc32": "f94ec909"
+    },
+    {
+      "relative_path": "docs/04-execution/PROJECT_STATE.md",
+      "byte_size": 43098,
+      "sha256": "e3dbc97b4ef4d741f61f28660b7ec981843c54c11566147002d38ca9a6c85e5a",
+      "crc32": "288b344f"
+    }
+  ]
+}

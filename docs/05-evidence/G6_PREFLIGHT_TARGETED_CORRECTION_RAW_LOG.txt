@@ -1,0 +1,123 @@
+================================================================================
+GATE G6 PREFLIGHT TARGETED CORRECTION RAW EXECUTION LOG (P01-P07)
+Task: G5 Signoff Correction & G6 Execution Contract Reconciliation
+Timestamp:           2026-10-20T17:40:00+07:00
+Platform:            Windows-10-10.0.19045-SP0
+Python Executable:   C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe
+Python Version:      3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]
+Working Directory:   D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1
+Authority:           Principal Big Data Engineer & Independent Forensic Auditor
+================================================================================
+
+[1/6] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe -m unittest tests/test_verify_staging_pointer.py
+     DESCRIPTION:  Pointer Verification Unit & Negative Test Suite (13 tests)
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+.............
+----------------------------------------------------------------------
+Ran 13 tests in 0.465s
+
+OK
+--------------------------------------------------------------------------------
+
+[2/6] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe -m unittest tests/test_lock_state_vs_pointer_state.py
+     DESCRIPTION:  Lock State vs Pointer State Decoupling Regression Suite (3 tests)
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.050s
+
+OK
+--------------------------------------------------------------------------------
+
+[3/6] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe -c "import hashlib; p2016 = open('data/raw/tabular/2016/flight_with_weather_2016.csv', 'rb'); h2016 = hashlib.sha256(p2016.read()).hexdigest(); pbts = open('data/reference/bts_transtats/original/T_ONTIME_REPORTING_20261019_112232.zip', 'rb'); hbts = hashlib.sha256(pbts.read()).hexdigest(); print('2016 Canonical Candidate SHA256:', h2016, '(Match:', h2016 == '4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34', ')'); print('BTS ZIP Candidate SHA256:', hbts, '(Match:', hbts == '342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6', ')')"
+     DESCRIPTION:  Canonical 2016 Source and BTS ZIP SHA-256 Physical Verification
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+2016 Canonical Candidate SHA256: 4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34 (Match: True )
+BTS ZIP Candidate SHA256: 342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6 (Match: True )
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[4/6] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/verify_staging_pointer.py --allow-uninitialized
+     DESCRIPTION:  Pointer Verification Clean Workspace Probe (Read-Only)
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+STAGING / CURATED POINTER AUDIT: [PASS] UNINITIALIZED_POINTER_ALLOWED
+================================================================================
+Base Directory:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1
+Pointer File:         D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\curated\latest_run_id.txt
+Pointer Value:        None
+Target Directory:     None
+Parquet Files Found:  0 (Valid: 0)
+Manifest Verified:    False (Run ID: None)
+================================================================================
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[5/6] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/check_working_tree_consistency.py
+     DESCRIPTION:  Working Tree Consistency Verifier
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+Working-Tree PASS assertions: 1589; FAIL: 0
+ALL WORKING-TREE CHECKS PASSED.
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[6/6] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/test_working_tree_registry_regression.py
+     DESCRIPTION:  Working Tree Registry Regression Suite (POS-01..02, NEG-01..10, MUT-01..03)
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+RUNNING WORKING-TREE DELIVERABLE REGISTRY REGRESSION TEST SUITE (POS-01..02, NEG-01..08)
+================================================================================
+[PASS] POS-02: Historical immutable evidence (`SOURCE_MANIFEST.json`, `PACKAGE_MANIFEST.json`) and registered baseline accepted with 0 failures
+[PASS] POS-01: Correctly registered new evidence artifact with matching size and SHA-256 is accepted
+[PASS] NEG-01: Unregistered arbitrary Markdown file is rejected
+[PASS] NEG-02: File with valid-looking `T005_` prefix but absent from registry is rejected
+[PASS] NEG-03: Registered artifact with modified content or incorrect SHA-256 is rejected
+[PASS] NEG-04: Registered artifact with missing file or size mismatch is rejected
+[PASS] NEG-05: Malformed registry JSON and duplicate registry entries are both rejected
+[PASS] NEG-06: Path traversal (`../`) or unsafe path in registry is rejected
+[PASS] NEG-07: Unexpected `.pt` extension in evidence directory and forged task identifier (`T-999`) are both rejected
+[PASS] NEG-08: Tampering with `SOURCE_MANIFEST.json` inputs or unapproved `PACKAGE_MANIFEST.json` files cannot be bypassed via the registry
+[PASS] NEG-09: Tampering with pinned PACKAGE_MANIFEST/SOURCE_MANIFEST or registering unapproved living doc is rejected
+[PASS] NEG-10A: Unapproved artifact_type is strictly rejected
+[PASS] NEG-10B: Symlink injection into working tree is strictly rejected by checker and path validator
+[PASS] MUT-NEG10-01: Mutation test proves unconditional false-PASS fallback ('or True') is identified and rejected
+[PASS] MUT-NEG10-02: Path helper _is_safe_rel_path strictly rejects traversal (../), absolute, backslash, and empty paths
+[PASS] MUT-NEG10-03: Unauthorized artifact_type allowlist strictly enforces approved enum members
+REGRESSION SUITE SUMMARY: 16 PASS, 0 FAIL, 0 SKIP
+================================================================================
+ALL POSITIVE AND NEGATIVE REGISTRY REGRESSION TESTS PASSED.
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+

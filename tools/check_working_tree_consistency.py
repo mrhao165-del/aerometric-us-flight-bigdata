@@ -72,7 +72,7 @@ ALLOWED_DELIVERABLE_EXTENSIONS = {
 ALLOWED_LIVING_DOC_EXTENSIONS = {".md"}
 HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 EVIDENCE_FILENAME_RE = re.compile(
-    r"^(?:T0(?:0[1-9]|1[0-7])|G[0-7])_[A-Za-z0-9_.\-]+\.(?:md|csv|json|txt)$"
+    r"^(?:T0(?:0[1-9]|1[0-7])|G[0-7]|FP|TS018)_[A-Za-z0-9_.\-]+\.(?:md|csv|json|txt)$"
 )
 BACKUP_FILENAME_RE = re.compile(
     r"^[A-Za-z0-9_.\-]+\.pre_g2_repo_apply\.bak$"
@@ -88,6 +88,9 @@ T006_BACKUP_FILENAME_RE = re.compile(
 )
 T006_R1_BACKUP_FILENAME_RE = re.compile(
     r"^[A-Za-z0-9_.\-]+\.pre_t006_r1\.bak$"
+)
+TS018_BACKUP_FILENAME_RE = re.compile(
+    r"^[A-Za-z0-9_.\-]+\.pre_ts018\.bak$"
 )
 
 PINNED_SOURCE_MANIFEST_BYTES = 2479
@@ -476,6 +479,14 @@ def run_consistency_check(root_dir: Path, ci_mode: bool = False):
                     and "T-001" in st_txt,
                     "Living project state verified: " + name,
                 )
+            elif name == ".gitignore":
+                gitign_txt = ff.read_text(encoding="utf-8")
+                require(
+                    ff.is_file()
+                    and "data/raw/" in gitign_txt
+                    and "/data/reference/" in gitign_txt,
+                    "Governed .gitignore verified: " + name,
+                )
             else:
                 require(
                     ff.exists()
@@ -509,6 +520,8 @@ def run_consistency_check(root_dir: Path, ci_mode: bool = False):
                     loc_ok = bool(T006_BACKUP_FILENAME_RE.match(fname))
                 elif dp.startswith("docs/05-evidence/T006_R1_BACKUPS/"):
                     loc_ok = bool(T006_R1_BACKUP_FILENAME_RE.match(fname))
+                elif dp.startswith("docs/05-evidence/TS018_BACKUPS/"):
+                    loc_ok = bool(TS018_BACKUP_FILENAME_RE.match(fname))
                 elif dp.startswith("docs/05-evidence/") and "/" not in dp[len("docs/05-evidence/"):]:
                     loc_ok = bool(EVIDENCE_FILENAME_RE.match(fname))
                 elif dp == "tools/check_working_tree_consistency.py":
@@ -588,11 +601,51 @@ def run_consistency_check(root_dir: Path, ci_mode: bool = False):
             for f in extra_files
             if f.startswith("data/raw/tabular/") and f.endswith(".csv")
         }
+        # Governed reference data policy (TS-018):
+        # 1. Allowed reference subtree: strictly data/reference/bts_transtats/
+        # 2. Every reference file must match an entry in TS018_201901_ORIGINAL_AND_DERIVED_HASH_MANIFEST.json
+        ref_manifest_path = root / "docs/05-evidence/TS018_201901_ORIGINAL_AND_DERIVED_HASH_MANIFEST.json"
+        known_ref_artifacts = {}
+        if ref_manifest_path.is_file():
+            try:
+                ref_man_data = json.loads(ref_manifest_path.read_text(encoding="utf-8"))
+                for art in ref_man_data.get("artifacts", []):
+                    known_ref_artifacts[art["path"]] = art
+            except Exception:
+                pass
+
+        reference_data_files = set()
+        for f in extra_files:
+            if f.startswith("data/reference/"):
+                in_allowed_subtree = f.startswith("data/reference/bts_transtats/")
+                require(
+                    in_allowed_subtree,
+                    f"Reference file within allowed subtree (data/reference/bts_transtats/): {f}",
+                )
+                if f in known_ref_artifacts:
+                    expected_ref = known_ref_artifacts[f]
+                    rf_p = root / f
+                    hash_matches = (
+                        rf_p.is_file()
+                        and rf_p.stat().st_size == expected_ref["bytes"]
+                        and sha256(rf_p.read_bytes()).hexdigest() == expected_ref["sha256"]
+                    )
+                    require(
+                        hash_matches,
+                        f"Reference file physical hash and size match manifest: {f}",
+                    )
+                    if in_allowed_subtree and hash_matches:
+                        reference_data_files.add(f)
+                else:
+                    require(
+                        False,
+                        f"Reference data file registered in TS018 reference manifest: {f}",
+                    )
         registry_self = {reg_rel} if reg_path.is_file() else set()
         verified_deliv_paths = set(registered_deliverables.keys())
 
         unrecognized = (
-            extra_files - raw_data_files - registry_self - verified_deliv_paths
+            extra_files - raw_data_files - reference_data_files - registry_self - verified_deliv_paths
         )
         missing_registered = verified_deliv_paths - extra_files
 
@@ -618,7 +671,7 @@ def run_consistency_check(root_dir: Path, ci_mode: bool = False):
         )
         require(
             len(extra_files)
-            == len(raw_data_files) + len(registry_self) + len(verified_deliv_paths),
+            == len(raw_data_files) + len(reference_data_files) + len(registry_self) + len(verified_deliv_paths),
             "All extra working-tree files cleanly accounted for",
         )
 

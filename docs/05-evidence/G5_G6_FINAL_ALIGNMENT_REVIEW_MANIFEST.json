@@ -1,0 +1,79 @@
+{
+  "archive_name": "G5_G6_FINAL_ALIGNMENT_REVIEW.zip",
+  "archive_byte_size": 69074,
+  "archive_sha256": "e4865a1bea34aecf365e8ab450b4587e6f63af5a7bbabd4b4f02b838af1681fa",
+  "archive_crc32": "1ea93105",
+  "generated_at": "2026-10-21T10:00:05Z",
+  "task": "G5-FINAL-CLOSEOUT-G6-PRESTART-SAFETY-ALIGNMENT",
+  "git_commit_head": "bc4f03fb8ccd6c0b2455af3fcb2b1b98fa39d632",
+  "verdict": "READY_FOR_G5_HUMAN_CLOSEOUT",
+  "governance_status": {
+    "G5": "READY_FOR_FINAL_HUMAN_GATE_SIGNOFF",
+    "G6": "NOT_STARTED / BLOCKED",
+    "T012": "NOT_STARTED",
+    "D1_BTS_PROVENANCE": "PASS (ATTESTED_BY_PROJECT_LEAD_STATEMENT)",
+    "D2_FP_DEC_019_OPTION_B": "APPROVED_BY_PROJECT_LEAD_INSTRUCTION",
+    "D3_TS018_HUMAN_SIGNOFF": "READY_FOR_OFFICIAL_HUMAN_SIGNOFF",
+    "D4_G5_HUMAN_SIGNOFF": "READY_FOR_FINAL_HUMAN_GATE_SIGNOFF",
+    "D5_PRODUCTION_EXECUTION": "NOT_AUTHORIZED",
+    "G6_ARCH_2016": "APPROVED_OPTION_B_BY_PROJECT_LEAD_INSTRUCTION"
+  },
+  "issues_resolved": [
+    "TASK_A_PRESTART_RUNNER_SAFETY_FAIL_CLOSED_NO_LIVE_COORDINATOR",
+    "TASK_B1_UNSAFE_MULTIYEAR_WILDCARD_REPLACED_WITH_SNAPSHOT_REGISTRY",
+    "TASK_B2_G2_EXC_001_EXCEPTION_TIED_TO_FP_DEC_019_OPTION_B_NOT_FP_DEC_020",
+    "TASK_B3_G5_NOT_AUTOMATIC_REQUIRES_DEPENDENT_HUMAN_SIGNOFF",
+    "TASK_C_D1_ATTESTED_BY_PROJECT_LEAD_BTS_BITWISE_VERIFIED",
+    "TASK_D_RAM_MEASUREMENT_DISCREPANCY_CLARIFIED"
+  ],
+  "files": [
+    {
+      "relative_path": "docs/05-evidence/G5_D1_BTS_PROVENANCE_ATTESTATION_DRAFT.md",
+      "byte_size": 5493,
+      "sha256": "8e5368a95efefd5534eb6161aee7e6beca7344311b166ad8bcacd2b1697db490",
+      "crc32": "6941878f"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_G6_FINAL_ALIGNMENT_CHANGES.patch",
+      "byte_size": 206988,
+      "sha256": "99bb007a3d26d8adedd651d2ba9cd49b9c8e0bd230b2256021c79305fa911778",
+      "crc32": "aebc4970"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_G6_FINAL_ALIGNMENT_REPORT.md",
+      "byte_size": 18170,
+      "sha256": "a4a1ff1fab01c40fff36a55d132f4b70be6b3b93f912a8476e53739aa70f5749",
+      "crc32": "11777a5b"
+    },
+    {
+      "relative_path": "docs/05-evidence/G6_T012_2016_BASELINE_INTEGRATION_DECISION_DRAFT.md",
+      "byte_size": 8815,
+      "sha256": "0b742617f56973e93e2da893efaf8b8f18bc9d31bfd7abee4a57e4205f1d0ef9",
+      "crc32": "ca1233b9"
+    },
+    {
+      "relative_path": "docs/05-evidence/G6_T012_2016_PRESTART_RAW_LOG.txt",
+      "byte_size": 32002,
+      "sha256": "56dcb0e7e88cd22ffec1d88e376642b812932370b2a311ad2d32533b05bcd4dc",
+      "crc32": "d80dd566"
+    },
+    {
+      "relative_path": "docs/05-evidence/G6_T012_2016_PRESTART_REPORT.md",
+      "byte_size": 18875,
+      "sha256": "912d0c8b96bd66241469f234863a7cf6f7a735b2b6cc8b71580c6f87796344d8",
+      "crc32": "0912984e"
+    },
+    {
+      "relative_path": "tests/test_prestart_checks_safety.py",
+      "byte_size": 3378,
+      "sha256": "09208c5548fb5ff52a24c79196036a69c97d2b0d6edefa358a18e694d99a4a96",
+      "crc32": "1689a74b"
+    },
+    {
+      "relative_path": "tools/qa/run_g6_t012_prestart_checks.py",
+      "byte_size": 12631,
+      "sha256": "8641d02e5477e44cc6ebb10993ad6164e6f21f7c68dfc53639c6752198364fc6",
+      "crc32": "5d3c7a10"
+    }
+  ]
+}

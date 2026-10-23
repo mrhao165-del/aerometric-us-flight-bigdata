@@ -152,7 +152,7 @@ class TestCanonicalSchemaModule(unittest.TestCase):
             field = curated[m]
             self.assertIsInstance(field.dataType, DoubleType)
             self.assertTrue(field.nullable)
-            self.assertEqual(field.metadata.get("unit_status"), "G2-EXC-001_PROVISIONAL")
+            self.assertEqual(field.metadata.get("unit_status"), "RESOLVED_BY_TS018_APPROVED_OPTION_B")
 
         # Check coordinates are DoubleType
         for coord in COORDINATE_COLUMNS:

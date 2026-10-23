@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "task_id": "TS018_DOSSIER_RECONCILIATION_E01",
+  "timestamp": "2026-10-20T16:10:00+07:00",
+  "review_package": "TS018_FINAL_HARDENED_SIGNOFF_REVIEW_PACKAGE.zip",
+  "review_package_sha256": "ab146749d1de4ad1341acf876a8473af1fb1a88d63cfdf84eec6d7b120a5f457",
+  "summary": {
+    "total_audited_artifacts": 8,
+    "physical_vs_manifest_matches": 8,
+    "reported_errata_corrected_count": 8
+  },
+  "records": [
+    {
+      "path": "docs/05-evidence/TS018_FINAL_HARDENING_BASELINE.md",
+      "actual_bytes_on_disk": 3780,
+      "actual_sha256_on_disk": "e3aa2e7b44a9ee632666d33ed268df9ab9bd5aaf94ada3149bed7f3c24f40e8b",
+      "manifest_bytes_in_review_pkg": 3780,
+      "manifest_sha256_in_review_pkg": "e3aa2e7b44a9ee632666d33ed268df9ab9bd5aaf94ada3149bed7f3c24f40e8b",
+      "reported_sha256_in_previous_summary": "209a32c25679c3d4948ce147f21f153f36fead6077553b6fa0345d3198ee6e1a",
+      "physical_vs_manifest_verdict": "MATCH",
+      "reported_value_status": "REPORTED_VALUE_ERRATA_CORRECTED",
+      "discrepancy_root_cause": "Reporting text drafted from unverified placeholder; physical file and ZIP manifest were always 100% authentic and identical on disk."
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_HARDENING_FINDINGS_AND_FIXES.md",
+      "actual_bytes_on_disk": 9216,
+      "actual_sha256_on_disk": "56c287aaaad405b594f52ea01e861bc9239940f06d98508e8f138b7efbbe9c18",
+      "manifest_bytes_in_review_pkg": 9216,
+      "manifest_sha256_in_review_pkg": "56c287aaaad405b594f52ea01e861bc9239940f06d98508e8f138b7efbbe9c18",
+      "reported_sha256_in_previous_summary": "138c20188ae63810c9e6bb076717a6c2057d2e8211dbf21fb1a2d59ca4f8c6eb",
+      "physical_vs_manifest_verdict": "MATCH",
+      "reported_value_status": "REPORTED_VALUE_ERRATA_CORRECTED",
+      "discrepancy_root_cause": "Reporting text drafted from unverified placeholder; physical file and ZIP manifest were always 100% authentic and identical on disk."
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_STRICT_NUMERIC_REPLAY.md",
+      "actual_bytes_on_disk": 7841,
+      "actual_sha256_on_disk": "d6c7b6fec1bc31ae81b0ca1ed38e27d7b6352ec696441676ead875830dad1f2f",
+      "manifest_bytes_in_review_pkg": 7841,
+      "manifest_sha256_in_review_pkg": "d6c7b6fec1bc31ae81b0ca1ed38e27d7b6352ec696441676ead875830dad1f2f",
+      "reported_sha256_in_previous_summary": "18f7d9620023023e3cb397b91d2d38589d84e27f6a7d18e47da10a2eb75bce34",
+      "physical_vs_manifest_verdict": "MATCH",
+      "reported_value_status": "REPORTED_VALUE_ERRATA_CORRECTED",
+      "discrepancy_root_cause": "Reporting text drafted from unverified placeholder; physical file and ZIP manifest were always 100% authentic and identical on disk."
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_NEGATIVE_TEST_RECONCILIATION.md",
+      "actual_bytes_on_disk": 7051,
+      "actual_sha256_on_disk": "33f660d100e0439b52aa84e7a46942882d4d88172ce665f066105ea1cf846557",
+      "manifest_bytes_in_review_pkg": 7051,
+      "manifest_sha256_in_review_pkg": "33f660d100e0439b52aa84e7a46942882d4d88172ce665f066105ea1cf846557",
+      "reported_sha256_in_previous_summary": "01fa32bf7e3845ffebc7216a9dd984d7cb301bc1e31d5bfe8c04ec567fc36802",
+      "physical_vs_manifest_verdict": "MATCH",
+      "reported_value_status": "REPORTED_VALUE_ERRATA_CORRECTED",
+      "discrepancy_root_cause": "Reporting text drafted from unverified placeholder; physical file and ZIP manifest were always 100% authentic and identical on disk."
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_PROVENANCE_AND_OPTION_B_READINESS.md",
+      "actual_bytes_on_disk": 6374,
+      "actual_sha256_on_disk": "7483157964348c9c775225e7278849fe5313dc6444ba5a86f5b65ff625a6018f",
+      "manifest_bytes_in_review_pkg": 6374,
+      "manifest_sha256_in_review_pkg": "7483157964348c9c775225e7278849fe5313dc6444ba5a86f5b65ff625a6018f",
+      "reported_sha256_in_previous_summary": "1686ceee26e95b058c440be5a1be8a5f458518e95df1d70104a79ce3e30fead5",
+      "physical_vs_manifest_verdict": "MATCH",
+      "reported_value_status": "REPORTED_VALUE_ERRATA_CORRECTED",
+      "discrepancy_root_cause": "Reporting text drafted from unverified placeholder; physical file and ZIP manifest were always 100% authentic and identical on disk."
+    },
+    {
+      "path": "docs/05-evidence/G5_FINAL_PRE_SIGNOFF_RECONCILIATION.md",
+      "actual_bytes_on_disk": 8145,
+      "actual_sha256_on_disk": "11db2a5f00e59a61e74b7794bec5a2710ad11568fe53d5a5b4f303fa453dfc57",
+      "manifest_bytes_in_review_pkg": 8145,
+      "manifest_sha256_in_review_pkg": "11db2a5f00e59a61e74b7794bec5a2710ad11568fe53d5a5b4f303fa453dfc57",
+      "reported_sha256_in_previous_summary": "d9426f076c8c07802ae1f92e92cbb3e0ccb6fa3505e6b49e8a7ebdf4fe1b54a3",
+      "physical_vs_manifest_verdict": "MATCH",
+      "reported_value_status": "REPORTED_VALUE_ERRATA_CORRECTED",
+      "discrepancy_root_cause": "Reporting text drafted from unverified placeholder; physical file and ZIP manifest were always 100% authentic and identical on disk."
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_PRE_EXECUTION_GAP_CHECKLIST.md",
+      "actual_bytes_on_disk": 6193,
+      "actual_sha256_on_disk": "aac2b7eab8c3c05862bc252768a9166a49535d19711e606877fa3b4dfc120217",
+      "manifest_bytes_in_review_pkg": 6193,
+      "manifest_sha256_in_review_pkg": "aac2b7eab8c3c05862bc252768a9166a49535d19711e606877fa3b4dfc120217",
+      "reported_sha256_in_previous_summary": "eb42603fc5fb3ec985b1c8f1345f0962b8813bc03fc4219ec936d554a938c644",
+      "physical_vs_manifest_verdict": "MATCH",
+      "reported_value_status": "REPORTED_VALUE_ERRATA_CORRECTED",
+      "discrepancy_root_cause": "Reporting text drafted from unverified placeholder; physical file and ZIP manifest were always 100% authentic and identical on disk."
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_HARDENING_RAW_LOG.txt",
+      "actual_bytes_on_disk": 8336,
+      "actual_sha256_on_disk": "8755f03092d9bdc37e7e6ec45d992b23f793477071448ff024cf5317641fc738",
+      "manifest_bytes_in_review_pkg": 8336,
+      "manifest_sha256_in_review_pkg": "8755f03092d9bdc37e7e6ec45d992b23f793477071448ff024cf5317641fc738",
+      "reported_sha256_in_previous_summary": "39fb4a4bbda71ae5eeb1cb88f72c3d0526017e8c33959bc2d8da0903328e1462",
+      "physical_vs_manifest_verdict": "MATCH",
+      "reported_value_status": "REPORTED_VALUE_ERRATA_CORRECTED",
+      "discrepancy_root_cause": "Reporting text drafted from unverified placeholder; physical file and ZIP manifest were always 100% authentic and identical on disk."
+    }
+  ]
+}

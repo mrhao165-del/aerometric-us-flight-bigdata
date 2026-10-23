@@ -1,0 +1,244 @@
+================================================================================
+GATE G6 OPERATIONAL PREFLIGHT RAW EXECUTION LOG
+Task: Gate G6 Operational Preflight & Staging Pointer Verification
+Execution Timestamp: 2026-10-20T17:00:00+07:00
+Platform:            Windows-10-10.0.19045-SP0
+Python Executable:   C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe
+Python Version:      3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]
+Working Directory:   D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1
+Authority:           Principal Big Data Engineer & Independent QA Reviewer
+================================================================================
+
+[1/9] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/verify_staging_pointer.py --help
+     DESCRIPTION:  Verify Staging Pointer CLI Help
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+usage: verify_staging_pointer.py [-h] [--base-dir BASE_DIR]
+                                 [--require-manifest] [--no-parquet-check]
+                                 [--allow-uninitialized] [--json]
+
+Verify Staging/Curated Publication Pointer in Read-Only Mode.
+
+options:
+  -h, --help            show this help message and exit
+  --base-dir BASE_DIR, -b BASE_DIR
+                        Base data directory containing curated/ and staging/
+                        (default: current directory)
+  --require-manifest    Require that a valid run_manifest.json exists and
+                        matches run_id
+  --no-parquet-check    Skip checking for valid Parquet files in the published
+                        target directory
+  --allow-uninitialized
+                        Allow absence of pointer file (returns exit code 0 for
+                        clean uninitialized state)
+  --json                Output machine-readable JSON result
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[2/9] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe -m unittest tests/test_verify_staging_pointer.py
+     DESCRIPTION:  Pointer Verification Unit & Negative Test Suite
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+............
+----------------------------------------------------------------------
+Ran 12 tests in 0.466s
+
+OK
+--------------------------------------------------------------------------------
+
+[3/9] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/verify_staging_pointer.py --allow-uninitialized
+     DESCRIPTION:  Pointer Verification Clean Workspace Execution
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+STAGING / CURATED POINTER AUDIT: [PASS] UNINITIALIZED_POINTER_ALLOWED
+================================================================================
+Base Directory:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1
+Pointer File:         D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\curated\latest_run_id.txt
+Pointer Value:        None
+Target Directory:     None
+Parquet Files Found:  0 (Valid: 0)
+Manifest Verified:    False (Run ID: None)
+================================================================================
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[4/9] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/verify_t006_contract_consistency.py
+     DESCRIPTION:  T-006 Data Contract Consistency Verifier
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+RUNNING T-006 CONTRACT CONSISTENCY & IMPLEMENTATION-SAFETY VERIFIER
+================================================================================
+[PASS] Case 1: All 34 raw columns match canonical names and physical order.
+[PASS] Case 2: All 9 fabricated columns removed; 9 restored canonical columns verified.
+[PASS] Case 3: Physical order and audited raw dtypes agree with schema_YYYY.json evidence.
+[PASS] Case 4: KPI-01..08 IDs, submetrics, and formulas agree with KPI_SPEC.md.
+[PASS] Case 5: KPI-03 verified as Signed Mean ARR_DELAY (negative delay preserved, not late rate).
+[PASS] Case 6: KPI-02/04 verified as Late Rate >= 15.0 (boundary 15.0 included, not on-time rate).
+[PASS] Case 7: Metric-valid denominators N_valid independent across submetrics; ZERO_METRIC_DENOMINATOR enforced.
+[PASS] Case 8: No CANCELLED or DIVERTED references in CORE filters.
+[PASS] Case 9: TS-012/013/015/016/020 match authoritative TEST_PLAN.md specifications.
+[PASS] Case 10: G2-EXC-001 verified as provisional unit status with G5 TS-018 mandatory hard stop blocking G6.
+[PASS] Case 11: Gate G2 confirmed PASS; Gate G3 confirmed PASS with human acceptance record; T-006 confirmed PASS / COMPLETED.
+[PASS] Case 12: Downstream G4 tasks (T-007, T-008, T-009) governed by official human signoffs; G5 NOT_STARTED.
+[PASS] Case 13: DC-11/12 row accounting and Record vs Metric Validity verified (metric invalidity does not quarantine flight).
+[PASS] Case 14: Complete finite numeric predicate verified with explicit NaN and Inf handling for all 7 CORE measures.
+[PASS] Case 15: Safe 7-step Windows NTFS publication order and TS-013 fault injection verified.
+[PASS] Case 16: Raw schema boundary verified (nullable Int64 calendar fields, anchored date regex, no unapproved NOT_NULL).
+[PASS] Case 17: Safe non-destructive rollback policy verified (destructive Remove-Item commands superseded and revoked).
+[PASS] Mutation Suite: 16 isolated mutation tests successfully detected and rejected.
+================================================================================
+VERIFICATION SUMMARY: 17 INVARIANTS PASS, 16 MUTATIONS PASS, 0 FAIL
+================================================================================
+ALL T-006 CONTRACT CONSISTENCY & IMPLEMENTATION-SAFETY CHECKS PASSED.
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[5/9] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/verify_t010_parquet_schema_attestation.py
+     DESCRIPTION:  T-010 Parquet Schema Attestation Verifier
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+RUNNING T-010 PARQUET SCHEMA ATTESTATION & FORENSIC AUDIT VERIFIER
+================================================================================
+[PASS] Canonical Curated Schema: 34 fields verified.
+       Type Distribution: {'string': 10, 'double': 19, 'int64': 5}
+[PASS] Field 2: OP_CARRIER_FL_NUM confirmed as DoubleType (Arrow double / float64).
+[PASS] Canonical Schema Fingerprint: b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a
+[PASS] Forensic Hash Manifest loaded: 50 registered Parquet partition entries.
+[PASS] All 50/50 physical staging Parquet files verified field-for-field:
+       - 100% 34 columns in identical canonical physical order
+       - 10 StringTypes, 19 DoubleTypes, 5 LongTypes
+       - OP_CARRIER_FL_NUM == double (Arrow float64) in all 50 files
+       - Compression == SNAPPY in all 50 files
+       - Schema Fingerprint == b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a in all 50 files
+       - Exact byte size, SHA-256, and metadata row counts matched with manifest
+================================================================================
+VERIFICATION SUMMARY: ALL 50 PARQUET PARTITION FILES FULLY ATTESTED (0 FAIL)
+================================================================================
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[6/9] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/test_ts018_negative_witness_verification.py
+     DESCRIPTION:  TS-018 14 Negative Witness Verification Suite
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+RUNNING TS-018 COMPREHENSIVE NEGATIVE WITNESS FAULT INJECTION TEST SUITE
+================================================================================
+[PASS] NEG-W01: Injected value mismatch in witness (-999.0 vs real) is caught fail-closed -> exit=1
+[PASS] NEG-W02: Non-existent flight key in witness is caught fail-closed -> exit=1
+[PASS] NEG-W03: Tampered witness checksum is caught fail-closed by pinned SHA-256 validator (H05) -> exit=1
+[PASS] NEG-W04: Slipped sign on arrival delay (-6.0 -> +6.0) is caught fail-closed -> exit=1
+[PASS] NEG-W05: Duplicate key collision in witness is detected fail-closed before ingestion (H05) -> exit=1
+[PASS] NEG-W06: Non-zero numeric measure replaced with 0.0 is caught fail-closed -> exit=1
+[PASS] NEG-W07: Tolerance-only deviation (+0.00005) under strict exact check is rejected fail-closed (H01) -> exit=1
+[PASS] NEG-W08: Genuine null-to-value disagreement on AIR_TIME is caught fail-closed -> exit=1
+[PASS] NEG-W09: Non-finite numeric value ('NaN') is caught fail-closed as invalid token (H02/H04/E05) -> exit=1
+[PASS] NEG-W10: Flight date mismatch (2019-01-10 mutated to 2019-01-20) is caught fail-closed -> exit=1
+[PASS] NEG-W11: Two sources both containing 'NaN' are rejected as NONFINITE, never NULL_NULL (H02) -> category=NONFINITE_OR_INVALID_TOKEN
+[PASS] NEG-W12: Signed zero (+0.0 vs -0.0) is classified as NUMERIC_EQUAL_SIGNED_ZERO_DIFF, not bitwise exact (H03) -> category=NUMERIC_EQUAL_SIGNED_ZERO_DIFF
+[PASS] NEG-W13: Parser strictly classifies malformed / infinite text tokens as invalid, never valid null (H02) -> kinds=['NONFINITE_OR_INVALID_TOKEN', 'NONFINITE_OR_INVALID_TOKEN']
+[PASS] NEG-W14: Synthetic null-null evaluates strictly to NULL_NULL_AGREEMENT, rejected from bitwise exact (E04) -> category=NULL_NULL_AGREEMENT
+================================================================================
+NEGATIVE TEST SUITE SUMMARY: 14 PASS, 0 FAIL (Total: 14)
+================================================================================
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[7/9] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/test_ts018_reference_policy_regression.py
+     DESCRIPTION:  TS-018 Reference Policy Regression Suite
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+RUNNING TS-018 BOUNDED REFERENCE DATA POLICY REGRESSION TEST SUITE
+================================================================================
+[PASS] POS-01: Legitimate known reference ZIP and companion matching manifest are cleanly accepted with 0 errors
+[PASS] NEG-01: Unknown / unregistered file under data/reference/bts_transtats/ is strictly rejected as stray
+[PASS] NEG-02: Forged / tampered reference artifact failing SHA-256 match is strictly rejected
+[PASS] NEG-03: Unauthorized file outside allowed reference subtree is strictly rejected
+[PASS] NEG-04: Path traversal attempt (../) in reference path is strictly rejected by path helper
+[PASS] NEG-05: Ghost/corrupted artifact matching manifest path but with wrong hash/size is strictly rejected
+================================================================================
+REFERENCE POLICY SUITE SUMMARY: 6 PASS, 0 FAIL
+================================================================================
+ALL REFERENCE DATA POLICY POSITIVE AND NEGATIVE TESTS PASSED.
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[8/9] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/check_working_tree_consistency.py
+     DESCRIPTION:  Working Tree Consistency Verifier
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+Working-Tree PASS assertions: 1569; FAIL: 0
+ALL WORKING-TREE CHECKS PASSED.
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[9/9] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/test_working_tree_registry_regression.py
+     DESCRIPTION:  Working Tree Registry Regression Suite
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+RUNNING WORKING-TREE DELIVERABLE REGISTRY REGRESSION TEST SUITE (POS-01..02, NEG-01..08)
+================================================================================
+[PASS] POS-02: Historical immutable evidence (SOURCE_MANIFEST.json, PACKAGE_MANIFEST.json) and registered baseline accepted with 0 failures
+[PASS] POS-01: Correctly registered new evidence artifact with matching size and SHA-256 is accepted
+[PASS] NEG-01: Unregistered arbitrary Markdown file is rejected
+[PASS] NEG-02: File with valid-looking T005_ prefix but absent from registry is rejected
+[PASS] NEG-03: Registered artifact with modified content or incorrect SHA-256 is rejected
+[PASS] NEG-04: Registered artifact with missing file or size mismatch is rejected
+[PASS] NEG-05: Malformed registry JSON and duplicate registry entries are both rejected
+[PASS] NEG-06: Path traversal (../) or unsafe path in registry is rejected
+[PASS] NEG-07: Unexpected .pt extension in evidence directory and forged task identifier (T-999) are both rejected
+[PASS] NEG-08: Tampering with SOURCE_MANIFEST.json inputs or unapproved PACKAGE_MANIFEST.json files cannot be bypassed via the registry
+[PASS] NEG-09: Tampering with pinned PACKAGE_MANIFEST/SOURCE_MANIFEST or registering unapproved living doc is rejected
+[PASS] NEG-10A: Unapproved artifact_type is strictly rejected
+[PASS] NEG-10B: Symlink injection into working tree is strictly rejected by checker and path validator
+[PASS] MUT-NEG10-01: Mutation test proves unconditional false-PASS fallback ('or True') is identified and rejected
+[PASS] MUT-NEG10-02: Path helper _is_safe_rel_path strictly rejects traversal (../), absolute, backslash, and empty paths
+[PASS] MUT-NEG10-03: Unauthorized artifact_type allowlist strictly enforces approved enum members
+REGRESSION SUITE SUMMARY: 16 PASS, 0 FAIL, 0 SKIP
+================================================================================
+ALL POSITIVE AND NEGATIVE REGISTRY REGRESSION TESTS PASSED.
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+

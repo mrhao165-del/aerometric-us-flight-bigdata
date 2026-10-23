@@ -335,7 +335,11 @@ def verify_semantic_invariants(root: Path) -> list:
         if m_down:
             st = m_down.group(1).strip()
             if down_t == "T-008":
-                if st not in ("TODO", "NOT_STARTED"):
+                if any(w in st for w in ("PASS", "COMPLETED")):
+                    signoff_p = root / "docs/05-evidence/T008_HUMAN_SIGNOFF_20261018.md"
+                    if not signoff_p.is_file():
+                        raise SemanticVerificationError("INV-12 FAIL: Task T-008 cannot be PASS in BACKLOG.md without human signoff record")
+                elif st not in ("TODO", "NOT_STARTED"):
                     raise SemanticVerificationError(f"INV-12 FAIL: Downstream task {down_t} unauthorized start ({st}) before G3 completion")
             elif down_t == "T-007":
                 if any(w in st for w in ("PASS", "COMPLETED")):
@@ -575,6 +579,20 @@ def run_mutation_tests(root: Path) -> list:
             raise AssertionError("MUT-06C FAIL: Verifier did not catch premature downstream task T-007 start")
         except SemanticVerificationError as e:
             mut_passed.append(f"MUT-06C: Caught premature downstream task T-007 start ({e})")
+
+        # MUT-06D: Mutate downstream T-008 in BACKLOG.md to IN_PROGRESS prematurely
+        make_fixture()
+        mut_bl = tmp_root / "docs/01-planning/BACKLOG.md"
+        mut_bl.write_text(
+            mut_bl.read_text(encoding="utf-8").replace("| T-008 | G4 | Viết quality/disjoint row accounting/quarantine (không quarantine dòng CORE hợp lệ vì thiếu Weather theo `FP-DEC-017`), kiểm tra sớm độ phủ lịch Tháng 3/2024 (`OR-05`) + synthetic tests | T-007 | Mọi raw record vào đúng 1 trạng thái (`DC-11` / `TS-003`), test domain+source-year (`TS-002`)+zero denominator (`TS-017`)+kiểm tra stage date coverage (phục vụ nghiệm thu `TS-004` tại G6/`T-012`), log đầy đủ | PASS / COMPLETED — CONTROLLED |",
+                                                       "| T-008 | G4 | Viết quality/disjoint row accounting/quarantine (không quarantine dòng CORE hợp lệ vì thiếu Weather theo `FP-DEC-017`), kiểm tra sớm độ phủ lịch Tháng 3/2024 (`OR-05`) + synthetic tests | T-007 | Mọi raw record vào đúng 1 trạng thái (`DC-11` / `TS-003`), test domain+source-year (`TS-002`)+zero denominator (`TS-017`)+kiểm tra stage date coverage (phục vụ nghiệm thu `TS-004` tại G6/`T-012`), log đầy đủ | IN_PROGRESS |"),
+            encoding="utf-8",
+        )
+        try:
+            verify_semantic_invariants(tmp_root)
+            raise AssertionError("MUT-06D FAIL: Verifier did not catch premature downstream task T-008 start")
+        except SemanticVerificationError as e:
+            mut_passed.append(f"MUT-06D: Caught premature downstream task T-008 start ({e})")
 
         # MUT-07: Mutate min-N threshold in DECISIONS.md
         make_fixture()

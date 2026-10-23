@@ -1,0 +1,86 @@
+{
+  "total_dataset_records": 5,
+  "total_bts_records": 5,
+  "unique_key_matches": 5,
+  "ambiguous_duplicate_keys": 0,
+  "invalid_key_records": 0,
+  "unmatched_dataset_records": 0,
+  "unmatched_bts_records": 0,
+  "field_statistics": {
+    "ARR_DELAY": {
+      "exact_match": 5,
+      "rounding_diff": 0,
+      "null_null_agreement": 0,
+      "mismatch": 0,
+      "missing_column": 0,
+      "malformed_numeric": 0,
+      "numeric_sample_count": 5
+    },
+    "DEP_DELAY": {
+      "exact_match": 5,
+      "rounding_diff": 0,
+      "null_null_agreement": 0,
+      "mismatch": 0,
+      "missing_column": 0,
+      "malformed_numeric": 0,
+      "numeric_sample_count": 5
+    },
+    "TAXI_OUT": {
+      "exact_match": 5,
+      "rounding_diff": 0,
+      "null_null_agreement": 0,
+      "mismatch": 0,
+      "missing_column": 0,
+      "malformed_numeric": 0,
+      "numeric_sample_count": 5
+    },
+    "TAXI_IN": {
+      "exact_match": 5,
+      "rounding_diff": 0,
+      "null_null_agreement": 0,
+      "mismatch": 0,
+      "missing_column": 0,
+      "malformed_numeric": 0,
+      "numeric_sample_count": 5
+    },
+    "AIR_TIME": {
+      "exact_match": 5,
+      "rounding_diff": 0,
+      "null_null_agreement": 0,
+      "mismatch": 0,
+      "missing_column": 0,
+      "malformed_numeric": 0,
+      "numeric_sample_count": 5
+    },
+    "ACTUAL_ELAPSED_TIME": {
+      "exact_match": 5,
+      "rounding_diff": 0,
+      "null_null_agreement": 0,
+      "mismatch": 0,
+      "missing_column": 0,
+      "malformed_numeric": 0,
+      "numeric_sample_count": 5
+    },
+    "CRS_ELAPSED_TIME": {
+      "exact_match": 5,
+      "rounding_diff": 0,
+      "null_null_agreement": 0,
+      "mismatch": 0,
+      "missing_column": 0,
+      "malformed_numeric": 0,
+      "numeric_sample_count": 5
+    }
+  },
+  "file_present": true,
+  "schema_valid": true,
+  "companion_metadata_valid": false,
+  "candidate_checksum_matched": false,
+  "source_provenance_verified": false,
+  "numerical_parity_verified": true,
+  "human_accepted": false,
+  "is_authentic_bts_data": false,
+  "reconciliation_verdict": "SYNTHETIC_RECONCILER_VERIFIED_AUTHENTIC_BTS_PENDING",
+  "notes": [
+    "Synthetic golden fixtures validated reconciler algorithm across all 7 CORE measures with 0 discrepancies; authentic BTS reference remains PENDING_EXTERNAL_BTS_SOURCE_DELIVERY."
+  ]
+}

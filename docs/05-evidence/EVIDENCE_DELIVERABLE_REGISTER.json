@@ -1,28 +1,28 @@
 {
   "registry_version": "1.0",
-  "task_id": "T-007",
-  "updated_at": "2026-10-17",
-  "description": "Evidence Deliverable Register updated for MASTER-T007-SIGNOFF-EXIT final three-blocker closure",
+  "task_id": "G6",
+  "updated_at": "2026-10-21T13:54:00+07:00",
+  "description": "TS-018 authentic BTS January 2019 intake, bounded reference policy hardening, 7-measure record-level numeric parity, and final human review submission.",
   "governed_living_docs": [
     {
       "path": "docs/01-planning/BACKLOG.md",
       "task_id": "G2-REPO-APPLY",
       "original_v1_1_bytes": 5026,
       "original_v1_1_sha256": "6525a1735338f80c5a4ad1d4260cab1b43646a342799c8fb300f9db9adc787ed",
-      "current_bytes": 11373,
-      "current_sha256": "24f7963245396cae3d92ccfec044cb6c1b99ddf0e23e2d6c2afd00f0968d015f",
+      "current_bytes": 14094,
+      "current_sha256": "f4a785cd22270e08b79ed8b6177269fd139f637761f4af3f277a46cde3911d57",
       "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__01-planning__BACKLOG.md.pre_g2_repo_apply.bak",
-      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md"
+      "authorization_ref": "Project Lead explicit approval of FP-DEC-018 and controlled T-011 technical signoff (2026-10-19); recorded in docs/05-evidence/T011_OFFICIAL_CONTROLLED_TECHNICAL_SIGNOFF_20261019.md"
     },
     {
       "path": "docs/02-design/DECISIONS.md",
       "task_id": "G2-REPO-APPLY",
       "original_v1_1_bytes": 3894,
       "original_v1_1_sha256": "046ca0e627266815a1b9c17df49f6676f49c6b7e9aeb18bb6025740a56d8a180",
-      "current_bytes": 21647,
-      "current_sha256": "bede7f51e95a832bd24dd6ceb51e4eb72a0fb6d9d3efc5a97fc4bc7642d0e66d",
+      "current_bytes": 23714,
+      "current_sha256": "f01703bc17328886da334c10874688b5b7f2f666a95e066b1213a14f1d3408c9",
       "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__02-design__DECISIONS.md.pre_g2_repo_apply.bak",
-      "authorization_ref": "Project Lead G2-REPO-APPLY instruction (2026-10-16); recorded in docs/05-evidence/G2_REPO_APPLY_HUMAN_APPROVAL_RECORD.md"
+      "authorization_ref": "Project Lead explicit approval of FP-DEC-018 (2026-10-19); recorded in docs/05-evidence/FP_DEC_018_OFFICIAL_HUMAN_APPROVAL_20261019.md"
     },
     {
       "path": "docs/02-design/KPI_SPEC.md",
@@ -32,17 +32,17 @@
       "current_bytes": 9949,
       "current_sha256": "bf4a663485c6416a790e1ca1d721f1da808fa9da61dc1e377b52b4ef04121d9c",
       "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__02-design__KPI_SPEC.md.pre_g2_repo_apply.bak",
-      "authorization_ref": "Project Lead G2-REPO-APPLY instruction (2026-10-16); recorded in docs/05-evidence/G2_REPO_APPLY_HUMAN_APPROVAL_RECORD.md"
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
       "path": "docs/03-quality/CHANGELOG.md",
       "task_id": "G2-REPO-APPLY",
       "original_v1_1_bytes": 2012,
       "original_v1_1_sha256": "feb443581633193be978be9e587b3dbae8d4afd700dfc231c16fa73b021365f1",
-      "current_bytes": 9124,
-      "current_sha256": "4a10f400651bf335cfc322aae1cf38565bb495c13dcba40b43a4f74b04c10f31",
+      "current_bytes": 37480,
+      "current_sha256": "323e613c1fd812b7c926476e1f2fa6fc630006d3e1b21886520f5f7c9e010483",
       "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__03-quality__CHANGELOG.md.pre_g2_repo_apply.bak",
-      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+      "authorization_ref": "Project Lead explicit approval of FP-DEC-018 and controlled T-011 technical signoff (2026-10-19); recorded in docs/05-evidence/T011_OFFICIAL_CONTROLLED_TECHNICAL_SIGNOFF_20261019.md"
     },
     {
       "path": "docs/03-quality/RISK_REGISTER.md",
@@ -52,17 +52,17 @@
       "current_bytes": 11376,
       "current_sha256": "55c5a46d682cfd5b0ec45d9d3f4d65c9adf4f513ad12a8dc0eae88af01fd2d85",
       "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__03-quality__RISK_REGISTER.md.pre_g2_repo_apply.bak",
-      "authorization_ref": "Project Lead G2-REPO-APPLY instruction (2026-10-16); recorded in docs/05-evidence/G2_REPO_APPLY_HUMAN_APPROVAL_RECORD.md"
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
       "path": "docs/04-execution/AI_HANDOFF.md",
       "task_id": "G2-REPO-APPLY",
       "original_v1_1_bytes": 2745,
       "original_v1_1_sha256": "7bd3a3b376e13bfda0aed8ed95f1f625fa39cdc0f7ebf31ea5bb9df11df4ca69",
-      "current_bytes": 17329,
-      "current_sha256": "c1d7ae6469570f3da4f36df7a92ada07f594159753781b3e8b05ceb5bd6a06bb",
+      "current_bytes": 18412,
+      "current_sha256": "93b7e9f5fca4983321a13099752cb205af11edec55482de2ce287e2d49edace4",
       "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__04-execution__AI_HANDOFF.md.pre_g2_repo_apply.bak",
-      "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF instruction (2026-10-17); recorded in docs/05-evidence/G3_OFFICIAL_SIGNOFF_HUMAN_ACCEPTANCE_RECORD.md"
+      "authorization_ref": "Project Lead explicit approval of FP-DEC-018 and controlled T-011 technical signoff (2026-10-19); recorded in docs/05-evidence/T011_OFFICIAL_CONTROLLED_TECHNICAL_SIGNOFF_20261019.md"
     },
     {
       "path": "docs/04-execution/TASK_TEMPLATE.md",
@@ -72,7 +72,7 @@
       "current_bytes": 8445,
       "current_sha256": "a0d0ae0059350a653ec17ce5b32400983f18f63687d1ffd43017b2abbb5faf91",
       "backup_path": "docs/05-evidence/G2_REPO_APPLY_BACKUPS/docs__04-execution__TASK_TEMPLATE.md.pre_g2_repo_apply.bak",
-      "authorization_ref": "Project Lead G2-REPO-APPLY instruction (2026-10-16); recorded in docs/05-evidence/G2_REPO_APPLY_HUMAN_APPROVAL_RECORD.md"
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
       "path": "docs/02-design/ARCHITECTURE.md",
@@ -82,7 +82,7 @@
       "current_bytes": 21056,
       "current_sha256": "14cf55d04468149886bec7d6102228240f98bdb07305b7282073bd71608fa6a6",
       "backup_path": "docs/05-evidence/T006_BACKUPS/docs__02-design__ARCHITECTURE.md.pre_t006.bak",
-      "authorization_ref": "Project Lead G3-T006-FINAL-CORRECTIONS instruction (2026-10-17); recorded in docs/05-evidence/T006_FINAL_CONTRACT_VERIFICATION.md"
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
     }
   ],
   "registered_deliverables": [
@@ -533,6 +533,38 @@
       "authorization_ref": "Project Lead G3-OFFICIAL-SIGNOFF state transition report (2026-10-17)",
       "bytes": 9104,
       "sha256": "f73713e2b6a2fd97441db53ae9832dab441218cbbaf66f8ae0bbada1c7c8f8cf"
+    },
+    {
+      "path": "docs/05-evidence/G4_OFFICIAL_HUMAN_SIGNOFF_20261018.md",
+      "task_id": "G4",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 6740,
+      "sha256": "5cf4017f751443d567d5f4b82ae2d3efcc9c85fa36d84ba0181204a456c31d25",
+      "authorization_ref": "Project Lead G4-OFFICIAL-HUMAN-SIGNOFF explicit signoff instruction (2026-10-18); recorded in docs/05-evidence/G4_OFFICIAL_HUMAN_SIGNOFF_20261018.md"
+    },
+    {
+      "path": "docs/05-evidence/G4_SIGNOFF_TEST_EVIDENCE_ERRATA.md",
+      "task_id": "G4",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 6585,
+      "sha256": "93dd0236da4967a9a1a3ac309c8da7c8b667240284f0e3c35fd2f16e7f069eab",
+      "authorization_ref": "Project Lead G4-OFFICIAL-HUMAN-SIGNOFF explicit signoff instruction (2026-10-18); recorded in docs/05-evidence/G4_SIGNOFF_TEST_EVIDENCE_ERRATA.md"
+    },
+    {
+      "path": "docs/05-evidence/G5_ENTRY_HANDOFF.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 10151,
+      "sha256": "39a88e8a2a8016424669128aae7e1eaac7e48001501055dea47b9972b2a6495c",
+      "authorization_ref": "Project Lead G4-OFFICIAL-HUMAN-SIGNOFF explicit signoff instruction (2026-10-18); recorded in docs/05-evidence/G5_ENTRY_HANDOFF.md"
+    },
+    {
+      "path": "docs/05-evidence/G5_T010_ENTRY_BASELINE_ERRATA.md",
+      "task_id": "T-010",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 6074,
+      "sha256": "8130aecdc5722aa705617ad636eb04a36eeab1abb3009260bbcae5b46c01be78",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/G5_T010_ENTRY_BASELINE_ERRATA.md"
     },
     {
       "path": "docs/05-evidence/T001_PROVENANCE_AUDIT.md",
@@ -1903,6 +1935,30 @@
       "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
+      "path": "docs/05-evidence/T007_FINAL_SIGNOFF_DOCUMENTATION_ERRATA.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
+      "bytes": 13041,
+      "sha256": "46380ecdf8681b4d3bcc8f9a04764d1d35746f10c79b4a53d18deddce0d1888c"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_SIGNOFF_LOG_QA_VERIFIERS.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 12711,
+      "sha256": "36702c622cb32e8f5db75274e670e06f61ef49afc92ec2822d495e6b15cf2058",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md"
+    },
+    {
+      "path": "docs/05-evidence/T007_FINAL_SIGNOFF_LOG_UNITTEST_SUITE.txt",
+      "task_id": "T-007",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
+      "bytes": 73461,
+      "sha256": "04e3d3b63ae75981af326eaf71e0cf268cfd0095340a522e0c857247258b4510"
+    },
+    {
       "path": "docs/05-evidence/T007_FULL_BASELINE_AND_SCOPE.md",
       "task_id": "T-007",
       "artifact_type": "AUDIT_REPORT",
@@ -2015,6 +2071,14 @@
       "authorization_ref": "Project Lead MASTER-T007 instruction (2026-10-17); recorded in docs/05-evidence/T007_FULL_FINAL_INDEPENDENT_REVIEW.md"
     },
     {
+      "path": "docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
+      "bytes": 11293,
+      "sha256": "c479046bcc76431f7df34a37339ef8e153f93bf91853759178702467094d3b88"
+    },
+    {
       "path": "docs/05-evidence/T007_LOCAL_RAW_SHA256_CANDIDATE.json",
       "task_id": "T-007",
       "artifact_type": "EXECUTION_MANIFEST",
@@ -2093,6 +2157,214 @@
       "bytes": 6862,
       "sha256": "ce475dfc1728f7753af267a88b54cc1f3f2aed9f7966dfc7ed35d15216748017",
       "authorization_ref": "Project Lead MASTER-T007-SIGNOFF-EXIT instruction (2026-10-17); recorded in docs/05-evidence/T007_SIGNOFF_EXIT_FINAL_SIGNOFF_RECOMMENDATION.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_ENTRY_HANDOFF.md",
+      "task_id": "T-007",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T008_ENTRY_HANDOFF.md",
+      "bytes": 12061,
+      "sha256": "b7fa10b2ce0aa78f9a97cadea61147a46b0b533e351a7abcbaa4a7e7111fe741"
+    },
+    {
+      "path": "docs/05-evidence/T008_ENTRY_HANDOFF_CORRECTIONS.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4704,
+      "sha256": "7075fcf54bd8d1ea3f9ed0ae8408186d7e50c7236da9525d5a9bff9f67eae6ba",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_ENTRY_SOURCE_INVENTORY_RECONCILIATION.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6963,
+      "sha256": "d1393ad49c2cbb19f41782379f7ec341e0c1c5c735786c780eb460be702b0393",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FINAL_EXIT_COVERAGE_CORRECTION.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4323,
+      "sha256": "fe122983499e5313ce41dbf069f9cc9e984d4b31993b7c78e95c60003b6ba57e",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5097,
+      "sha256": "97fcba72a7a9176f7dda52b031af566fb7fc46cedb08095626894e446323e040",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FINAL_EXIT_FULL_TEST_RESULTS.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7587,
+      "sha256": "9187d65babae03e95ba6d384bbabce0222803986d66362b34e49319009701ec8",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FINAL_EXIT_LOG_QA_VERIFIERS.txt",
+      "task_id": "T-008",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 10642,
+      "sha256": "cc60612f5cb7985b10b7980268def59fc87d01ed0c9cc91ac493b4cb75076829",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FINAL_EXIT_LOG_UNITTEST_SUITE.txt",
+      "task_id": "T-008",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 1759,
+      "sha256": "9684b5fcf41273182f1fd45ad7ed1bdb2b1b08e5d4751f6ff1b937e6f44c3daa",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FINAL_EXIT_METRIC_ANSI_VERIFICATION.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6665,
+      "sha256": "3638567fd9129480e544282c3f4875d1aec6afb3358020d095f8987c2b805a9a",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FINAL_EXIT_POLICY_CONTRACT_REVIEW.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7217,
+      "sha256": "8a1983581f7efc14c8cd0cd7aa77afcd2eb06fc87bf81fe99076dec44ca31752",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FINAL_EXIT_SOURCE_AND_DIFF_AUDIT.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5646,
+      "sha256": "923a005319b43cf5411da6b6e82d2786a9b3436b71202a47dc6033321557d0f2",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_BASELINE_AND_SCOPE.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3037,
+      "sha256": "14ce9a913735c1e48415f76bb0ea1ade5941f4897fa5eb84110d424ff7fd6e2a",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_DC11_DC12_ACCOUNTING_REPORT.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3769,
+      "sha256": "73448bb30c5b4c2ff81d2e27960c72f8332283f4f2cdc67592a803007d7a1e99",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2812,
+      "sha256": "175d62b322226bd795c94ebe2a7dd92c9d4658332bc599f6e26b5972cfcb2fc1",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_LOG_QA_VERIFIERS.txt",
+      "task_id": "T-008",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 12704,
+      "sha256": "0211f582880f2698ae55ee51025c0248ab2cf4dd6ff3deddb1d7da9f814afa19",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_LOG_UNITTEST_SUITE.txt",
+      "task_id": "T-008",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 58082,
+      "sha256": "b773b033f1a7d4881b486d50365714b435f4c721bf302c6e44f146386325b664",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_OR05_DATE_COVERAGE_REPORT.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2897,
+      "sha256": "5ef314c84836062beef178c8433ef820034b89546c7e7f6e4dc465af45ff7e3a",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_PROVISIONAL_POLICY_IMPACT_REVIEW.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2879,
+      "sha256": "f73e24b4363648a8e3fcd3894ee27da460079aaf4d6ca9deb3b6578459c96e8a",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_QUALITY_RULE_CATALOG.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4023,
+      "sha256": "8f4f361bb6c09600c7acb165ab6e2ca812f38cc47edd2dfff0e63e68b134a09e",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_RECORD_AND_METRIC_VALIDITY.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4753,
+      "sha256": "596486824f1ae97ad10f533f06ebd9a29805fc101d4b7526317154efb0a66295",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_RISK_AND_LIMITATION_REGISTER.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2292,
+      "sha256": "a317a8501fc63564d1781f397d793c1de32e29ccfbcf12b8fef69a6ab0a17e8e",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_STORAGE_AND_RECOVERY_REVIEW.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 1865,
+      "sha256": "1a5a6ab6151b1aa593d05b2d8cadbd642d214ef76975461658d8252723a85c3e",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_SYNTHETIC_TEST_MATRIX.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5157,
+      "sha256": "28cbde1170c057a9b5dd5e62fd02e6159cd2a396210b444ff72651ea3c27844e",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_T007_HANDOFF_RECONCILIATION.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3290,
+      "sha256": "a44faae84b974af1b6ae3aa7d66936bcc76f243c1cdf78c5b36c6a0c4dec48d5",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_FULL_T007_INTEGRATION_REVIEW.md",
+      "task_id": "T-008",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5099,
+      "sha256": "9b24e3fb0b9f71835cd614b4bf871238521829d24dbb7b39f5fdf13e1bf01b44",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T008_HUMAN_SIGNOFF_20261018.md",
+      "task_id": "T-008",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 7341,
+      "sha256": "cdb90cb20844a93037693f5023794cd80c677d5ada63f0804ca9ee6baef82f20",
+      "authorization_ref": "Project Lead G4-OFFICIAL-HUMAN-SIGNOFF explicit signoff instruction (2026-10-18); recorded in docs/05-evidence/T008_HUMAN_SIGNOFF_20261018.md"
     },
     {
       "path": "docs/05-evidence/T009_BASELINE_AND_SCOPE_REPORT.md",
@@ -3263,6 +3535,558 @@
       "sha256": "ae2301960aea0a226d2164de59d377b21112433daefdbdd6b8d1c384312b6608"
     },
     {
+      "path": "docs/05-evidence/T010_FULL_BASELINE_AND_PREFLIGHT.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4604,
+      "sha256": "c05b827e655211ad82bdb278017d4464e462ff2178d0acd4ea549903b5f999a1",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_BASELINE_AND_PREFLIGHT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_DC11_DC12_ACCOUNTING_REPORT.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4338,
+      "sha256": "845cf504f29e0e2a3c51015e324ab2b6532f64ef2c066a3b010f35527cfbcc27",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_DC11_DC12_ACCOUNTING_REPORT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-010",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 7643,
+      "sha256": "e756b86921ad31bc61010ce3913846de2f2f528b4094daf0de1fdbb294628848",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_JANUARY_SMOKE_RESULTS.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4161,
+      "sha256": "7b8aa4020a3cdf4e3d112d3c20fa89d574b97f04d06776de067a336077615955",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_JANUARY_SMOKE_RESULTS.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_LOG_QA_VERIFIERS.txt",
+      "task_id": "T-010",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 7476,
+      "sha256": "096433870a828e997b1fd132a5649ce225187f0e55d1538da24e4b833d909492",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_TEST_EXECUTION_REPORT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_LOG_UNITTEST_SUITE.txt",
+      "task_id": "T-010",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 70790,
+      "sha256": "b7c4e03dbc995c3748668b69994d84301b0b7c40a441fc91b2b7543c166432da",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_TEST_EXECUTION_REPORT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_MICRO_SMOKE_RESULTS.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3634,
+      "sha256": "416e634b0a92032850b91ca66590e1bde098f8c3795824272a514611bd7a130b",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_MICRO_SMOKE_RESULTS.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_PARQUET_STAGING_VERIFICATION.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4390,
+      "sha256": "89b3594c03b5464f8cf58a48d12a46308a984f682f43aa3bee472a817a8972f6",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_PARQUET_STAGING_VERIFICATION.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_RAW_DATA_IMMUTABILITY_AUDIT.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2638,
+      "sha256": "c0651707d7a209ab280468f76857ccc2208c4b25fbfd1f5eb222a3634663889c",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_RAW_DATA_IMMUTABILITY_AUDIT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_RESOURCE_BENCHMARK_TS014.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6588,
+      "sha256": "f48b47614b5e5f23adc9a931944c13a9f9d69da8579092e8436b4693fb586b02",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_RESOURCE_BENCHMARK_TS014.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_RISK_AND_LIMITATION_REGISTER.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3480,
+      "sha256": "17c9352027334f0b052bdd3e6476ac62ec96fa342e748c92c342c7d0e0d33d60",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_RISK_AND_LIMITATION_REGISTER.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_SAFETY_GUARD_VERIFICATION.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5179,
+      "sha256": "73261c32fb4afa0a15938d55b236d23bf436e5b5b3a422f6d19e4cb26d0b56d3",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_SAFETY_GUARD_VERIFICATION.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_TEST_EXECUTION_REPORT.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4347,
+      "sha256": "48779e56e6c8451a25ca8ae07c9a339be73419bef53608dd3368421614f4b415",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_TEST_EXECUTION_REPORT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_FULL_YEAR_SMOKE_RESULTS.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6047,
+      "sha256": "81785ee4e23a5322b3e7863daff3f2e0b70fb22b52abe97b79b070218901882c",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_YEAR_SMOKE_RESULTS.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_HUMAN_SIGNOFF_20261018.md",
+      "task_id": "T-010",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 9413,
+      "sha256": "62bedf399c1b5143f03814b484d6bb2ee289abf777c72d544ec3bed56cd2fafe",
+      "authorization_ref": "Project Lead T010-OFFICIAL-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T010_HUMAN_SIGNOFF_20261018.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_OFFICIAL_SIGNOFF_SCHEMA_AND_PROVENANCE_ERRATA.md",
+      "task_id": "T-010",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 10799,
+      "sha256": "3243a4c7fdd14f5225a0132db3da5bfbfcfaf423efa3f817a7b0622a9cfe54dd",
+      "authorization_ref": "Project Lead T010-OFFICIAL-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T010_HUMAN_SIGNOFF_20261018.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_REAL_DATA_SMOKE_METRICS.json",
+      "task_id": "T-010",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "bytes": 22252,
+      "sha256": "76df38f4c2d72e1d36ed71b897a431ba6dbdf4ae2a81db68b035fa3ca1f4ce78",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_REAL_DATA_SMOKE_METRICS.json"
+    },
+    {
+      "path": "docs/05-evidence/T010_RUN1_HISTORICAL_REAL_DATA_EXECUTION.txt",
+      "task_id": "T-010",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 11210,
+      "sha256": "7b6624b18a70aa53fcf810d000a490dd1af52bd42317393f1ac3b874f12d5be3",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_RUN2_CLOSURE_REAL_DATA_EXECUTION.txt",
+      "task_id": "T-010",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 12771,
+      "sha256": "ff537f572aadf5d36513597601f82c26047c114bfcb95381047076416afeb23f",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8214,
+      "sha256": "5e0d8145f0ae3da9d6f0b45888e0c2f4ee39d4d8c5e7f8ae0794021a42e5e884",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_JANUARY_AND_MICRO_ACCOUNTING.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6528,
+      "sha256": "d6b8dff5fd1965aab186c45b8eafc1374ea00e97f7d307150cb06e5ec61dadc7",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_LOG_QA_VERIFIERS.txt",
+      "task_id": "T-010",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 30079,
+      "sha256": "4289726c9a019ceae3021f056b4d0742fe35b68c7a3ed76b0021e794649f3187",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_LOG_UNITTEST_SUITE.txt",
+      "task_id": "T-010",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 70863,
+      "sha256": "49d4d31fc9fd95cc40747a38623f70d7e5c4c4d9fd22986a92a76a40b90396d1",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_METRIC_VALIDITY_INDEPENDENT_REVIEW.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5472,
+      "sha256": "4e74a0919b570874100a4e126555e29ed77fd55719d31e934b674567ebdcb9c9",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_PARQUET_ARTIFACT_HASH_MANIFEST.json",
+      "task_id": "T-010",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "bytes": 28534,
+      "sha256": "89f4f87e3c02dfd8e5f0d576d55ec89d77780129390290b051f944e0b31c0cd7",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_PARQUET_SCHEMA_ERRATA.md",
+      "task_id": "T-010",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 7535,
+      "sha256": "6ddaf00c9f127918fb359a404c40034cbc3b7b78e21bac6c66c246b2a5de8848",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_PRODUCTION_POLICY_GUARD.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5491,
+      "sha256": "a0efbaf7ab77e47ed12f7fe01e9827c4689e50a0344596063fae775d39019fa3",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_REGISTRY_AND_QA_SEAL.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6219,
+      "sha256": "71854bdab7cbba01f2cb3a6b3695f52504b90a1b53676dca930a20bfb3edeaa1",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_SOURCE_AND_RUN_PROVENANCE.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5541,
+      "sha256": "ece551406af8a2fdd6177285363846aa8ee95f05e595acbfd5f9bc0dffa9268d",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T010_SIGNOFF_CLOSURE_TS014_BENCHMARK_RECONCILIATION.md",
+      "task_id": "T-010",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6059,
+      "sha256": "164dbdbe02dc020bbb71853412470139d88641da708eb832fee0354ef24ddd28",
+      "authorization_ref": "Project Lead MASTER-T010-SIGNOFF-CLOSURE authorization (2026-10-18); recorded in docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_BASELINE_AND_PREFLIGHT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5847,
+      "sha256": "e9149885de3e3be3978a26d38bc995fb85c4ffc09d52b81601ffcc092f67df71",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_BTS_PARITY_RECONCILIATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7628,
+      "sha256": "e9939f62baf3c8e2a9ff65a200fd0f047463fc75622a975c0e2f64ef17c6cc12",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_CONTRACTUAL_TEST_MATRIX.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4645,
+      "sha256": "797a92e7c08fac1eb089e32a41cbff71f3278103a27d90be22cc3f1fa3d8b0be",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_DOC_READING_ATTESTATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 19770,
+      "sha256": "7e39d4c92de732d70dabbb3c607e7334201a55dc0a6bd5aa99b303fed0c2ca6c",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_FAULT_INJECTION_AND_ROLLBACK.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6156,
+      "sha256": "c8ea892b6f7636ccf2d1a93c450c918955726ede4b58d0697e96c65904153f54",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 7493,
+      "sha256": "3d5f460c39ddce8b996e7419ca8f72c5596ee0cd840e66d091f64ad11009fdf7",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_KPI_ENGINE_VERIFICATION.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 9130,
+      "sha256": "97cfe8c292485e3c4f113878fa9f65f26ae74c745abf08dfabfa57e9325b2fd6",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_LOG_QA_VERIFIERS.txt",
+      "task_id": "T-011",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 36496,
+      "sha256": "d9b55dfcc6f52a234cd3b92f32508e072bd402fb20a9de9b98258d95140d3348",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_LOG_UNITTEST_SUITE.txt",
+      "task_id": "T-011",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 98310,
+      "sha256": "81b2448f8363d8837c53407a011d28fe71e675b9f8cde6cd1be22983e63da21b",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_RISK_AND_LIMITATION_REGISTER.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3590,
+      "sha256": "b50622f39156a78720c4d5334cb2214ceda5ecd8f01f1f5287a7f3111f4f13ed",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_SOURCE_CHANGE_AND_PROVENANCE.md",
+      "task_id": "T-011",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 5080,
+      "sha256": "321ccdd97abe95b3858ace1bafb2f6383c546d644b06e29f2ea1b2613acc951d",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_TEST_EXECUTION_REPORT.md",
+      "task_id": "T-011",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 4661,
+      "sha256": "8b5b6a773aaa5147a9db19080706d12beed628f39e3d405111b11e58d857083a",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_FULL_TS008_AND_REPEATABILITY.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 7619,
+      "sha256": "336a13d04b3e4e40787f927ef1c80131e74ce0129cd237540cd7e4ab5a3c1198",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_KPI_SAMPLE_SMOKE_METRICS.json",
+      "task_id": "T-011",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "bytes": 2943,
+      "sha256": "ac7314b001375723e3d3e6d3450e6d4570badafbf8131b88b3a77c09e3b1ec9c",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_BASELINE_AND_DOCUMENT_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 10116,
+      "sha256": "56783ceea49a7c47311b21bdda4f171dece717675a159ab85317041d4312aafd"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 5438,
+      "sha256": "0264c8ee80a8fa0a164185f62573e6264d70877da2669265cf4cedc897f12153"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_FULL_REGRESSION.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 4294,
+      "sha256": "b599e0cf1460681a3fa3dddd9d5fe94e4f872b29bae3f60f4de2aa1e6731f748"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_KPI_EDGE_CASE_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 4988,
+      "sha256": "a2bc7a0c0ad0c713d9f4f0e01c274d169b9e6084ce013947fc37c4a41f59de3d"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_MIN_N_AND_COVERAGE_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 5633,
+      "sha256": "b757e1e9bd43c14e768de4acd988f94c273b4bc8965ea6c83dc4f55d6eb4563c"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_RAW_QA_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 41904,
+      "sha256": "f0c12d041ff63487ac2277277754eb07fd6ee27837f87799abb50fa109ef494d"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_RAW_UNITTEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 120501,
+      "sha256": "e2b0c95a5b94c7e8365ac00c4d26014776612d2f335e6a70b3bdfd19aaafec7c"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_REPRODUCED_COUNTEREXAMPLES.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 7945,
+      "sha256": "25b81c3c72aa1a0190c73b78edfdd85f7541f7983c975a9dcc0d3eec56fee02d"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_SOURCE_CHANGE_AND_RISK_REPORT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 6805,
+      "sha256": "59fd13dd79a5cf7b045aeaeb2237d9369aced0e9e902f529a60bdf0f3f0b428c"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_TS008_ACCURACY_RECONCILIATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 4968,
+      "sha256": "7e26cdb0166df23d3861407fc945c3601be835b6860b7317139005ad42f65af2"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_TS013_FAULT_INJECTION_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 5836,
+      "sha256": "64a2d03d50450c60e07db3bd19a6cc95670fdcc33734cb0944a2088a1abdbc08"
+    },
+    {
+      "path": "docs/05-evidence/T011_R1_TS018_FAIL_CLOSED_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 6649,
+      "sha256": "f0f04894d756db2cd3670d4392601bab17ae4b775dcc66912eaae7dcd4a5e062"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_BASELINE_AND_DOCUMENT_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 13960,
+      "sha256": "2e5e899dcdd40744088603b1601fec500f6497bb4cb5d3f9e3609ff369205343"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_BTS_PROVENANCE_GUARD_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 5692,
+      "sha256": "ccc021ada51277dd22f84e6bd88d61902dd315b90ce1454902671ba8cf7165e2"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_COMPOSITE_KEY_VALIDATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 5825,
+      "sha256": "664a60d8b48e84221f323de5bb41fdac39c156b89ff74d2ce298b9e6e446ab56"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_EVIDENCE_CLAIM_RECONCILIATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 5352,
+      "sha256": "ffc5515e5cb4caed0c9bd92c108086974e0fa746970bf46f14e1612f09271a62"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 5556,
+      "sha256": "5d5f85361fe89edb50e19a52a5f276855493c23de86ae19989692f8af1a60fe3"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_FULL_REGRESSION.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 6061,
+      "sha256": "3d463a77c7485701fb5e02f7172fd95b5be67d5009a58fdb8659f4dbf3f08b0a"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_RAW_QA_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 39682,
+      "sha256": "a9d75c0dbc58ec9c57fcbaab0b7f92051c31ef3c90f40055f9ea307d45cdcd8f"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_RAW_UNITTEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 120172,
+      "sha256": "8110f4170031fdf4eeaec47f042ac521e3a4cb7d70996ce1effc984482228afa"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_REPRODUCED_FALSE_PASS_CASES.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 7104,
+      "sha256": "28d4061b8d452cbefb69b68fa8d7b1480ebe452ca8df13133bd5868f4ec3805e"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_SEVEN_FIELD_COMPLETENESS_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 6740,
+      "sha256": "96596886dd2f30dd7dd4bd307d4ff85b4af33620cb6a5b35c8999f1cc9b0e4a3"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_SOURCE_CHANGE_AND_RISK_REPORT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 6964,
+      "sha256": "5f8b4dd7d56cf6b21b1f50f21e7b50c9c32974124cb26e84a0553ec6612a2e73"
+    },
+    {
+      "path": "docs/05-evidence/T011_R2_TS013_REALISM_AND_RECOVERY.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 5793,
+      "sha256": "2e987b6899b55abf9fe73ced8728407028cc943fa13e04015c96b84ff821633a"
+    },
+    {
+      "path": "docs/05-evidence/T011_TS018_BTS_RECONCILIATION_SUMMARY.json",
+      "task_id": "T-011",
+      "artifact_type": "EXECUTION_MANIFEST",
+      "bytes": 2406,
+      "sha256": "762ce2ae28361f15790170b46f3ff931c2d516d60ee9e616a6e354e46c98bd59",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 TARGETED PARITY HARDENING AND EVIDENCE CORRECTION instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
       "path": "requirements.txt",
       "task_id": "T-009",
       "artifact_type": "DEPENDENCY_SPEC",
@@ -3306,9 +4130,9 @@
       "path": "src/flight_pipeline/ingestion/coordinator.py",
       "task_id": "T-007",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 71897,
-      "sha256": "2577275651b8f60e23af38725c8d8f01792e969a42ad471e238e320257652d06",
-      "authorization_ref": "Project Lead MASTER-T007-FINAL-REMEDIATION instruction (2026-10-17); recorded in docs/05-evidence/T007_FINAL_REMEDIATION_FINAL_INDEPENDENT_VERDICT.md"
+      "bytes": 81856,
+      "sha256": "daf6681d615ac3e45a4b20ff1c92c04c2f0bf7c157d355a595d1d062a126204d",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
     },
     {
       "path": "src/flight_pipeline/ingestion/reader.py",
@@ -3335,20 +4159,108 @@
       "authorization_ref": "Project Lead MASTER-T007 instruction (2026-10-17); recorded in docs/05-evidence/T007_FULL_FINAL_INDEPENDENT_REVIEW.md"
     },
     {
+      "path": "src/flight_pipeline/kpi/__init__.py",
+      "task_id": "T-011",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 1420,
+      "sha256": "84b1c4e40dda65438642f7f1d619fc589be658c8437cfc57469934bc39e88523",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "src/flight_pipeline/kpi/aggregators.py",
+      "task_id": "T-011",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 3634,
+      "sha256": "cfe1b6e79a0a47a289905b997dc487a2723f4136b3694baf27ca489c189dd97a",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "src/flight_pipeline/kpi/bts_reconciler.py",
+      "task_id": "T-011",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 33921,
+      "sha256": "ee2b343bb1292352b8d8212fe454194b64db1c57c1f6131bd978915f9f337bd2",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 TARGETED PARITY HARDENING AND EVIDENCE CORRECTION instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "src/flight_pipeline/kpi/calculator.py",
+      "task_id": "T-011",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 22282,
+      "sha256": "58e2fa100e7294409ec5ef03baf2bf9882451088b56731b8025768319f64c8e5",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "src/flight_pipeline/kpi/catalog.py",
+      "task_id": "T-011",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 5570,
+      "sha256": "8f3f669128f695fc2f255dc71f15c3cc25dc9359acbd79a997978ae410ddd37d",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "src/flight_pipeline/kpi/schema.py",
+      "task_id": "T-011",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 1248,
+      "sha256": "89886db0a7c68ad2fb56b0d5c046dff35a1cd5627ef2370120f3f9bcb452ad49",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
       "path": "src/flight_pipeline/quality/__init__.py",
       "task_id": "T-009",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 543,
-      "sha256": "66bb045e629cb4088e277f0efffa2025001bf158120121535432b4b3e92f2e0e",
-      "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
+      "bytes": 2932,
+      "sha256": "ca8805cedb5d5b5b4f86082685d7c58b4df29c24a33df218037d016244c11f38",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "src/flight_pipeline/quality/accounting.py",
+      "task_id": "T-008",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 8468,
+      "sha256": "6622a544c8fc87e8421dc8a0857b699f632d407017a0c29ea39cf5adf0ed1db1",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "src/flight_pipeline/quality/catalog.py",
+      "task_id": "T-008",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 11690,
+      "sha256": "1e973bb6b4d2454df8bf6869ab630c5121ca6c0cfc328da94d0f44a837b93d04",
+      "authorization_ref": "Project Lead MASTER-T008 authorization (2026-10-18); recorded in docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "src/flight_pipeline/quality/coverage.py",
+      "task_id": "T-008",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 4694,
+      "sha256": "c04bfe7e5b9fc492ff20e68880ae97c3509b8b6c60cd5ddaf6ddcf89e8f683bc",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
+      "path": "src/flight_pipeline/quality/engine.py",
+      "task_id": "T-008",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 8401,
+      "sha256": "994b7944f166db4c7e1a62cb314de3b2270bfec1e0970a9f81a2089762307052",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
+      "path": "src/flight_pipeline/quality/policy.py",
+      "task_id": "T-008",
+      "artifact_type": "SOURCE_CODE",
+      "bytes": 8793,
+      "sha256": "67153de6608be63cc9ada3d9b8dcde805b46dd419882fa14fa4730654853c31f",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
     },
     {
       "path": "src/flight_pipeline/quality/predicates.py",
       "task_id": "T-009",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 3290,
-      "sha256": "b0cb88bf316231229eaba3afd07c34b5f0d65ae9cf240a3ccc6b63de1041f715",
-      "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
+      "bytes": 4109,
+      "sha256": "ca6fdc19112ed596d120be1d12af8637d6fd2e24467c680c799ea10bc69d698d",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
     },
     {
       "path": "src/flight_pipeline/storage/__init__.py",
@@ -3362,8 +4274,8 @@
       "path": "src/flight_pipeline/storage/locking.py",
       "task_id": "T-007",
       "artifact_type": "SOURCE_CODE",
-      "bytes": 10675,
-      "sha256": "4dd338adf0b9bc18c639d5e3664d6dc15fb61c36763949dde277a5de3c947976",
+      "bytes": 48340,
+      "sha256": "73212c39b2a1b1e18d0962492a6e94c4012382bcb36b3a6bff9b28059e6f6f9f",
       "authorization_ref": "Project Lead MASTER-T007 instruction (2026-10-17); recorded in docs/05-evidence/T007_FULL_FINAL_INDEPENDENT_REVIEW.md"
     },
     {
@@ -3479,12 +4391,76 @@
       "authorization_ref": "Project Lead MASTER-T007 instruction (2026-10-17); recorded in docs/05-evidence/T007_FULL_FINAL_INDEPENDENT_REVIEW.md"
     },
     {
+      "path": "tests/test_t008_quality_engine.py",
+      "task_id": "T-008",
+      "artifact_type": "TEST_SUITE",
+      "bytes": 45767,
+      "sha256": "6d186bb07da4e7b9a95d3fd4cf7f773af82429073cac2a9dbab382978a4483a9",
+      "authorization_ref": "Project Lead MASTER-T008-FINAL-EXIT authorization (2026-10-18); recorded in docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md"
+    },
+    {
       "path": "tests/test_t009_r3_defect_reproductions.py",
       "task_id": "T-009",
       "artifact_type": "TEST_MODULE",
       "bytes": 4409,
       "sha256": "c4c3dda0a2dfc7f3d9490af962e23733bc4ca64f3a5ddeb68d8462e463823807",
       "authorization_ref": "Project Lead T009-R3 instruction"
+    },
+    {
+      "path": "tests/test_t010_policy_guards.py",
+      "task_id": "T-010",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 10887,
+      "sha256": "374586d3341a7b4599632b2036fd638bde188e58d980c661d01cc751db203796",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_SAFETY_GUARD_VERIFICATION.md"
+    },
+    {
+      "path": "tests/test_t011_fault_injection.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 15207,
+      "sha256": "8b6fd73a494ec6443c2983e368dff57ff5f78e86c2109c8658de7a2fd4df7d7a",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 TARGETED PARITY HARDENING AND EVIDENCE CORRECTION instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "tests/test_t011_kpi_engine.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 24125,
+      "sha256": "4707e120f1b1ebbd8d8508dd0698f6ae4184fe2731cf2d6224f504e89aaab5aa",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "tests/test_t011_r1_counterexamples.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 TARGETED PARITY HARDENING AND EVIDENCE CORRECTION instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 11314,
+      "sha256": "579cbc69e72fa7855012c37943fbafbdf7549e5c39f0fb48320c755bbff89213"
+    },
+    {
+      "path": "tests/test_t011_r2_counterexamples.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md",
+      "bytes": 7879,
+      "sha256": "25de5e7dd506acb77b6f9b8dc596c59d07be8b7b67c8fddc485aa50d0134a386"
+    },
+    {
+      "path": "tests/test_t011_ts008_repeatability.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 11101,
+      "sha256": "a4dd2f99842f19da194a1bec716e6896b30028aed53d8f8ad73f37fbfdd0f59c",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R1 TARGETED INDEPENDENT AUDIT REMEDIATION instruction (2026-10-19); recorded in docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "tests/test_t011_ts018_bts_parity.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 13971,
+      "sha256": "e16addf16951355e99cbaa14fba3ce486b0c996522211110a49afd5267a09def",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 TARGETED PARITY HARDENING AND EVIDENCE CORRECTION instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
       "path": "tools/audit/apply_closeout_edits.py",
@@ -3530,9 +4506,33 @@
       "path": "tools/check_working_tree_consistency.py",
       "task_id": "T-009",
       "artifact_type": "QA_SCRIPT",
-      "bytes": 24507,
-      "sha256": "e03281358299e9eb15dea9d63fdf5d7010a7be0d7edaf02f53f3b981824b0bfc",
-      "authorization_ref": "Project Lead T009-IMPLEMENTATION-R1 instruction (2026-10-17); recorded in docs/05-evidence/T009_R1_FINAL_TECHNICAL_REVIEW.md"
+      "bytes": 27102,
+      "sha256": "6bf747be76a983ca1ede793a3edc267e89280ce312bb490fd2f8895b6d59b269",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20); hardened for reference data policy"
+    },
+    {
+      "path": "tools/qa/run_t010_real_data_smoke.py",
+      "task_id": "T-010",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 35425,
+      "sha256": "cc1aae8157d4be422f31da516c71fc239052d0b09b7ce528c6b5d3577c737385",
+      "authorization_ref": "Project Lead MASTER-G5-T010 authorization (2026-10-18); recorded in docs/05-evidence/T010_FULL_TEST_EXECUTION_REPORT.md"
+    },
+    {
+      "path": "tools/qa/run_t011_kpi_smoke.py",
+      "task_id": "T-011",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 4955,
+      "sha256": "4ab2049ae642280efb9294cbdda12b19556ce9d7db0d1b0783be8dff55177985",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T-011 / G5 instruction (2026-10-18); recorded in docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "tools/qa/run_ts018_bts_parity.py",
+      "task_id": "T-011",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 12482,
+      "sha256": "a483f4f2af59b4522c9943385805aa7de011a31e0d43c6bcb088b4ff7a7f63bd",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R2 TARGETED PARITY HARDENING AND EVIDENCE CORRECTION instruction (2026-10-19); recorded in docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
       "path": "tools/qa/test_t007_spark_csv_reproduction.py",
@@ -3570,9 +4570,9 @@
       "path": "tools/qa/verify_g2_repo_apply_r1_semantic_invariants.py",
       "task_id": "G3-OFFICIAL-SIGNOFF",
       "artifact_type": "AUTOMATED_VERIFICATION_SCRIPT",
-      "bytes": 40533,
-      "sha256": "db6a3b563928689f0d7fd8cdc5c02ef27d842d719adf019ecceebe4453c1edd3",
-      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md"
+      "bytes": 42525,
+      "sha256": "760a4582ec5145e9ec5213244ffb53685bb0812bb4f800d50190d17284b4104d",
+      "authorization_ref": "Project Lead G4-OFFICIAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/G4_OFFICIAL_HUMAN_SIGNOFF_20261018.md"
     },
     {
       "path": "tools/qa/verify_t003_contract_consistency.py",
@@ -3594,49 +4594,1819 @@
       "path": "tools/qa/verify_t006_contract_consistency.py",
       "task_id": "T-009",
       "artifact_type": "TEST_SUITE",
-      "bytes": 39116,
-      "sha256": "f88e6665ffd07ba907b34d6e5f8fdc186500fe477ab38be3a2dadb935e371563",
-      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md"
+      "bytes": 40330,
+      "sha256": "9e544e688120095f6846f89d606dc29f187b9af7cdcd06f861c842d933131967",
+      "authorization_ref": "Project Lead G4-OFFICIAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/G4_OFFICIAL_HUMAN_SIGNOFF_20261018.md"
     },
     {
-      "path": "docs/05-evidence/T007_FINAL_SIGNOFF_DOCUMENTATION_ERRATA.md",
-      "task_id": "T-007",
+      "path": "tools/qa/verify_t010_parquet_schema_attestation.py",
+      "task_id": "T-010",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 6189,
+      "sha256": "4b6b6052f4917e68f29b0e9a20ebc540f07ad33840fd9d8baadab41f46733f55",
+      "authorization_ref": "Project Lead T010-OFFICIAL-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T010_HUMAN_SIGNOFF_20261018.md"
+    },
+    {
+      "path": "tests/test_t011_r3_counterexamples.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 23646,
+      "sha256": "8f7686ea154bca7fb242b54751138f1bcac3d478f93595a0803ef22c70269c3e",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R3_DOCUMENT_AND_BASELINE_AUDIT.md",
+      "task_id": "T-011",
       "artifact_type": "AUDIT_REPORT",
-      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
-      "bytes": 13041,
-      "sha256": "46380ecdf8681b4d3bcc8f9a04764d1d35746f10c79b4a53d18deddce0d1888c"
+      "bytes": 15341,
+      "sha256": "0fa4fc4a0fafb372bc646eb529708667e863cd00a0db9e80387bd1d949465f6a",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
-      "path": "docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
-      "task_id": "T-007",
+      "path": "docs/05-evidence/T011_R3_REPRODUCED_COUNTEREXAMPLES.md",
+      "task_id": "T-011",
       "artifact_type": "AUDIT_REPORT",
-      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
-      "bytes": 11293,
-      "sha256": "c479046bcc76431f7df34a37339ef8e153f93bf91853759178702467094d3b88"
+      "bytes": 7421,
+      "sha256": "8a78e49dbbff8e2f172cef95569010ad7202c293bb492cce3d05580632ece16b",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
-      "path": "docs/05-evidence/T008_ENTRY_HANDOFF.md",
-      "task_id": "T-007",
+      "path": "docs/05-evidence/T011_R3_PROVENANCE_TRUST_BOUNDARY_AUDIT.md",
+      "task_id": "T-011",
       "artifact_type": "AUDIT_REPORT",
-      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T008_ENTRY_HANDOFF.md",
-      "bytes": 12061,
-      "sha256": "b7fa10b2ce0aa78f9a97cadea61147a46b0b533e351a7abcbaa4a7e7111fe741"
+      "bytes": 6713,
+      "sha256": "08cf85d49d3e9c4f7167b822e58c0282614b0a31c20c1842c15fc03862bc9652",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
-      "path": "docs/05-evidence/T007_FINAL_SIGNOFF_LOG_UNITTEST_SUITE.txt",
-      "task_id": "T-007",
+      "path": "docs/05-evidence/T011_R3_NUMERIC_PARSING_AND_NULL_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6145,
+      "sha256": "36cff6d9f83020255eb9f9297931f19ebc3bfeb4d71e4f6d717e8595fb692dc3",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R3_LOCK_RECOVERY_AND_CONCURRENCY_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6012,
+      "sha256": "c0d00df66354a366706dfea19c16b3f249627748e945940acff7ead1907edc9c",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R3_COMPOSITE_KEY_DATE_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3823,
+      "sha256": "c0c677b636421cda8d4647b293a99b2c3bce5810900a5577e2523e25945dbb69",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R3_SYNTHETIC_RECONCILIATION_VERDICT_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5511,
+      "sha256": "f47e10fae75b71b3471383e2e7c09ed11a066b44a132d99ae168309a613fe0e5",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R3_EVIDENCE_CLAIM_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 6100,
+      "sha256": "0e46b8004c36ffb32ae68b6dede49a669ccf89050102224b8072388b5cafe8a7",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R3_SOURCE_CHANGE_AND_RISK_REPORT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5699,
+      "sha256": "52aaf432ec93ea5c219c25d98b1edbfbafd4d5e4d134f1997ee822da454dd143",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R3_FULL_REGRESSION.md",
+      "task_id": "T-011",
       "artifact_type": "SYNTHETIC_TEST_REPORT",
-      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md",
-      "bytes": 73461,
-      "sha256": "04e3d3b63ae75981af326eaf71e0cf268cfd0095340a522e0c857247258b4510"
+      "bytes": 6388,
+      "sha256": "64118044d7c8a3fff54a92a4d3e8a8d8b52d79122cf86337496368385bf7e958",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
     },
     {
-      "path": "docs/05-evidence/T007_FINAL_SIGNOFF_LOG_QA_VERIFIERS.txt",
-      "task_id": "T-007",
+      "path": "docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6548,
+      "sha256": "29c0b922fd7c017ea7d1ee1f6e6b557d978f6975dc016534be5703adacc5a66e",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R3_RAW_UNITTEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 121391,
+      "sha256": "ae61dae8a434232cae6218ab7e3123bf4941e980e41ce1a56b3b4ae0849b29b1",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R3_RAW_QA_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 42744,
+      "sha256": "ac8cdb6a4d131d7e29aeec6343e2c52e8da9c737080b1dd68dcbc4aa49d8024b",
+      "authorization_ref": "Project Lead MASTER EXECUTION PROMPT — T011-R3 instruction (2026-10-19); recorded in docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_BASELINE_AND_DOCUMENT_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6712,
+      "sha256": "144dfc18ce2672a01141df73f4ae9856a2d0d800fb77493a30af4bee51a385e3",
+      "description": "Baseline Git HEAD and comprehensive documentation audit prior to T011-R4 source modifications.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_REPRODUCED_COUNTEREXAMPLES.md",
+      "task_id": "T-011",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 5727,
+      "sha256": "ae02f4186ef173e455a23f8ffd4532285eac8a96406e1990fd76eefb5c16d219",
+      "description": "Empirical reproduction and counterexample proof of pre-fix defects R4-F01, R4-F02, and R4-F03.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_PROVENANCE_TRUST_RECONCILIATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6808,
+      "sha256": "628fed9b5d4d93c691f81f34f7dd6adccc8f8517f648075f20cc1d86b70fd943",
+      "description": "Detailed resolution of finding R4-F01: disaggregation of companion format, candidate checksum, and source provenance.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_INVALID_PID_FAIL_CLOSED_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5897,
+      "sha256": "f3876977e86a663494b9724ce2b4a7187c60542f2a306c4f1176a681e07c8904",
+      "description": "Detailed resolution of finding R4-F02: PidLivenessStatus classification and invalid PID fail-closed handling.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_LOCK_RACE_AND_RECOVERY_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6282,
+      "sha256": "f620ec41e07c620b61417bb5834f3cee35800c986b07d0273630af0ea114a482",
+      "description": "Detailed resolution of finding R4-F03: lock replacement race prevention and pre-unlink token re-verification.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_EVIDENCE_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 6187,
+      "sha256": "9d352b61a9020bf500123973126f1ac12a0448859d3f78f9434d23ae85e30920",
+      "description": "Detailed resolution of finding R4-F04: exact unittest duration (434.274s), TS-013 characterization, and 12 QA inventory.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_FULL_REGRESSION.md",
+      "task_id": "T-011",
       "artifact_type": "SYNTHETIC_TEST_REPORT",
-      "bytes": 12711,
-      "sha256": "36702c622cb32e8f5db75274e670e06f61ef49afc92ec2822d495e6b15cf2058",
-      "authorization_ref": "Project Lead T007-FINAL-HUMAN-SIGNOFF instruction (2026-10-18); recorded in docs/05-evidence/T007_HUMAN_SIGNOFF_20261018.md"
+      "bytes": 6347,
+      "sha256": "fcf28aadfb224c9d63dc150862906af5a20c72fe4e84498e29f0174d4ccbbef3",
+      "description": "Comprehensive regression report across all 288 unit tests and 12 QA verifiers with 100% pass.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_SOURCE_CHANGE_AND_RISK_REPORT.md",
+      "task_id": "T-011",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 5177,
+      "sha256": "3d8b5c346cc57a4c09342e7ddb473a4d93925e377ef6b4f2f726c13908a863e7",
+      "description": "Source change inventory, diff documentation, risk assessment, and rollback target for T011-R4.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 4874,
+      "sha256": "fedcefb702e7bd1e963421526f407fb3201a1f44e792ff65c4469a85fb83f4cf",
+      "description": "Authoritative technical verdict R4_TECHNICAL_CORRECTIONS_COMPLETE_TS018_PENDING and signoff handoff to Project Lead.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_RAW_UNITTEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 123970,
+      "sha256": "7bba488e5c95b683daa20c7ac565baa9f902c36376d26d2391caec0bca76e539",
+      "description": "Complete raw stdout and stderr log of full unit test discovery (288 tests in 434.274s).",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R4_RAW_QA_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 42872,
+      "sha256": "20982f809e711d7659cd8da1fb395a974667b6fdddb62b6a074081cf10c6150f",
+      "description": "Complete raw stdout and stderr log of 12 QA verification scripts execution (0 FAIL).",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "tests/test_t011_r4_counterexamples.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 25737,
+      "sha256": "d9f64856e6444341632c5e08a972765959e6591ecd74219c3cf0a7700ff169b7",
+      "description": "26 dedicated regression unit tests covering R4-F01, R4-F02, and R4-F03 counterexamples.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R4 instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_BASELINE_AND_DOCUMENT_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5867,
+      "sha256": "a5a00f4dbd16773f244b8aae506bd04ccbf8ada030d56bc2c49dde0cb23798dd",
+      "description": "Comprehensive document reading attestation and baseline audit before T011-R5 modifications.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_LATE_UNLINK_RACE_REPRODUCTION.md",
+      "task_id": "T-011",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 3650,
+      "sha256": "48b512d768ee5f0935ed9fd65508b43da37a664ad93908c04e9851d5a554fbda",
+      "description": "Independent empirical reproduction of late unlink TOCTOU race condition (R5-F01).",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_LOCK_PROTOCOL_AND_SAFETY_DECISION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5054,
+      "sha256": "477a54a1d8990d0adc5706458dbe52373f3e61390de485007709194906af7474",
+      "description": "Technical design, protocol decision, and proof of Atomic Isolated File Removal and CoordinationLock.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_WINDOWS_PROCESS_CONCURRENCY_TESTS.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 3035,
+      "sha256": "c6a83b8e862a748d6a9095065af2cd041f8da3876c7e0c7b0c071ef5bd6e036b",
+      "description": "Empirical verification of multi-process Windows NTFS lock concurrency and race recovery.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_CHECKSUM_VALIDATION_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 2050,
+      "sha256": "e278bbd2ffa14d1a63ee50b1f2d01c466487c2dac30539a2a48bd5d694190b72",
+      "description": "Verification of strict SHA-256 hex format validation (R5-F02) across candidate and companion sources.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_EVIDENCE_CLAIM_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 5262,
+      "sha256": "f3b8ad593a75320255e9894151d97b87a8891769b0e22cf68e7d7682b5a3ec9a",
+      "description": "Formal errata and reconciliation of physical test suite inventory (21 modules, 304 tests).",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_FULL_REGRESSION.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 4631,
+      "sha256": "d8c4bfda01cd81e6bebf08b6f592e4cfd6ccca7cf3b84445bba9cccdd4070ad3",
+      "description": "Comprehensive regression results: 304/304 unittests PASS (391.831s) and 12/12 QA verifiers PASS.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_SOURCE_CHANGE_AND_RISK_REPORT.md",
+      "task_id": "T-011",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 3658,
+      "sha256": "21776d6f872434144463ee56f868bf2bf40ddec47210b41ba71436b9df1df7be",
+      "description": "Inventory of all source modifications, line diffs, risk assessment, and rollback targets for T011-R5.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 2906,
+      "sha256": "7b10d250bf38b20d3f43206d7a1a4605f2b443824955e88d268b5308c512ef8c",
+      "description": "Authoritative technical verdict READY_FOR_HUMAN_TECHNICAL_REVIEW (R5_TECHNICAL_SAFETY_CLOSURE_READY_FOR_INDEPENDENT_REVIEW).",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_RAW_UNITTEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 120016,
+      "sha256": "b4e2c76e52260def3969057e232829387824669ed9c025500f958e36f0129e0a",
+      "description": "Raw unedited execution log of unittest discover suite: 304 tests PASS in 391.831s.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R5_RAW_QA_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 43227,
+      "sha256": "455b70fab69942e76973d945745e3da6bd861f7279e26dc0fad7a0dc812c0576",
+      "description": "Raw execution log of all 12 QA verification scripts with 0 FAIL.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "tests/test_t011_r5_counterexamples.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 20994,
+      "sha256": "57b13d65bf96622d88a33a2d6e6892d848f2097c4535b973ea734db50e9cb329",
+      "description": "16 dedicated unit tests verifying R5-F01 lock safety, R5-F02 checksum formatting, and R5-F03 inventory.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R5 instruction (2026-10-19); recorded in docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_BASELINE_AND_DOCUMENT_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7488,
+      "sha256": "29c2e51e8c0fea5e4be78484a491432264112a0440b8739ea9c263c9bcb58973",
+      "description": "Baseline Git HEAD and physically verified canonical document reading attestation for T011-R6.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_ACQUIRE_FAILURE_COUNTEREXAMPLES.md",
+      "task_id": "T-011",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 3863,
+      "sha256": "231c37474bc6d7bc107f1a6286c82990664091df019e1ca2d7f2fe4f1215945d",
+      "description": "Empirical reproduction and resolution of acquire failure replacement lock deletion defect (R6-F01).",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_LOCK_OWNERSHIP_AND_QUARANTINE_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4018,
+      "sha256": "1515d0ee5cd7473256d583b603a0f2b116a7e5fe176d2859a065862acf10b64a",
+      "description": "Audit of lock ownership continuity, three-owner replacement sequence, and quarantine boundaries (R6-F02).",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_WINDOWS_CONCURRENCY_VERIFICATION.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 3897,
+      "sha256": "67bac1636e9f8d28192820c19ee32e7fcbb30689d2f13e7569f83278f6cffacd",
+      "description": "Verification of multi-process Windows NTFS lock concurrency and OS kernel share locking.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_LOCK_THREAT_MODEL_AND_LIMITATIONS.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4838,
+      "sha256": "1b235c47009ec33f66cef3be1acdbb1c5ab9a25c54e37a18750104fbf1bd868f",
+      "description": "Definition of cooperative writer scope, out-of-band threat boundaries, and declared recovery limitations.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_DOCUMENT_HASH_RECONCILIATION.md",
+      "task_id": "T-011",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 4951,
+      "sha256": "c46ce7cb0c62578ed4424ae4826e4fa06d2eb8e10c555a5823e481e86c2a47ac",
+      "description": "Forensic root cause analysis and reconciliation of R5 documentation attestation discrepancies (R6-F03).",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_EVIDENCE_AND_TIMING_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 4363,
+      "sha256": "602b90035c5098d44100a97f06298b87c87ad349bfda61ef29c636651bf054ec",
+      "description": "Supersession errata for per-module timing estimations with authentic instrumented measurements (R6-F04).",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_FULL_REGRESSION.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 9417,
+      "sha256": "00cf6b52ef54bfed68644ad00210d02af3bf7c4fa30d11b730e247d55dc96d68",
+      "description": "Comprehensive regression results: 316/316 unittests PASS across 22 modules and 12/12 QA verifiers PASS.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_SOURCE_CHANGE_AND_RISK_REPORT.md",
+      "task_id": "T-011",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 11374,
+      "sha256": "33b81e6a521d6f3c0fe80a70cca1e0fc8c326406e30a29977351bc3268a0c356",
+      "description": "Inventory of source code modifications, line diffs, risk assessment, and rollback targets for T011-R6.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 8247,
+      "sha256": "55f9b503e8c254c7d947f28407e697bbebea227146fc0afed4d0eeb68dfd6b59",
+      "description": "Authoritative technical verdict R6_SAFE_WITH_DECLARED_MANUAL_RECOVERY_LIMITATIONS and signoff handoff to Project Lead.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_RAW_UNITTEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 121241,
+      "sha256": "20da332bb2822c0682ce7d651e6bdca2a70a3b050054590d44336045a1339030",
+      "description": "Raw unedited execution log of aggregate unittest discovery suite across all 22 test modules.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PER_MODULE_UNITTEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 134852,
+      "sha256": "6affef8cc45bf8179d824f15a10d779d8b104206f24793aff5c223db46f3b207",
+      "description": "Raw instrumented per-module execution log with authentic individual module runtimes.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_RAW_QA_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 42966,
+      "sha256": "392276c683fe2d6abfb9023bb393e6a08e19d3debce0a3a7bbfe67ceb95409d7",
+      "description": "Raw unedited execution log of all 12 QA verification scripts with 0 FAIL.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "tests/test_t011_r6_counterexamples.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 20133,
+      "sha256": "7ca808e67b2c99fbce37ce869d84a1d6adb3bd8bfbe97910ae2846df5714cec0",
+      "description": "12 dedicated unit tests verifying R6-F01 acquire cleanup, R6-F02 threat boundaries, R6-F03 hashes, and R6-F04 inventory.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md"
+    },
+    {
+      "path": "tests/test_t011_r6_presignoff.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "description": "10 dedicated unit tests verifying finding PS-01 release failure preservation, PS-02 document attestation, and PS-03 fstat fail-closed safety.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF ADDENDUM instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_FINAL_READINESS.md",
+      "bytes": 24344,
+      "sha256": "8f321abd0aafff4b15ce4483aebb7acfaa9b4e08711b16e413c06dce833b3f45"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_DOCUMENT_ATTESTATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Complete documentary reading attestation for all 27 canonical markdown documents across the repository with physical byte counts and SHA-256.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF ADDENDUM instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_FINAL_READINESS.md",
+      "bytes": 6715,
+      "sha256": "0a3aa758d6300c3a33165e3151f4fbe81e9fed915c8e90328ac26c8259bfc03c"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_FSTAT_RECOVERY_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Comprehensive audit of fstat incomplete lock handling, fail-closed design rationale, and operator manual recovery playbook.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF ADDENDUM instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_FINAL_READINESS.md",
+      "bytes": 6477,
+      "sha256": "c4069cacb705b6c4b1d155b7ac2bd8576b6d049833295daddae451ec5ed5e52b"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_RELEASE_FAILURE_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Investigation and audit of lock release error preservation, incident persistence, and proposed decision FP-DEC-PROP-018.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF ADDENDUM instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_FINAL_READINESS.md",
+      "bytes": 9499,
+      "sha256": "71d8d82967a0babbc0a5d827d02ce75eb4f562cd0df65e5da0cc9e4bff8891dc"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_FULL_REGRESSION.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "description": "Complete regression verification report for presignoff addendum: 326 tests across 23 modules and 12 QA scripts.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF ADDENDUM instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_FINAL_READINESS.md",
+      "bytes": 5490,
+      "sha256": "6cfd5041a26a41d330e96f143a3ad0dc6b6f2f1e2035c4c23dbc83614bb29a7f"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_FINAL_READINESS.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "description": "Final technical readiness report and recommendation PRESIGNOFF_ADDENDUM_VERIFIED for Project Lead review.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF ADDENDUM instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_FINAL_READINESS.md",
+      "bytes": 5386,
+      "sha256": "866234d12e215e7608baa1feb64ec4e1785f37a310b762b441030d39339ed9b5"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_RAW_UNITTEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Raw unedited execution log of aggregate unittest discovery suite across all 23 test modules (326 tests, 0 FAIL).",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF ADDENDUM instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_FINAL_READINESS.md",
+      "bytes": 121288,
+      "sha256": "ea13265ef2960107d4148ef616883edb02a5c49de9d9f5b80c88256ed9125b8c"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_RAW_QA_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Raw unedited execution log of all 12 QA verification scripts with 0 FAIL.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF ADDENDUM instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_FINAL_READINESS.md",
+      "bytes": 42918,
+      "sha256": "9e5eba156a25af0df12ffea586ed620c9077d9781118c802b6b723e06a2d25d4"
+    },
+    {
+      "path": "tests/test_t011_r6_presignoff_closure.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "description": "20 dedicated unit tests verifying finding PC-F01 unresolved artifact exclusion & PC-F02 incident durability.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 28645,
+      "sha256": "1a0a0074f6ccded5976b7e4f104a640893bb5d3553773087169ad3f19141d560"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_BASELINE.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "T011-R6 Pre-Signoff Closure authoritative baseline and initial defect reconciliation.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 4719,
+      "sha256": "e29f2eee14abc425c3637dd851e22801af8954268fe26c24757add829fe30503"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_REPRODUCTIONS.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Deterministic reproductions and root cause verification for findings PC-F01 and PC-F02.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 8478,
+      "sha256": "0538b47970d697258833d6a5aa78acba892e8aea796fefbbd1ba59cec91eb14e"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_RECOVERY_PROTOCOL.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "SingleWriterLock recovery state specification, fail-closed mechanics, and authorized operator resolution protocol.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 6561,
+      "sha256": "bcc087fbc09e7c945d207987d1e414358915a069f2beec11fd1a77e56c10286a"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_INCIDENT_DURABILITY.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Atomic incident report persistence protocol and truthful failure diagnostics specification.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 6433,
+      "sha256": "263d22c037206b0be7d1e82e1f87d9b24dbfa5c5ad24f541566d25cdf07cc3c1"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FP_DEC_018_REVIEW.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Independent review and formal recommendation for proposed decision FP-DEC-PROP-018.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 6210,
+      "sha256": "30e57cd5bc63a5cd475a8211efc73df6cd7543b0611beac594f854f3e94ecdac"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_REGRESSION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Full regression test matrix documenting 24 test modules and 346 passing unit tests.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 7660,
+      "sha256": "00cd0e2db74d04653b1c4fb5329188ec1f5910ddc8fa08f4eb30ef6d13db19a4"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_EVIDENCE_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Comprehensive evidence reconciliation, timing audit, and correction of documentary discrepancies.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 3832,
+      "sha256": "1a19c46bc5431140643c5897d4a9128036b61763e65ea60130d0e932d307a870"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Final closure readiness verdict and formal submission for Project Lead review.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 5887,
+      "sha256": "e1008b2eca5162e512151df494891a7c908ba00dc7a7a214260c071f4b5644ef"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_RAW_UNITTEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Raw unedited execution log of 346 unit tests passing across 24 modules in 395s.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 121971,
+      "sha256": "1c515c6648c6eb3c2d336b56b878ecbc465ca1600ce080ed88c5bab413b0eb51"
+    },
+    {
+      "path": "docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_RAW_QA_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Raw unedited execution log of all 12 QA verification scripts with 0 FAIL.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6 PRESIGNOFF CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md",
+      "bytes": 43011,
+      "sha256": "3ab81fb58616b8f96e5beeb7d4b9dfa2a302321641283554a915e66d643f9054"
+    },
+    {
+      "path": "tests/test_t011_post_closure.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_MODULE",
+      "description": "18 dedicated unit tests verifying finding C1 recovery hold/audit transaction & C2 truthful context exit diagnostics.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6-POST-CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md",
+      "bytes": 25403,
+      "sha256": "fcc380518b202912861c36884773a8f2f242f76c0880275fef8b7901adaaa703"
+    },
+    {
+      "path": "docs/05-evidence/T011_POST_CLOSURE_BASELINE.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "T011 Post-Closure authoritative baseline, source hashes, and defect reproductions for C1, C2, and C3.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6-POST-CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md",
+      "bytes": 4938,
+      "sha256": "37d82e5b734d5177a1aa35cbdae98e759d6de3d00ebf2deea18ae696ee8a612a"
+    },
+    {
+      "path": "docs/05-evidence/T011_POST_CLOSURE_RECOVERY_TRANSACTION_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "SingleWriterLock recovery transaction safety, durable hold marker, and fail-closed audit record commitment.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6-POST-CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md",
+      "bytes": 7727,
+      "sha256": "6bb50b39c9782d27ac1533b21fa3a79d7059ff7f52649f26df63e9dc605f8613"
+    },
+    {
+      "path": "docs/05-evidence/T011_POST_CLOSURE_INCIDENT_DIAGNOSTIC_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "SingleWriterLock context exit truthful incident diagnostics, hybrid exception, and chaining verification.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6-POST-CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md",
+      "bytes": 5790,
+      "sha256": "2bda71cf4f6b20319de8308b7b2396611f5edc556736a7be1b7568dd938695af"
+    },
+    {
+      "path": "docs/05-evidence/T011_POST_CLOSURE_TEST_INVENTORY_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Superseding test inventory errata establishing 1-to-1 mapping for all 20 test methods in closure suite.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6-POST-CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md",
+      "bytes": 5549,
+      "sha256": "a57d9da1a7cfc61a3cef6a190cf951d82998b17234854592ad8b264fa7941562"
+    },
+    {
+      "path": "docs/05-evidence/T011_POST_CLOSURE_FULL_REGRESSION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Full regression test matrix documenting 25 test modules and 364 passing unit tests in 384.63s.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6-POST-CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md",
+      "bytes": 7001,
+      "sha256": "33bf4df545bee5513c5264f93a022a915630cb403573788499914a60bb4f3dad"
+    },
+    {
+      "path": "docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Final post-closure readiness verdict, technical submission, and governance metrics for Project Lead signoff.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6-POST-CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md",
+      "bytes": 4528,
+      "sha256": "42713e4c4d28abc3dbd62876e59c7e169dd6b2e40ef2bbc15b77d933d77a1a10"
+    },
+    {
+      "path": "docs/05-evidence/T011_POST_CLOSURE_RAW_UNITTEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Raw unedited execution log of 364 unit tests passing across 25 modules in 384.63s with 0 FAIL.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6-POST-CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md",
+      "bytes": 120634,
+      "sha256": "558118178e1661ec212dc196b7e1197acf1d899e7909d3d37db6739d5c7d5a06"
+    },
+    {
+      "path": "docs/05-evidence/T011_POST_CLOSURE_RAW_QA_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "description": "Raw unedited execution log of all 12 QA verification scripts with 0 FAIL for Post-Closure.",
+      "authorization_ref": "Project Lead MASTER PROMPT — T011-R6-POST-CLOSURE instruction (2026-10-19); recorded in docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md",
+      "bytes": 42918,
+      "sha256": "8701cf1fa3203e2e0c80c131da576023f1881994ccd7f184cf099891629e3faf"
+    },
+    {
+      "path": "docs/05-evidence/FP_DEC_018_OFFICIAL_HUMAN_APPROVAL_20261019.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 5703,
+      "sha256": "bb0316a7b7291e60925aee10e873a9335955247a29b43c7bfb6fbdcc890bb0ca",
+      "authorization_ref": "Project Lead explicit acceptance of FP-DEC-PROP-018 as FP-DEC-018 on 2026-10-19"
+    },
+    {
+      "path": "docs/05-evidence/T011_OFFICIAL_CONTROLLED_TECHNICAL_SIGNOFF_20261019.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 4921,
+      "sha256": "de63f3c194c7bcce8745e8c7e487358175b3bc40d3b99751566b3ccb4215589c",
+      "authorization_ref": "Project Lead explicit controlled technical signoff instruction on 2026-10-19"
+    },
+    {
+      "path": "docs/05-evidence/TS018_BTS_OFFICIAL_SOURCE_ACQUISITION_PLAN_20261019.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6955,
+      "sha256": "ab708886ad67e9ee33d5fc112e77e006d190ced733d9f1c8af7d6f80444f0abb",
+      "authorization_ref": "Project Lead MASTER PROMPT — APPROVED FP-DEC-018 + CONTROLLED T011 SIGNOFF + TS-018 PREP instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/T011_SIGNOFF_OFFICIAL_STATE_RECONCILIATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9296,
+      "sha256": "3b16ed7f94078c34eeb6791d601139ffbe6e8db548d9c3cbcd211b41a623e3c4",
+      "authorization_ref": "Project Lead MASTER PROMPT — APPROVED FP-DEC-018 + CONTROLLED T011 SIGNOFF + TS-018 PREP instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_BTS_ACQUISITION_READINESS_20261019.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9787,
+      "sha256": "b9559e89196178ee6f2324b844ee7391ca648acd5f8bf490f7b368aca61b8b45",
+      "authorization_ref": "Project Lead MASTER PROMPT — APPROVED FP-DEC-018 + CONTROLLED T011 SIGNOFF + TS-018 PREP instruction (2026-10-19)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_BACKUPS/.gitignore.pre_ts018.bak",
+      "task_id": "T-011",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "authorization_ref": "Pre-TS018 reference policy backup of .gitignore (2026-10-20)",
+      "bytes": 315,
+      "sha256": "cf71bf4e52ec4d214129bf215c182937b71fb43f0cbcc62ef49e100772b55459"
+    },
+    {
+      "path": "docs/05-evidence/TS018_BACKUPS/tools__check_working_tree_consistency.py.pre_ts018.bak",
+      "task_id": "T-011",
+      "artifact_type": "PRE_CHANGE_BACKUP",
+      "authorization_ref": "Pre-TS018 reference policy backup of tools/check_working_tree_consistency.py (2026-10-20)",
+      "bytes": 24704,
+      "sha256": "334d1d2474ca79fa5beae31876cfa04d4971db88ddc9710b26bb602ec4e200f8"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_SOURCE_INTAKE_AND_PROVENANCE.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 6655,
+      "sha256": "d692fa38092fbe59ae3b67823e0a451332fd1951b7687014232a42fc50396db6"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_ORIGINAL_AND_DERIVED_HASH_MANIFEST.json",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 983,
+      "sha256": "b0838a1c2dd1e65a22f0c7597b9ea6d58314f06b543aacb59fd7947272b62109"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_REFERENCE_POLICY_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "ERRATA_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 4904,
+      "sha256": "f108c4703ad2d1f526e9ec2fb125088698203d042b8b5434a390225f00a0fcf5"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_PARQUET_READONLY_SOURCE_ATTESTATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 5333,
+      "sha256": "55e98c828f599636dccbee3820a0f633e4aa4083e201c2016d1d5321ddfcc678"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_KEY_COVERAGE_AND_SAMPLE_PROTOCOL.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 5044,
+      "sha256": "bd7e272ffd0e711de434ee502395d64ae55be9655a4471224091357c15356d26"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_SEVEN_FIELD_PARITY_REPORT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 7392,
+      "sha256": "edcd4b0934364d927512777b2da612524fcfdd95585721ba13c530db43d7e12b"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_DISCREPANCY_REGISTER.csv",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 106,
+      "sha256": "098c48e499d0d0504892d7c849638784b40557383982830e581874f262c7e67a"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_RAW_RUN_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 9862,
+      "sha256": "4a936257ba76ba306511c44fbce42cf06aa27d05dc5b85c168210d400df3a17d"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_FINAL_HUMAN_REVIEW_REQUEST.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 7154,
+      "sha256": "44a7a514d6eb70c24a192ae08bcd07170d7a90c4ffee685212bfbc2d1f116e5e"
+    },
+    {
+      "path": "tools/qa/test_ts018_reference_policy_regression.py",
+      "task_id": "T-011",
+      "artifact_type": "QA_SCRIPT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 11797,
+      "sha256": "52a978ec6d99c9051cd03a2d5dd33a6492b09b513eb8aea2aa318ee66ff8d15b"
+    },
+    {
+      "path": "tools/qa/run_ts018_bts_adapter.py",
+      "task_id": "T-011",
+      "artifact_type": "QA_SCRIPT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS-018 instruction (2026-10-20)",
+      "bytes": 28854,
+      "sha256": "1db2b40d005fba883e21f558830234c422ca985a66437e9a56a30cd31114617a"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_EVIDENCE_CORRECTION_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "ERRATA_REPORT",
+      "authorization_ref": "Project Lead TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020 instruction",
+      "bytes": 9401,
+      "sha256": "cbdd30013c5511dfa0e15b6b588fd950f43de26abc7542802e6d3e72df068c10"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_ACTUAL_STRATUM_AND_KEY_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020 instruction",
+      "bytes": 8089,
+      "sha256": "9944d6047a34160626c63b716b24cebaf29afd749cfea8aaedebfbac93fdff2c"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_MATCHED_SAMPLE_WITNESS.csv",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020 instruction",
+      "bytes": 294436,
+      "sha256": "942c476994c414378a541d5c84fcbdad35c6aeace1c98891044a085d55c3a9a1"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_INDEPENDENT_REPLAY_PROTOCOL.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020 instruction",
+      "bytes": 6935,
+      "sha256": "0a717da5641aef58f9188c39389a0ccef844660e5de7447a35ccb9d7ebfdbca5"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_CORRECTED_CANDIDATE_READINESS.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020 instruction",
+      "bytes": 8012,
+      "sha256": "6e789b516e28b20b03d9a7b286ce90c4f72037f4ce22978ade4b6e17be299689"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_RAW_CLOSURE_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020 instruction",
+      "bytes": 13932,
+      "sha256": "4cad08b87867464c6da1999b4ef643ee740e73af33f3851d8d3a9b5e90d71bdf"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_INDEPENDENT_AUDIT_20261020.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020 instruction",
+      "bytes": 6674,
+      "sha256": "75a72328849bbfe45ab0a125fd8d652638234516ad78a705abdfcfb814ba2767"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_INDEPENDENT_EVIDENCE_RESULT_20261020.json",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020 instruction",
+      "bytes": 660,
+      "sha256": "273f2391058144df5726f7f134bed50d83dcd187bfa3fc7190b2e6a17db23e95"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "authorization_ref": "Project Lead TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020 instruction",
+      "bytes": 5962,
+      "sha256": "492c5dadeafa8095e7af55186cd1957ca4556963d0fde6ff9c6e6c016556eafe"
+    },
+    {
+      "path": "tools/qa/verify_ts018_two_source_sample_witness.py",
+      "task_id": "T-011",
+      "artifact_type": "QA_SCRIPT",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL SIGNOFF DOSSIER RECONCILIATION (2026-10-20)",
+      "bytes": 22094,
+      "sha256": "e2ba81477a51381ed2852b7ef7bda42b19a3f5892c7788c36c5a4aa8ecd94226"
+    },
+    {
+      "path": "tools/qa/TS018_201901_INDEPENDENT_EVIDENCE_CHECK_20261020.py",
+      "task_id": "T-011",
+      "artifact_type": "QA_SCRIPT",
+      "authorization_ref": "Project Lead TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020 instruction",
+      "bytes": 2948,
+      "sha256": "011c281c5c749012a58c711ce06736ddc10489aaa4fac31879b64655c8e3d7d4"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_ACCEPTANCE_BASELINE.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 6541,
+      "sha256": "63fa93cbf6500b3107ea85e90a65e820009fb77e50ee167268f4d8ff8ce8d3f9"
+    },
+    {
+      "path": "tools/qa/test_ts018_negative_witness_verification.py",
+      "task_id": "T-011",
+      "artifact_type": "TEST_SUITE",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL SIGNOFF DOSSIER RECONCILIATION (2026-10-20)",
+      "bytes": 17820,
+      "sha256": "b87b4ed8e0ca8360b1a975484c912724741b28492123804db9288d5729adae50"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_INDEPENDENT_REPLAY_REPORT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 8754,
+      "sha256": "29e0b1d6c51a97ef20e4e5472e35c2097210c3e73c176c504ee6dfa4c53cd11c"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_SAMPLE_DISTRIBUTION_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 5141,
+      "sha256": "22b9a6220e700fc91c75da2dfd47e734c4f730d9bb804c8182275ab70adfec51"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_NEGATIVE_TEST_REPORT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 5485,
+      "sha256": "cf4421a9779adc0fb2d201405d20654ac2517df08c3f9cb47b36a1ac94de4307"
+    },
+    {
+      "path": "docs/05-evidence/TS018_OPTION_B_FORMAL_DECISION_DRAFT.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 5983,
+      "sha256": "f07cdf5f11d48ecb5b5a65d320838c35d569825f738f47e13cfc0508cea389ad"
+    },
+    {
+      "path": "docs/05-evidence/TS018_BTS_EXTERNAL_PROVENANCE_ATTESTATION_DRAFT.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 4880,
+      "sha256": "532b7aa31ff20609cd5b70fea1e42cae2031f253d44ae3f8e401c30b1602f168"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_HUMAN_SIGNOFF_READINESS.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 4493,
+      "sha256": "37365308eab6f456e2a99f172ccfd5e2243ca925607e4662028825a7ddaabf45"
+    },
+    {
+      "path": "docs/05-evidence/G5_FINAL_EXIT_CRITERIA_MATRIX.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 7416,
+      "sha256": "b24361bfd94f328fd9502d440563883bed57c894e12ec9d15ff026b03b657ce5"
+    },
+    {
+      "path": "docs/05-evidence/G5_RESIDUAL_RISK_AND_CONDITIONS.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 5853,
+      "sha256": "fe7a591cb1321d130b765705a1ac4040f912cedc4e7bb48551e4a23069a23c33"
+    },
+    {
+      "path": "docs/05-evidence/G5_HUMAN_SIGNOFF_READINESS_DRAFT.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 4480,
+      "sha256": "529ea5c5bb76b06f2a3db9486e05af3d805ad221ca93f81496dd72f447849fa6"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_FULL_RUN_ENTRY_PLAN.md",
+      "task_id": "G6",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6894,
+      "sha256": "1da657025a38930aa198abd5db860ad93c4fb28ae2269c96ec7de23edbb876d7",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_RESOURCE_AND_CAPACITY_PREFLIGHT.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 4040,
+      "sha256": "d7a8bd252d69bcf1ae33013ff74bee7989496c75158ab0f590bab9216b826b5a"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_EXECUTION_CHECKLIST.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 4627,
+      "sha256": "002584ff5aaf1688b5850916568532f6cd590d5394635ce93b187f80bca2e0e1"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_RISK_AND_ROLLBACK_PLAN.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — TS018 FINAL ACCEPTANCE, G5 EXIT & G6 READINESS (2026-10-20)",
+      "bytes": 4608,
+      "sha256": "c9b15b110bcd01a0c2087a119235169d42b0c8c1c77a0b4567a63a8b51bcc497"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_R1_FINDINGS_REPRODUCTION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - TS-018 / G5 FINAL EVIDENCE INTEGRITY CORRECTION (2026-10-20)",
+      "bytes": 10321,
+      "sha256": "075e413da4cd5306dba07469c25ce940832549891a1d5505f9ebcead2cca654e"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_R1_SEVEN_FIELD_SCOPE_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "ERRATA_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - TS-018 / G5 FINAL EVIDENCE INTEGRITY CORRECTION (2026-10-20)",
+      "bytes": 5173,
+      "sha256": "18a15a8ce27360562f2539cae07201a058bbe4e8c9778a2b227bc37368e2966f"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_R1_REAL_EXAMPLES_RECONCILIATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - TS-018 / G5 FINAL EVIDENCE INTEGRITY CORRECTION (2026-10-20)",
+      "bytes": 6759,
+      "sha256": "dc21c7a4ed1b163ac302cc082b8fac8a967e3ebe632fab17dfdc8c571cc6dee5"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_R1_EXACT_VS_TOLERANCE_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - TS-018 / G5 FINAL EVIDENCE INTEGRITY CORRECTION (2026-10-20)",
+      "bytes": 4899,
+      "sha256": "3b3729c4c09a84603f8868de7d8623a1e39fbe1919d22da453dd8d29b9fd30bd"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_R1_NEGATIVE_TEST_INVENTORY.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - TS-018 / G5 FINAL EVIDENCE INTEGRITY CORRECTION (2026-10-20)",
+      "bytes": 5820,
+      "sha256": "4deb5d33db6815a6684461def83f72b2bc12c2bd7c43796e6b4354239eb77f79"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_R1_SAMPLING_FORENSIC_AUDIT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - TS-018 / G5 FINAL EVIDENCE INTEGRITY CORRECTION (2026-10-20)",
+      "bytes": 7254,
+      "sha256": "bb481f74a7c3b1c68688713fcc3703c3feaf1f2d2c233a17ee609b9958479f13"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_R1_GOVERNANCE_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "ERRATA_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - TS-018 / G5 FINAL EVIDENCE INTEGRITY CORRECTION (2026-10-20)",
+      "bytes": 5608,
+      "sha256": "fb6bc4318c8f5cee777d46df8b975a80be811dc787b5e67df6e5dc83be847d3f"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_FINAL_R1_OPERATIONAL_GAP_REVIEW.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - TS-018 / G5 FINAL EVIDENCE INTEGRITY CORRECTION (2026-10-20)",
+      "bytes": 4872,
+      "sha256": "b9a89e3068b1dcab7edf9893f50709d93289318f38facd8d674ea1fb7bce2b9b"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_R1_RAW_COMMAND_AND_TEST_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - TS-018 / G5 FINAL EVIDENCE INTEGRITY CORRECTION (2026-10-20)",
+      "bytes": 9318,
+      "sha256": "e2f0581d967d7e89e2cc867f16df61efb3853c66e56b4a4ed9c6610c6c6d7770"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_R1_HUMAN_SIGNOFF_READINESS.md",
+      "task_id": "T-011",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - TS-018 / G5 FINAL EVIDENCE INTEGRITY CORRECTION (2026-10-20)",
+      "bytes": 4231,
+      "sha256": "55645e283cd7286d916b086579a6a7e89775af9021b2ab73d7fb7049760eb08f"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_HARDENING_BASELINE.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 3780,
+      "sha256": "e3aa2e7b44a9ee632666d33ed268df9ab9bd5aaf94ada3149bed7f3c24f40e8b",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL VERIFIER HARDENING & CONTROLLED SIGNOFF READINESS (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_HARDENING_FINDINGS_AND_FIXES.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9216,
+      "sha256": "56c287aaaad405b594f52ea01e861bc9239940f06d98508e8f138b7efbbe9c18",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL VERIFIER HARDENING & CONTROLLED SIGNOFF READINESS (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_STRICT_NUMERIC_REPLAY.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7841,
+      "sha256": "d6c7b6fec1bc31ae81b0ca1ed38e27d7b6352ec696441676ead875830dad1f2f",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL VERIFIER HARDENING & CONTROLLED SIGNOFF READINESS (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_NEGATIVE_TEST_RECONCILIATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7051,
+      "sha256": "33f660d100e0439b52aa84e7a46942882d4d88172ce665f066105ea1cf846557",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL VERIFIER HARDENING & CONTROLLED SIGNOFF READINESS (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_PROVENANCE_AND_OPTION_B_READINESS.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6374,
+      "sha256": "7483157964348c9c775225e7278849fe5313dc6444ba5a86f5b65ff625a6018f",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL VERIFIER HARDENING & CONTROLLED SIGNOFF READINESS (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G5_FINAL_PRE_SIGNOFF_RECONCILIATION.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8145,
+      "sha256": "11db2a5f00e59a61e74b7794bec5a2710ad11568fe53d5a5b4f303fa453dfc57",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL VERIFIER HARDENING & CONTROLLED SIGNOFF READINESS (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_PRE_EXECUTION_GAP_CHECKLIST.md",
+      "task_id": "G6",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6193,
+      "sha256": "aac2b7eab8c3c05862bc252768a9166a49535d19711e606877fa3b4dfc120217",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL VERIFIER HARDENING & CONTROLLED SIGNOFF READINESS (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_FINAL_HARDENING_RAW_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8336,
+      "sha256": "8755f03092d9bdc37e7e6ec45d992b23f793477071448ff024cf5317641fc738",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL VERIFIER HARDENING & CONTROLLED SIGNOFF READINESS (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_SIGNOFF_DOSSIER_EVIDENCE_RECONCILIATION.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9358,
+      "sha256": "ab6fae0a37bd9fb67d802903b63520dfcf512782e67e468d40c4754964f92e13",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL SIGNOFF DOSSIER RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_SIGNOFF_DOSSIER_SHA256_RECONCILIATION.json",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6670,
+      "sha256": "f9104f7c4a5724d395c5c645912b8f53c790c121b7e58a212a90284e15a27fa9",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL SIGNOFF DOSSIER RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_SIGNOFF_DOSSIER_REAL_EXAMPLE_ERRATA.md",
+      "task_id": "T-011",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 8523,
+      "sha256": "ed00ceea114ca7b9e1de4f66df299b36ce00e08a81ae5bc41d6b50d8326372a8",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL SIGNOFF DOSSIER RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_SIGNOFF_DOSSIER_STRICT_EXACT_VERDICT.md",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4496,
+      "sha256": "0ae632fa193ac279c20f6a50f7ebee0b0fd987b7486c1de134903af264956a47",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL SIGNOFF DOSSIER RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_SIGNOFF_DOSSIER_NEGATIVE_TEST_VERDICT.md",
+      "task_id": "T-011",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 5777,
+      "sha256": "11c9fca90bc5950151dccdb99701198be8e067131196dc1dc1e7c57e118614c0",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL SIGNOFF DOSSIER RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_SIGNOFF_DOSSIER_RAW_EXECUTION_LOG.txt",
+      "task_id": "T-011",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 13923,
+      "sha256": "d1e8278b1b1ac2fa465d01a1309aa68abf287d75e6532bb027d115a2a6e6ec26",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL SIGNOFF DOSSIER RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_SIGNOFF_DOSSIER_HUMAN_DECISION_MATRIX.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 4929,
+      "sha256": "6c593498cef56f3a81bb60e8a3a0e02d44c62fece9a3b1a69988d33421ba8c70",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL SIGNOFF DOSSIER RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G5_SIGNOFF_DOSSIER_FINAL_READINESS.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 6067,
+      "sha256": "d97e40bbd9db9144277c28e10b21661077f7deecfbe914a8a0cd3c2cc4c9f428",
+      "authorization_ref": "Project Lead MASTER PROMPT — TS018 FINAL SIGNOFF DOSSIER RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "tools/qa/verify_staging_pointer.py",
+      "task_id": "G5",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 15073,
+      "sha256": "a7f706bc8ec5d21bc128bdd5f53143c7fabefa4d6f6d56ff9ccde90c52c35830",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "tests/test_verify_staging_pointer.py",
+      "task_id": "G5",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 13631,
+      "sha256": "b2077f0b296768e2498c5878f381eb5a4f6f8802bcebce8558f66ceea7e92dca",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G5_D1_BTS_PROVENANCE_ATTESTATION_DRAFT.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 5360,
+      "sha256": "4ea7042a45fa37dbaf3e3f84f252752061d764fb2c3a518014f584fbb57d3e2e",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G5_D2_FP_DEC_019_OPTION_B_APPROVAL_DRAFT.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 5687,
+      "sha256": "24b4b815246b3669e49c9a9c960b80508a2a2003f3c7f9966d0db4ef3c3042d9",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G5_D3_TS018_HUMAN_TECHNICAL_SIGNOFF_DRAFT.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 5748,
+      "sha256": "27518d8d9080d0e87cf33b88ee3cb57b4f2db0f02c0ab8810876dc1aa4615b91",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G5_D4_G5_HUMAN_GATE_SIGNOFF_DRAFT.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 7278,
+      "sha256": "102a5c52ccc695be3ef568c7cd1489045b3daf56ee2090a5da3368b9225c9c6c",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_OPERATIONAL_GAP_MATRIX.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — OFFICIAL TS018/G5 SIGNOFF & G6 OPERATIONAL PREFLIGHT (2026-10-20)",
+      "bytes": 12642,
+      "sha256": "39ef07acb8e1ccd8a9951f98624ff2e96382189871772a2ecbcb10724e649e36"
+    },
+    {
+      "path": "docs/05-evidence/G6_POINTER_VERIFICATION_DESIGN_AND_TEST_REPORT.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — OFFICIAL TS018/G5 SIGNOFF & G6 OPERATIONAL PREFLIGHT (2026-10-20)",
+      "bytes": 8053,
+      "sha256": "010ca9816f227ef53153b733c898ac0a50745dbf60a6baada4a60cb504b25646"
+    },
+    {
+      "path": "docs/05-evidence/G6_LOCK_AND_RECOVERY_SAFETY_ASSESSMENT.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — OFFICIAL TS018/G5 SIGNOFF & G6 OPERATIONAL PREFLIGHT (2026-10-20)",
+      "bytes": 7208,
+      "sha256": "36f3dd276bc142acf8ff348672fd40ebec5329e73fe026af62a71dd4a97d6c38"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_READINESS_CHECKLIST.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8290,
+      "sha256": "f5db149f807776dd3509eb9bb0d0abaf33f1d3e2f16027c80d755b8e50c6a2f3",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/TS018_G5_STATE_TRANSITION_REPORT.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "authorization_ref": "Project Lead MASTER PROMPT — OFFICIAL TS018/G5 SIGNOFF & G6 OPERATIONAL PREFLIGHT (2026-10-20)",
+      "bytes": 4571,
+      "sha256": "9dd1b849e8601fdcbc686f4df9a6260e63ffca3bcb483236addc81554a25856b"
+    },
+    {
+      "path": "docs/05-evidence/G6_PREFLIGHT_RAW_EXECUTION_LOG.txt",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "authorization_ref": "Project Lead MASTER PROMPT — OFFICIAL TS018/G5 SIGNOFF & G6 OPERATIONAL PREFLIGHT (2026-10-20)",
+      "bytes": 16885,
+      "sha256": "8f0a28ca653465a9cf05a33370d1ef756e1b17df18643d4d7a3fd9c4811785a6"
+    },
+    {
+      "path": "tests/test_lock_state_vs_pointer_state.py",
+      "task_id": "G5",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 12285,
+      "sha256": "a4da146306347da12bad20e400660091c699f3686bc0b92c16e49df53fdb1920",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G5_D1_D4_CORRECTED_DRAFT_RECONCILIATION.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 11547,
+      "sha256": "14eafaac220ae3c37b738fe3a8d350cf7ce734059d811132a8b1688a233aca96",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_CANONICAL_SOURCE_INVENTORY.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5098,
+      "sha256": "f1d5f4b0044882b3f99682578956b42cb1ea8e8091a98dbfc70e93f574e26052",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_2016_BASELINE_INTEGRATION_DECISION_DRAFT.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 6710,
+      "sha256": "5d91adc1eacf57a9cec2b7a65052963015cc2be2c5b4dce2833dd264a5622df7",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_POINTER_AND_LOCK_CONTRACT_AUDIT.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8594,
+      "sha256": "b5ec0c794c57e1282c025acc287aa8a633ad7a9e1084ccadb7e70a5e68778263",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_PUBLICATION_PATH_AND_MANIFEST_AUDIT.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7780,
+      "sha256": "a9714c6cf1bfc75c09bef7e0af09cb487507aecf1e02cd63fb0396b31a1d9406",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_FINAL_EXECUTION_CHECKLIST_V2.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 9237,
+      "sha256": "68aca85f7b55ce3805e8ee5e94665b911e70b0f68e6afb0f5eb7f6fbfbdeae27",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_RESOURCE_PRESTART_POLICY.md",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6591,
+      "sha256": "2dde9c2291dd3a2113e62f5efef5e71204c8da399b0626b88de862b63c5911d2",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G5_D1_D4_HUMAN_SIGNOFF_READINESS.md",
+      "task_id": "G5",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 8293,
+      "sha256": "02382a257fee77dd559b2895d75ec4e4fd7055db046d1dc023e1f4ed705d0d00",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_PREFLIGHT_TARGETED_CORRECTION_RAW_LOG.txt",
+      "task_id": "G5",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8179,
+      "sha256": "d41e2b46ae5826f2b72953f6774f5a09ea7de8f587eac091cbde379f2dc2499d",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT — G5 SIGNOFF CORRECTION & G6 EXECUTION CONTRACT RECONCILIATION (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_C01_ANNUAL_ROW_COUNT_RECONCILIATION.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6813,
+      "sha256": "170f474e4079e04d8fd1e009a71433c0ccad562cec87712d535505f87f94dd52",
+      "authorization_ref": "Project Lead G6-PREFLIGHT instruction (2026-10-20); recorded in docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "docs/05-evidence/G6_C02_CANONICAL_EIGHT_KPI_CONTRACT_AUDIT.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7363,
+      "sha256": "7474b8bdf933d84eeeb4fc2d523afa49cef7d48cd3d0024c2674845a4a20acbd",
+      "authorization_ref": "Project Lead G6-PREFLIGHT instruction (2026-10-20); recorded in docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "docs/05-evidence/G6_C03_MULTIYEAR_SNAPSHOT_AND_VERSION_POLICY.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7425,
+      "sha256": "094a3257d54bb74011c88a4595513863fe3d2a3f244cc7e893cb783e431bb61f",
+      "authorization_ref": "Project Lead G6-PREFLIGHT instruction (2026-10-20); recorded in docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "docs/05-evidence/G6_C04_2016_BASELINE_OPTION_REVIEW.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6054,
+      "sha256": "8b047bf32efd99e46f027a7f8d87925f07558f396ec2b8721238748e9b8ba32e",
+      "authorization_ref": "Project Lead G6-PREFLIGHT instruction (2026-10-20); recorded in docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "docs/05-evidence/G6_C05_EXECUTION_PATH_LOCK_RESOURCE_AUDIT.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7037,
+      "sha256": "e4d85e746b61ad0dc34b36f6654ee57447c8e32ad6281d9ca5b2c66388a1eb42",
+      "authorization_ref": "Project Lead G6-PREFLIGHT instruction (2026-10-20); recorded in docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "docs/05-evidence/G6_C06_EVIDENCE_HASH_RECONCILIATION.json",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 169339,
+      "sha256": "c64ce430cc3c49e22b3c4ce55f3b2eed22c5d0527cd7ebe0d41e0618192f5542",
+      "authorization_ref": "Project Lead G6-PREFLIGHT instruction (2026-10-20); recorded in docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 7965,
+      "sha256": "9d281f3ffbda032cc713bdb1f34273419dec7ab8c47a888c69bb58c47304ab5e",
+      "authorization_ref": "Project Lead G6-PREFLIGHT instruction (2026-10-20); recorded in docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "docs/05-evidence/G6_FINAL_PREAUTHORIZATION_RAW_LOG.txt",
+      "task_id": "T-012",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 4968,
+      "sha256": "f4bac60197e7da5e6c4fc5684ad20614b650e4872a3cb6d1d21352126b1592a8",
+      "authorization_ref": "Project Lead G6-PREFLIGHT instruction (2026-10-20); recorded in docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "tests/test_g6_annual_source_counts.py",
+      "task_id": "T-012",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 6730,
+      "sha256": "e25f085ff2aa85f9e44eea7ff8da6a68d8421d3ec684f25c6332f2983085c656",
+      "authorization_ref": "Project Lead G6-PREFLIGHT instruction (2026-10-20); recorded in docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "tests/test_g6_kpi_contract_consistency.py",
+      "task_id": "T-012",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 4408,
+      "sha256": "57bafb9142665d83bc101fee13b072aaa0e5ed413ef5ea26f6158c35446ff3b9",
+      "authorization_ref": "Project Lead G6-PREFLIGHT instruction (2026-10-20); recorded in docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "tests/test_multiyear_snapshot_policy.py",
+      "task_id": "T-012",
+      "artifact_type": "TEST_MODULE",
+      "bytes": 61448,
+      "sha256": "432457bf411cfa190d1586b7c538e42be3cb97b7102344f2ad8c28253f23f0c7",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "tools/qa/check_writer_preflight_safety.py",
+      "task_id": "T-012",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 8885,
+      "sha256": "5e231f8f957feb29af4f5e180ad41de8baf923b27a964055ca54a76f48a00ebe",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "tools/qa/verify_multiyear_snapshot.py",
+      "task_id": "T-012",
+      "artifact_type": "QA_SCRIPT",
+      "bytes": 93583,
+      "sha256": "4a594705e9d5167d0e5c56dbb4621f2f62d1410350e2668d686699610e955131",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_FINAL_SNAPSHOT_VALIDATOR_COUNTEREXAMPLE_AUDIT.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8271,
+      "sha256": "660051038b0f8c6856a8b0bef27eb38c3394b6ae0867d5ab7be4c5385b232ba2",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_FINAL_SNAPSHOT_VALIDATOR_FIX_AND_DIFF.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8913,
+      "sha256": "e66ebbe9c5b59f522cbbabbcd15bd75db4e30f8a88128f2a10f3c94f9c04e1c2",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_FINAL_ROW_ACCOUNTING_RECONCILIATION.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6668,
+      "sha256": "6bf2d1a6abb8fded02edd1c0e049c10c8df73d879189df7d7c83d3df649778d9",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_FINAL_MANIFEST_PARQUET_HASH_VERIFICATION.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6195,
+      "sha256": "5ddf92b29ad85fa4bec57e356dbbc7a4a4cece03cfeae135038447088e109cc0",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_FINAL_POINTER_LOCK_ROOT_ALIGNMENT.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6023,
+      "sha256": "bd0f46032e46631b55ee01f36001faac1a124039026d92596554ccaa53d314f4",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_FINAL_NEGATIVE_REGRESSION_RESULTS.md",
+      "task_id": "T-012",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 8262,
+      "sha256": "0b81b9ce0740cc76922bc378b5f7788f46ab5226ab79e708e03afaed507c1dcd",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_D1_D5_HUMAN_DECISION_HANDOFF.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 6973,
+      "sha256": "88195b3580729d3699582e7edaf7243b475a0b01e8977891213424b2b620860c",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_FINAL_TARGETED_CORRECTION_RAW_LOG.txt",
+      "task_id": "T-012",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 6655,
+      "sha256": "cc81c85a88bea278beb7f3d0c01a3777d8e97eed52ef1263e9926273da35b89d",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G6 FINAL SNAPSHOT SAFETY CORRECTION & HUMAN APPROVAL HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_PRODUCTION_MANIFEST_COMPATIBILITY_AUDIT.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8045,
+      "sha256": "1550c4b5a799f3ec77ffbf967fb3f20d9b9e6deba8bb9820cd006ae389f9ea09",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 PRODUCTION MANIFEST COMPATIBILITY & FINAL HUMAN SIGNOFF HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_PRODUCTION_MANIFEST_FALSE_PASS_RECONCILIATION.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 8988,
+      "sha256": "a42b4d644e6845e98cede9ffa962d20b2cd561ad436e548c2ed74d4482eec715",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 PRODUCTION MANIFEST COMPATIBILITY & FINAL HUMAN SIGNOFF HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_PHYSICAL_PARQUET_ACCOUNTING_CONTRACT_TEST.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 5839,
+      "sha256": "5275e27e672d1104b84dbef1f8ce0d6a0c8762870b53582e9734c2ffb30194b5",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 PRODUCTION MANIFEST COMPATIBILITY & FINAL HUMAN SIGNOFF HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_MANIFEST_RECEIPT_AND_OUTPUT_HASH_AUDIT.md",
+      "task_id": "T-012",
+      "artifact_type": "AUDIT_REPORT",
+      "bytes": 4838,
+      "sha256": "886c1f2cdde5faaa25d9929f37ee431f3bcb394aa548d17d6b83f13317eb486e",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 PRODUCTION MANIFEST COMPATIBILITY & FINAL HUMAN SIGNOFF HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_OFFICIAL_DECISION_MAPPING_ERRATA.md",
+      "task_id": "T-012",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 5993,
+      "sha256": "0561e2d801ddfad41d60832ac792082def7a4a90c4f7c954db89f92dfb11436f",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 PRODUCTION MANIFEST COMPATIBILITY & FINAL HUMAN SIGNOFF HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_TEST_INVENTORY_AND_ARTIFACT_HASH_ERRATA.md",
+      "task_id": "T-012",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 12497,
+      "sha256": "20f1131e6362579e0817c66d265ebeabf9af24bf6bbb7fc77875ccda45f3335d",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 PRODUCTION MANIFEST COMPATIBILITY & FINAL HUMAN SIGNOFF HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_FINAL_MANIFEST_COMPATIBILITY_RAW_LOG.txt",
+      "task_id": "T-012",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 10722,
+      "sha256": "af7ef622289b009e097feb547c540e7a7ba52d6d91ea84d263541fb03c4708c0",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 PRODUCTION MANIFEST COMPATIBILITY & FINAL HUMAN SIGNOFF HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_PROJECT_LEAD_SIGNOFF_HANDOFF_CORRECTED.md",
+      "task_id": "T-012",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 8466,
+      "sha256": "a5ba274bfb2372f372e7650865affdac489245203a139ec18a5e4c002cac8bae",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 PRODUCTION MANIFEST COMPATIBILITY & FINAL HUMAN SIGNOFF HANDOFF (2026-10-20)"
+    },
+    {
+      "path": "docs/05-evidence/G6_RELEASE_VALIDATOR_R01_R04_COUNTEREXAMPLES.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 11936,
+      "sha256": "143841fbccc9f3093f46c6d048456a7648a0aad330b8d1080b78dcd701848f07",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 SNAPSHOT RELEASE CONTRACT HARDENING & CONTROLLED PROJECT LEAD HANDOFF (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_RELEASE_VALIDATOR_OUTPUT_PATH_INTEGRITY.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 6484,
+      "sha256": "5855f330c0f7862c7a1d3edd364b0c3f1216f1aabbd79622cbe1f059ce2da5d0",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 SNAPSHOT RELEASE CONTRACT HARDENING & CONTROLLED PROJECT LEAD HANDOFF (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_RELEASE_VALIDATOR_RECEIPT_STRICTNESS.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 6469,
+      "sha256": "ec27cbb8ba0084ba0ecffd25117be06bb84d1170d227775adc22cba39591dbff",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 SNAPSHOT RELEASE CONTRACT HARDENING & CONTROLLED PROJECT LEAD HANDOFF (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_RELEASE_VALIDATOR_TEST_AND_LOG_REPORT.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 5382,
+      "sha256": "1faf3377c83f25c1cd038a0d904c04950e84e6be4fc4be71782d1028766329c3",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 SNAPSHOT RELEASE CONTRACT HARDENING & CONTROLLED PROJECT LEAD HANDOFF (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_PROJECT_LEAD_D1_D4_SIGNOFF_STATUS.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 4763,
+      "sha256": "75fbefc93ac56292811a3d418982d771fd5aade47762c4e9cccef71102a70770",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_FIRST_YEAR_EXECUTION_READINESS.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 5777,
+      "sha256": "99b295aad5874d2f03802237de956bf4772c81bdf62097c62f3ee18478104305",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 SNAPSHOT RELEASE CONTRACT HARDENING & CONTROLLED PROJECT LEAD HANDOFF (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_RELEASE_VALIDATOR_RAW_EXECUTION_LOG.txt",
+      "task_id": "G6",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 16092,
+      "sha256": "a93725fc8f101def6cc31f5cd4cb119a22b10fc40ac64ff6901fc0c21f073308",
+      "authorization_ref": "Project Lead MASTER PROMPT - G6 SNAPSHOT RELEASE CONTRACT HARDENING & CONTROLLED PROJECT LEAD HANDOFF (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_R05_RECURSIVE_PARQUET_INVENTORY_AUDIT.md",
+      "task_id": "G6",
+      "artifact_type": "CODE_AND_REGRESSION_AUDIT",
+      "bytes": 7854,
+      "sha256": "8f2578ad81476cf685f551595537404631534aa18e515f354fd448a043948266",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_R05_RECURSIVE_REGRESSION_RESULTS.md",
+      "task_id": "G6",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 7552,
+      "sha256": "aaba649edc5866e95a3b6040ea524ad75e45d3803429b9bfb41f4da916351e99",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_2016_CANONICAL_EXECUTION_RUNBOOK.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 7211,
+      "sha256": "ac9b859fcdc32fe60da0e7307a72bb6795d64ceda6c5bac8ce98e1d03c488a66",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_SINGLE_RUN_VALIDATION_CONTRACT.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 6342,
+      "sha256": "e21872720385a924e4dd46a639514b99b16dfb283d62776e28c986520edc2833",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_CLI_ENTRYPOINT_VERIFICATION.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 6417,
+      "sha256": "66b9f4a01c804875d61f9d384ec9635a57284b2bfeb400f2054bbb230a44162f",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_LOCK_POINTER_RECOVERY_ALIGNMENT.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 6193,
+      "sha256": "1d941c517a8c162122466fe9d3c9886ad16f81430043b4f6e72223dd6060715a",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G5_SIGNOFF_EVIDENCE_MATRIX_ERRATA.md",
+      "task_id": "G5",
+      "artifact_type": "ERRATA_REPORT",
+      "bytes": 4272,
+      "sha256": "c25aed8ff47827b9518191ad1e1c7965012e058c720d269024be18c1bf25626e",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_FIRST_BATCH_PRESTART_DECISION_MATRIX.md",
+      "task_id": "G6",
+      "artifact_type": "GOVERNANCE_PACKAGE",
+      "bytes": 5201,
+      "sha256": "7f92acaba0cf12197b537b4422c0c9b73e0bfdcd6f5db95e94371ca224c65310",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_FINAL_OPERATIONAL_RAW_LOG.txt",
+      "task_id": "G6",
+      "artifact_type": "SYNTHETIC_TEST_REPORT",
+      "bytes": 11718,
+      "sha256": "be1c556d6a571b63ceca9042b5739b7ea3988be47881dd9d5d7bf18741f975de",
+      "authorization_ref": "Project Lead MASTER AGENT PROMPT - G5 SIGNOFF RECONCILIATION & G6 T-012 EXECUTION READINESS CLOSEOUT (2026-10-21)"
     }
   ]
 }

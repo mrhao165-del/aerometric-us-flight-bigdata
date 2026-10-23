@@ -1,0 +1,81 @@
+{
+  "archive_name": "G6_T012_2016_PRESTART_REVIEW.zip",
+  "archive_byte_size": 42522,
+  "archive_sha256": "2dcaefb138514812ebe46c133d9fe9e702c109f329798a3b8e1c072b05a26e2a",
+  "archive_crc32": "95e75475",
+  "generated_at": "2026-10-21T09:21:46Z",
+  "task": "G6-T012-2016-PRESTART",
+  "verdict": "READY_WITH_CONDITIONS",
+  "governance_status": {
+    "G5": "IN_PROGRESS / HUMAN_SIGNOFF_PENDING",
+    "G6": "NOT_STARTED / BLOCKED",
+    "T012": "NOT_STARTED",
+    "D1_BTS_PROVENANCE": "PENDING_HUMAN_SOURCE_ATTESTATION",
+    "D2_FP_DEC_019_OPTION_B": "APPROVED_BY_PROJECT_LEAD_INSTRUCTION",
+    "D3_TS018_HUMAN_SIGNOFF": "CONDITIONALLY_ACCEPTED_PENDING_PREREQUISITES",
+    "D4_G5_HUMAN_SIGNOFF": "IN_PROGRESS / HUMAN_SIGNOFF_PENDING",
+    "D5_PRODUCTION_EXECUTION": "NOT_AUTHORIZED",
+    "G6_ARCH_2016": "APPROVED_OPTION_B_BY_PROJECT_LEAD_INSTRUCTION"
+  },
+  "resource_assessment": {
+    "drive_d_free_gib": 56.83,
+    "drive_d_policy_min_gib": 25.0,
+    "drive_d_status": "PASS",
+    "ram_available_gib": 3.24,
+    "ram_hard_min_gib": 3.0,
+    "ram_hard_status": "PASS",
+    "ram_recommended_gib": 4.0,
+    "ram_recommended_status": "OPERATOR_CLEANUP_ADVISED"
+  },
+  "canonical_2016_source": {
+    "relative_path": "data/raw/tabular/2016/flight_with_weather_2016.csv",
+    "byte_size": 1538427452,
+    "sha256": "4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34",
+    "audited_expected_rows": 5537987,
+    "integrity_status": "VERIFIED_MATCH"
+  },
+  "files": [
+    {
+      "relative_path": "docs/05-evidence/G6_T012_2016_BASELINE_INTEGRATION_DECISION_DRAFT.md",
+      "byte_size": 8187,
+      "sha256": "e217322728cc9123cb8662ae06180ee4f9bc2594e4c17fac33e2dd7f88e4f0c2",
+      "crc32": "0f868e2c"
+    },
+    {
+      "relative_path": "docs/05-evidence/G6_T012_2016_PRESTART_RAW_LOG.txt",
+      "byte_size": 31081,
+      "sha256": "7942736ab8154cd26180073ca74b514144042d47b81c8e45ecc89d47e7316035",
+      "crc32": "b7c26d1b"
+    },
+    {
+      "relative_path": "docs/05-evidence/G6_T012_2016_PRESTART_REPORT.md",
+      "byte_size": 17853,
+      "sha256": "e1e2205772624401c08b74c497f4a16b50c3a3d9ab8a3592b989d2772e6f4fd4",
+      "crc32": "f8ba91e0"
+    },
+    {
+      "relative_path": "tools/qa/check_writer_preflight_safety.py",
+      "byte_size": 8885,
+      "sha256": "5e231f8f957feb29af4f5e180ad41de8baf923b27a964055ca54a76f48a00ebe",
+      "crc32": "97a36d78"
+    },
+    {
+      "relative_path": "tools/qa/run_g6_t012_prestart_checks.py",
+      "byte_size": 6444,
+      "sha256": "91082569abbf2f10caeef2541cca297219903c792d0bdb86ebcd073a54c688b7",
+      "crc32": "63baf95f"
+    },
+    {
+      "relative_path": "tools/qa/verify_multiyear_snapshot.py",
+      "byte_size": 93583,
+      "sha256": "4a594705e9d5167d0e5c56dbb4621f2f62d1410350e2668d686699610e955131",
+      "crc32": "e13243da"
+    },
+    {
+      "relative_path": "tools/qa/verify_staging_pointer.py",
+      "byte_size": 15073,
+      "sha256": "a7f706bc8ec5d21bc128bdd5f53143c7fabefa4d6f6d56ff9ccde90c52c35830",
+      "crc32": "b0faf56b"
+    }
+  ]
+}

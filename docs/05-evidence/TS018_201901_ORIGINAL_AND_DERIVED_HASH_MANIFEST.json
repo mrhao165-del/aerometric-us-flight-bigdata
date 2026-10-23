@@ -1,0 +1,25 @@
+{
+  "manifest_schema": "ts018_reference_manifest_v1",
+  "task_id": "TS-018",
+  "generated_at": "2026-10-20T00:07:00+07:00",
+  "allowed_reference_subtree": "data/reference/bts_transtats/",
+  "artifacts": [
+    {
+      "path": "data/reference/bts_transtats/original/T_ONTIME_REPORTING_20261019_112232.zip",
+      "bytes": 29975383,
+      "sha256": "342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6",
+      "crc32": "0x7d8573c4",
+      "role": "ORIGINAL_EXTERNAL_BTS_ZIP",
+      "contained_file": "T_ONTIME_REPORTING.csv",
+      "contained_uncompressed_bytes": 217369264,
+      "contained_sha256": "dce92e8f602d02ef50f2354789653dd770bc46d948c13a48e3518f2998068bec"
+    },
+    {
+      "path": "data/reference/bts_transtats/bts_transtats_201901.provenance.json",
+      "bytes": 1397,
+      "sha256": "2531472dcff06dfdaac96bbccf339a1bce511bc8b39afd5a753f38284fb7ae72",
+      "role": "CANDIDATE_PROVENANCE_COMPANION",
+      "approval_status": "PENDING_APPROVAL"
+    }
+  ]
+}

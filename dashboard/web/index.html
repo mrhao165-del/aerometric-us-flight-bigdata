@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AeroMetric — Phân tích mô tả hiệu suất chuyến bay Hoa Kỳ 2016–2024 từ dữ liệu đã nghiệm thu.">
+  <title>AeroMetric · US Flight Performance</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="vendor/plotly.min.js" defer></script>
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Đến nội dung chính</a>
+  <aside id="sidebar" aria-label="Điều hướng chính"></aside>
+  <div class="workspace">
+    <header id="topbar"></header>
+    <main id="main" tabindex="-1" aria-live="polite">
+      <div class="loading"><span class="loading-dot"></span>Đang đọc gói dữ liệu đã nghiệm thu…</div>
+    </main>
+    <footer class="site-footer"><span>AeroMetric · Nghiên cứu hiệu suất hàng không Hoa Kỳ 2016–2024</span><span>Thống kê mô tả · Gói demo offline</span></footer>
+  </div>
+  <dialog id="chart-dialog" aria-label="Biểu đồ chính thức">
+    <div class="dialog-head"><h2 id="dialog-title">Biểu đồ chính thức</h2><button id="close-dialog" class="icon-button" aria-label="Đóng biểu đồ">✕</button></div>
+    <img id="dialog-image" alt="">
+    <p id="dialog-note" class="muted"></p>
+  </dialog>
+  <div id="toast" role="status" hidden></div>
+</body>
+</html>

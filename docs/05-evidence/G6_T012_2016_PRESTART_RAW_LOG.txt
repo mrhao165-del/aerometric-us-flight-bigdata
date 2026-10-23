@@ -1,0 +1,597 @@
+================================================================================
+US FLIGHT PERFORMANCE ANALYSIS 2016-2024
+TASK: G6-T012-2016-PRESTART — RAW COMMAND EXECUTION LOG
+Timestamp (UTC): 2026-10-21T11:05:12.084303+00:00
+================================================================================
+
+>>> STEP: Git Working Tree Status
+Command: git status --short
+Exit Code: 0
+--- Output ---
+ M .gitignore
+ M docs/01-planning/BACKLOG.md
+ M docs/02-design/DECISIONS.md
+ M docs/03-quality/CHANGELOG.md
+ M docs/04-execution/AI_HANDOFF.md
+ M docs/04-execution/PROJECT_STATE.md
+ M docs/05-evidence/EVIDENCE_DELIVERABLE_REGISTER.json
+ M src/flight_pipeline/ingestion/coordinator.py
+ M src/flight_pipeline/quality/__init__.py
+ M src/flight_pipeline/quality/predicates.py
+ M src/flight_pipeline/storage/locking.py
+ M tools/check_working_tree_consistency.py
+ M tools/qa/verify_g2_repo_apply_r1_semantic_invariants.py
+ M tools/qa/verify_t006_contract_consistency.py
+?? G5_CONTROLLED_SIGNOFF_REVIEW.zip
+?? G5_CONTROLLED_SIGNOFF_REVIEW_MANIFEST.json
+?? G5_G6_FINAL_ALIGNMENT_REVIEW.zip
+?? G5_G6_FINAL_ALIGNMENT_REVIEW_MANIFEST.json
+?? G5_OFFICIAL_SIGNOFF_REVIEW.zip
+?? G5_OFFICIAL_SIGNOFF_REVIEW_MANIFEST.json
+?? G6_D5_FINAL_READINESS_REVIEW.zip
+?? G6_D5_FINAL_READINESS_REVIEW_MANIFEST.json
+?? G6_T012_2016_PRESTART_REVIEW.zip
+?? G6_T012_2016_PRESTART_REVIEW_MANIFEST.json
+?? docs/05-evidence/FP_DEC_018_OFFICIAL_HUMAN_APPROVAL_20261019.md
+?? docs/05-evidence/G4_OFFICIAL_HUMAN_SIGNOFF_20261018.md
+?? docs/05-evidence/G4_SIGNOFF_TEST_EVIDENCE_ERRATA.md
+?? docs/05-evidence/G5_CONTROLLED_SIGNOFF_CHANGES.patch
+?? docs/05-evidence/G5_CONTROLLED_SIGNOFF_CLOSEOUT_REPORT.md
+?? docs/05-evidence/G5_CONTROLLED_SIGNOFF_REVIEW.zip
+?? docs/05-evidence/G5_CONTROLLED_SIGNOFF_REVIEW_MANIFEST.json
+?? docs/05-evidence/G5_D1_BTS_PROVENANCE_ATTESTATION_DRAFT.md
+?? docs/05-evidence/G5_D1_D4_CORRECTED_DRAFT_RECONCILIATION.md
+?? docs/05-evidence/G5_D1_D4_HUMAN_SIGNOFF_READINESS.md
+?? docs/05-evidence/G5_D2_FP_DEC_019_OPTION_B_APPROVAL_DRAFT.md
+?? docs/05-evidence/G5_D3_TS018_HUMAN_TECHNICAL_SIGNOFF_DRAFT.md
+?? docs/05-evidence/G5_D4_G5_HUMAN_GATE_SIGNOFF_DRAFT.md
+?? docs/05-evidence/G5_ENTRY_HANDOFF.md
+?? docs/05-evidence/G5_FINAL_EXIT_CRITERIA_MATRIX.md
+?? docs/05-evidence/G5_FINAL_PRE_SIGNOFF_RECONCILIATION.md
+?? docs/05-evidence/G5_G6_FINAL_ALIGNMENT_CHANGES.patch
+?? docs/05-evidence/G5_G6_FINAL_ALIGNMENT_REPORT.md
+?? docs/05-evidence/G5_G6_FINAL_ALIGNMENT_REVIEW.zip
+?? docs/05-evidence/G5_G6_FINAL_ALIGNMENT_REVIEW_MANIFEST.json
+?? docs/05-evidence/G5_HUMAN_SIGNOFF_READINESS_DRAFT.md
+?? docs/05-evidence/G5_OFFICIAL_HUMAN_SIGNOFF_CHANGES.patch
+?? docs/05-evidence/G5_OFFICIAL_HUMAN_SIGNOFF_REPORT.md
+?? docs/05-evidence/G5_OFFICIAL_SIGNOFF_REVIEW.zip
+?? docs/05-evidence/G5_OFFICIAL_SIGNOFF_REVIEW_MANIFEST.json
+?? docs/05-evidence/G5_RESIDUAL_RISK_AND_CONDITIONS.md
+?? docs/05-evidence/G5_SIGNOFF_DOSSIER_FINAL_READINESS.md
+?? docs/05-evidence/G5_SIGNOFF_EVIDENCE_MATRIX_ERRATA.md
+?? docs/05-evidence/G5_T010_ENTRY_BASELINE_ERRATA.md
+?? docs/05-evidence/G6_C01_ANNUAL_ROW_COUNT_RECONCILIATION.md
+?? docs/05-evidence/G6_C02_CANONICAL_EIGHT_KPI_CONTRACT_AUDIT.md
+?? docs/05-evidence/G6_C03_MULTIYEAR_SNAPSHOT_AND_VERSION_POLICY.md
+?? docs/05-evidence/G6_C04_2016_BASELINE_OPTION_REVIEW.md
+?? docs/05-evidence/G6_C05_EXECUTION_PATH_LOCK_RESOURCE_AUDIT.md
+?? docs/05-evidence/G6_C06_EVIDENCE_HASH_RECONCILIATION.json
+?? docs/05-evidence/G6_D1_D5_HUMAN_DECISION_HANDOFF.md
+?? docs/05-evidence/G6_D5_FINAL_READINESS_CHANGES.patch
+?? docs/05-evidence/G6_D5_FINAL_READINESS_REPORT.md
+?? docs/05-evidence/G6_D5_FINAL_READINESS_REVIEW.zip
+?? docs/05-evidence/G6_D5_FINAL_READINESS_REVIEW_MANIFEST.json
+?? docs/05-evidence/G6_FINAL_MANIFEST_COMPATIBILITY_RAW_LOG.txt
+?? docs/05-evidence/G6_FINAL_MANIFEST_PARQUET_HASH_VERIFICATION.md
+?? docs/05-evidence/G6_FINAL_NEGATIVE_REGRESSION_RESULTS.md
+?? docs/05-evidence/G6_FINAL_POINTER_LOCK_ROOT_ALIGNMENT.md
+?? docs/05-evidence/G6_FINAL_PREAUTHORIZATION_RAW_LOG.txt
+?? docs/05-evidence/G6_FINAL_ROW_ACCOUNTING_RECONCILIATION.md
+?? docs/05-evidence/G6_FINAL_SNAPSHOT_VALIDATOR_COUNTEREXAMPLE_AUDIT.md
+?? docs/05-evidence/G6_FINAL_SNAPSHOT_VALIDATOR_FIX_AND_DIFF.md
+?? docs/05-evidence/G6_FINAL_TARGETED_CORRECTION_RAW_LOG.txt
+?? docs/05-evidence/G6_LOCK_AND_RECOVERY_SAFETY_ASSESSMENT.md
+?? docs/05-evidence/G6_MANIFEST_RECEIPT_AND_OUTPUT_HASH_AUDIT.md
+?? docs/05-evidence/G6_OFFICIAL_DECISION_MAPPING_ERRATA.md
+?? docs/05-evidence/G6_OPERATIONAL_GAP_MATRIX.md
+?? docs/05-evidence/G6_PHYSICAL_PARQUET_ACCOUNTING_CONTRACT_TEST.md
+?? docs/05-evidence/G6_POINTER_VERIFICATION_DESIGN_AND_TEST_REPORT.md
+?? docs/05-evidence/G6_PREFLIGHT_RAW_EXECUTION_LOG.txt
+?? docs/05-evidence/G6_PREFLIGHT_TARGETED_CORRECTION_RAW_LOG.txt
+?? docs/05-evidence/G6_PRODUCTION_ENTRY_ACCEPTANCE_MATRIX.md
+?? docs/05-evidence/G6_PRODUCTION_MANIFEST_COMPATIBILITY_AUDIT.md
+?? docs/05-evidence/G6_PRODUCTION_MANIFEST_FALSE_PASS_RECONCILIATION.md
+?? docs/05-evidence/G6_PROJECT_LEAD_D1_D4_SIGNOFF_STATUS.md
+?? docs/05-evidence/G6_PROJECT_LEAD_SIGNOFF_HANDOFF_CORRECTED.md
+?? docs/05-evidence/G6_R05_RECURSIVE_PARQUET_INVENTORY_AUDIT.md
+?? docs/05-evidence/G6_R05_RECURSIVE_REGRESSION_RESULTS.md
+?? docs/05-evidence/G6_RELEASE_VALIDATOR_OUTPUT_PATH_INTEGRITY.md
+?? docs/05-evidence/G6_RELEASE_VALIDATOR_R01_R04_COUNTEREXAMPLES.md
+?? docs/05-evidence/G6_RELEASE_VALIDATOR_RAW_EXECUTION_LOG.txt
+?? docs/05-evidence/G6_RELEASE_VALIDATOR_RECEIPT_STRICTNESS.md
+?? docs/05-evidence/G6_RELEASE_VALIDATOR_TEST_AND_LOG_REPORT.md
+?? docs/05-evidence/G6_T012_2016_BASELINE_INTEGRATION_DECISION_DRAFT.md
+?? docs/05-evidence/G6_T012_2016_CANONICAL_EXECUTION_RUNBOOK.md
+?? docs/05-evidence/G6_T012_2016_PRESTART_RAW_LOG.txt
+?? docs/05-evidence/G6_T012_2016_PRESTART_REPORT.md
+?? docs/05-evidence/G6_T012_2016_PRESTART_REVIEW.zip
+?? docs/05-evidence/G6_T012_2016_PRESTART_REVIEW_MANIFEST.json
+?? docs/05-evidence/G6_T012_CANONICAL_SOURCE_INVENTORY.md
+?? docs/05-evidence/G6_T012_CLI_ENTRYPOINT_VERIFICATION.md
+?? docs/05-evidence/G6_T012_EXECUTION_CHECKLIST.md
+?? docs/05-evidence/G6_T012_FINAL_EXECUTION_CHECKLIST_V2.md
+?? docs/05-evidence/G6_T012_FINAL_OPERATIONAL_RAW_LOG.txt
+?? docs/05-evidence/G6_T012_FINAL_R1_OPERATIONAL_GAP_REVIEW.md
+?? docs/05-evidence/G6_T012_FIRST_BATCH_PRESTART_DECISION_MATRIX.md
+?? docs/05-evidence/G6_T012_FIRST_YEAR_EXECUTION_READINESS.md
+?? docs/05-evidence/G6_T012_FULL_RUN_ENTRY_PLAN.md
+?? docs/05-evidence/G6_T012_LOCK_POINTER_RECOVERY_ALIGNMENT.md
+?? docs/05-evidence/G6_T012_POINTER_AND_LOCK_CONTRACT_AUDIT.md
+?? docs/05-evidence/G6_T012_PRE_EXECUTION_GAP_CHECKLIST.md
+?? docs/05-evidence/G6_T012_PUBLICATION_PATH_AND_MANIFEST_AUDIT.md
+?? docs/05-evidence/G6_T012_READINESS_CHECKLIST.md
+?? docs/05-evidence/G6_T012_RESOURCE_AND_CAPACITY_PREFLIGHT.md
+?? docs/05-evidence/G6_T012_RESOURCE_PRESTART_POLICY.md
+?? docs/05-evidence/G6_T012_RISK_AND_ROLLBACK_PLAN.md
+?? docs/05-evidence/G6_T012_SINGLE_RUN_VALIDATION_CONTRACT.md
+?? docs/05-evidence/G6_TEST_INVENTORY_AND_ARTIFACT_HASH_ERRATA.md
+?? docs/05-evidence/T008_ENTRY_HANDOFF_CORRECTIONS.md
+?? docs/05-evidence/T008_ENTRY_SOURCE_INVENTORY_RECONCILIATION.md
+?? docs/05-evidence/T008_FINAL_EXIT_COVERAGE_CORRECTION.md
+?? docs/05-evidence/T008_FINAL_EXIT_FINAL_VERDICT.md
+?? docs/05-evidence/T008_FINAL_EXIT_FULL_TEST_RESULTS.md
+?? docs/05-evidence/T008_FINAL_EXIT_LOG_QA_VERIFIERS.txt
+?? docs/05-evidence/T008_FINAL_EXIT_LOG_UNITTEST_SUITE.txt
+?? docs/05-evidence/T008_FINAL_EXIT_METRIC_ANSI_VERIFICATION.md
+?? docs/05-evidence/T008_FINAL_EXIT_POLICY_CONTRACT_REVIEW.md
+?? docs/05-evidence/T008_FINAL_EXIT_SOURCE_AND_DIFF_AUDIT.md
+?? docs/05-evidence/T008_FULL_BASELINE_AND_SCOPE.md
+?? docs/05-evidence/T008_FULL_DC11_DC12_ACCOUNTING_REPORT.md
+?? docs/05-evidence/T008_FULL_FINAL_INDEPENDENT_VERDICT.md
+?? docs/05-evidence/T008_FULL_LOG_QA_VERIFIERS.txt
+?? docs/05-evidence/T008_FULL_LOG_UNITTEST_SUITE.txt
+?? docs/05-evidence/T008_FULL_OR05_DATE_COVERAGE_REPORT.md
+?? docs/05-evidence/T008_FULL_PROVISIONAL_POLICY_IMPACT_REVIEW.md
+?? docs/05-evidence/T008_FULL_QUALITY_RULE_CATALOG.md
+?? docs/05-evidence/T008_FULL_RECORD_AND_METRIC_VALIDITY.md
+?? docs/05-evidence/T008_FULL_RISK_AND_LIMITATION_REGISTER.md
+?? docs/05-evidence/T008_FULL_STORAGE_AND_RECOVERY_REVIEW.md
+?? docs/05-evidence/T008_FULL_SYNTHETIC_TEST_MATRIX.md
+?? docs/05-evidence/T008_FULL_T007_HANDOFF_RECONCILIATION.md
+?? docs/05-evidence/T008_FULL_T007_INTEGRATION_REVIEW.md
+?? docs/05-evidence/T008_HUMAN_SIGNOFF_20261018.md
+?? docs/05-evidence/T010_FULL_BASELINE_AND_PREFLIGHT.md
+?? docs/05-evidence/T010_FULL_DC11_DC12_ACCOUNTING_REPORT.md
+?? docs/05-evidence/T010_FULL_FINAL_INDEPENDENT_VERDICT.md
+?? docs/05-evidence/T010_FULL_JANUARY_SMOKE_RESULTS.md
+?? docs/05-evidence/T010_FULL_LOG_QA_VERIFIERS.txt
+?? docs/05-evidence/T010_FULL_LOG_UNITTEST_SUITE.txt
+?? docs/05-evidence/T010_FULL_MICRO_SMOKE_RESULTS.md
+?? docs/05-evidence/T010_FULL_PARQUET_STAGING_VERIFICATION.md
+?? docs/05-evidence/T010_FULL_RAW_DATA_IMMUTABILITY_AUDIT.md
+?? docs/05-evidence/T010_FULL_RESOURCE_BENCHMARK_TS014.md
+?? docs/05-evidence/T010_FULL_RISK_AND_LIMITATION_REGISTER.md
+?? docs/05-evidence/T010_FULL_SAFETY_GUARD_VERIFICATION.md
+?? docs/05-evidence/T010_FULL_TEST_EXECUTION_REPORT.md
+?? docs/05-evidence/T010_FULL_YEAR_SMOKE_RESULTS.md
+?? docs/05-evidence/T010_HUMAN_SIGNOFF_20261018.md
+?? docs/05-evidence/T010_OFFICIAL_SIGNOFF_SCHEMA_AND_PROVENANCE_ERRATA.md
+?? docs/05-evidence/T010_REAL_DATA_SMOKE_METRICS.json
+?? docs/05-evidence/T010_RUN1_HISTORICAL_REAL_DATA_EXECUTION.txt
+?? docs/05-evidence/T010_RUN2_CLOSURE_REAL_DATA_EXECUTION.txt
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_FINAL_VERDICT.md
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_JANUARY_AND_MICRO_ACCOUNTING.md
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_LOG_QA_VERIFIERS.txt
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_LOG_UNITTEST_SUITE.txt
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_METRIC_VALIDITY_INDEPENDENT_REVIEW.md
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_PARQUET_ARTIFACT_HASH_MANIFEST.json
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_PARQUET_SCHEMA_ERRATA.md
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_PRODUCTION_POLICY_GUARD.md
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_REGISTRY_AND_QA_SEAL.md
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_SOURCE_AND_RUN_PROVENANCE.md
+?? docs/05-evidence/T010_SIGNOFF_CLOSURE_TS014_BENCHMARK_RECONCILIATION.md
+?? docs/05-evidence/T011_FULL_BASELINE_AND_PREFLIGHT.md
+?? docs/05-evidence/T011_FULL_BTS_PARITY_RECONCILIATION.md
+?? docs/05-evidence/T011_FULL_CONTRACTUAL_TEST_MATRIX.md
+?? docs/05-evidence/T011_FULL_DOC_READING_ATTESTATION.md
+?? docs/05-evidence/T011_FULL_FAULT_INJECTION_AND_ROLLBACK.md
+?? docs/05-evidence/T011_FULL_FINAL_INDEPENDENT_VERDICT.md
+?? docs/05-evidence/T011_FULL_KPI_ENGINE_VERIFICATION.md
+?? docs/05-evidence/T011_FULL_LOG_QA_VERIFIERS.txt
+?? docs/05-evidence/T011_FULL_LOG_UNITTEST_SUITE.txt
+?? docs/05-evidence/T011_FULL_RISK_AND_LIMITATION_REGISTER.md
+?? docs/05-evidence/T011_FULL_SOURCE_CHANGE_AND_PROVENANCE.md
+?? docs/05-evidence/T011_FULL_TEST_EXECUTION_REPORT.md
+?? docs/05-evidence/T011_FULL_TS008_AND_REPEATABILITY.md
+?? docs/05-evidence/T011_KPI_SAMPLE_SMOKE_METRICS.json
+?? docs/05-evidence/T011_OFFICIAL_CONTROLLED_TECHNICAL_SIGNOFF_20261019.md
+?? docs/05-evidence/T011_POST_CLOSURE_BASELINE.md
+?? docs/05-evidence/T011_POST_CLOSURE_FINAL_READINESS.md
+?? docs/05-evidence/T011_POST_CLOSURE_FULL_REGRESSION.md
+?? docs/05-evidence/T011_POST_CLOSURE_INCIDENT_DIAGNOSTIC_AUDIT.md
+?? docs/05-evidence/T011_POST_CLOSURE_RAW_QA_LOG.txt
+?? docs/05-evidence/T011_POST_CLOSURE_RAW_UNITTEST_LOG.txt
+?? docs/05-evidence/T011_POST_CLOSURE_RECOVERY_TRANSACTION_AUDIT.md
+?? docs/05-evidence/T011_POST_CLOSURE_TEST_INVENTORY_ERRATA.md
+?? docs/05-evidence/T011_R1_BASELINE_AND_DOCUMENT_AUDIT.md
+?? docs/05-evidence/T011_R1_FINAL_INDEPENDENT_VERDICT.md
+?? docs/05-evidence/T011_R1_FULL_REGRESSION.md
+?? docs/05-evidence/T011_R1_KPI_EDGE_CASE_AUDIT.md
+?? docs/05-evidence/T011_R1_MIN_N_AND_COVERAGE_AUDIT.md
+?? docs/05-evidence/T011_R1_RAW_QA_LOG.txt
+?? docs/05-evidence/T011_R1_RAW_UNITTEST_LOG.txt
+?? docs/05-evidence/T011_R1_REPRODUCED_COUNTEREXAMPLES.md
+?? docs/05-evidence/T011_R1_SOURCE_CHANGE_AND_RISK_REPORT.md
+?? docs/05-evidence/T011_R1_TS008_ACCURACY_RECONCILIATION.md
+?? docs/05-evidence/T011_R1_TS013_FAULT_INJECTION_AUDIT.md
+?? docs/05-evidence/T011_R1_TS018_FAIL_CLOSED_AUDIT.md
+?? docs/05-evidence/T011_R2_BASELINE_AND_DOCUMENT_AUDIT.md
+?? docs/05-evidence/T011_R2_BTS_PROVENANCE_GUARD_AUDIT.md
+?? docs/05-evidence/T011_R2_COMPOSITE_KEY_VALIDATION.md
+?? docs/05-evidence/T011_R2_EVIDENCE_CLAIM_RECONCILIATION.md
+?? docs/05-evidence/T011_R2_FINAL_INDEPENDENT_VERDICT.md
+?? docs/05-evidence/T011_R2_FULL_REGRESSION.md
+?? docs/05-evidence/T011_R2_RAW_QA_LOG.txt
+?? docs/05-evidence/T011_R2_RAW_UNITTEST_LOG.txt
+?? docs/05-evidence/T011_R2_REPRODUCED_FALSE_PASS_CASES.md
+?? docs/05-evidence/T011_R2_SEVEN_FIELD_COMPLETENESS_AUDIT.md
+?? docs/05-evidence/T011_R2_SOURCE_CHANGE_AND_RISK_REPORT.md
+?? docs/05-evidence/T011_R2_TS013_REALISM_AND_RECOVERY.md
+?? docs/05-evidence/T011_R3_COMPOSITE_KEY_DATE_AUDIT.md
+?? docs/05-evidence/T011_R3_DOCUMENT_AND_BASELINE_AUDIT.md
+?? docs/05-evidence/T011_R3_EVIDENCE_CLAIM_ERRATA.md
+?? docs/05-evidence/T011_R3_FINAL_INDEPENDENT_VERDICT.md
+?? docs/05-evidence/T011_R3_FULL_REGRESSION.md
+?? docs/05-evidence/T011_R3_LOCK_RECOVERY_AND_CONCURRENCY_AUDIT.md
+?? docs/05-evidence/T011_R3_NUMERIC_PARSING_AND_NULL_AUDIT.md
+?? docs/05-evidence/T011_R3_PROVENANCE_TRUST_BOUNDARY_AUDIT.md
+?? docs/05-evidence/T011_R3_RAW_QA_LOG.txt
+?? docs/05-evidence/T011_R3_RAW_UNITTEST_LOG.txt
+?? docs/05-evidence/T011_R3_REPRODUCED_COUNTEREXAMPLES.md
+?? docs/05-evidence/T011_R3_SOURCE_CHANGE_AND_RISK_REPORT.md
+?? docs/05-evidence/T011_R3_SYNTHETIC_RECONCILIATION_VERDICT_AUDIT.md
+?? docs/05-evidence/T011_R4_BASELINE_AND_DOCUMENT_AUDIT.md
+?? docs/05-evidence/T011_R4_EVIDENCE_ERRATA.md
+?? docs/05-evidence/T011_R4_FINAL_INDEPENDENT_VERDICT.md
+?? docs/05-evidence/T011_R4_FULL_REGRESSION.md
+?? docs/05-evidence/T011_R4_INVALID_PID_FAIL_CLOSED_AUDIT.md
+?? docs/05-evidence/T011_R4_LOCK_RACE_AND_RECOVERY_AUDIT.md
+?? docs/05-evidence/T011_R4_PROVENANCE_TRUST_RECONCILIATION.md
+?? docs/05-evidence/T011_R4_RAW_QA_LOG.txt
+?? docs/05-evidence/T011_R4_RAW_UNITTEST_LOG.txt
+?? docs/05-evidence/T011_R4_REPRODUCED_COUNTEREXAMPLES.md
+?? docs/05-evidence/T011_R4_SOURCE_CHANGE_AND_RISK_REPORT.md
+?? docs/05-evidence/T011_R5_BASELINE_AND_DOCUMENT_AUDIT.md
+?? docs/05-evidence/T011_R5_CHECKSUM_VALIDATION_AUDIT.md
+?? docs/05-evidence/T011_R5_EVIDENCE_CLAIM_ERRATA.md
+?? docs/05-evidence/T011_R5_FINAL_INDEPENDENT_VERDICT.md
+?? docs/05-evidence/T011_R5_FULL_REGRESSION.md
+?? docs/05-evidence/T011_R5_LATE_UNLINK_RACE_REPRODUCTION.md
+?? docs/05-evidence/T011_R5_LOCK_PROTOCOL_AND_SAFETY_DECISION.md
+?? docs/05-evidence/T011_R5_RAW_QA_LOG.txt
+?? docs/05-evidence/T011_R5_RAW_UNITTEST_LOG.txt
+?? docs/05-evidence/T011_R5_SOURCE_CHANGE_AND_RISK_REPORT.md
+?? docs/05-evidence/T011_R5_WINDOWS_PROCESS_CONCURRENCY_TESTS.md
+?? docs/05-evidence/T011_R6_ACQUIRE_FAILURE_COUNTEREXAMPLES.md
+?? docs/05-evidence/T011_R6_BASELINE_AND_DOCUMENT_AUDIT.md
+?? docs/05-evidence/T011_R6_DOCUMENT_HASH_RECONCILIATION.md
+?? docs/05-evidence/T011_R6_EVIDENCE_AND_TIMING_ERRATA.md
+?? docs/05-evidence/T011_R6_FINAL_INDEPENDENT_VERDICT.md
+?? docs/05-evidence/T011_R6_FULL_REGRESSION.md
+?? docs/05-evidence/T011_R6_LOCK_OWNERSHIP_AND_QUARANTINE_AUDIT.md
+?? docs/05-evidence/T011_R6_LOCK_THREAT_MODEL_AND_LIMITATIONS.md
+?? docs/05-evidence/T011_R6_PER_MODULE_UNITTEST_LOG.txt
+?? docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_BASELINE.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_EVIDENCE_ERRATA.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FINAL_READINESS.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_FP_DEC_018_REVIEW.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_INCIDENT_DURABILITY.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_RAW_QA_LOG.txt
+?? docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_RAW_UNITTEST_LOG.txt
+?? docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_RECOVERY_PROTOCOL.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_REGRESSION.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_CLOSURE_REPRODUCTIONS.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_DOCUMENT_ATTESTATION.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_FINAL_READINESS.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_FSTAT_RECOVERY_AUDIT.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_FULL_REGRESSION.md
+?? docs/05-evidence/T011_R6_PRESIGNOFF_RAW_QA_LOG.txt
+?? docs/05-evidence/T011_R6_PRESIGNOFF_RAW_UNITTEST_LOG.txt
+?? docs/05-evidence/T011_R6_PRESIGNOFF_RELEASE_FAILURE_AUDIT.md
+?? docs/05-evidence/T011_R6_RAW_QA_LOG.txt
+?? docs/05-evidence/T011_R6_RAW_UNITTEST_LOG.txt
+?? docs/05-evidence/T011_R6_SOURCE_CHANGE_AND_RISK_REPORT.md
+?? docs/05-evidence/T011_R6_WINDOWS_CONCURRENCY_VERIFICATION.md
+?? docs/05-evidence/T011_SIGNOFF_OFFICIAL_STATE_RECONCILIATION.md
+?? docs/05-evidence/T011_TS018_BTS_RECONCILIATION_SUMMARY.json
+?? docs/05-evidence/T012_FINAL_PREFLIGHT_CORRECTION.md
+?? docs/05-evidence/T012_FINAL_PREFLIGHT_CORRECTION.patch
+?? docs/05-evidence/T012_FINAL_PREFLIGHT_CORRECTION_REVIEW.zip
+?? docs/05-evidence/T012_FINAL_PREFLIGHT_CORRECTION_REVIEW_MANIFEST.json
+?? docs/05-evidence/T012_FINAL_PREFLIGHT_CORRECTION_TEST_LOG.txt
+?? docs/05-evidence/T012_MINIMAL_UNBLOCK_CHANGES.patch
+?? docs/05-evidence/T012_MINIMAL_UNBLOCK_REPORT.md
+?? docs/05-evidence/T012_MINIMAL_UNBLOCK_REVIEW.zip
+?? docs/05-evidence/T012_MINIMAL_UNBLOCK_REVIEW_MANIFEST.json
+?? docs/05-evidence/T012_MINIMAL_UNBLOCK_TEST_LOG.txt
+?? docs/05-evidence/TS018_201901_ACTUAL_STRATUM_AND_KEY_AUDIT.md
+?? docs/05-evidence/TS018_201901_CORRECTED_CANDIDATE_READINESS.md
+?? docs/05-evidence/TS018_201901_EVIDENCE_CORRECTION_ERRATA.md
+?? docs/05-evidence/TS018_201901_FINAL_HUMAN_REVIEW_REQUEST.md
+?? docs/05-evidence/TS018_201901_INDEPENDENT_AUDIT_20261020.md
+?? docs/05-evidence/TS018_201901_INDEPENDENT_EVIDENCE_RESULT_20261020.json
+?? docs/05-evidence/TS018_201901_INDEPENDENT_REPLAY_PROTOCOL.md
+?? docs/05-evidence/TS018_201901_KEY_COVERAGE_AND_SAMPLE_PROTOCOL.md
+?? docs/05-evidence/TS018_201901_ORIGINAL_AND_DERIVED_HASH_MANIFEST.json
+?? docs/05-evidence/TS018_201901_PARQUET_READONLY_SOURCE_ATTESTATION.md
+?? docs/05-evidence/TS018_201901_RAW_CLOSURE_LOG.txt
+?? docs/05-evidence/TS018_201901_RAW_RUN_LOG.txt
+?? docs/05-evidence/TS018_201901_REFERENCE_POLICY_ERRATA.md
+?? docs/05-evidence/TS018_201901_SEVEN_FIELD_PARITY_REPORT.md
+?? docs/05-evidence/TS018_201901_SOURCE_INTAKE_AND_PROVENANCE.md
+?? docs/05-evidence/TS018_201901_TARGETED_EVIDENCE_CLOSURE_PROMPT_20261020.md
+?? docs/05-evidence/TS018_BACKUPS/
+?? docs/05-evidence/TS018_BTS_ACQUISITION_READINESS_20261019.md
+?? docs/05-evidence/TS018_BTS_EXTERNAL_PROVENANCE_ATTESTATION_DRAFT.md
+?? docs/05-evidence/TS018_BTS_OFFICIAL_SOURCE_ACQUISITION_PLAN_20261019.md
+?? docs/05-evidence/TS018_FINAL_ACCEPTANCE_BASELINE.md
+?? docs/05-evidence/TS018_FINAL_HARDENING_BASELINE.md
+?? docs/05-evidence/TS018_FINAL_HARDENING_FINDINGS_AND_FIXES.md
+?? docs/05-evidence/TS018_FINAL_HARDENING_RAW_LOG.txt
+?? docs/05-evidence/TS018_FINAL_HUMAN_SIGNOFF_READINESS.md
+?? docs/05-evidence/TS018_FINAL_INDEPENDENT_REPLAY_REPORT.md
+?? docs/05-evidence/TS018_FINAL_NEGATIVE_TEST_RECONCILIATION.md
+?? docs/05-evidence/TS018_FINAL_NEGATIVE_TEST_REPORT.md
+?? docs/05-evidence/TS018_FINAL_PROVENANCE_AND_OPTION_B_READINESS.md
+?? docs/05-evidence/TS018_FINAL_R1_EXACT_VS_TOLERANCE_AUDIT.md
+?? docs/05-evidence/TS018_FINAL_R1_FINDINGS_REPRODUCTION.md
+?? docs/05-evidence/TS018_FINAL_R1_GOVERNANCE_ERRATA.md
+?? docs/05-evidence/TS018_FINAL_R1_HUMAN_SIGNOFF_READINESS.md
+?? docs/05-evidence/TS018_FINAL_R1_NEGATIVE_TEST_INVENTORY.md
+?? docs/05-evidence/TS018_FINAL_R1_RAW_COMMAND_AND_TEST_LOG.txt
+?? docs/05-evidence/TS018_FINAL_R1_REAL_EXAMPLES_RECONCILIATION.md
+?? docs/05-evidence/TS018_FINAL_R1_SAMPLING_FORENSIC_AUDIT.md
+?? docs/05-evidence/TS018_FINAL_R1_SEVEN_FIELD_SCOPE_ERRATA.md
+?? docs/05-evidence/TS018_FINAL_SAMPLE_DISTRIBUTION_AUDIT.md
+?? docs/05-evidence/TS018_FINAL_STRICT_NUMERIC_REPLAY.md
+?? docs/05-evidence/TS018_G5_STATE_TRANSITION_REPORT.md
+?? docs/05-evidence/TS018_OPTION_B_FORMAL_DECISION_DRAFT.md
+?? docs/05-evidence/TS018_SIGNOFF_DOSSIER_EVIDENCE_RECONCILIATION.md
+?? docs/05-evidence/TS018_SIGNOFF_DOSSIER_HUMAN_DECISION_MATRIX.md
+?? docs/05-evidence/TS018_SIGNOFF_DOSSIER_NEGATIVE_TEST_VERDICT.md
+?? docs/05-evidence/TS018_SIGNOFF_DOSSIER_RAW_EXECUTION_LOG.txt
+?? docs/05-evidence/TS018_SIGNOFF_DOSSIER_REAL_EXAMPLE_ERRATA.md
+?? docs/05-evidence/TS018_SIGNOFF_DOSSIER_SHA256_RECONCILIATION.json
+?? docs/05-evidence/TS018_SIGNOFF_DOSSIER_STRICT_EXACT_VERDICT.md
+?? src/flight_pipeline/kpi/
+?? src/flight_pipeline/quality/accounting.py
+?? src/flight_pipeline/quality/catalog.py
+?? src/flight_pipeline/quality/coverage.py
+?? src/flight_pipeline/quality/engine.py
+?? src/flight_pipeline/quality/policy.py
+?? tests/test_coordinator_preflight_unblock.py
+?? tests/test_g6_annual_source_counts.py
+?? tests/test_g6_kpi_contract_consistency.py
+?? tests/test_lock_state_vs_pointer_state.py
+?? tests/test_multiyear_snapshot_policy.py
+?? tests/test_prestart_checks_safety.py
+?? tests/test_t008_quality_engine.py
+?? tests/test_t010_policy_guards.py
+?? tests/test_t011_fault_injection.py
+?? tests/test_t011_kpi_engine.py
+?? tests/test_t011_post_closure.py
+?? tests/test_t011_r1_counterexamples.py
+?? tests/test_t011_r2_counterexamples.py
+?? tests/test_t011_r3_counterexamples.py
+?? tests/test_t011_r4_counterexamples.py
+?? tests/test_t011_r5_counterexamples.py
+?? tests/test_t011_r6_counterexamples.py
+?? tests/test_t011_r6_presignoff.py
+?? tests/test_t011_r6_presignoff_closure.py
+?? tests/test_t011_ts008_repeatability.py
+?? tests/test_t011_ts018_bts_parity.py
+?? tests/test_verify_staging_pointer.py
+?? tools/qa/TS018_201901_INDEPENDENT_EVIDENCE_CHECK_20261020.py
+?? tools/qa/check_writer_preflight_safety.py
+?? tools/qa/run_g6_t012_prestart_checks.py
+?? tools/qa/run_t010_real_data_smoke.py
+?? tools/qa/run_t011_kpi_smoke.py
+?? tools/qa/run_ts018_bts_adapter.py
+?? tools/qa/run_ts018_bts_parity.py
+?? tools/qa/test_ts018_negative_witness_verification.py
+?? tools/qa/test_ts018_reference_policy_regression.py
+?? tools/qa/verify_multiyear_snapshot.py
+?? tools/qa/verify_staging_pointer.py
+?? tools/qa/verify_t010_parquet_schema_attestation.py
+?? tools/qa/verify_ts018_two_source_sample_witness.py
+--------------------------------------------------------------------------------
+
+>>> STEP: Canonical 2016 RAW File Inspection
+Command: internal_hash_check
+Exit Code: 0
+--- Output ---
+File: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\raw\tabular\2016\flight_with_weather_2016.csv
+Exists: True
+Byte Size: 1538427452 (Expected: 1538427452, Match: True)
+SHA-256:   4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34
+Expected:  4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34
+Hash Match: True
+Source Integrity Verdict: PASS
+Audited Expected Rows: 5,537,987 (from schema_2016.json metadata catalog)
+--------------------------------------------------------------------------------
+
+>>> STEP: Workstation Resource Audit
+Command: internal_psutil_shutil
+Exit Code: 0
+--- Output ---
+{
+  "c_drive_total_gib": 154.86,
+  "c_drive_free_gib": 20.53,
+  "d_drive_total_gib": 300.0,
+  "d_drive_free_gib": 58.41,
+  "ram_total_gib": 15.71,
+  "ram_available_gib": 5.82,
+  "ram_used_percent": 63.0,
+  "active_locks_count": 0,
+  "resource_policy_evaluation": {
+    "d_drive_threshold_policy_min_gib": 25.0,
+    "d_drive_status": "PASS",
+    "ram_hard_operational_min_gib": 3.0,
+    "ram_hard_status": "PASS",
+    "ram_recommended_headroom_gib": 4.0,
+    "ram_recommended_status": "MEETS_RECOMMENDATION"
+  }
+}
+--------------------------------------------------------------------------------
+
+>>> STEP: Standalone Lock & Pointer Safety Preflight
+Command: C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/check_writer_preflight_safety.py --base-dir data --run-id run_2016_v1 --json
+Exit Code: 0
+--- Output ---
+{
+  "safe_to_start_writer": true,
+  "exit_code": 0,
+  "summary_verdict": "SAFE_TO_PROCEED_TO_LOCK_ACQUISITION",
+  "base_data_dir": "D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data",
+  "pointer_status": "UNINITIALIZED_POINTER_ALLOWED",
+  "pointer_error": null,
+  "pointer_file": "D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/curated/latest_run_id.txt",
+  "lock_state": "CLEAN",
+  "lock_dir": "D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/locks",
+  "lock_file_path": null,
+  "active_pid": null,
+  "liveness_status": null,
+  "recovery_artifacts_count": 0,
+  "recovery_artifacts": [],
+  "curated_dir": "D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/curated",
+  "storage_root_matched": true
+}
+--------------------------------------------------------------------------------
+
+>>> STEP: Staging Pointer Audit (verify_staging_pointer.py)
+Command: C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/verify_staging_pointer.py --base-dir data --allow-uninitialized --json
+Exit Code: 0
+--- Output ---
+{
+  "success": true,
+  "status": "UNINITIALIZED_POINTER_ALLOWED",
+  "base_dir": "D:\\Study\\Code\\Apache\\Flight_Analyzt\\US_FLIGHT_PERFORMANCE_DOCS_V1\\data",
+  "pointer_file": "D:\\Study\\Code\\Apache\\Flight_Analyzt\\US_FLIGHT_PERFORMANCE_DOCS_V1\\data\\curated\\latest_run_id.txt",
+  "pointer_value": null,
+  "target_dir": null,
+  "parquet_files_found": 0,
+  "valid_parquet_files": 0,
+  "manifest_found": false,
+  "manifest_path": null,
+  "manifest_run_id": null,
+  "error_message": null,
+  "details": {
+    "pointer_file_path": "D:\\Study\\Code\\Apache\\Flight_Analyzt\\US_FLIGHT_PERFORMANCE_DOCS_V1\\data\\curated\\latest_run_id.txt",
+    "runs_root_path": "D:\\Study\\Code\\Apache\\Flight_Analyzt\\US_FLIGHT_PERFORMANCE_DOCS_V1\\data\\curated\\runs",
+    "read_only_mode": true
+  }
+}
+--------------------------------------------------------------------------------
+
+>>> STEP: Ingestion Coordinator Safe Dry-Run Preflight
+Command: C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe src/flight_pipeline/ingestion/coordinator.py --years 2016 --run-id run_2016_v1 --base-data-dir data --dry-run-preflight --verify-hashes
+Exit Code: 0
+--- Output ---
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_2016_v1
+Target Directory:    D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\curated\runs\run_2016_v1
+Survey Years:        [2016]
+Base Data Dir:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+Lock Directory:      D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        True
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Expected Rows: 5,537,987
+    Audited Bytes:         1,538,427,452 | Actual Bytes: 1,538,427,452
+    SHA-256 Status:        VERIFIED_MATCH (4ed92ed732721a38...)
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+[PREFLIGHT PASS] Preflight safety inspection completed successfully. All mandatory safety criteria PASSED. No data written.
+--------------------------------------------------------------------------------
+
+>>> STEP: Safe Governance Hold Verification (Static + Synthetic Unit Test)
+Command: static_and_unit_test
+Exit Code: 0
+--- Output ---
+Static Code Inspection: D5_AUTHORIZED_BY_PROJECT_LEAD = False
+Governance Hold Active: True
+Synthetic Unit Test Command: C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe -m unittest tests.test_coordinator_preflight_unblock.TestCoordinatorPreflightUnblock.test_09_unauthorized_live_execution_blocked
+Synthetic Unit Test Exit Code: 0
+Synthetic Unit Test Output:
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_synthetic_v1
+Target Directory:    C:\Users\Heikapu\AppData\Local\Temp\tmp9wjdp0ga\data\curated\runs\run_synthetic_v1
+Survey Years:        [2016]
+Base Data Dir:       C:\Users\Heikapu\AppData\Local\Temp\tmp9wjdp0ga\data
+Lock Directory:      C:\Users\Heikapu\AppData\Local\Temp\tmp9wjdp0ga\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        False
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: C:\Users\Heikapu\AppData\Local\Temp\tmp9wjdp0ga\data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Expected Rows: 1
+    Audited Bytes:         62 | Actual Bytes: 62
+    SHA-256 Status:        VERIFIED_MATCH (4002a956ddc66d4c...)
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+[PREFLIGHT PASS] Preflight safety inspection completed successfully.
+
+[GOVERNANCE HOLD] Live ingestion execution is BLOCKED.
+Decision D5 (Gate G6 Annual Ingestion Authorization) has NOT been approved by Project Lead.
+Status: PENDING_D5
+Per AGENTS.md, autonomous AI agents cannot authorize production data execution.
+To execute live ingestion, Project Lead must explicitly approve Decision D5.
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.011s
+
+OK
+Safety Guarantee: No live execution invoked against production paths.
+--------------------------------------------------------------------------------
+
+>>> STEP: Single-Run Validator Interface Verification
+Command: C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/verify_multiyear_snapshot.py --help
+Exit Code: 0
+--- Output ---
+usage: verify_multiyear_snapshot.py [-h] [--registry-path REGISTRY_PATH]
+                                    [--single-run-year SINGLE_RUN_YEAR]
+                                    [--run-id RUN_ID] [--base-dir BASE_DIR]
+                                    [--skip-parquet-check] [--require-receipt]
+                                    [--allow-missing-receipt-diagnostic-only]
+
+Verify multi-year snapshot registry or single annual execution batch.
+
+options:
+  -h, --help            show this help message and exit
+  --registry-path REGISTRY_PATH
+                        Path to snapshot_registry.json (default:
+                        data/curated/snapshot_registry.json)
+  --single-run-year SINGLE_RUN_YEAR
+                        Validate a single annual run instead of multi-year
+                        registry (e.g. --single-run-year 2016 --run-id
+                        run_2016_v1)
+  --run-id RUN_ID       Run ID for single annual run validation (e.g.
+                        run_2016_v1)
+  --base-dir BASE_DIR   Base data directory (default: data)
+  --skip-parquet-check  Skip PyArrow Parquet Thrift metadata inspection
+  --require-receipt     Require execution_receipt.json to be present (default:
+                        True)
+  --allow-missing-receipt-diagnostic-only
+                        Allow missing execution receipts for offline
+                        diagnostic inspection only (will not yield production
+                        PASS)
+--------------------------------------------------------------------------------
+
+================================================================================
+PRESTART OVERALL VERDICT: PASS
+================================================================================

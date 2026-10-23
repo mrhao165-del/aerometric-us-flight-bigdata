@@ -1,0 +1,20 @@
+{
+  "zip_sha256": "342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6",
+  "bts_rows": 583985,
+  "date_count": 31,
+  "date_min": "2019-01-01",
+  "date_max": "2019-01-31",
+  "claimed_examples_present": {
+    "2019-01-01|DL|1142|ATL|LGA": false,
+    "2019-01-12|AA|2401|DFW|ORD": false,
+    "2019-01-20|WN|582|DEN|PHX": false
+  },
+  "arr_delay_null_total": 18022,
+  "arr_delay_null_not_cancelled_nor_diverted": 0,
+  "status_breakdown": {
+    "active:not_diverted": 565963,
+    "active:diverted": 1296,
+    "cancelled:not_diverted": 16726
+  },
+  "note": "Can check factual BTS examples and null status only; project RAW CSV was not supplied here."
+}

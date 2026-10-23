@@ -1,0 +1,145 @@
+================================================================================
+T008 FINAL EXIT — COMPREHENSIVE QA VERIFICATION SUITE LOG
+Timestamp: 2026-10-18T15:58:00.000000+07:00
+Task: MASTER-T008-FINAL-EXIT
+Gate: G4
+================================================================================
+
+>>> RUNNING: python tools/qa/verify_t006_contract_consistency.py
+================================================================================
+RUNNING T-006 CONTRACT CONSISTENCY & IMPLEMENTATION-SAFETY VERIFIER
+================================================================================
+[PASS] Case 1: All 34 raw columns match canonical names and physical order.
+[PASS] Case 2: All 9 fabricated columns removed; 9 restored canonical columns verified.
+[PASS] Case 3: Physical order and audited raw dtypes agree with schema_YYYY.json evidence.
+[PASS] Case 4: KPI-01..08 IDs, submetrics, and formulas agree with KPI_SPEC.md.
+[PASS] Case 5: KPI-03 verified as Signed Mean ARR_DELAY (negative delay preserved, not late rate).
+[PASS] Case 6: KPI-02/04 verified as Late Rate >= 15.0 (boundary 15.0 included, not on-time rate).
+[PASS] Case 7: Metric-valid denominators N_valid independent across submetrics; ZERO_METRIC_DENOMINATOR enforced.
+[PASS] Case 8: No CANCELLED or DIVERTED references in CORE filters.
+[PASS] Case 9: TS-012/013/015/016/020 match authoritative TEST_PLAN.md specifications.
+[PASS] Case 10: G2-EXC-001 verified as provisional unit status with G5 TS-018 mandatory hard stop blocking G6.
+[PASS] Case 11: Gate G2 confirmed PASS; Gate G3 confirmed PASS with human acceptance record; T-006 confirmed PASS / COMPLETED.
+[PASS] Case 12: Downstream G4 tasks (T-007 governed by signoff, T-008 NOT_STARTED); T-009 governed by human signoff.
+[PASS] Case 13: DC-11/12 row accounting and Record vs Metric Validity verified (metric invalidity does not quarantine flight).
+[PASS] Case 14: Complete finite numeric predicate verified with explicit NaN and Inf handling for all 7 CORE measures.
+[PASS] Case 15: Safe 7-step Windows NTFS publication order and TS-013 fault injection verified.
+[PASS] Case 16: Raw schema boundary verified (nullable Int64 calendar fields, anchored date regex, no unapproved NOT_NULL).
+[PASS] Case 17: Safe non-destructive rollback policy verified (destructive Remove-Item commands superseded and revoked).
+[PASS] Mutation Suite: 16 isolated mutation tests successfully detected and rejected.
+================================================================================
+VERIFICATION SUMMARY: 17 INVARIANTS PASS, 16 MUTATIONS PASS, 0 FAIL
+================================================================================
+ALL T-006 CONTRACT CONSISTENCY & IMPLEMENTATION-SAFETY CHECKS PASSED.
+>>> EXIT CODE: 0
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/verify_g2_repo_apply_r1_semantic_invariants.py
+================================================================================
+RUNNING G2-REPO-APPLY-R1 SEMANTIC INVARIANT AND MUTATION VERIFIER
+================================================================================
+[PASS] Verified 15 Semantic Invariants:
+  [OK] INV-01: FP-DEC-002 retains canonical 2024 retrospective scope meaning (USER_CONFIRMED_BY_SCOPE)
+  [OK] INV-02: FP-DEC-015 is percentile_approx with accuracy=10000
+  [OK] INV-03: FP-DEC-016 specifies min-N thresholds (1000/365/100) on count_metric_valid
+  [OK] INV-04: FP-DEC-017 is Weather CONDITIONAL_NO_GO (APPROVED_CONDITIONAL_NO_GO)
+  [OK] INV-05: Exactly KPI-01..08 are CORE_DRAFT; KPI-09..12 mapped to OPTIONAL, CONDITIONAL_NO_GO, NOT_COMPUTABLE, BLOCKED
+  [OK] INV-06: Raw Weather schema columns are exactly O_TEMP, O_PRCP, O_WSPD, D_TEMP, D_PRCP, D_WSPD
+  [OK] INV-07: OR-01..OR-08 canonical Primary R-01..R-17 mappings verified in RISK_REGISTER.md
+  [OK] INV-08: TS-001..TS-020 semantic definitions verified against TEST_PLAN.md
+  [OK] INV-09: G2-EXC-001 approved with mandatory TS-018 PASS condition at G5 and provisional unit status
+  [OK] INV-10: OR-05 verified as OPEN_QUALITY_DEFECT (335/366 days, missing March 2024)
+  [OK] INV-11: OR-08 verified as IDENTITY_UNVERIFIED (METADATA_MATCH_ONLY)
+  [OK] INV-12: Gate G2 confirmed PASS, Gate G3 confirmed PASS with human record, and T-006 controlled (PASS / COMPLETED)
+  [OK] INV-13: Decision approvals correctly recorded as APPROVED_BY_PROJECT_LEAD_INSTRUCTION without physical signature claims
+  [OK] INV-14: Unapproved extra assumptions (ELAPSED_DIFF in G2-EXC-001, DEP_TIME_TZ in raw) rejected in living docs
+  [OK] INV-15: TS-020 cross-document semantic consistency verified (Stable lineage / row identifier, not exclusively YX 3624)
+
+[PASS] Executed 14 Isolated Mutation Tests (MUT-01..09):
+  [OK] MUT-01: Caught FP-DEC-002 corruption
+  [OK] MUT-02: Caught weather_code fabrication
+  [OK] MUT-03: Caught OR-01 scrambled mapping
+  [OK] MUT-04: Caught TS-003 definition corruption
+  [OK] MUT-05A: Caught G2 PASS without acceptance record
+  [OK] MUT-05B: Caught unapproved provenance
+  [OK] MUT-05C: Caught missing G2-EXC-001 in acceptance record
+  [OK] MUT-05D: Caught G3 PASS without acceptance record
+  [OK] MUT-06A: Caught T-006 IN_PROGRESS when G2 is NOT_PASSED
+  [OK] MUT-06B: Caught premature downstream task T-009 start
+  [OK] MUT-06C: Caught premature downstream task T-007 start
+  [OK] MUT-07: Caught min-N threshold corruption
+  [OK] MUT-08: Caught premature VERIFIED units claim
+  [OK] MUT-09: Caught TS-020 definition corruption
+================================================================================
+ALL SEMANTIC INVARIANTS AND MUTATION TESTS PASSED (15 invariants + 14 mutations).
+================================================================================
+>>> EXIT CODE: 0
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/test_t009_r1_validator_extension.py
+================================================================================
+RUNNING T009-R1 VALIDATOR POLICY EXTENSION SECURITY & COMPATIBILITY SUITE
+================================================================================
+[PASS] BASE-01: Base fixture satisfies all checks
+[PASS] NEG-01: Unregistered .py in src/ is rejected
+[PASS] NEG-02: Unregistered .py in tests/ is rejected
+[PASS] NEG-03: Non-.py extension in src/ is strictly rejected
+[PASS] NEG-04: Unauthorized root .env file is strictly rejected
+[PASS] POS-01: Registered .py in src/flight_pipeline/ is accepted
+[PASS] POS-02: Registered requirements.txt at root is accepted
+[PASS] POS-03: Registered .github/workflows/*.yml is accepted
+================================================================================
+VERIFICATION SUMMARY: 8 PASS, 0 FAIL
+================================================================================
+ALL T009-R1 VALIDATOR EXTENSION TESTS PASSED.
+>>> EXIT CODE: 0
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/test_t009_unblock_r2_git_exclusion.py
+================================================================================
+RUNNING T009-UNBLOCK-R2 GIT EXCLUSION POSITIVE & NEGATIVE VERIFICATION SUITE
+================================================================================
+[PASS] POS-01: Isolated repo with root `.git/` metadata is cleanly accepted with 0 errors
+[PASS] POS-02: Markdown file inside root `.git/` is ignored by active docs checks and accounting
+[PASS] NEG-01: Unrecognized stray file at repository root is strictly rejected
+[PASS] NEG-02: Unrecognized stray file in docs/ subfolder is strictly rejected
+[PASS] NEG-03: Unrecognized stray Python script in tools/ subfolder is strictly rejected
+[PASS] NEG-04: Nested `.git/` outside repository root is NOT ignored and strictly rejected
+[PASS] NEG-05: Tampered deliverable with SHA-256/size mismatch is strictly detected and rejected
+================================================================================
+VERIFICATION SUMMARY: 7 PASS, 0 FAIL
+================================================================================
+ALL T009-UNBLOCK-R2 POSITIVE & NEGATIVE CHECKS PASSED.
+>>> EXIT CODE: 0
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/test_working_tree_registry_regression.py
+================================================================================
+RUNNING WORKING-TREE DELIVERABLE REGISTRY REGRESSION TEST SUITE (POS-01..02, NEG-01..08)
+================================================================================
+[PASS] POS-02: Historical immutable evidence (`SOURCE_MANIFEST.json`, `PACKAGE_MANIFEST.json`) and registered baseline accepted with 0 failures
+[PASS] POS-01: Correctly registered new evidence artifact with matching size and SHA-256 is accepted
+[PASS] NEG-01: Unregistered arbitrary Markdown file is rejected
+[PASS] NEG-02: File with valid-looking `T005_` prefix but absent from registry is rejected
+[PASS] NEG-03: Registered artifact with modified content or incorrect SHA-256 is rejected
+[PASS] NEG-04: Registered artifact with missing file or size mismatch is rejected
+[PASS] NEG-05: Malformed registry JSON and duplicate registry entries are both rejected
+[PASS] NEG-06: Path traversal (`../`) or unsafe path in registry is rejected
+[PASS] NEG-07: Unexpected `.pt` extension in evidence directory and forged task identifier (`T-999`) are both rejected
+[PASS] NEG-08: Tampering with `SOURCE_MANIFEST.json` inputs or unapproved `PACKAGE_MANIFEST.json` files cannot be bypassed via the registry
+[PASS] NEG-09: Tampering with pinned PACKAGE_MANIFEST/SOURCE_MANIFEST or registering unapproved living doc is rejected
+[PASS] NEG-10A: Unapproved artifact_type is strictly rejected
+[PASS] NEG-10B: Symlink injection into working tree is strictly rejected by checker and path validator
+[PASS] MUT-NEG10-01: Mutation test proves unconditional false-PASS fallback ('or True') is identified and rejected
+[PASS] MUT-NEG10-02: Path helper _is_safe_rel_path strictly rejects traversal (../), absolute, backslash, and empty paths
+[PASS] MUT-NEG10-03: Unauthorized artifact_type allowlist strictly enforces approved enum members
+REGRESSION SUITE SUMMARY: 16 PASS, 0 FAIL, 0 SKIP
+================================================================================
+ALL POSITIVE AND NEGATIVE REGISTRY REGRESSION TESTS PASSED.
+>>> EXIT CODE: 0
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/check_working_tree_consistency.py
+ALL WORKING-TREE CHECKS PASSED.
+>>> EXIT CODE: 0
+================================================================================

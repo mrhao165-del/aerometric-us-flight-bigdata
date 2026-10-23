@@ -1,0 +1,243 @@
+================================================================================
+TS-018 JANUARY 2019 TARGETED EVIDENCE CLOSURE — RAW EXECUTION LOG
+================================================================================
+Date: 2026-10-20T01:15:00+07:00
+Host OS: Windows
+Environment: Python 3.11 / PySpark 3.5.0
+Task: TS-018 Targeted Evidence Correction & Independent Parity Verification
+Parent Gate: Gate G5 (IN_PROGRESS)
+================================================================================
+
+COMMAND 1: BASELINE REPRODUCTION SCAN (TS018-I01 & TS018-I02)
+--------------------------------------------------------------------------------
+Command: python tools/qa/TS018_201901_INDEPENDENT_EVIDENCE_CHECK_20261020.py data/reference/bts_transtats/original/T_ONTIME_REPORTING_20261019_112232.zip
+Exit Code: 0
+Output:
+{
+  "zip_sha256": "342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6",
+  "bts_rows": 583985,
+  "date_count": 31,
+  "date_min": "2019-01-01",
+  "date_max": "2019-01-31",
+  "claimed_examples_present": {
+    "2019-01-01|DL|1142|ATL|LGA": false,
+    "2019-01-12|AA|2401|DFW|ORD": false,
+    "2019-01-20|WN|582|DEN|PHX": false
+  },
+  "arr_delay_null_total": 18022,
+  "arr_delay_null_not_cancelled_nor_diverted": 0,
+  "status_breakdown": {
+    "active:not_diverted": 565963,
+    "active:diverted": 1296,
+    "cancelled:not_diverted": 16726
+  },
+  "note": "Can check factual BTS examples and null status only; project RAW CSV was not supplied here."
+}
+
+COMMAND 2: PARQUET GUARD TEST (FAIL-CLOSED SAFETY VERIFICATION)
+--------------------------------------------------------------------------------
+Command: python tools/qa/run_ts018_bts_adapter.py
+Exit Code: 2
+Output:
+================================================================================
+RUNNING TS-018 BTS TRANSTATS INTAKE & NUMERICAL PARITY RUNNER
+================================================================================
+[SOURCE] REAL_BTS_ZIP_PATH:    D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\reference\bts_transtats\original\T_ONTIME_REPORTING_20261019_112232.zip
+[SOURCE] REAL_BTS_ZIP_BYTES:   29975383
+[SOURCE] REAL_BTS_ZIP_SHA256:  342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6
+[SOURCE] SYNTHETIC_FALLBACK:   False (Strictly Prohibited)
+[SOURCE] REAL_CURATED_PARQUET_SOURCE: None (BLOCKED_2019_CURATED_PARQUET_MISSING)
+
+[STOP] January 2019 curated Parquet is not present in physical staging.
+[STOP] Autonomous ingestion or synthetic fallback is strictly prohibited.
+[VERDICT] BLOCKED_2019_CURATED_PARQUET_MISSING
+
+COMMAND 3: FULL ADAPTER RUN (OPTION B PROTOCOL WITH SAMPLE WITNESS EXPORT)
+--------------------------------------------------------------------------------
+Command: python tools/qa/run_ts018_bts_adapter.py --allow-raw-preflight
+Exit Code: 0
+Output:
+================================================================================
+RUNNING TS-018 BTS TRANSTATS INTAKE & NUMERICAL PARITY RUNNER
+================================================================================
+[SOURCE] REAL_BTS_ZIP_PATH:    D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\reference\bts_transtats\original\T_ONTIME_REPORTING_20261019_112232.zip
+[SOURCE] REAL_BTS_ZIP_BYTES:   29975383
+[SOURCE] REAL_BTS_ZIP_SHA256:  342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6
+[SOURCE] SYNTHETIC_FALLBACK:   False (Strictly Prohibited)
+[SOURCE] REAL_CURATED_PARQUET_SOURCE: None (BLOCKED_2019_CURATED_PARQUET_MISSING)
+[SOURCE] REAL_RAW_DATASET_PATH:    D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\raw\tabular\2019\flight_with_weather_2019.csv
+[SOURCE] REAL_RAW_DATASET_BYTES:   1990370667
+[SOURCE] REAL_RAW_DATASET_SHA256:  eec50211a1a63f37b840977be5ab2e99a008a8d5234c2a12df8eb50862f93b4a
+[COMPARISON] RUN_MODE: 2019_raw_source_vs_BTS_candidate (Option B: raw tabular unit consistency evaluation)
+[PARQUET_STATUS] PARQUET_PARITY_NOT_TESTED (curated Parquet 2019 not present in staging; Option A with 2016 physical Parquet is available)
+
+[STEP 1] Indexing January 2019 records from raw dataset source...
+[DATASET STATS] Total raw CSV rows (all 2019): 7161827
+[DATASET STATS] Jan 2019 raw rows:             559136
+[DATASET STATS] Jan 2019 unique composite keys: 559136
+[DATASET STATS] Jan 2019 duplicate keys:        0
+[DATASET STRATA] Negative ARR_DELAY (< 0):      358420
+[DATASET STRATA] Exact Zero ARR_DELAY (== 0):    10284
+[DATASET STRATA] Positive ARR_DELAY (> 0):      190432
+[DATASET STRATA] Null/Missing ARR_DELAY (None):  0
+[DATASET STRATA] Total Jan 2019 Population:     559136
+
+[STEP 2] Streaming and matching BTS Candidate CSV from ZIP...
+[BTS STATS] Total BTS CSV records:            583985
+[BTS STATS] Unique BTS composite keys:        583985
+[BTS STATS] BTS duplicate keys:               0
+[BTS STATS] Cancelled flights:                16726
+[BTS STATS] Diverted flights:                 1296
+[BTS STATS] Null ARR_DELAY total:             18022
+[BTS STATS] Null ARR_DELAY active non-div:    0
+[BTS STATS] Active operating non-div flights: 565963
+
+[POPULATION OVERLAP]
+  Matched composite keys:           559136
+  Dataset records unmatched:        0 (100.0% dataset coverage)
+  BTS records unmatched total:      24849
+    - Cancelled flights (DC-11):    16726
+    - Diverted flights (DC-11):     1296
+    - Unmatched active operating:   6827 (absent in raw CSV; no unproven causal attribution)
+
+[STEP 3] Selecting deterministic sample cohort (target = 1500)...
+[STRATA IN MATCHED COHORT]
+  Negative delay available: 358420
+  Zero delay available:     10284
+  Positive delay available: 190432
+  Null delay available:     0 (Operating cohort has 0 nulls; cancelled/diverted excluded per DC-11)
+
+[SAMPLE SELECTION AUDIT]
+  NEGATIVE_DELAY selected:  500 (quota: 500)
+  ZERO_DELAY selected:      200 (quota: 200)
+  POSITIVE_DELAY selected:  700 (quota: 700)
+  NULL_DELAY selected:      0 (quota: 100, available in cohort: 0)
+  REMAINDER_TOPUP selected: 100 (shortfall top-up)
+  TOTAL SAMPLE SIZE:        1500
+
+[STEP 4] Executing record-level reconciliation with BtsTranStatsReconciler...
+
+========================================
+SEPARATION OF GOVERNANCE STATES:
+  1. FILE_PRESENT:              True
+  2. SCHEMA_VALID:               True
+  3. COMPANION_METADATA_VALID:   False
+  4. CANDIDATE_CHECKSUM_MATCHED: True
+  5. SOURCE_PROVENANCE_VERIFIED: False (Requires Project Lead External Authentication)
+  6. NUMERICAL_PARITY_VERIFIED:  True
+  7. HUMAN_ACCEPTED:             False (EXCLUSIVE: Project Lead)
+========================================
+
+[SUMMARY] Reconciliation Verdict: SYNTHETIC_RECONCILER_VERIFIED_AUTHENTIC_BTS_PENDING
+[SUMMARY] Total Discrepancies:    0
+[SUMMARY] Unique Key Matches:     1500
+  Field ARR_DELAY           : exact=1500  round=0   null_null=0   mismatch=0  
+  Field DEP_DELAY           : exact=1500  round=0   null_null=0   mismatch=0  
+  Field TAXI_OUT            : exact=1500  round=0   null_null=0   mismatch=0  
+  Field TAXI_IN             : exact=1500  round=0   null_null=0   mismatch=0  
+  Field AIR_TIME            : exact=1500  round=0   null_null=0   mismatch=0  
+  Field ACTUAL_ELAPSED_TIME : exact=1500  round=0   null_null=0   mismatch=0  
+  Field CRS_ELAPSED_TIME    : exact=1500  round=0   null_null=0   mismatch=0  
+
+[ARTIFACT] Discrepancy register exported: docs/05-evidence/TS018_201901_DISCREPANCY_REGISTER.csv (0 rows).
+[ARTIFACT] Matched sample witness exported: docs/05-evidence/TS018_201901_MATCHED_SAMPLE_WITNESS.csv
+           Rows: 1500, Bytes: 294436, SHA-256: 942c476994c414378a541d5c84fcbdad35c6aeace1c98891044a085d55c3a9a1
+
+================================================================================
+PROGRAMMATICALLY VERIFIED AUTHENTIC FLIGHT EXAMPLES (PRESENT IN BOTH PHYSICAL SOURCES):
+================================================================================
+
+Record 1 - Early Arrival (Negative Delay Stratum):
+  Composite Key: 2019-01-10 | NK | 314 | IAH -> TPA
+    ARR_DELAY           : Raw Dataset = -6.0     BTS = -6.0     -> EXACT MATCH
+    DEP_DELAY           : Raw Dataset = -4.0     BTS = -4.0     -> EXACT MATCH
+    TAXI_OUT            : Raw Dataset = 13.0     BTS = 13.0     -> EXACT MATCH
+    TAXI_IN             : Raw Dataset = 8.0      BTS = 8.0      -> EXACT MATCH
+    AIR_TIME            : Raw Dataset = 98.0     BTS = 98.0     -> EXACT MATCH
+    ACTUAL_ELAPSED_TIME : Raw Dataset = 119.0    BTS = 119.0    -> EXACT MATCH
+    CRS_ELAPSED_TIME    : Raw Dataset = 121.0    BTS = 121.0    -> EXACT MATCH
+
+Record 2 - Exact On-Time Arrival (Zero Delay Stratum):
+  Composite Key: 2019-01-31 | UA | 753 | SFO -> EWR
+    ARR_DELAY           : Raw Dataset = 0.0      BTS = 0.0      -> EXACT MATCH
+    DEP_DELAY           : Raw Dataset = 0.0      BTS = 0.0      -> EXACT MATCH
+    TAXI_OUT            : Raw Dataset = 24.0     BTS = 24.0     -> EXACT MATCH
+    TAXI_IN             : Raw Dataset = 10.0     BTS = 10.0     -> EXACT MATCH
+    AIR_TIME            : Raw Dataset = 295.0    BTS = 295.0    -> EXACT MATCH
+    ACTUAL_ELAPSED_TIME : Raw Dataset = 329.0    BTS = 329.0    -> EXACT MATCH
+    CRS_ELAPSED_TIME    : Raw Dataset = 329.0    BTS = 329.0    -> EXACT MATCH
+
+Record 3 - Substantial Delay (Positive Delay Stratum):
+  Composite Key: 2019-01-21 | AA | 692 | PHX -> HNL
+    ARR_DELAY           : Raw Dataset = 1186.0   BTS = 1186.0   -> EXACT MATCH
+    DEP_DELAY           : Raw Dataset = 1191.0   BTS = 1191.0   -> EXACT MATCH
+    TAXI_OUT            : Raw Dataset = 28.0     BTS = 28.0     -> EXACT MATCH
+    TAXI_IN             : Raw Dataset = 17.0     BTS = 17.0     -> EXACT MATCH
+    AIR_TIME            : Raw Dataset = 364.0    BTS = 364.0    -> EXACT MATCH
+    ACTUAL_ELAPSED_TIME : Raw Dataset = 409.0    BTS = 409.0    -> EXACT MATCH
+    CRS_ELAPSED_TIME    : Raw Dataset = 414.0    BTS = 414.0    -> EXACT MATCH
+================================================================================
+
+COMMAND 4: INDEPENDENT TWO-SOURCE SAMPLE WITNESS VERIFICATION
+--------------------------------------------------------------------------------
+Command: python tools/qa/verify_ts018_two_source_sample_witness.py
+Exit Code: 0
+Output:
+================================================================================
+INDEPENDENT TWO-SOURCE SAMPLE WITNESS VERIFIER (TS-018)
+================================================================================
+[WITNESS] Path:   docs/05-evidence/TS018_201901_MATCHED_SAMPLE_WITNESS.csv
+[WITNESS] Bytes:  294436
+[WITNESS] SHA256: 942c476994c414378a541d5c84fcbdad35c6aeace1c98891044a085d55c3a9a1
+[OK] Candidate BTS ZIP checksum verified: 342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6 (29975383 bytes)
+[OK] Raw 2019 Dataset CSV checksum verified: eec50211a1a63f37b840977be5ab2e99a008a8d5234c2a12df8eb50862f93b4a (1990370667 bytes)
+
+[PHASE 1] Ingesting sample witness records from CSV...
+[WITNESS STATS] Total witness keys loaded: 1500
+
+[PHASE 2] Replaying against physical Raw Dataset CSV (flight_with_weather_2019.csv)...
+[DATASET REPLAY] Witness keys matched in Raw CSV: 1500 / 1500
+[OK] All 1,500 witness rows match raw project CSV across all 7 fields (10,500/10,500 exact).
+
+[PHASE 3] Replaying against physical BTS Reference CSV inside ZIP...
+[BTS REPLAY] Witness keys matched in BTS CSV:     1500 / 1500
+[OK] All 1,500 witness rows match BTS CSV across all 7 fields (10,500/10,500 exact).
+
+[PHASE 4] Direct Cross-Source Parity Verification (Raw CSV vs BTS CSV)...
+[CROSS-SOURCE PARITY] Comparisons: 10,500 (1,500 flights x 7 fields)
+[CROSS-SOURCE PARITY] Exact Matches: 10500
+[CROSS-SOURCE PARITY] Discrepancies: 0
+
+================================================================================
+VERIFICATION RESULT: 100% REPRODUCIBLE TWO-SOURCE PARITY PASS
+================================================================================
+  Witness File:        TS018_201901_MATCHED_SAMPLE_WITNESS.csv (SHA-256: 942c476994c414378a541d5c84fcbdad35c6aeace1c98891044a085d55c3a9a1)
+  Physical Raw Source: flight_with_weather_2019.csv (SHA-256: eec50211a1a63f37b840977be5ab2e99a008a8d5234c2a12df8eb50862f93b4a)
+  Physical BTS Source: T_ONTIME_REPORTING_20261019_112232.zip (SHA-256: 342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6)
+  Total Checked Rows:  1,500
+  Total Fields:        10,500
+  Exact Match Rate:    100.0% (10,500 / 10,500 exact)
+================================================================================
+
+COMMAND 5: BOUNDED REFERENCE DATA POLICY REGRESSION TEST SUITE
+--------------------------------------------------------------------------------
+Command: python tools/qa/test_ts018_reference_policy_regression.py
+Exit Code: 0
+Output:
+================================================================================
+RUNNING TS-018 BOUNDED REFERENCE DATA POLICY REGRESSION TEST SUITE
+================================================================================
+[PASS] POS-01: Legitimate known reference ZIP and companion matching manifest are cleanly accepted with 0 errors
+[PASS] NEG-01: Unknown / unregistered file under data/reference/bts_transtats/ is strictly rejected as stray
+[PASS] NEG-02: Forged / tampered reference artifact failing SHA-256 match is strictly rejected
+[PASS] NEG-03: Unauthorized file outside allowed reference subtree is strictly rejected
+[PASS] NEG-04: Path traversal attempt (../) in reference path is strictly rejected by path helper
+[PASS] NEG-05: Ghost/corrupted artifact matching manifest path but with wrong hash/size is strictly rejected
+================================================================================
+REFERENCE POLICY SUITE SUMMARY: 6 PASS, 0 FAIL
+================================================================================
+ALL REFERENCE DATA POLICY POSITIVE AND NEGATIVE TESTS PASSED.
+
+================================================================================
+END OF LOG
+================================================================================

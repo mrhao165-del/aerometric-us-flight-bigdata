@@ -1,0 +1,88 @@
+{
+  "archive_name": "G5_CONTROLLED_SIGNOFF_REVIEW.zip",
+  "archive_byte_size": 100095,
+  "archive_sha256": "00642ec1b14297044a8d920a9a2e659c729fb66388257fa11cc0055dd0a3e5de",
+  "archive_crc32": "070108b2",
+  "generated_at": "2026-10-21T09:08:55Z",
+  "task": "G5-CONTROLLED-SIGNOFF",
+  "verdict": "G5_PENDING_HUMAN_PREREQUISITES",
+  "governance_status": {
+    "G5": "IN_PROGRESS / HUMAN_SIGNOFF_PENDING",
+    "G6": "NOT_STARTED / BLOCKED",
+    "T012": "NOT_STARTED",
+    "D1_BTS_PROVENANCE": "PENDING_HUMAN_SOURCE_ATTESTATION",
+    "D2_FP_DEC_019_OPTION_B": "APPROVED_BY_PROJECT_LEAD_INSTRUCTION",
+    "D3_TS018_HUMAN_SIGNOFF": "CONDITIONALLY_ACCEPTED_PENDING_PREREQUISITES",
+    "D4_G5_HUMAN_SIGNOFF": "IN_PROGRESS / HUMAN_SIGNOFF_PENDING",
+    "D5_PRODUCTION_EXECUTION": "NOT_AUTHORIZED",
+    "G6_ARCH_2016": "APPROVED_OPTION_B_BY_PROJECT_LEAD_INSTRUCTION"
+  },
+  "files": [
+    {
+      "relative_path": "docs/01-planning/BACKLOG.md",
+      "byte_size": 13830,
+      "sha256": "051f63aa68351fb7ba6cde0d12a8dce23296a29d93147d9cbd7081e93fd4fd52",
+      "crc32": "6a93c95b"
+    },
+    {
+      "relative_path": "docs/02-design/DECISIONS.md",
+      "byte_size": 26360,
+      "sha256": "ee5b96816580d3213cf7f29818e2ed988f15de92933b9a4f34a2c02df74c3ab0",
+      "crc32": "84c5f020"
+    },
+    {
+      "relative_path": "docs/04-execution/AI_HANDOFF.md",
+      "byte_size": 20165,
+      "sha256": "5b3e989ffcbfe1f583024a663efec8b25f70584fb60125116376b25b2060b1fe",
+      "crc32": "71eeee93"
+    },
+    {
+      "relative_path": "docs/04-execution/PROJECT_STATE.md",
+      "byte_size": 42164,
+      "sha256": "334ed1102ca14c5f3b4c4e19fc42bf17af887ab75fde7fdb6358885080adf12a",
+      "crc32": "bc81c6f3"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_CONTROLLED_SIGNOFF_CHANGES.patch",
+      "byte_size": 242458,
+      "sha256": "6802fdb33fe5c0ae3586d5fd6aefaf6a84bdc0c7e7f5b9517d39975b67d68714",
+      "crc32": "9f9e8f02"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_CONTROLLED_SIGNOFF_CLOSEOUT_REPORT.md",
+      "byte_size": 13715,
+      "sha256": "81acd0bfc09c8341aa971a8ad4a54b99c7372db37528dddee0f99aab64dc4064",
+      "crc32": "1d0f6631"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_D1_BTS_PROVENANCE_ATTESTATION_DRAFT.md",
+      "byte_size": 5429,
+      "sha256": "8ecd1cde2f15bf710b2e4711ccc5c83340f96cd250208ff951a1c99cbb5a6e34",
+      "crc32": "73d90427"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_D2_FP_DEC_019_OPTION_B_APPROVAL_DRAFT.md",
+      "byte_size": 6013,
+      "sha256": "415426db9fbf530f6e87698431651f2b3cdaa9545cf1a2a838562648bf9cd7ee",
+      "crc32": "6d40007d"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_D3_TS018_HUMAN_TECHNICAL_SIGNOFF_DRAFT.md",
+      "byte_size": 6725,
+      "sha256": "ca2fa5f7668a00463e82c56298627d64ca4e8f835b787b7d3fe05002484f2dcf",
+      "crc32": "43fa7f7b"
+    },
+    {
+      "relative_path": "docs/05-evidence/G5_D4_G5_HUMAN_GATE_SIGNOFF_DRAFT.md",
+      "byte_size": 8127,
+      "sha256": "7c100c7cc14d55192df75118e7740e0460e0feb2a562fa6358a50b4c8c24e9d8",
+      "crc32": "8e59819f"
+    },
+    {
+      "relative_path": "docs/05-evidence/G6_T012_2016_BASELINE_INTEGRATION_DECISION_DRAFT.md",
+      "byte_size": 8187,
+      "sha256": "e217322728cc9123cb8662ae06180ee4f9bc2594e4c17fac33e2dd7f88e4f0c2",
+      "crc32": "0f868e2c"
+    }
+  ]
+}

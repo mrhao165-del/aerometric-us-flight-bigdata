@@ -1,0 +1,99 @@
+{
+  "run_id": "smoke_run_t011",
+  "total_sample_records": 1200,
+  "year_slices_emitted": 12,
+  "carrier_slices_emitted": 24,
+  "columns_verified": [
+    "kpi_id",
+    "submetric",
+    "run_id",
+    "kpi_version",
+    "source_year",
+    "group_dimensions",
+    "filter_definition",
+    "count_records",
+    "count_metric_valid",
+    "excluded_count",
+    "metric_valid_rate",
+    "source_coverage_status",
+    "value",
+    "unit_status",
+    "min_n_status",
+    "quality_version",
+    "provenance_reference"
+  ],
+  "sample_kpi_values": {
+    "KPI-01:None": {
+      "value": 1200.0,
+      "count_valid": 1200,
+      "unit_status": "COUNT_RECORDS",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-02:None": {
+      "value": 0.4166666666666667,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-03:None": {
+      "value": 9.5,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-04:None": {
+      "value": 0.4,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-05:None": {
+      "value": 9.5,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-06:P50": {
+      "value": 9.0,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-06:P90": {
+      "value": 33.0,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-07:TAXI_OUT": {
+      "value": 21.5,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-07:TAXI_IN": {
+      "value": 8.5,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-08:AIR_TIME": {
+      "value": 134.5,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-08:ACTUAL_ELAPSED_TIME": {
+      "value": 164.5,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    },
+    "KPI-08:CRS_ELAPSED_TIME": {
+      "value": 150.0,
+      "count_valid": 1200,
+      "unit_status": "OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL",
+      "min_n_status": "NOT_APPLICABLE"
+    }
+  }
+}

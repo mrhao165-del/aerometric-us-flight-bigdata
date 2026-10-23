@@ -1,0 +1,196 @@
+================================================================================
+TS-018 FINAL SIGNOFF DOSSIER RAW EXECUTION LOG (FINDING E03 RESOLUTION)
+Task: TS-018 Final Signoff Dossier Reconciliation
+Execution Timestamp: 2026-10-20T16:18:02.051807+07:00
+Platform:            Windows-10-10.0.19045-SP0
+Python Executable:   C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe
+Python Version:      3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]
+Working Directory:   D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1
+Authority:           Independent Forensic Evidence Auditor & Big Data QA Engineer
+================================================================================
+
+[1/5] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/verify_ts018_two_source_sample_witness.py
+     DESCRIPTION:  TS-018 Physical Two-Source Replay (Strict Exact)
+     START TIME:   2026-10-20T16:18:02.051807+07:00
+     END TIME:     2026-10-20T16:18:28.427598+07:00
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+INDEPENDENT TWO-SOURCE SAMPLE WITNESS VERIFIER (TS-018 - HARDENED)
+================================================================================
+[WITNESS] Path:   D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\docs\05-evidence\TS018_201901_MATCHED_SAMPLE_WITNESS.csv
+[WITNESS] Bytes:  294436
+[WITNESS] SHA256: 942c476994c414378a541d5c84fcbdad35c6aeace1c98891044a085d55c3a9a1
+[OK] Sealed witness pinned SHA-256 and byte size verified.
+[OK] Candidate BTS ZIP checksum & size verified: 342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6 (29975383 bytes)
+[OK] Raw 2019 Dataset CSV checksum & size verified: eec50211a1a63f37b840977be5ab2e99a008a8d5234c2a12df8eb50862f93b4a (1990370667 bytes)
+
+[PHASE 1] Ingesting sample witness records from CSV...
+[WITNESS STATS] Total unique witness keys loaded: 1500
+
+[PHASE 2] Replaying against physical Raw Dataset CSV (flight_with_weather_2019.csv)...
+[DATASET REPLAY] Witness keys matched in Raw CSV: 1500 / 1500
+[DATASET REPLAY] Duplicate key collisions in Raw CSV: 0
+[OK] All 1,500 witness rows match raw project CSV across all 7 fields (10,500/10,500 exact).
+
+[PHASE 3] Replaying against physical BTS Reference CSV inside ZIP...
+[BTS REPLAY] Witness keys matched in BTS CSV:     1500 / 1500
+[BTS REPLAY] Duplicate key collisions in BTS CSV: 0
+[OK] All 1,500 witness rows match BTS CSV across all 7 fields (10,500/10,500 exact).
+
+[PHASE 4] Direct Cross-Source Parity Verification (Raw CSV vs BTS CSV)...
+
+[PARITY FIELD-BY-FIELD BREAKDOWN]
+Field                  | Bitwise Exact | Signed Zero | Tol Only  | Null-Null | Mismatch  | Max Diff  
+---------------------------------------------------------------------------------------------------------
+ARR_DELAY              | 1500          | 0           | 0         | 0         | 0         | 0.000000  
+DEP_DELAY              | 1500          | 0           | 0         | 0         | 0         | 0.000000  
+TAXI_OUT               | 1500          | 0           | 0         | 0         | 0         | 0.000000  
+TAXI_IN                | 1500          | 0           | 0         | 0         | 0         | 0.000000  
+AIR_TIME               | 1500          | 0           | 0         | 0         | 0         | 0.000000  
+ACTUAL_ELAPSED_TIME    | 1500          | 0           | 0         | 0         | 0         | 0.000000  
+CRS_ELAPSED_TIME       | 1500          | 0           | 0         | 0         | 0         | 0.000000  
+---------------------------------------------------------------------------------------------------------
+TOTAL                  | 10500         | 0           | 0         | 0         | 0         |
+
+[CROSS-SOURCE PARITY SUMMARY]
+  Total Comparisons:                10,500 (1,500 flights x 7 fields)
+  EXACT_BITWISE_MATCH:              10500
+  NUMERIC_EQUAL_SIGNED_ZERO_DIFF:   0
+  TOLERANCE_ONLY_MATCH:             0
+  NULL_NULL_AGREEMENT:              0
+  MISMATCH:                         0
+  NONFINITE_OR_INVALID_TOKEN:       0
+
+================================================================================
+VERIFICATION RESULT: 100% REPRODUCIBLE STRICT EXACT TWO-SOURCE PARITY PASS
+================================================================================
+  Witness File:        TS018_201901_MATCHED_SAMPLE_WITNESS.csv (SHA-256: 942c476994c414378a541d5c84fcbdad35c6aeace1c98891044a085d55c3a9a1)
+  Physical Raw Source: flight_with_weather_2019.csv (SHA-256: eec50211a1a63f37b840977be5ab2e99a008a8d5234c2a12df8eb50862f93b4a)
+  Physical BTS Source: T_ONTIME_REPORTING_20261019_112232.zip (SHA-256: 342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6)
+  Total Checked Rows:  1,500 unique keys (0 duplicates)
+  Total Fields:        10,500 (7 CORE fields x 1,500 flights)
+  Bitwise Exact Rate:  100.00% (10500 / 10,500 exact)
+  Signed Zero Diff:    0
+  Tolerance-Only:      0
+  Null-Null:           0
+================================================================================
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[2/5] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/test_ts018_negative_witness_verification.py
+     DESCRIPTION:  TS-018 Negative Witness Test Suite (NEG-W01..NEG-W14)
+     START TIME:   2026-10-20T16:18:28.427598+07:00
+     END TIME:     2026-10-20T16:21:21.885871+07:00
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+RUNNING TS-018 COMPREHENSIVE NEGATIVE WITNESS FAULT INJECTION TEST SUITE
+================================================================================
+[PASS] NEG-W01: Injected value mismatch in witness (-999.0 vs real) is caught fail-closed -> exit=1
+[PASS] NEG-W02: Non-existent flight key in witness is caught fail-closed -> exit=1
+[PASS] NEG-W03: Tampered witness checksum is caught fail-closed by pinned SHA-256 validator (H05) -> exit=1
+[PASS] NEG-W04: Slipped sign on arrival delay (-6.0 -> +6.0) is caught fail-closed -> exit=1
+[PASS] NEG-W05: Duplicate key collision in witness is detected fail-closed before ingestion (H05) -> exit=1
+[PASS] NEG-W06: Non-zero numeric measure replaced with 0.0 is caught fail-closed -> exit=1
+[PASS] NEG-W07: Tolerance-only deviation (+0.00005) under strict exact check is rejected fail-closed (H01) -> exit=1
+[PASS] NEG-W08: Genuine null-to-value disagreement on AIR_TIME is caught fail-closed -> exit=1
+[PASS] NEG-W09: Non-finite numeric value ('NaN') is caught fail-closed as invalid token (H02/H04/E05) -> exit=1
+[PASS] NEG-W10: Flight date mismatch (2019-01-10 mutated to 2019-01-20) is caught fail-closed -> exit=1
+[PASS] NEG-W11: Two sources both containing 'NaN' are rejected as NONFINITE, never NULL_NULL (H02) -> category=NONFINITE_OR_INVALID_TOKEN
+[PASS] NEG-W12: Signed zero (+0.0 vs -0.0) is classified as NUMERIC_EQUAL_SIGNED_ZERO_DIFF, not bitwise exact (H03) -> category=NUMERIC_EQUAL_SIGNED_ZERO_DIFF
+[PASS] NEG-W13: Parser strictly classifies malformed / infinite text tokens as invalid, never valid null (H02) -> kinds=['NONFINITE_OR_INVALID_TOKEN', 'NONFINITE_OR_INVALID_TOKEN']
+[PASS] NEG-W14: Synthetic null-null evaluates strictly to NULL_NULL_AGREEMENT, rejected from bitwise exact (E04) -> category=NULL_NULL_AGREEMENT
+================================================================================
+NEGATIVE TEST SUITE SUMMARY: 14 PASS, 0 FAIL (Total: 14)
+================================================================================
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[3/5] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/test_ts018_reference_policy_regression.py
+     DESCRIPTION:  BTS Reference Policy Regression Suite
+     START TIME:   2026-10-20T16:21:21.905045+07:00
+     END TIME:     2026-10-20T16:21:30.791170+07:00
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+RUNNING TS-018 BOUNDED REFERENCE DATA POLICY REGRESSION TEST SUITE
+================================================================================
+[PASS] POS-01: Legitimate known reference ZIP and companion matching manifest are cleanly accepted with 0 errors
+[PASS] NEG-01: Unknown / unregistered file under data/reference/bts_transtats/ is strictly rejected as stray
+[PASS] NEG-02: Forged / tampered reference artifact failing SHA-256 match is strictly rejected
+[PASS] NEG-03: Unauthorized file outside allowed reference subtree is strictly rejected
+[PASS] NEG-04: Path traversal attempt (../) in reference path is strictly rejected by path helper
+[PASS] NEG-05: Ghost/corrupted artifact matching manifest path but with wrong hash/size is strictly rejected
+================================================================================
+REFERENCE POLICY SUITE SUMMARY: 6 PASS, 0 FAIL
+================================================================================
+ALL REFERENCE DATA POLICY POSITIVE AND NEGATIVE TESTS PASSED.
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[4/5] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/check_working_tree_consistency.py
+     DESCRIPTION:  Working-Tree Consistency Checker
+     START TIME:   2026-10-20T16:21:30.809741+07:00
+     END TIME:     2026-10-20T16:21:31.787156+07:00
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+Working-Tree PASS assertions: 1545; FAIL: 0
+ALL WORKING-TREE CHECKS PASSED.
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+[5/5] COMMAND:      C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\python.exe tools/qa/test_working_tree_registry_regression.py
+     DESCRIPTION:  Deliverable Registry Regression Test Suite
+     START TIME:   2026-10-20T16:21:31.806151+07:00
+     END TIME:     2026-10-20T16:21:57.075274+07:00
+     EXIT CODE:    0
+     STDOUT:
+--------------------------------------------------------------------------------
+================================================================================
+RUNNING WORKING-TREE DELIVERABLE REGISTRY REGRESSION TEST SUITE (POS-01..02, NEG-01..08)
+================================================================================
+[PASS] POS-02: Historical immutable evidence (`SOURCE_MANIFEST.json`, `PACKAGE_MANIFEST.json`) and registered baseline accepted with 0 failures
+[PASS] POS-01: Correctly registered new evidence artifact with matching size and SHA-256 is accepted
+[PASS] NEG-01: Unregistered arbitrary Markdown file is rejected
+[PASS] NEG-02: File with valid-looking `T005_` prefix but absent from registry is rejected
+[PASS] NEG-03: Registered artifact with modified content or incorrect SHA-256 is rejected
+[PASS] NEG-04: Registered artifact with missing file or size mismatch is rejected
+[PASS] NEG-05: Malformed registry JSON and duplicate registry entries are both rejected
+[PASS] NEG-06: Path traversal (`../`) or unsafe path in registry is rejected
+[PASS] NEG-07: Unexpected `.pt` extension in evidence directory and forged task identifier (`T-999`) are both rejected
+[PASS] NEG-08: Tampering with `SOURCE_MANIFEST.json` inputs or unapproved `PACKAGE_MANIFEST.json` files cannot be bypassed via the registry
+[PASS] NEG-09: Tampering with pinned PACKAGE_MANIFEST/SOURCE_MANIFEST or registering unapproved living doc is rejected
+[PASS] NEG-10A: Unapproved artifact_type is strictly rejected
+[PASS] NEG-10B: Symlink injection into working tree is strictly rejected by checker and path validator
+[PASS] MUT-NEG10-01: Mutation test proves unconditional false-PASS fallback ('or True') is identified and rejected
+[PASS] MUT-NEG10-02: Path helper _is_safe_rel_path strictly rejects traversal (../), absolute, backslash, and empty paths
+[PASS] MUT-NEG10-03: Unauthorized artifact_type allowlist strictly enforces approved enum members
+REGRESSION SUITE SUMMARY: 16 PASS, 0 FAIL, 0 SKIP
+================================================================================
+ALL POSITIVE AND NEGATIVE REGISTRY REGRESSION TESTS PASSED.
+--------------------------------------------------------------------------------
+     STDERR:
+--------------------------------------------------------------------------------
+<EMPTY>
+--------------------------------------------------------------------------------
+
+================================================================================
+ALL 5 COMMANDS EXECUTED AND RECORDED SUCCESSFULLY.
+================================================================================

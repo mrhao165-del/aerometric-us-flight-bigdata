@@ -4,15 +4,29 @@
 !.env.example
 __pycache__/
 *.pyc
+.pytest_cache/
 .ipynb_checkpoints/
 data/raw/
+/data/reference/
 data/staging/
 data/processed/
 data/curated/
 data/temp/
+data/analytics/
+data/kpi/
+data/manifests/
+data/quarantine/
+data/locks/
+data/metadata/
 artifacts/runs/
 artifacts/cache/
 *.pt
 *.parquet
 *.csv
+# Temporary review archives, patches, backups, and UI design mockup exports
+docs/05-evidence/*.zip
+docs/05-evidence/*.patch
+docs/05-evidence/*_BACKUPS/
+*.bak
+stitch_us_flight_performance_dashboard_2016_2024/
 # Keep small audited JSON/MD evidence files in docs/05-evidence/inputs/

@@ -1,0 +1,616 @@
+================================================================================
+T011 POST-CLOSURE COMPREHENSIVE QA VERIFICATION SUITE LOG
+Timestamp: 2026-10-19T14:04:31.516748+00:00
+Task: T011-R6-POST-CLOSURE — Final Targeted Safety Closure
+Parent Gate: G5 (IN_PROGRESS)
+Status: AUTHORITATIVE RUN (0 FAIL)
+================================================================================
+
+>>> RUNNING: python tools/qa/verify_t006_contract_consistency.py
+================================================================================
+RUNNING T-006 CONTRACT CONSISTENCY & IMPLEMENTATION-SAFETY VERIFIER
+================================================================================
+[PASS] Case 1: All 34 raw columns match canonical names and physical order.
+[PASS] Case 2: All 9 fabricated columns removed; 9 restored canonical columns verified.
+[PASS] Case 3: Physical order and audited raw dtypes agree with schema_YYYY.json evidence.
+[PASS] Case 4: KPI-01..08 IDs, submetrics, and formulas agree with KPI_SPEC.md.
+[PASS] Case 5: KPI-03 verified as Signed Mean ARR_DELAY (negative delay preserved, not late rate).
+[PASS] Case 6: KPI-02/04 verified as Late Rate >= 15.0 (boundary 15.0 included, not on-time rate).
+[PASS] Case 7: Metric-valid denominators N_valid independent across submetrics; ZERO_METRIC_DENOMINATOR enforced.
+[PASS] Case 8: No CANCELLED or DIVERTED references in CORE filters.
+[PASS] Case 9: TS-012/013/015/016/020 match authoritative TEST_PLAN.md specifications.
+[PASS] Case 10: G2-EXC-001 verified as provisional unit status with G5 TS-018 mandatory hard stop blocking G6.
+[PASS] Case 11: Gate G2 confirmed PASS; Gate G3 confirmed PASS with human acceptance record; T-006 confirmed PASS / COMPLETED.
+[PASS] Case 12: Downstream G4 tasks (T-007, T-008, T-009) governed by official human signoffs; G5 NOT_STARTED.
+[PASS] Case 13: DC-11/12 row accounting and Record vs Metric Validity verified (metric invalidity does not quarantine flight).
+[PASS] Case 14: Complete finite numeric predicate verified with explicit NaN and Inf handling for all 7 CORE measures.
+[PASS] Case 15: Safe 7-step Windows NTFS publication order and TS-013 fault injection verified.
+[PASS] Case 16: Raw schema boundary verified (nullable Int64 calendar fields, anchored date regex, no unapproved NOT_NULL).
+[PASS] Case 17: Safe non-destructive rollback policy verified (destructive Remove-Item commands superseded and revoked).
+[PASS] Mutation Suite: 16 isolated mutation tests successfully detected and rejected.
+================================================================================
+VERIFICATION SUMMARY: 17 INVARIANTS PASS, 16 MUTATIONS PASS, 0 FAIL
+================================================================================
+ALL T-006 CONTRACT CONSISTENCY & IMPLEMENTATION-SAFETY CHECKS PASSED.
+>>> EXIT CODE: 0 (Duration: 0.085s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/verify_g2_repo_apply_r1_semantic_invariants.py
+================================================================================
+RUNNING G2-REPO-APPLY-R1 SEMANTIC INVARIANT AND MUTATION VERIFIER
+================================================================================
+
+[PASS] Verified 15 Semantic Invariants:
+  [OK] INV-01: FP-DEC-002 retains canonical 2024 retrospective scope meaning (USER_CONFIRMED_BY_SCOPE)
+  [OK] INV-02: FP-DEC-015 is percentile_approx with accuracy=10000
+  [OK] INV-03: FP-DEC-016 specifies min-N thresholds (1000/365/100) on count_metric_valid
+  [OK] INV-04: FP-DEC-017 is Weather CONDITIONAL_NO_GO (APPROVED_CONDITIONAL_NO_GO)
+  [OK] INV-05: Exactly KPI-01..08 are CORE_DRAFT; KPI-09..12 mapped to OPTIONAL, CONDITIONAL_NO_GO, NOT_COMPUTABLE, BLOCKED
+  [OK] INV-06: Raw Weather schema columns are exactly O_TEMP, O_PRCP, O_WSPD, D_TEMP, D_PRCP, D_WSPD
+  [OK] INV-07: OR-01..OR-08 canonical Primary R-01..R-17 mappings verified in RISK_REGISTER.md
+  [OK] INV-08: TS-001..TS-020 semantic definitions verified against TEST_PLAN.md
+  [OK] INV-09: G2-EXC-001 approved with mandatory TS-018 PASS condition at G5 and provisional unit status
+  [OK] INV-10: OR-05 verified as OPEN_QUALITY_DEFECT (335/366 days, missing March 2024)
+  [OK] INV-11: OR-08 verified as IDENTITY_UNVERIFIED (METADATA_MATCH_ONLY)
+  [OK] INV-12: Gate G2 confirmed PASS, Gate G3 confirmed PASS with human record, and T-006 controlled (PASS / COMPLETED)
+  [OK] INV-13: Decision approvals correctly recorded as APPROVED_BY_PROJECT_LEAD_INSTRUCTION without physical signature claims
+  [OK] INV-14: Unapproved extra assumptions (ELAPSED_DIFF in G2-EXC-001, DEP_TIME_TZ in raw) rejected in living docs
+  [OK] INV-15: TS-020 cross-document semantic consistency verified (Stable lineage / row identifier, not exclusively YX 3624)
+
+[PASS] Executed 15 Isolated Mutation Tests (MUT-01..09):
+  [OK] MUT-01: Caught FP-DEC-002 corruption (INV-01 FAIL: FP-DEC-002 not found with status USER_CONFIRMED_BY_SCOPE in DECISIONS.md)
+  [OK] MUT-02: Caught weather_code fabrication (INV-06 FAIL: Fabricated column name weather_code found in DATA_DICTIONARY.md)
+  [OK] MUT-03: Caught OR-01 scrambled mapping (INV-07 FAIL: OR-01 mapped to '`R-02` ', missing Primary R-09)
+  [OK] MUT-04: Caught TS-003 definition corruption (INV-08 FAIL: TS-003 description ' ki?m th? overnight temporal   `raw=accepted+quarantined+rejected`, disjoint; corrupted input c? count ho?c accounting_unverified ch?n publish ' missing expected keyword 'row accounting')
+  [OK] MUT-05A: Caught G2 PASS without acceptance record (INV-12 FAIL: G2 is PASS in PROJECT_STATE.md but official human acceptance record is missing)
+  [OK] MUT-05B: Caught unapproved provenance (INV-12 FAIL: Official acceptance record missing APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION provenance)
+  [OK] MUT-05C: Caught missing G2-EXC-001 in acceptance record (INV-12 FAIL: Mandatory condition/limitation 'G2-EXC-001' missing in acceptance record)
+  [OK] MUT-05D: Caught G3 PASS without acceptance record (INV-12 FAIL: G3 is PASS in PROJECT_STATE.md but official human acceptance record is missing)
+  [OK] MUT-06A: Caught T-006 IN_PROGRESS when G2 is NOT_PASSED (INV-12 FAIL: AWAITING_FINAL_HUMAN_GATE_SIGNOFF readiness annotation missing in PROJECT_STATE.md)
+  [OK] MUT-06B: Caught premature downstream task T-009 start (INV-12 FAIL: Task T-007 cannot be PASS in BACKLOG.md without human signoff record)
+  [OK] MUT-06C: Caught premature downstream task T-007 start (INV-12 FAIL: Downstream task T-007 unauthorized start (IN_PROGRESS) before G3 completion)
+  [OK] MUT-06D: Caught premature downstream task T-008 start (INV-12 FAIL: Task T-007 cannot be PASS in BACKLOG.md without human signoff record)
+  [OK] MUT-07: Caught min-N threshold corruption (INV-03 FAIL: FP-DEC-016 threshold pattern carrier-year.*?count_metric_valid\s*>=\s*1000 missing in DECISIONS.md)
+  [OK] MUT-08: Caught premature VERIFIED units claim (INV-09 FAIL: OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL missing in DECISIONS.md)
+  [OK] MUT-09: Caught TS-020 definition corruption (INV-08 FAIL: TS-020 description ' b?o to?n c?p b?n ghi tr?ng kh?a yx 3624   traceability reproducible tr?n repeated distributed reads ho?c lineage surrogate ???c duy?t, kh?ng ?o?n spark offsets ' missing expected keyword 'row identifier')
+
+================================================================================
+ALL SEMANTIC INVARIANTS AND MUTATION TESTS PASSED (15 invariants + 15 mutations).
+================================================================================
+>>> EXIT CODE: 0 (Duration: 0.832s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/verify_t010_parquet_schema_attestation.py
+================================================================================
+RUNNING T-010 PARQUET SCHEMA ATTESTATION & FORENSIC AUDIT VERIFIER
+================================================================================
+[PASS] Canonical Curated Schema: 34 fields verified.
+       Type Distribution: {'string': 10, 'double': 19, 'int64': 5}
+[PASS] Field 2: OP_CARRIER_FL_NUM confirmed as DoubleType (Arrow double / float64).
+[PASS] Canonical Schema Fingerprint: b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a
+[PASS] Forensic Hash Manifest loaded: 50 registered Parquet partition entries.
+[PASS] All 50/50 physical staging Parquet files verified field-for-field:
+       - 100% 34 columns in identical canonical physical order
+       - 10 StringTypes, 19 DoubleTypes, 5 LongTypes
+       - OP_CARRIER_FL_NUM == double (Arrow float64) in all 50 files
+       - Compression == SNAPPY in all 50 files
+       - Schema Fingerprint == b5805fcae8db44e9a53c0eb1dfa1c1f3d9ec2983b3922bfbe5c6454f1654b09a in all 50 files
+       - Exact byte size, SHA-256, and metadata row counts matched with manifest
+================================================================================
+VERIFICATION SUMMARY: ALL 50 PARQUET PARTITION FILES FULLY ATTESTED (0 FAIL)
+================================================================================
+>>> EXIT CODE: 0 (Duration: 1.085s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/run_ts018_bts_parity.py
+================================================================================
+RUNNING TS-018 BTS TRANSTATS SAMPLE PARITY & RECONCILIATION AUDIT (R4)
+================================================================================
+[AUDIT] No candidate external BTS TranStats sample CSV found in repository.
+[AUDIT] Executing algorithmic reconciliation verification on synthetic golden fixtures...
+[SUMMARY] Total Dataset Records: 5
+[SUMMARY] Total BTS Records: 5
+[SUMMARY] Unique Key Matches: 5
+[SUMMARY] Ambiguous Duplicate Keys: 0
+[SUMMARY] Invalid Key Records: 0
+[SUMMARY] Unmatched Dataset Records: 0
+[SUMMARY] Unmatched BTS Records: 0
+========================================
+SEPARATION OF GOVERNANCE STATES (R4-F01):
+  1. FILE_PRESENT:                 True
+  2. SCHEMA_VALID:                  True
+  3. COMPANION_METADATA_VALID:      False
+  4. CANDIDATE_CHECKSUM_MATCHED:    False
+  5. SOURCE_PROVENANCE_VERIFIED:    False (CANNOT_SELF_VERIFY_LOCAL_CLAIMS)
+  6. NUMERICAL_PARITY_VERIFIED:     True
+  7. HUMAN_ACCEPTED:                False (EXCLUSIVE: Project Lead)
+========================================
+[SUMMARY] Reconciliation Verdict: SYNTHETIC_RECONCILER_VERIFIED_AUTHENTIC_BTS_PENDING
+  Field ARR_DELAY           : exact=5, round=0, numeric_samples=5, null_null=0, mismatch=0, missing_col=0, malformed=0
+  Field DEP_DELAY           : exact=5, round=0, numeric_samples=5, null_null=0, mismatch=0, missing_col=0, malformed=0
+  Field TAXI_OUT            : exact=5, round=0, numeric_samples=5, null_null=0, mismatch=0, missing_col=0, malformed=0
+  Field TAXI_IN             : exact=5, round=0, numeric_samples=5, null_null=0, mismatch=0, missing_col=0, malformed=0
+  Field AIR_TIME            : exact=5, round=0, numeric_samples=5, null_null=0, mismatch=0, missing_col=0, malformed=0
+  Field ACTUAL_ELAPSED_TIME : exact=5, round=0, numeric_samples=5, null_null=0, mismatch=0, missing_col=0, malformed=0
+  Field CRS_ELAPSED_TIME    : exact=5, round=0, numeric_samples=5, null_null=0, mismatch=0, missing_col=0, malformed=0
+[ARTIFACT] Machine-readable summary written to: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\docs\05-evidence\T011_TS018_BTS_RECONCILIATION_SUMMARY.json
+================================================================================
+>>> EXIT CODE: 0 (Duration: 0.366s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/run_t011_kpi_smoke.py
+WARNING: Using incubator modules: jdk.incubator.vector
+26/10/19 21:04:35 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/19 21:04:36 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/19 21:04:36 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+
+[Stage 0:>                                                          (0 + 2) / 2]
+
+                                                                                
+
+[Stage 3:>    (0 + 2) / 2][Stage 4:>    (0 + 0) / 2][Stage 5:>    (0 + 0) / 2]
+
+[Stage 3:==>  (1 + 1) / 2][Stage 4:>    (0 + 1) / 2][Stage 5:>    (0 + 0) / 2]
+
+[Stage 4:>    (0 + 2) / 2][Stage 5:>    (0 + 0) / 2][Stage 6:>    (0 + 0) / 2]
+
+[Stage 4:==>  (1 + 1) / 2][Stage 5:>    (0 + 0) / 2][Stage 6:>    (0 + 0) / 2]
+
+[Stage 5:>    (0 + 0) / 2][Stage 6:>    (0 + 0) / 2][Stage 7:>    (0 + 0) / 2]
+
+[Stage 5:>    (0 + 1) / 2][Stage 6:>    (0 + 0) / 2][Stage 7:>    (0 + 0) / 2]
+
+[Stage 5:>    (0 + 2) / 2][Stage 6:>    (0 + 0) / 2][Stage 7:>    (0 + 0) / 2]
+
+[Stage 5:==>  (1 + 1) / 2][Stage 6:>    (0 + 0) / 2][Stage 7:>    (0 + 1) / 2]
+
+[Stage 6:>    (0 + 0) / 2][Stage 7:>    (0 + 2) / 2][Stage 9:>    (0 + 0) / 2]
+
+[Stage 6:>    (0 + 1) / 2][Stage 7:==>  (1 + 1) / 2][Stage 9:>    (0 + 0) / 2]
+
+[Stage 6:>    (0 + 2) / 2][Stage 9:>    (0 + 0) / 2][Stage 10:>   (0 + 0) / 2]
+
+[Stage 6:==>  (1 + 1) / 2][Stage 9:>    (0 + 1) / 2][Stage 10:>   (0 + 0) / 2]
+
+[Stage 9:>    (0 + 2) / 2][Stage 10:>   (0 + 0) / 2][Stage 11:>   (0 + 0) / 2]
+
+[Stage 9:==>  (1 + 1) / 2][Stage 10:>   (0 + 1) / 2][Stage 11:>   (0 + 0) / 2]
+
+[Stage 10:>   (0 + 2) / 2][Stage 11:>   (0 + 0) / 2][Stage 12:>   (0 + 0) / 2]
+
+[Stage 10:==> (1 + 1) / 2][Stage 11:>   (0 + 1) / 2][Stage 12:>   (0 + 0) / 2]
+
+[Stage 11:>   (0 + 2) / 2][Stage 12:>   (0 + 0) / 2][Stage 13:>   (0 + 0) / 2]
+
+[Stage 11:==> (1 + 1) / 2][Stage 12:>   (0 + 1) / 2][Stage 13:>   (0 + 0) / 2]
+
+[Stage 12:>                 (0 + 2) / 2][Stage 13:>                 (0 + 0) / 2]
+
+[Stage 12:=========>        (1 + 1) / 2][Stage 13:>                 (0 + 1) / 2]
+
+[Stage 13:>                                                         (0 + 2) / 2]
+
+                                                                                
+
+[Stage 26:>                                                         (0 + 2) / 2]
+
+[Stage 26:=============================>                            (1 + 1) / 2]
+
+                                                                                
+
+[Stage 29:>                 (0 + 2) / 2][Stage 30:>                 (0 + 0) / 2]
+
+[Stage 29:>   (0 + 2) / 2][Stage 30:>   (0 + 0) / 2][Stage 31:>   (0 + 0) / 2]
+
+[Stage 29:==> (1 + 1) / 2][Stage 30:>   (0 + 1) / 2][Stage 31:>   (0 + 0) / 2]
+
+[Stage 30:>   (0 + 2) / 2][Stage 31:>   (0 + 0) / 2][Stage 32:>   (0 + 0) / 2]
+
+[Stage 30:==> (1 + 1) / 2][Stage 31:>   (0 + 0) / 2][Stage 32:>   (0 + 1) / 2]
+
+[Stage 31:>   (0 + 0) / 2][Stage 32:>   (0 + 2) / 2][Stage 33:>   (0 + 0) / 2]
+
+[Stage 31:>   (0 + 1) / 2][Stage 32:==> (1 + 1) / 2][Stage 33:>   (0 + 0) / 2]
+
+[Stage 31:>   (0 + 2) / 2][Stage 33:>   (0 + 0) / 2][Stage 34:>   (0 + 0) / 2]
+
+[Stage 31:==> (1 + 1) / 2][Stage 33:>   (0 + 0) / 2][Stage 34:>   (0 + 1) / 2]
+
+[Stage 33:>   (0 + 0) / 2][Stage 34:>   (0 + 2) / 2][Stage 35:>   (0 + 0) / 2]
+
+[Stage 33:>   (0 + 0) / 2][Stage 34:==> (1 + 1) / 2][Stage 35:>   (0 + 1) / 2]
+
+[Stage 33:>   (0 + 0) / 2][Stage 35:>   (0 + 2) / 2][Stage 36:>   (0 + 0) / 2]
+
+[Stage 33:>   (0 + 1) / 2][Stage 35:==> (1 + 1) / 2][Stage 36:>   (0 + 0) / 2]
+
+[Stage 33:>   (0 + 2) / 2][Stage 36:>   (0 + 0) / 2][Stage 37:>   (0 + 0) / 2]
+
+[Stage 33:==> (1 + 1) / 2][Stage 36:>   (0 + 1) / 2][Stage 37:>   (0 + 0) / 2]
+
+[Stage 36:>   (0 + 2) / 2][Stage 37:>   (0 + 0) / 2][Stage 38:>   (0 + 0) / 2]
+
+[Stage 36:==> (1 + 1) / 2][Stage 37:>   (0 + 1) / 2][Stage 38:>   (0 + 0) / 2]
+
+[Stage 37:>   (0 + 2) / 2][Stage 38:>   (0 + 0) / 2][Stage 39:>   (0 + 0) / 2]
+
+[Stage 37:==> (1 + 1) / 2][Stage 38:>   (0 + 1) / 2][Stage 39:>   (0 + 0) / 2]
+
+[Stage 38:>                 (0 + 2) / 2][Stage 39:>                 (0 + 0) / 2]
+
+[Stage 38:=========>        (1 + 1) / 2][Stage 39:>                 (0 + 1) / 2]
+
+[Stage 39:>                                                         (0 + 2) / 2]
+
+[Stage 39:=============================>                            (1 + 1) / 2]
+
+                                                                                
+================================================================================
+RUNNING T-011 KPI SAMPLE SMOKE & DIMENSIONAL AGGREGATION AUDIT
+================================================================================
+[RUN] Computing Year-level KPIs...
+  Emitted 12 KPI slices for year level.
+[RUN] Computing Carrier-Year level KPIs...
+  Emitted 24 KPI slices for carrier-year level.
+  [PASS] AA min_n_status: LOW_SAMPLE_CAUTION (count: 1050)
+  [PASS] DL min_n_status: SUPPRESSED (count: 150)
+[ARTIFACT] KPI smoke metrics written to: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\docs\05-evidence\T011_KPI_SAMPLE_SMOKE_METRICS.json
+================================================================================
+SUCCESS: The process with PID 17976 (child process of PID 5868) has been terminated.
+SUCCESS: The process with PID 5868 (child process of PID 19720) has been terminated.
+SUCCESS: The process with PID 19720 (child process of PID 3976) has been terminated.
+>>> EXIT CODE: 0 (Duration: 41.221s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/verify_t003_contract_consistency.py
+================================================================================
+T-003 INDEPENDENT CONTRACT CONSISTENCY & ARITHMETIC ORACLE VERIFICATION
+================================================================================
+[PASS] FIX-14 CSV file exists
+[PASS] FIX-14 CSV header has exactly 34 columns
+[PASS] FIX-14 CSV has exactly 5 data rows
+[PASS] FIX-14 data row 1 has 34 columns
+[PASS] FIX-14 data row 2 has 34 columns
+[PASS] FIX-14 data row 3 has 34 columns
+[PASS] FIX-14 data row 4 has 34 columns
+[PASS] FIX-14 data row 5 has exactly 6 columns (column count mismatch)
+[PASS] FIX-14 row 4 has ORIGIN='12A' (quarantine trigger)
+[PASS] FIX-14 JSON metadata file exists
+[PASS] Accounting raw_row_count == 5
+[PASS] Accounting accepted_row_count == 3
+[PASS] Accounting quarantined_row_count == 1
+[PASS] Accounting rejected_row_count == 1
+[PASS] Accounting invariant holds: 5 = 3 + 1 + 1
+[PASS] Ingest acceptance rate is exactly 60.0% (3/5)
+[PASS] Standardized rejection reason contains COLUMN_COUNT_MISMATCH: EXPECTED_34_FOUND_6
+[PASS] Accepted ARR_DELAY values are [0.0, -12.0, 20.0]
+[PASS] Accepted DEP_DELAY values are [5.0, -5.0, 25.0]
+[PASS] Recalculated KPI-01 == 3
+[PASS] Recalculated KPI-02 == 1/3 (~33.3333%)
+[PASS] Recalculated KPI-03 == 8/3 (~2.6667 min)
+[PASS] Recalculated KPI-04 == 1/3 (~33.3333%)
+[PASS] Recalculated KPI-05 == 25/3 (~8.3333 min)
+[PASS] Recalculated KPI-06 P50 == 0.0 min
+[PASS] Recalculated KPI-06 P90 continuous == 16.0 min
+[PASS] Recalculated KPI-06 P90 discrete == 20.0 min
+[PASS] Recalculated KPI-07 Taxi-Out == 15.0 min
+[PASS] Recalculated KPI-07 Taxi-In == 6.0 min
+[PASS] Recalculated KPI-08 Air Time == 350/3 min
+[PASS] Recalculated KPI-08 Actual Elapsed Time == 413/3 min
+[PASS] Recalculated KPI-08 CRS Elapsed Time == 430/3 min
+[PASS] JSON KPI-01 matches recalculated oracle
+[PASS] JSON KPI-02 matches recalculated oracle
+[PASS] JSON KPI-03 matches recalculated oracle
+[PASS] JSON KPI-04 matches recalculated oracle
+[PASS] JSON KPI-05 matches recalculated oracle
+[PASS] JSON KPI-06-P50 matches recalculated oracle
+[PASS] JSON KPI-06-P90_continuous matches recalculated oracle
+[PASS] JSON KPI-06-P90_discrete matches recalculated oracle
+[PASS] JSON KPI-07-TAXI_OUT matches recalculated oracle
+[PASS] JSON KPI-07-TAXI_IN matches recalculated oracle
+[PASS] JSON KPI-08-AIR_TIME matches recalculated oracle
+[PASS] JSON KPI-08-ACTUAL_ELAPSED_TIME matches recalculated oracle
+[PASS] JSON KPI-08-CRS_ELAPSED_TIME matches recalculated oracle
+[PASS] T003_TEST_FIXTURE_SPEC.md exists
+[PASS] All 14 fixtures (FIX-01..FIX-14) present in TEST_FIXTURE_SPEC
+[PASS] No erroneous pattern in T003_FINAL_CLOSEOUT_VERIFICATION.md: KPI-02 wrongly mapped as on-time rate
+[PASS] No erroneous pattern in T003_FINAL_CLOSEOUT_VERIFICATION.md: KPI-03 wrongly mapped as arrival late rate
+[PASS] No erroneous pattern in T003_FINAL_CLOSEOUT_VERIFICATION.md: KPI-04 wrongly mapped as arrival average delay
+[PASS] No erroneous pattern in T003_FINAL_CLOSEOUT_VERIFICATION.md: KPI-05 wrongly mapped as arrival median delay
+[PASS] No erroneous pattern in T003_FINAL_CLOSEOUT_VERIFICATION.md: KPI-07 wrongly mapped as departure late rate
+[PASS] No erroneous pattern in T003_FINAL_CLOSEOUT_VERIFICATION.md: KPI-08 wrongly mapped as departure average delay
+[PASS] No erroneous pattern in T003_FINAL_CLOSEOUT_VERIFICATION.md: Hallucinated ARR_DELAY=[5, 22, 16] found
+[PASS] No erroneous pattern in T003_FINAL_CLOSEOUT_VERIFICATION.md: Hallucinated DEP_DELAY=[-2, 18, 0] found
+[PASS] No erroneous pattern in T003_FINAL_GATE_RECOMMENDATION.md: KPI-02 wrongly mapped as on-time rate
+[PASS] No erroneous pattern in T003_FINAL_GATE_RECOMMENDATION.md: KPI-03 wrongly mapped as arrival late rate
+[PASS] No erroneous pattern in T003_FINAL_GATE_RECOMMENDATION.md: KPI-04 wrongly mapped as arrival average delay
+[PASS] No erroneous pattern in T003_FINAL_GATE_RECOMMENDATION.md: KPI-05 wrongly mapped as arrival median delay
+[PASS] No erroneous pattern in T003_FINAL_GATE_RECOMMENDATION.md: KPI-07 wrongly mapped as departure late rate
+[PASS] No erroneous pattern in T003_FINAL_GATE_RECOMMENDATION.md: KPI-08 wrongly mapped as departure average delay
+[PASS] No erroneous pattern in T003_FINAL_GATE_RECOMMENDATION.md: Hallucinated ARR_DELAY=[5, 22, 16] found
+[PASS] No erroneous pattern in T003_FINAL_GATE_RECOMMENDATION.md: Hallucinated DEP_DELAY=[-2, 18, 0] found
+[PASS] No erroneous pattern in T003_TEST_FIXTURE_SPEC.md: KPI-02 wrongly mapped as on-time rate
+[PASS] No erroneous pattern in T003_TEST_FIXTURE_SPEC.md: KPI-03 wrongly mapped as arrival late rate
+[PASS] No erroneous pattern in T003_TEST_FIXTURE_SPEC.md: KPI-04 wrongly mapped as arrival average delay
+[PASS] No erroneous pattern in T003_TEST_FIXTURE_SPEC.md: KPI-05 wrongly mapped as arrival median delay
+[PASS] No erroneous pattern in T003_TEST_FIXTURE_SPEC.md: KPI-07 wrongly mapped as departure late rate
+[PASS] No erroneous pattern in T003_TEST_FIXTURE_SPEC.md: KPI-08 wrongly mapped as departure average delay
+[PASS] No erroneous pattern in T003_TEST_FIXTURE_SPEC.md: Hallucinated ARR_DELAY=[5, 22, 16] found
+[PASS] No erroneous pattern in T003_TEST_FIXTURE_SPEC.md: Hallucinated DEP_DELAY=[-2, 18, 0] found
+[PASS] No erroneous pattern in T003_PERCENTILE_AND_MIN_N_DECISIONS.md: KPI-02 wrongly mapped as on-time rate
+[PASS] No erroneous pattern in T003_PERCENTILE_AND_MIN_N_DECISIONS.md: KPI-03 wrongly mapped as arrival late rate
+[PASS] No erroneous pattern in T003_PERCENTILE_AND_MIN_N_DECISIONS.md: KPI-04 wrongly mapped as arrival average delay
+[PASS] No erroneous pattern in T003_PERCENTILE_AND_MIN_N_DECISIONS.md: KPI-05 wrongly mapped as arrival median delay
+[PASS] No erroneous pattern in T003_PERCENTILE_AND_MIN_N_DECISIONS.md: KPI-07 wrongly mapped as departure late rate
+[PASS] No erroneous pattern in T003_PERCENTILE_AND_MIN_N_DECISIONS.md: KPI-08 wrongly mapped as departure average delay
+[PASS] No erroneous pattern in T003_PERCENTILE_AND_MIN_N_DECISIONS.md: Hallucinated ARR_DELAY=[5, 22, 16] found
+[PASS] No erroneous pattern in T003_PERCENTILE_AND_MIN_N_DECISIONS.md: Hallucinated DEP_DELAY=[-2, 18, 0] found
+[PASS] No wrongful temporal mapping of TS-009 in T003_FINAL_CLOSEOUT_VERIFICATION.md
+[PASS] No wrongful temporal mapping of TS-009 in T003_FINAL_GATE_RECOMMENDATION.md
+[PASS] No wrongful temporal mapping of TS-009 in T003_TEST_FIXTURE_SPEC.md
+[PASS] No wrongful temporal mapping of TS-009 in T003_PERCENTILE_AND_MIN_N_DECISIONS.md
+[PASS] PROJECT_STATE.md exists
+[PASS] Gate G2 is officially PASS in PROJECT_STATE.md with human acceptance record
+[PASS] Gate G2 references authoritative acceptance record in PROJECT_STATE.md
+[PASS] FP-DEC-015 and FP-DEC-016 are NOT claimed as APPROVED (retained as PROPOSED)
+[PASS] Schema JSON exists for 2016
+[PASS] arr_delay min and max present in schema_2016.json
+[PASS] Schema JSON exists for 2017
+[PASS] arr_delay min and max present in schema_2017.json
+[PASS] Schema JSON exists for 2018
+[PASS] arr_delay min and max present in schema_2018.json
+[PASS] Schema JSON exists for 2019
+[PASS] arr_delay min and max present in schema_2019.json
+[PASS] Schema JSON exists for 2020
+[PASS] arr_delay min and max present in schema_2020.json
+[PASS] Schema JSON exists for 2021
+[PASS] arr_delay min and max present in schema_2021.json
+[PASS] Schema JSON exists for 2022
+[PASS] arr_delay min and max present in schema_2022.json
+[PASS] Schema JSON exists for 2023
+[PASS] arr_delay min and max present in schema_2023.json
+[PASS] Schema JSON exists for 2024
+[PASS] arr_delay min and max present in schema_2024.json
+[PASS] Overall ARR_DELAY min across all 9 years is -238.0 (found -238.0)
+[PASS] Overall ARR_DELAY max across all 9 years is +4405.0 (found 4405.0)
+[PASS] No stale range [-1992, 2972] found in T003 evidence files
+[PASS] T003_UNIT_VERIFICATION.md exists
+[PASS] Measure ARR_DELAY has canonical unit status OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL in T003_UNIT_VERIFICATION.md
+[PASS] Measure DEP_DELAY has canonical unit status OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL in T003_UNIT_VERIFICATION.md
+[PASS] Measure TAXI_OUT has canonical unit status OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL in T003_UNIT_VERIFICATION.md
+[PASS] Measure TAXI_IN has canonical unit status OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL in T003_UNIT_VERIFICATION.md
+[PASS] Measure ACTUAL_ELAPSED_TIME has canonical unit status OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL in T003_UNIT_VERIFICATION.md
+[PASS] Measure CRS_ELAPSED_TIME has canonical unit status OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL in T003_UNIT_VERIFICATION.md
+[PASS] Measure AIR_TIME has canonical unit status OFFICIAL_MINUTES_EMPIRICALLY_CONSISTENT_PROVISIONAL in T003_UNIT_VERIFICATION.md
+[PASS] No premature elevation to VERIFIED_AGAINST_UPSTREAM in T003_UNIT_VERIFICATION.md
+[PASS] T003_KPI_CONTRACT_REVIEW.md exists
+[PASS] Minute-based KPI KPI-03 documented with canonical unit status in T003_KPI_CONTRACT_REVIEW.md
+[PASS] Minute-based KPI KPI-05 documented with canonical unit status in T003_KPI_CONTRACT_REVIEW.md
+[PASS] Minute-based KPI KPI-06 documented with canonical unit status in T003_KPI_CONTRACT_REVIEW.md
+[PASS] Minute-based KPI KPI-07 documented with canonical unit status in T003_KPI_CONTRACT_REVIEW.md
+[PASS] Minute-based KPI KPI-08 documented with canonical unit status in T003_KPI_CONTRACT_REVIEW.md
+[PASS] KPI-01 is COUNT_INTEGER in T003_KPI_CONTRACT_REVIEW.md
+[PASS] KPI-02 is DIMENSIONLESS_RATIO in T003_KPI_CONTRACT_REVIEW.md
+[PASS] KPI-04 is DIMENSIONLESS_RATIO in T003_KPI_CONTRACT_REVIEW.md
+[PASS] 10k sample size clearly referenced in unit verification
+[PASS] Full population size (54,674,003) referenced for distinction in unit verification
+[PASS] Open provisional unit risk preserved in unit verification
+[PASS] No false claim: False claim that 10k sample proves 54.67M population
+[PASS] No false claim: False claim that population is verified against upstream BTS
+[PASS] Zero Arbitrary Deduplication referenced in spec
+[PASS] Specification explicitly states duplicate rows must still satisfy quality rules
+================================================================================
+VERIFICATION SUMMARY: 133 PASS, 0 FAIL
+================================================================================
+
+ALL CONTRACT CONSISTENCY & ARITHMETIC ORACLE CHECKS PASSED.
+>>> EXIT CODE: 0 (Duration: 0.077s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/verify_t004_time_representation.py
+================================================================================
+RUNNING T-004 FINAL QA: SOURCE COUNT RECONCILIATION & TEMPORAL AUDIT
+================================================================================
+[PASS] Artifact exists: docs/05-evidence/T004_TIME_REPRESENTATION_AUDIT.md
+[PASS] Artifact non-empty: docs/05-evidence/T004_TIME_REPRESENTATION_AUDIT.md
+[PASS] Artifact exists: docs/05-evidence/T004_2024_DATE_COVERAGE_AUDIT.md
+[PASS] Artifact non-empty: docs/05-evidence/T004_2024_DATE_COVERAGE_AUDIT.md
+[PASS] Artifact exists: docs/05-evidence/T004_OVERNIGHT_COUNTEREXAMPLES.md
+[PASS] Artifact non-empty: docs/05-evidence/T004_OVERNIGHT_COUNTEREXAMPLES.md
+[PASS] Artifact exists: docs/05-evidence/T004_SAFE_FIELDS_DECISION.md
+[PASS] Artifact non-empty: docs/05-evidence/T004_SAFE_FIELDS_DECISION.md
+[PASS] Artifact exists: docs/05-evidence/T004_TEST_FIXTURE_SPEC.md
+[PASS] Artifact non-empty: docs/05-evidence/T004_TEST_FIXTURE_SPEC.md
+[PASS] Artifact exists: docs/05-evidence/T004_FINAL_REVIEW.md
+[PASS] Artifact non-empty: docs/05-evidence/T004_FINAL_REVIEW.md
+[PASS] Artifact exists: docs/05-evidence/T004_TF09_temporal_fixture.csv
+[PASS] Artifact non-empty: docs/05-evidence/T004_TF09_temporal_fixture.csv
+[PASS] Artifact exists: docs/05-evidence/T004_TF09_full_schema_fixture.csv
+[PASS] Artifact non-empty: docs/05-evidence/T004_TF09_full_schema_fixture.csv
+[PASS] Artifact exists: docs/05-evidence/T004_TF09_temporal_fixture.json
+[PASS] Artifact non-empty: docs/05-evidence/T004_TF09_temporal_fixture.json
+[PASS] Artifact exists: docs/05-evidence/T004_R1_INDEPENDENT_RECONCILIATION.md
+[PASS] Artifact non-empty: docs/05-evidence/T004_R1_INDEPENDENT_RECONCILIATION.md
+[PASS] Artifact exists: docs/05-evidence/T004_FINAL_QA_RECONCILIATION.md
+[PASS] Artifact non-empty: docs/05-evidence/T004_FINAL_QA_RECONCILIATION.md
+[PASS] Schema file exists: schema_2016.json
+[PASS] schema_2016.json row_count matches authoritative (5537987 == 5537987)
+[PASS] Schema file exists: schema_2017.json
+[PASS] schema_2017.json row_count matches authoritative (5575872 == 5575872)
+[PASS] Schema file exists: schema_2018.json
+[PASS] schema_2018.json row_count matches authoritative (6986842 == 6986842)
+[PASS] Schema file exists: schema_2019.json
+[PASS] schema_2019.json row_count matches authoritative (7161827 == 7161827)
+[PASS] Schema file exists: schema_2020.json
+[PASS] schema_2020.json row_count matches authoritative (4312091 == 4312091)
+[PASS] Schema file exists: schema_2021.json
+[PASS] schema_2021.json row_count matches authoritative (5755666 == 5755666)
+[PASS] Schema file exists: schema_2022.json
+[PASS] schema_2022.json row_count matches authoritative (6413416 == 6413416)
+[PASS] Schema file exists: schema_2023.json
+[PASS] schema_2023.json row_count matches authoritative (6645461 == 6645461)
+[PASS] Schema file exists: schema_2024.json
+[PASS] schema_2024.json row_count matches authoritative (6284841 == 6284841)
+[PASS] Sum of 9 schema row counts is exactly 54,674,003 (54674003)
+[PASS] T004_R1 multi-year table contains authoritative count for 2016 (5537987)
+[PASS] T004_R1 multi-year table contains authoritative count for 2017 (5575872)
+[PASS] T004_R1 multi-year table contains authoritative count for 2018 (6986842)
+[PASS] T004_R1 multi-year table contains authoritative count for 2019 (7161827)
+[PASS] T004_R1 multi-year table contains authoritative count for 2020 (4312091)
+[PASS] T004_R1 multi-year table contains authoritative count for 2021 (5755666)
+[PASS] T004_R1 multi-year table contains authoritative count for 2022 (6413416)
+[PASS] T004_R1 multi-year table contains authoritative count for 2023 (6645461)
+[PASS] T004_R1 multi-year table contains authoritative count for 2024 (6284841)
+[PASS] T004_FINAL_QA table contains authoritative count for 2016 (5537987)
+[PASS] T004_FINAL_QA table contains authoritative count for 2017 (5575872)
+[PASS] T004_FINAL_QA table contains authoritative count for 2018 (6986842)
+[PASS] T004_FINAL_QA table contains authoritative count for 2019 (7161827)
+[PASS] T004_FINAL_QA table contains authoritative count for 2020 (4312091)
+[PASS] T004_FINAL_QA table contains authoritative count for 2021 (5755666)
+[PASS] T004_FINAL_QA table contains authoritative count for 2022 (6413416)
+[PASS] T004_FINAL_QA table contains authoritative count for 2023 (6645461)
+[PASS] T004_FINAL_QA table contains authoritative count for 2024 (6284841)
+[PASS] Physical line numbers for YX 3624 cited
+[PASS] DEP_DELAY values (+877.0 and +20.0) verified
+[PASS] ARR_DELAY values (+941.0 and +4.0) verified
+[PASS] Row B taxi and air values (13.0 / 83.0 / 6.0 / 102.0) preserved in overnight audit
+[PASS] Section 2.3 strict 3-tier boundary (VERIFIED / INFERRED / UNKNOWN) implemented
+[PASS] Physical entity identity classified as UNKNOWN (lack of TAIL_NUM)
+[PASS] Upstream ETL code classified as UPSTREAM_CODE_UNKNOWN
+[PASS] Mandatory prohibitions on timestamp subtraction documented
+[PASS] Row B raw values (13.0 / 83.0 / 6.0) verified in T004_R1 Section 3.1
+[PASS] Row B raw values (13.0 / 83.0 / 6.0 / 102.0) verified in T004_FINAL_QA Section 3
+[PASS] Temporal fixture CSV has exactly 10 lines, got 10
+[PASS] Temporal fixture CSV contains no '#' comments
+[PASS] Temporal CSV parsed exactly 9 rows, got 9
+[PASS] Temporal CSV has exactly 18 columns, got 18
+[PASS] Full schema CSV has exactly 10 lines, got 10
+[PASS] Full schema CSV contains no '#' comments
+[PASS] Full schema CSV parsed exactly 9 rows, got 9
+[PASS] Full schema CSV has exactly 34 columns, got 34
+[PASS] JSON oracle contains 9 fixture objects, got 9
+[PASS] Delay balance invariant holds on all 9 fixtures
+[PASS] Elapsed time decomposition invariant holds on all 9 fixtures
+[PASS] Historical IANA timezones and DST abbreviations verified across all 9 fixtures
+[PASS] TF-08 date component preserved as counterexample without fabricating absolute recovery date
+[PASS] Canonical R-01..R-17 present in RISK_REGISTER.md
+[PASS] Open risks OR-01..OR-08 present in T004_FINAL_REVIEW.md
+[PASS] OR-05 recorded as OPEN_QUALITY_DEFECT in T004_FINAL_REVIEW.md
+[PASS] Gate G2 is NOT passed in T004_FINAL_REVIEW.md
+[PASS] Gate G2 is PASS in PROJECT_STATE.md (Official Signoff)
+[PASS] OR-05 explicitly retained as OPEN_QUALITY_DEFECT in date coverage audit
+[PASS] Status DATA_ABSENT_IN_CURRENT_CSV documented
+[PASS] Boundary UPSTREAM_ROOT_CAUSE_UNKNOWN documented
+================================================================================
+VERIFICATION SUMMARY: 90 PASS, 0 FAIL
+================================================================================
+
+ALL 90 T-004 FINAL QA CHECKS PASSED.
+>>> EXIT CODE: 0 (Duration: 0.079s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/test_t007_spark_csv_reproduction.py
+Missing Python executable 'D:\Study\Code\Apache\ApacheSpark\.venv\Scripts\python.exe', defaulting to 'C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\Lib\site-packages\pyspark\bin\..' for SPARK_HOME environment variable. Please install Python or specify the correct Python executable in PYSPARK_DRIVER_PYTHON or PYSPARK_PYTHON environment variable to detect SPARK_HOME safely.
+WARNING: Using incubator modules: jdk.incubator.vector
+26/10/19 21:05:17 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/19 21:05:17 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+================================================================================
+PYSPARK 4.0.1 CSV PARSER EMPIRICAL REPRODUCTION SUITE RESULTS
+================================================================================
+  python_version: 3.10.11
+  pyspark_version: 4.0.1
+  spark_version: 4.0.1
+  java_version: 21.0.12.1
+  corrupt_record_pruned_from_plan: True
+  direct_corrupt_query_rejected: True
+  total_cached_rows: 8
+  corrupt_count_typed: 4
+  short_row_captured: True
+  extra_tokens_captured: True
+  numeric_failure_captured_in_typed: True
+  unclosed_quote_captured: True
+  string_schema_preserves_row6_acceptance: True
+  string_schema_short_row_captured: True
+  string_schema_extra_tokens_captured: True
+================================================================================
+ALL EMPIRICAL REPRODUCTION ASSERTIONS PASSED.
+SUCCESS: The process with PID 10296 (child process of PID 27068) has been terminated.
+SUCCESS: The process with PID 27068 (child process of PID 20256) has been terminated.
+SUCCESS: The process with PID 20256 (child process of PID 27392) has been terminated.
+>>> EXIT CODE: 0 (Duration: 7.856s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/test_t009_unblock_r2_git_exclusion.py
+================================================================================
+RUNNING T009-UNBLOCK-R2 GIT EXCLUSION POSITIVE & NEGATIVE VERIFICATION SUITE
+================================================================================
+[PASS] POS-01: Isolated repo with root `.git/` metadata is cleanly accepted with 0 errors
+[PASS] POS-02: Markdown file inside root `.git/` is ignored by active docs checks and accounting
+[PASS] NEG-01: Unrecognized stray file at repository root is strictly rejected
+[PASS] NEG-02: Unrecognized stray file in docs/ subfolder is strictly rejected
+[PASS] NEG-03: Unrecognized stray Python script in tools/ subfolder is strictly rejected
+[PASS] NEG-04: Nested `.git/` outside repository root is NOT ignored and strictly rejected
+[PASS] NEG-05: Tampered deliverable with SHA-256/size mismatch is strictly detected and rejected
+================================================================================
+VERIFICATION SUMMARY: 7 PASS, 0 FAIL
+================================================================================
+ALL T009-UNBLOCK-R2 POSITIVE & NEGATIVE CHECKS PASSED.
+>>> EXIT CODE: 0 (Duration: 9.055s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/test_working_tree_registry_regression.py
+================================================================================
+RUNNING WORKING-TREE DELIVERABLE REGISTRY REGRESSION TEST SUITE (POS-01..02, NEG-01..08)
+================================================================================
+[PASS] POS-02: Historical immutable evidence (`SOURCE_MANIFEST.json`, `PACKAGE_MANIFEST.json`) and registered baseline accepted with 0 failures
+[PASS] POS-01: Correctly registered new evidence artifact with matching size and SHA-256 is accepted
+[PASS] NEG-01: Unregistered arbitrary Markdown file is rejected
+[PASS] NEG-02: File with valid-looking `T005_` prefix but absent from registry is rejected
+[PASS] NEG-03: Registered artifact with modified content or incorrect SHA-256 is rejected
+[PASS] NEG-04: Registered artifact with missing file or size mismatch is rejected
+[PASS] NEG-05: Malformed registry JSON and duplicate registry entries are both rejected
+[PASS] NEG-06: Path traversal (`../`) or unsafe path in registry is rejected
+[PASS] NEG-07: Unexpected `.pt` extension in evidence directory and forged task identifier (`T-999`) are both rejected
+[PASS] NEG-08: Tampering with `SOURCE_MANIFEST.json` inputs or unapproved `PACKAGE_MANIFEST.json` files cannot be bypassed via the registry
+[PASS] NEG-09: Tampering with pinned PACKAGE_MANIFEST/SOURCE_MANIFEST or registering unapproved living doc is rejected
+[PASS] NEG-10A: Unapproved artifact_type is strictly rejected
+[PASS] NEG-10B: Symlink injection into working tree is strictly rejected by checker and path validator
+[PASS] MUT-NEG10-01: Mutation test proves unconditional false-PASS fallback ('or True') is identified and rejected
+[PASS] MUT-NEG10-02: Path helper _is_safe_rel_path strictly rejects traversal (../), absolute, backslash, and empty paths
+[PASS] MUT-NEG10-03: Unauthorized artifact_type allowlist strictly enforces approved enum members
+REGRESSION SUITE SUMMARY: 16 PASS, 0 FAIL, 0 SKIP
+================================================================================
+ALL POSITIVE AND NEGATIVE REGISTRY REGRESSION TESTS PASSED.
+>>> EXIT CODE: 0 (Duration: 21.368s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/qa/test_t009_r1_validator_extension.py
+================================================================================
+RUNNING T009-R1 VALIDATOR POLICY EXTENSION SECURITY & COMPATIBILITY SUITE
+================================================================================
+[PASS] BASE-01: Base fixture satisfies all checks
+[PASS] NEG-01: Unregistered .py in src/ is rejected
+[PASS] NEG-02: Unregistered .py in tests/ is rejected
+[PASS] NEG-03: Non-.py extension in src/ is strictly rejected
+[PASS] NEG-04: Unauthorized root .env file is strictly rejected
+[PASS] POS-01: Registered .py in src/flight_pipeline/ is accepted
+[PASS] POS-02: Registered requirements.txt at root is accepted
+[PASS] POS-03: Registered .github/workflows/*.yml is accepted
+================================================================================
+VERIFICATION SUMMARY: 8 PASS, 0 FAIL
+================================================================================
+ALL T009-R1 VALIDATOR EXTENSION TESTS PASSED.
+>>> EXIT CODE: 0 (Duration: 10.598s)
+--------------------------------------------------------------------------------
+
+>>> RUNNING: python tools/check_working_tree_consistency.py
+Working-Tree PASS assertions: 1399; FAIL: 0
+ALL WORKING-TREE CHECKS PASSED.
+>>> EXIT CODE: 0 (Duration: 0.957s)
+--------------------------------------------------------------------------------

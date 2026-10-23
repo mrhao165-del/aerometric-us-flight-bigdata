@@ -1,0 +1,265 @@
+python : WARNING: Using incubator modules: jdk.incubator.vector
+At line:1 char:1
++ python tools/qa/run_t010_real_data_smoke.py *>&1 | Tee-Object -FilePa ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: Using ...ncubator.vector:String) [], R 
+   emoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+26/10/18 19:22:34 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: 
+java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see 
+https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/18 19:22:34 WARN NativeCodeLoader: Unable to load native-hadoop library for your 
+platform... using builtin-java classes where applicable
+26/10/18 19:22:34 WARN SparkConf: Note that spark.local.dir will be overridden by the value 
+set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in 
+YARN).
+26/10/18 19:22:42 WARN SparkStringUtils: Truncated the string representation of a plan since 
+it was too large. This behavior can be adjusted by setting 
+'spark.sql.debug.maxToStringFields'.
+
+[Stage 9:>                                                          (0 + 1) / 1]
+
+                                                                                
+
+[Stage 10:>                                                        (0 + 4) / 12]
+
+[Stage 10:===================>                                     (4 + 4) / 12]
+
+[Stage 10:======================================>                  (8 + 4) / 12]
+
+[Stage 10:==========================================>              (9 + 3) / 12]
+
+                                                                                
+
+[Stage 13:>                                                        (0 + 4) / 12]
+
+[Stage 13:===================>                                     (4 + 4) / 12]
+
+[Stage 13:======================================>                  (8 + 4) / 12]
+
+[Stage 13:==========================================>              (9 + 3) / 12]
+
+                                                                                
+
+[Stage 16:>                                                        (0 + 4) / 12]
+
+[Stage 16:===================>                                     (4 + 4) / 12]
+
+[Stage 16:======================================>                  (8 + 4) / 12]
+
+[Stage 16:==========================================>              (9 + 3) / 12]
+
+                                                                                
+
+[Stage 19:>                                                        (0 + 4) / 12]
+
+[Stage 19:===================>                                     (4 + 4) / 12]
+
+[Stage 19:======================================>                  (8 + 4) / 12]
+
+[Stage 19:==========================================>              (9 + 3) / 12]
+
+                                                                                
+
+[Stage 22:>                                                        (0 + 4) / 12]
+
+[Stage 22:===================>                                     (4 + 4) / 12]
+
+[Stage 22:======================================>                  (8 + 4) / 12]
+
+[Stage 22:==========================================>              (9 + 3) / 12]
+
+                                                                                
+
+[Stage 25:>                                                        (0 + 4) / 12]
+
+[Stage 25:====>                                                    (1 + 4) / 12]
+
+[Stage 25:=========>                                               (2 + 4) / 12]
+
+[Stage 25:==============>                                          (3 + 4) / 12]
+
+[Stage 25:===================>                                     (4 + 4) / 12]
+
+[Stage 25:=======================>                                 (5 + 4) / 12]
+
+[Stage 25:============================>                            (6 + 4) / 12]
+
+[Stage 25:=================================>                       (7 + 4) / 12]
+
+[Stage 25:======================================>                  (8 + 4) / 12]
+
+[Stage 25:==========================================>              (9 + 3) / 12]
+
+[Stage 25:==============================================>         (10 + 2) / 12]
+
+[Stage 25:===================================================>    (11 + 1) / 12]
+
+                                                                                
+
+[Stage 26:>                                                        (0 + 4) / 12]
+
+[Stage 26:===================>                                     (4 + 4) / 12]
+
+[Stage 26:=======================>                                 (5 + 4) / 12]
+
+[Stage 26:======================================>                  (8 + 4) / 12]
+
+[Stage 26:==========================================>              (9 + 3) / 12]
+
+                                                                                
+
+[Stage 29:>                                                        (0 + 4) / 12]
+
+[Stage 29:===================>                                     (4 + 4) / 12]
+
+[Stage 29:======================================>                  (8 + 4) / 12]
+
+[Stage 29:==========================================>              (9 + 3) / 12]
+
+[Stage 29:===================================================>    (11 + 1) / 12]
+
+                                                                                
+
+[Stage 32:>                                                        (0 + 4) / 12]
+
+[Stage 32:===================>                                     (4 + 4) / 12]
+
+[Stage 32:=======================>                                 (5 + 4) / 12]
+
+[Stage 32:======================================>                  (8 + 4) / 12]
+
+[Stage 32:==========================================>              (9 + 3) / 12]
+
+                                                                                
+
+[Stage 35:>                                                        (0 + 4) / 12]
+
+[Stage 35:====>                                                    (1 + 4) / 12]
+
+[Stage 35:===================>                                     (4 + 4) / 12]
+
+[Stage 35:============================>                            (6 + 4) / 12]
+
+[Stage 35:======================================>                  (8 + 4) / 12]
+
+[Stage 35:==========================================>              (9 + 3) / 12]
+
+                                                                                
+
+[Stage 38:>                                                        (0 + 4) / 12]
+
+[Stage 38:====>                                                    (1 + 4) / 12]
+
+[Stage 38:=========>                                               (2 + 4) / 12]
+
+[Stage 38:==============>                                          (3 + 4) / 12]
+
+[Stage 38:===================>                                     (4 + 4) / 12]
+
+[Stage 38:=======================>                                 (5 + 4) / 12]
+
+[Stage 38:=======================>                                 (5 + 5) / 12]
+
+[Stage 38:============================>                            (6 + 4) / 12]
+
+[Stage 38:=================================>                       (7 + 4) / 12]
+
+[Stage 38:======================================>                  (8 + 4) / 12]
+
+[Stage 38:==============================================>         (10 + 2) / 12]
+
+[Stage 38:===================================================>    (11 + 1) / 12]
+
+================================================================================
+MASTER-G5-T010 ù CONTROLLED REAL-DATA SMOKE & RESOURCE BENCHMARK
+================================================================================
+
+--- PHASE 0: PRODUCTION POLICY HARD GUARDS AT ENTRYPOINT (G3-COND-A) ---
+Instantiated QualityPolicyConfig: {'quarantine_non_positive_flight_num': False, 'allow_weather_nulls': True, 'strict_record_accounting': True, 'strict_metric_accounting': True, 'allow_unapproved_policies': False}
+[PASS] Phase 0: Production Policy Hard Guards Verified. All canonical invariants active.
+Staging Volume (D:\) Free Disk Space: 63.06 GB (Threshold: 30.00 GB)
+System: Windows-10-10.0.19045-SP0
+CPU: 16 logical cores (8 physical)
+Total RAM: 15.71 GB (Available: 3.94 GB)
+
+--- PHASE 1: PREFLIGHT VERIFICATION & SOURCE VALIDATION ---
+File: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\raw\tabular\2016\flight_with_weather_2016.csv
+Pre-execution bytes: 1538427452 (Audited expected: 1,538,427,452)
+Pre-execution mtime: 1787484809.8685696 (2026-08-23T11:33:29.868570+00:00)
+Computing pre-execution streaming SHA-256...
+Pre-execution SHA-256: 4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34
+SourceValidator State: LOCAL_HASH_COMPUTED_UNAPPROVED
+Upstream Identity Status: IDENTITY_UNVERIFIED
+Is Verified (Golden): False
+Physical header columns: 34 (BOM: False)
+[PASS] Phase 1: Preflight Verification Passed Cleanly (3.02s).
+
+--- PHASE 2: INDEPENDENT PHYSICAL CSV COHORT SCANNER ---
+Scanner Duration: 15.61s
+Physical Total Rows: 5537987
+Physical January Rows: 433298
+Physical Malformed Date Rows: 0
+[PASS] Phase 2: Independent Physical Cohort Scan Complete.
+
+Initializing SparkSession (local[4], driver_memory=4g)...
+Apache Spark version: 4.0.1, Application ID: local-1792326155314, Java: 21.0.12.1
+
+--- PHASE 3: MICRO-SMOKE ON DETERMINISTIC PHYSICAL SAMPLE (1,000 RECORDS) ---
+Sample Fixture Created: D:\Study\Code\Apache\Flight_Analyzt\staging\smoke_2016_micro_sample_1000_20261018_122236.csv
+Sample Bytes: 280141, SHA-256: 37b8ce77cce667ff161af2ddbc975f20385482b473f8b41ac90a94bee442026b
+Micro-Smoke Processing Duration: 7.10s
+Micro-Smoke End-to-End Duration: 7.12s
+Micro-Smoke Peak Driver RSS: 110.95 MB
+Micro-Smoke Peak Process Tree RSS: 784.09 MB
+Micro-Smoke Accepted: 1000, Parquet Readback: 1000
+[PASS] Phase 3: Micro-Smoke Complete.
+
+--- PHASE 4: MONTH-SMOKE ON JANUARY 2016 REAL DATA ---
+January 2016 Spark Observed Rows: 433298
+January 2016 Physical Scanner Rows: 433298
+January Processing Duration: 26.64s
+January End-to-End Duration: 26.71s
+January Peak Driver RSS: 120.59 MB
+January Peak Process Tree RSS: 2029.42 MB
+January Accepted: 433298, Readback: 433298
+[PASS] Phase 4: Month-Smoke Complete.
+
+--- PHASE 5 & 6: BOUNDED FULL-YEAR 2016 SMOKE & RESOURCE BENCHMARK ---
+Writing curated Parquet (Snappy) to staging: D:\Study\Code\Apache\Flight_Analyzt\staging\smoke_2016_20261018_122236...
+Reading back Parquet files to verify row count and physical size...
+Full-Year Processing Duration: 64.35s
+Full-Year End-to-End Duration: 65.01s
+Processing Throughput: 86064 rows/s (22.80 MB/s)
+Peak Driver Python RSS: 200.96 MB
+Peak Process Tree RSS: 2164.64 MB
+Peak JVM Heap Sampled: 1055.22 MB / Max: 4096.0 MB
+Curated Parquet Size: 332,018,057 bytes (316.64 MB)
+Snappy Compression Ratio: 4.63:1
+Accepted: 5,537,987
+Quarantined: 0
+Rejected: 0
+Parquet Readback Rows: 5,537,987
+[PASS] Phase 5 & 6: Full-Year Smoke & Resource Benchmark Complete.
+
+Stopping SparkSession...
+
+--- PHASE 7: POST-EXECUTION RAW DATA INTEGRITY VERIFICATION ---
+Post-execution bytes: 1538427452
+Post-execution mtime: 1787484809.8685696
+Re-computing post-execution streaming SHA-256...
+Post-execution SHA-256: 4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34
+[PASS] Phase 7: Raw Data Untouched and Immutability 100% Verified.
+
+Wrote full metrics artifact: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\docs\05-evidence\T010_REAL_DATA_SMOKE_METRICS.json (22252 bytes)
+================================================================================
+ALL T-010 REAL-DATA SMOKE PHASES EXECUTED SUCCESSFULLY.
+================================================================================
+SUCCESS: The process with PID 1844 (child process of PID 5340) has been terminated.
+SUCCESS: The process with PID 5340 (child process of PID 14416) has been terminated.
+SUCCESS: The process with PID 14416 (child process of PID 6332) has been terminated.
+                                                                                

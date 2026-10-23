@@ -1,0 +1,153 @@
+================================================================================
+G6 FINAL PRODUCTION MANIFEST COMPATIBILITY & PREFLIGHT SAFETY — RAW LOG
+Date: 2026-10-20
+Evaluator: Principal Big Data Architect & Senior PySpark Reliability Engineer
+Environment: Windows 11 / NTFS / Python 3.11.9 / PyArrow 17.0.0
+Findings Addressed: M01, M02, M03, M04, M05
+================================================================================
+
+[CMD 01] Multi-Year Snapshot Policy Full Discovery Regression Suite (31 Tests)
+Command: python -m unittest -v tests/test_multiyear_snapshot_policy.py
+Timestamp: 2026-10-20T22:25:14+07:00
+Exit Code: 0
+Stdout/Stderr:
+test_neg_01_manifest_status_failed_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_02_manifest_status_missing_or_invalid_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_03_manifest_missing_configuration_years_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_04_manifest_year_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_05_manifest_run_id_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_06_manifest_missing_outputs_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_07_manifest_output_hash_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_08_manifest_output_byte_size_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_09_output_path_traversal_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_10_unlisted_physical_parquet_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_11_parquet_physical_row_count_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_12_parquet_forbidden_column_schema_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_13_parquet_missing_core_measures_schema_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_14_manifest_registry_accounting_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_15_receipt_status_not_published_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_16_receipt_manifest_sha256_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_17_multiyear_run_unverified_partition_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_18_empty_run_directory_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_19_fake_corrupt_parquet_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_20_duplicate_physical_directory_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_21_unbalanced_row_accounting_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_22_non_integer_row_accounting_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_23_negative_row_accounting_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_24_canonical_raw_row_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_25_missing_required_survey_year_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_26_year_2024_requires_partial_coverage_status_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_neg_27_path_traversal_curated_runs_escape_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_pos_01_complete_canonical_9year_snapshot_passes (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_pos_02_valid_snapshot_with_nonzero_quarantine_rejects_passes (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_pos_03_production_runmanifest_and_receipt_integration_passes (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+test_pos_04_multi_version_rerun_selection_passes (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 3.801s
+
+OK
+
+--------------------------------------------------------------------------------
+
+[CMD 02] Lock State vs Pointer State Integration Regression Suite (9 Tests)
+Command: python -m unittest -v tests/test_lock_state_vs_pointer_state.py
+Timestamp: 2026-10-20T22:25:25+07:00
+Exit Code: 0
+Stdout/Stderr:
+test_01_negative_uninitialized_pointer_with_active_lock_is_not_safe (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression) ... ok
+test_02_negative_unresolved_recovery_marker_blocks_writer_admission (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression) ... ok
+test_03_negative_stale_lock_dead_pid_does_not_auto_delete (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression) ... ok
+test_04_negative_corrupt_lock_metadata_fails_closed (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression) ... ok
+test_05_negative_ambiguous_liveness_fails_closed (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression) ... ok
+test_06_positive_clean_workspace_safe_for_lock_acquisition (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression) ... ok
+test_07_storage_root_mismatch_blocks_writer_admission (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression) ... ok
+test_08_pointer_corruption_fails_closed (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression) ... ok
+test_09_unified_tools_integration_consistency (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.082s
+
+OK
+
+--------------------------------------------------------------------------------
+
+[CMD 03] Combined All 40 Unit Regression Tests
+Command: python -m unittest -v tests/test_multiyear_snapshot_policy.py tests/test_lock_state_vs_pointer_state.py
+Timestamp: 2026-10-20T22:28:14+07:00
+Exit Code: 0
+Stdout/Stderr:
+Ran 40 tests in 3.840s
+
+OK
+
+--------------------------------------------------------------------------------
+
+[CMD 04] Standalone Operational Preflight Writer Safety Check
+Command: python tools/qa/check_writer_preflight_safety.py --base-dir data --expected-storage-root data --run-id preflight_probe
+Timestamp: 2026-10-20T22:28:20+07:00
+Exit Code: 0
+Stdout/Stderr:
+=================================================================
+  G6 OPERATIONAL WRITER PREFLIGHT SAFETY CHECK (READ-ONLY)       
+=================================================================
+Base Data Directory:  D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data
+Curated Directory:    D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/curated
+Pointer File:         D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/curated/latest_run_id.txt
+Lock Directory:       D:/Study/Code/Apache/Flight_Analyzt/US_FLIGHT_PERFORMANCE_DOCS_V1/data/locks
+Lock File:            None
+Pointer Status:       UNINITIALIZED_POINTER_ALLOWED
+Lock State:           CLEAN
+Active PID:           None (None)
+Recovery Artifacts:   0
+Storage Root Matched: True
+Safe To Start Writer: True
+Summary Verdict:      SAFE_TO_PROCEED_TO_LOCK_ACQUISITION
+Exit Code:            0
+=================================================================
+
+--------------------------------------------------------------------------------
+
+[CMD 05] Standalone Staging Pointer Audit
+Command: python tools/qa/verify_staging_pointer.py --base-dir data --allow-uninitialized
+Timestamp: 2026-10-20T22:28:22+07:00
+Exit Code: 0
+Stdout/Stderr:
+================================================================================
+STAGING / CURATED POINTER AUDIT: [PASS] UNINITIALIZED_POINTER_ALLOWED
+================================================================================
+Base Directory:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+Pointer File:         D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\curated\latest_run_id.txt
+Pointer Value:        None
+Target Directory:     None
+Parquet Files Found:  0 (Valid: 0)
+Manifest Verified:    False (Run ID: None)
+================================================================================
+
+--------------------------------------------------------------------------------
+
+[CMD 06] Standalone Multi-Year Snapshot Registry CLI Help & Entrypoint Test
+Command: python tools/qa/verify_multiyear_snapshot.py --help
+Timestamp: 2026-10-20T22:28:24+07:00
+Exit Code: 0
+Stdout/Stderr:
+usage: verify_multiyear_snapshot.py [-h] [--registry-path REGISTRY_PATH]
+                                    [--base-dir BASE_DIR]
+                                    [--skip-parquet-check]
+                                    [--require-receipt]
+
+Verify multi-year snapshot registry against physical Parquet runs, manifests,
+receipts, and DC-11/12 accounting.
+
+options:
+  -h, --help            show this help message and exit
+  --registry-path REGISTRY_PATH
+                        Path to snapshot_registry.json (default:
+                        data/curated/snapshot_registry.json)
+  --base-dir BASE_DIR   Base data directory (default: data)
+  --skip-parquet-check  Skip PyArrow Parquet Thrift metadata inspection
+  --require-receipt     Require execution_receipt.json to be present
+
+================================================================================
+FINAL VERDICT: ALL 40 AUTOMATED TESTS AND CLI COMMANDS PASSED WITH 0 FAILURES
+================================================================================

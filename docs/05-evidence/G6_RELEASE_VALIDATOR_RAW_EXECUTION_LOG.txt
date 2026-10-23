@@ -1,0 +1,183 @@
+================================================================================
+G6 RELEASE VALIDATOR HARDENING (R01-R04) RAW EXECUTION LOG
+Timestamp: 2026-10-21T05:56:14.345664+00:00
+Python: 3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]
+Platform: win32
+================================================================================
+
+>>> Compilation Verification
+COMMAND: python -m py_compile tools/qa/verify_multiyear_snapshot.py
+EXIT CODE: 0
+--------------------------------------------------------------------------------
+
+>>> Multiyear Snapshot Policy & R01-R04 Regression Suite
+COMMAND: python -m unittest -v tests/test_multiyear_snapshot_policy.py
+STDERR:
+test_neg_01_manifest_status_failed_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M02: Manifest with status='FAILED' MUST fail closed. ... ok
+test_neg_02_manifest_status_missing_or_invalid_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M01/M02: Manifest with unknown or missing status MUST fail closed. ... ok
+test_neg_03_manifest_missing_configuration_years_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M01: Manifest missing configuration.years structure MUST fail closed. ... ok
+test_neg_04_manifest_year_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M01: Manifest declaring different year than registry MUST fail closed. ... ok
+test_neg_05_manifest_run_id_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S01: Manifest run_id mismatching directory run_id MUST fail closed. ... ok
+test_neg_06_manifest_missing_outputs_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M01/M02: Manifest declaring empty outputs list MUST fail closed. ... ok
+test_neg_07_manifest_output_hash_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M02: Manifest declaring fake output SHA-256 MUST fail closed. ... ok
+test_neg_08_manifest_output_byte_size_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M02: Manifest declaring wrong byte size MUST fail closed. ... ok
+test_neg_09_output_path_traversal_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S03/M02: Output path with traversal (..) escaping boundary MUST fail closed. ... ok
+test_neg_10_unlisted_physical_parquet_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M02: Physical Parquet file unlisted in manifest outputs MUST fail closed. ... ok
+test_neg_11_parquet_physical_row_count_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M03: Parquet physical row count != accepted_row_count MUST fail closed. ... ok
+test_neg_12_parquet_forbidden_column_schema_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M02: Parquet schema containing forbidden columns MUST fail closed. ... ok
+test_neg_13_parquet_missing_core_measures_schema_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M02: Parquet schema missing any of the 7 CORE measures MUST fail closed. ... ok
+test_neg_14_manifest_registry_accounting_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M02: Manifest accounting differing from registry accounting MUST fail closed. ... ok
+test_neg_15_receipt_status_not_published_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M01/M02: ExecutionReceipt with status != PUBLISHED MUST fail closed. ... ok
+test_neg_16_receipt_manifest_sha256_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M02: ExecutionReceipt with manifest SHA-256 mismatch MUST fail closed. ... ok
+test_neg_17_multiyear_run_unverified_partition_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding M02: Multi-year run declaring multiple years without partitions MUST fail closed. ... ok
+test_neg_18_empty_run_directory_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S01: An empty curated run directory MUST fail closed. ... ok
+test_neg_19_fake_corrupt_parquet_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S01: Fake 0-byte or text file renamed to .parquet MUST fail closed. ... ok
+test_neg_20_duplicate_physical_directory_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S03: Reusing the same physical run directory across multiple years MUST fail closed. ... ok
+test_neg_21_unbalanced_row_accounting_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S02: Unbalanced row accounting (raw != acc + quar + rej) MUST fail closed. ... ok
+test_neg_22_non_integer_row_accounting_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S02: Boolean, float, or string row count types MUST fail closed. ... ok
+test_neg_23_negative_row_accounting_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S02: Negative row count values MUST fail closed. ... ok
+test_neg_24_canonical_raw_row_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S02: Annual raw count mismatching canonical 54,674,003 baseline MUST fail closed. ... ok
+test_neg_25_missing_required_survey_year_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S01: Missing any survey year in 2016–2024 MUST fail closed. ... ok
+test_neg_26_year_2024_requires_partial_coverage_status_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S02: Year 2024 must declare source_coverage_status = 'PARTIAL' (OR-05). ... ok
+test_neg_27_path_traversal_curated_runs_escape_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding S03: Path attempting escape outside curated/runs MUST fail closed. ... ok
+test_neg_r01a_missing_execution_receipt_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R01: Missing execution receipt must fail closed with MISSING_EXECUTION_RECEIPT by default. ... ok
+test_neg_r01b_diagnostic_mode_missing_receipt_never_yields_production_pass (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R01: Diagnostic mode without receipt never returns VALID_SNAPSHOT_REGISTRY. ... ok
+test_neg_r02a_cross_run_output_path_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R02: Manifest output referencing another run directory MUST fail closed. ... ok
+test_neg_r02b_duplicate_output_entry_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R02: Duplicate output entries in manifest outputs MUST fail closed. ... ok
+test_neg_r02d_subpartition_path_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R02: Subpartition path declared in manifest missing from disk fails closed. ... ok
+test_neg_r03a_missing_output_bytes_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R03: Manifest output missing 'bytes' field MUST fail closed. ... ok
+test_neg_r03b_invalid_output_bytes_types_fail_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R03: Output 'bytes' as bool, negative int, or str MUST fail closed. ... ok
+test_neg_r03c_missing_output_sha256_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R03: Manifest output missing 'sha256' field MUST fail closed. ... ok
+test_neg_r03d_placeholder_output_sha256_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R03: Output sha256 with placeholders ('PENDING', 'UNVERIFIED', '') MUST fail closed. ... ok
+test_neg_r03e_invalid_hex_sha256_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R03: Output sha256 with non-hex or invalid length MUST fail closed. ... ok
+test_neg_r03f_disabled_checksum_verification_cannot_yield_production_pass (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R03: Disabled checksum verification returns NON_PRODUCTION_CHECKSUM_SKIPPED. ... ok
+test_neg_r04a_receipt_missing_task_id_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R04: Receipt missing or empty 'task_id' MUST fail closed. ... ok
+test_neg_r04b_receipt_missing_manifest_bytes_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R04: Receipt missing 'manifest_bytes' MUST fail closed. ... ok
+test_neg_r04c_receipt_missing_manifest_sha256_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R04: Receipt missing or invalid 'manifest_sha256' MUST fail closed. ... ok
+test_neg_r04d_receipt_published_path_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R04: Receipt published_path pointing to wrong run MUST fail closed. ... ok
+test_neg_r04e_receipt_manifest_path_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R04: Receipt manifest_path pointing to wrong manifest MUST fail closed. ... ok
+test_neg_r04f_receipt_row_accounting_missing_or_mismatch_fails_closed (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R04: Receipt row_accounting missing or mismatching manifest MUST fail closed. ... ok
+test_pos_01_complete_canonical_9year_snapshot_passes (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Verifies that an authentic 9-year snapshot with valid RunManifest and Parquet passes. ... ok
+test_pos_02_valid_snapshot_with_nonzero_quarantine_rejects_passes (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Verifies DC-11 conservation with realistic non-zero quarantine and rejects. ... ok
+test_pos_03_production_runmanifest_and_receipt_integration_passes (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Verifies full integration of RunManifest.to_dict() and ExecutionReceipt.to_dict(). ... ok
+test_pos_04_multi_version_rerun_selection_passes (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Verifies that selecting an updated rerun (v2) correctly excludes old version (v1). ... ok
+test_pos_r02c_subpartition_distinct_basenames_passes (tests.test_multiyear_snapshot_policy.TestMultiyearSnapshotPolicyComprehensive)
+Finding R02: Subpartitions with same basename in different directories pass without collision. ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 6.248s
+
+OK
+
+EXIT CODE: 0
+--------------------------------------------------------------------------------
+
+>>> Lock State vs Pointer State Regression Suite
+COMMAND: python -m unittest -v tests/test_lock_state_vs_pointer_state.py
+STDERR:
+test_01_negative_uninitialized_pointer_with_active_lock_is_not_safe (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression)
+NEGATIVE REGRESSION (P02 / G6-C05): ... ok
+test_02_negative_unresolved_recovery_marker_blocks_writer_admission (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression)
+NEGATIVE REGRESSION: ... ok
+test_03_negative_stale_lock_dead_pid_does_not_auto_delete (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression)
+STALE LOCK INTEGRITY: ... ok
+test_04_negative_corrupt_lock_metadata_fails_closed (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression)
+CORRUPTED LOCK METADATA: ... ok
+test_05_negative_ambiguous_liveness_fails_closed (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression)
+AMBIGUOUS LIVENESS: ... ok
+test_06_positive_clean_workspace_safe_for_lock_acquisition (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression)
+POSITIVE VERIFICATION: ... ok
+test_07_storage_root_mismatch_blocks_writer_admission (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression)
+FINDING S04 REGRESSION: ... ok
+test_08_pointer_corruption_fails_closed (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression)
+POINTER CORRUPTION REGRESSION: ... ok
+test_09_unified_tools_integration_consistency (tests.test_lock_state_vs_pointer_state.TestLockStateVsPointerStateRegression)
+FINDING S04 INTEGRATION: ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.055s
+
+OK
+
+EXIT CODE: 0
+--------------------------------------------------------------------------------
+
+>>> T011 R6 Concurrency and Rollback Suite
+COMMAND: python -m unittest -v tests/test_t011_r6_presignoff.py
+STDERR:
+test_ps01_01_normal_release_clean_exit (tests.test_t011_r6_presignoff.TestT011R6Presignoff)
+PS-01: Normal context manager exit releases lock cleanly without error. ... ok
+test_ps01_02_owner_mismatch_raises_in_exit (tests.test_t011_r6_presignoff.TestT011R6Presignoff)
+PS-01: Owner mismatch during __exit__ must raise LockOwnerMismatchError, not pass silently. ... ok
+test_ps01_03_permission_io_failure_raises_in_exit (tests.test_t011_r6_presignoff.TestT011R6Presignoff)
+PS-01: I/O failure during rename in release must propagate as LockError and persist incident. ... ok
+test_ps01_04_pipeline_exception_with_release_failure_chains (tests.test_t011_r6_presignoff.TestT011R6Presignoff)
+PS-01: Block exception + release failure raises LockReleaseFailureError chained from original exception. ... ok
+test_ps01_05_pipeline_exception_with_normal_release_propagates (tests.test_t011_r6_presignoff.TestT011R6Presignoff)
+PS-01: Block exception with normal release propagates original exception unchanged. ... ok
+test_ps01_06_coordinator_already_published_preserves_outputs_on_release_error (tests.test_t011_r6_presignoff.TestT011R6Presignoff)
+PS-01: Successful publication preserves outputs (success=True) even when release cleanup fails. ... ok
+test_ps01_07_coordinator_pipeline_failure_preserves_original_error (tests.test_t011_r6_presignoff.TestT011R6Presignoff)
+PS-01: Ingestion failure retains original error message and appends release failure diagnostic. ... ok
+test_ps01_08_reconcile_published_run_records_release_incident (tests.test_t011_r6_presignoff.TestT011R6Presignoff)
+PS-01: reconcile_published_run captures release error and persists incident. ... ok
+test_ps02_all_27_canonical_documents_attested (tests.test_t011_r6_presignoff.TestT011R6Presignoff)
+PS-02: All 27 canonical markdown documents exist on disk and are non-empty. ... ok
+test_ps03_fstat_failure_leaves_incomplete_lock_fail_closed (tests.test_t011_r6_presignoff.TestT011R6Presignoff)
+PS-03: Injected fstat failure leaves 0-byte canonical lock, fails closed, and requires manual recovery. ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.249s
+
+OK
+
+EXIT CODE: 0
+--------------------------------------------------------------------------------

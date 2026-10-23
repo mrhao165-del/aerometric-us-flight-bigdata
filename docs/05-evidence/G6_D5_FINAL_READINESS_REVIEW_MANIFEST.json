@@ -1,0 +1,73 @@
+{
+  "archive_name": "G6_D5_FINAL_READINESS_REVIEW.zip",
+  "archive_byte_size": 47674,
+  "archive_sha256": "fec4d30be4ba6604419fe7e7484a5ea823e863f7f632f26d978a17f0491b72ee",
+  "archive_crc32": "51058a09",
+  "generated_at": "2026-10-21T10:56:35Z",
+  "task": "G5-POST-SIGNOFF-RECONCILIATION-AND-D5-READINESS",
+  "verdict": "READY_FOR_D5_HUMAN_AUTHORIZATION",
+  "governance_status": {
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS (CONTROLLED)",
+    "G5": "PASS (CONTROLLED)",
+    "G6": "READY_FOR_PREPARATION / BLOCKED_ON_D5",
+    "T010": "PASS / COMPLETED (CONTROLLED)",
+    "T011": "PASS / COMPLETED (FULL_CONTRACT_CLOSED)",
+    "T012": "NOT_STARTED",
+    "D1_BTS_PROVENANCE": "PASS (CONTROLLED)",
+    "D2_FP_DEC_019_OPTION_B": "APPROVED_WITH_CONDITIONS",
+    "D3_TS018_HUMAN_SIGNOFF": "PASS (CONTROLLED)",
+    "D4_G5_HUMAN_GATE_SIGNOFF": "APPROVED",
+    "G2_EXC_001": "RESOLVED_BY_TS018_APPROVED_OPTION_B",
+    "G6_ARCH_2016": "APPROVED Option B (FP-DEC-020)",
+    "D5_PRODUCTION_EXECUTION": "NOT_AUTHORIZED",
+    "production_executed": false
+  },
+  "workstation_resources": {
+    "disk_d_free_gib": 58.41,
+    "ram_available_gib": 6.31,
+    "ram_hard_operational_min_gib": 3.0,
+    "ram_recommended_headroom_gib": 4.0,
+    "ram_status": "MEETS_RECOMMENDATION"
+  },
+  "canonical_2016_raw_source": {
+    "relative_path": "data/raw/tabular/2016/flight_with_weather_2016.csv",
+    "byte_size": 1538427452,
+    "sha256": "4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34",
+    "audited_expected_rows": 5537987,
+    "integrity_verified": true
+  },
+  "files": [
+    {
+      "relative_path": "docs/02-design/DECISIONS.md",
+      "byte_size": 27091,
+      "sha256": "8695b1cc40a83f441b9c246c7023a88a178c3c70ff4d63490639cad86b1da4e4",
+      "crc32": "2c5f395e"
+    },
+    {
+      "relative_path": "docs/03-quality/CHANGELOG.md",
+      "byte_size": 39170,
+      "sha256": "ec3db0e9396d49cca495a52817e7c935e219c0ef4771e84b76377c94d979b1f0",
+      "crc32": "ef067202"
+    },
+    {
+      "relative_path": "docs/05-evidence/G6_T012_2016_PRESTART_RAW_LOG.txt",
+      "byte_size": 32627,
+      "sha256": "b32f4bab86555119b84765a8d15f2dd1b7ca0edcd4851354d646cbfd2a69bda2",
+      "crc32": "55585b84"
+    },
+    {
+      "relative_path": "docs/05-evidence/G6_D5_FINAL_READINESS_REPORT.md",
+      "byte_size": 14219,
+      "sha256": "fc0a8b4b1a2e1e9b8928bf8210f8b0efd38da4839b457ce89b523dcce59fca95",
+      "crc32": "53dd4c56"
+    },
+    {
+      "relative_path": "docs/05-evidence/G6_D5_FINAL_READINESS_CHANGES.patch",
+      "byte_size": 46204,
+      "sha256": "5dfc9bc6994c26051ea2b5b7a56b0095cfdc21e34182d04755d35dfa37da5890",
+      "crc32": "05bdb373"
+    }
+  ]
+}

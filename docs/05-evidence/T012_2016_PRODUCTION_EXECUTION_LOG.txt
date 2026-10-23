@@ -1,0 +1,161 @@
+C:\Users\Heikapu\AppData\Local\Programs\Python\Python310\lib\runpy.py:126: RuntimeWarning: 'flight_pipeline.ingestion.coordinator' found in sys.modules after import of package 'flight_pipeline.ingestion', but prior to execution of 'flight_pipeline.ingestion.coordinator'; this may result in unpredictable behaviour
+  warn(RuntimeWarning(msg))
+WARNING: Using incubator modules: jdk.incubator.vector
+26/10/21 18:06:45 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/21 18:06:46 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/21 18:06:46 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+
+[Stage 0:>                                                         (0 + 4) / 12]
+
+[Stage 0:===================>                                      (4 + 4) / 12]
+
+[Stage 0:======================================>                   (8 + 4) / 12]
+
+[Stage 0:===========================================>              (9 + 3) / 12]
+
+                                                                                
+26/10/21 18:11:09 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+
+[Stage 3:>                                                         (0 + 4) / 12]
+
+[Stage 3:===================>                                      (4 + 4) / 12]
+
+[Stage 3:======================================>                   (8 + 4) / 12]
+
+[Stage 3:===========================================>              (9 + 3) / 12]
+
+[Stage 5:>                                                         (0 + 4) / 16]
+
+[Stage 5:===>                                                      (1 + 4) / 16]
+
+[Stage 5:=======>                                                  (2 + 4) / 16]
+
+[Stage 5:==========>                                               (3 + 4) / 16]
+
+[Stage 5:==============>                                           (4 + 4) / 16]
+
+[Stage 5:==================>                                       (5 + 4) / 16]
+
+[Stage 5:=====================>                                    (6 + 4) / 16]
+
+[Stage 5:=========================>                                (7 + 4) / 16]
+
+[Stage 5:=============================>                            (8 + 4) / 16]
+
+[Stage 5:================================>                         (9 + 4) / 16]
+
+[Stage 5:===================================>                     (10 + 4) / 16]
+
+[Stage 5:=======================================>                 (11 + 4) / 16]
+
+[Stage 5:==========================================>              (12 + 4) / 16]
+
+[Stage 5:==============================================>          (13 + 3) / 16]
+
+[Stage 5:=================================================>       (14 + 2) / 16]
+
+[Stage 5:=====================================================>   (15 + 1) / 16]
+
+                                                                                
+
+[Stage 6:>                                                         (0 + 4) / 12]
+
+[Stage 6:===================>                                      (4 + 4) / 12]
+
+[Stage 6:======================================>                   (8 + 4) / 12]
+
+[Stage 6:===========================================>              (9 + 3) / 12]
+
+[Stage 8:>                                                         (0 + 4) / 16]
+
+[Stage 8:===>                                                      (1 + 4) / 16]
+
+[Stage 8:=======>                                                  (2 + 4) / 16]
+
+[Stage 8:==============>                                           (4 + 4) / 16]
+
+[Stage 8:==================>                                       (5 + 4) / 16]
+
+[Stage 8:=====================>                                    (6 + 4) / 16]
+
+[Stage 8:=========================>                                (7 + 4) / 16]
+
+[Stage 8:=============================>                            (8 + 4) / 16]
+
+[Stage 8:================================>                         (9 + 4) / 16]
+
+[Stage 8:===================================>                     (10 + 4) / 16]
+
+[Stage 8:=======================================>                 (11 + 4) / 16]
+
+[Stage 8:==========================================>              (12 + 4) / 16]
+
+[Stage 8:==============================================>          (13 + 3) / 16]
+
+[Stage 8:=================================================>       (14 + 2) / 16]
+
+[Stage 8:=====================================================>   (15 + 1) / 16]
+
+                                                                                
+
+[Stage 9:>                                                         (0 + 4) / 12]
+
+[Stage 9:===================>                                      (4 + 4) / 12]
+
+[Stage 9:======================================>                   (8 + 4) / 12]
+
+[Stage 9:===========================================>              (9 + 3) / 12]
+
+[Stage 10:>                                                        (0 + 4) / 12]
+
+[Stage 10:====>                                                    (1 + 4) / 12]
+
+[Stage 10:=========>                                               (2 + 4) / 12]
+
+[Stage 10:==============>                                          (3 + 4) / 12]
+
+[Stage 10:===================>                                     (4 + 4) / 12]
+
+[Stage 10:=======================>                                 (5 + 4) / 12]
+
+[Stage 10:============================>                            (6 + 4) / 12]
+
+[Stage 10:=================================>                       (7 + 4) / 12]
+
+[Stage 10:======================================>                  (8 + 4) / 12]
+
+[Stage 10:==========================================>              (9 + 3) / 12]
+
+[Stage 10:==============================================>         (10 + 2) / 12]
+
+[Stage 10:===================================================>    (11 + 1) / 12]
+
+                                                                                
+================================================================================
+INGESTION COORDINATOR PREFLIGHT REPORT (T-012)
+================================================================================
+Run ID:              run_2016_v1
+Target Directory:    D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\curated\runs\run_2016_v1
+Survey Years:        [2016]
+Base Data Dir:       D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data
+Lock Directory:      D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\locks
+Lock Status:         CLEAN
+Pointer Status:      UNINITIALIZED
+Dry-Run Mode:        False
+--------------------------------------------------------------------------------
+Source Files Inventory:
+  Year 2016: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\raw\tabular\2016\flight_with_weather_2016.csv [OK]
+    Audited Expected Rows: 5,537,987
+    Audited Bytes:         1,538,427,452 | Actual Bytes: 1,538,427,452
+    SHA-256 Status:        VERIFIED_MATCH (4ed92ed732721a38...)
+--------------------------------------------------------------------------------
+Row Count Verification Boundary:
+  Row counts are AUDITED_EXPECTED_ROWS from audited catalog; physical row counts
+  are verified during ingestion and reconciled per DC-11/DC-12 row accounting.
+================================================================================
+[PREFLIGHT PASS] Preflight safety inspection completed successfully.
+
+[INGESTION SUCCESS] Run run_2016_v1 published successfully.

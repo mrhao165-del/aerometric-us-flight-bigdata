@@ -216,9 +216,25 @@ def verify_governance_invariants(root: Path):
     if not re.search(r"\|\s*\*\*T-006\*\*\s*\|\s*\*\*`?(?:PASS|COMPLETED|IN_PROGRESS)", pst):
         raise AssertionError("Task T-006 must be PASS, COMPLETED, or IN_PROGRESS in PROJECT_STATE.md!")
 
-    # Check G4 task T-008: strictly NOT_STARTED / never passed
-    if re.search(r"\|\s*\*\*T-008\*\*\s*\|\s*\*\*`?(?:IN_PROGRESS|PASS|COMPLETED)", pst):
-        raise AssertionError("G4 task T-008 must NOT be started or passed!")
+    # Check G4 task T-008: Allowed to be PASS/COMPLETED when authorized by human signoff record T008_HUMAN_SIGNOFF_20261018.md
+    m_t008 = re.search(r"\|\s*\*\*T-008\*\*\s*\|\s*\*\*`?([^`|\n]+)`?\*\*", pst)
+    if m_t008:
+        t008_st = m_t008.group(1).strip()
+        if any(w in t008_st for w in ("PASS", "COMPLETED")):
+            signoff_t008_p = root / "docs/05-evidence/T008_HUMAN_SIGNOFF_20261018.md"
+            if not signoff_t008_p.is_file():
+                raise AssertionError("Task T-008 cannot be PASS without T008_HUMAN_SIGNOFF_20261018.md human signoff record!")
+            signoff_t008_txt = signoff_t008_p.read_text(encoding="utf-8")
+            if "APPROVED_BY_PROJECT_LEAD_EXPLICIT_INSTRUCTION" not in signoff_t008_txt and "PASS / COMPLETED (CONTROLLED)" not in signoff_t008_txt:
+                raise AssertionError("T008 human signoff record missing explicit approval provenance!")
+            errata_p = root / "docs/05-evidence/G4_SIGNOFF_TEST_EVIDENCE_ERRATA.md"
+            if not errata_p.is_file():
+                raise AssertionError("G4 signoff test evidence errata missing!")
+            handoff_p = root / "docs/05-evidence/G5_ENTRY_HANDOFF.md"
+            if not handoff_p.is_file():
+                raise AssertionError("G5 entry handoff specification missing!")
+        elif "IN_PROGRESS" in t008_st:
+            raise AssertionError("Task T-008 cannot remain IN_PROGRESS in post-signoff PROJECT_STATE.md!")
 
     # Check G4 task T-007: Allowed to be PASS/COMPLETED when authorized by human signoff record T007_HUMAN_SIGNOFF_20261018.md
     m_t007 = re.search(r"\|\s*\*\*T-007\*\*\s*\|\s*\*\*`?([^`|\n]+)`?\*\*", pst)
@@ -672,7 +688,7 @@ def main():
     verify_governance_invariants(root)
     print("[PASS] Case 10: G2-EXC-001 verified as provisional unit status with G5 TS-018 mandatory hard stop blocking G6.")
     print("[PASS] Case 11: Gate G2 confirmed PASS; Gate G3 confirmed PASS with human acceptance record; T-006 confirmed PASS / COMPLETED.")
-    print("[PASS] Case 12: Downstream G4 tasks (T-007 governed by signoff, T-008 NOT_STARTED); T-009 governed by human signoff.")
+    print("[PASS] Case 12: Downstream G4 tasks (T-007, T-008, T-009) governed by official human signoffs; G5 NOT_STARTED.")
     passed_checks += 3
 
     # 5. Implementation-Safety Addendum Invariants

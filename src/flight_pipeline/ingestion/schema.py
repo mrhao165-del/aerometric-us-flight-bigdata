@@ -170,18 +170,18 @@ def _create_curated_fields() -> List[StructField]:
         StructField("CRS_DEP_TIME", StringType(), nullable=True, metadata={"temporal_policy": "NO_ROLLOVER"}),
         StructField("DEP_TIME", StringType(), nullable=True, metadata={"temporal_policy": "NO_ROLLOVER"}),
 
-        # Performance Measures (Continuous Doubles, Provisional Units)
-        StructField("DEP_DELAY", DoubleType(), nullable=True, metadata={"unit_status": "G2-EXC-001_PROVISIONAL"}),
-        StructField("TAXI_OUT", DoubleType(), nullable=True, metadata={"unit_status": "G2-EXC-001_PROVISIONAL"}),
+        # Performance Measures (Continuous Doubles, Resolved Units via TS-018 Option B)
+        StructField("DEP_DELAY", DoubleType(), nullable=True, metadata={"unit_status": "RESOLVED_BY_TS018_APPROVED_OPTION_B"}),
+        StructField("TAXI_OUT", DoubleType(), nullable=True, metadata={"unit_status": "RESOLVED_BY_TS018_APPROVED_OPTION_B"}),
         StructField("WHEELS_OFF", StringType(), nullable=True, metadata={"temporal_policy": "NO_ROLLOVER"}),
         StructField("WHEELS_ON", StringType(), nullable=True, metadata={"temporal_policy": "NO_ROLLOVER"}),
-        StructField("TAXI_IN", DoubleType(), nullable=True, metadata={"unit_status": "G2-EXC-001_PROVISIONAL"}),
+        StructField("TAXI_IN", DoubleType(), nullable=True, metadata={"unit_status": "RESOLVED_BY_TS018_APPROVED_OPTION_B"}),
         StructField("CRS_ARR_TIME", StringType(), nullable=True, metadata={"temporal_policy": "NO_ROLLOVER"}),
         StructField("ARR_TIME", StringType(), nullable=True, metadata={"temporal_policy": "NO_ROLLOVER"}),
-        StructField("ARR_DELAY", DoubleType(), nullable=True, metadata={"unit_status": "G2-EXC-001_PROVISIONAL"}),
-        StructField("CRS_ELAPSED_TIME", DoubleType(), nullable=True, metadata={"unit_status": "G2-EXC-001_PROVISIONAL"}),
-        StructField("ACTUAL_ELAPSED_TIME", DoubleType(), nullable=True, metadata={"unit_status": "G2-EXC-001_PROVISIONAL"}),
-        StructField("AIR_TIME", DoubleType(), nullable=True, metadata={"unit_status": "G2-EXC-001_PROVISIONAL"}),
+        StructField("ARR_DELAY", DoubleType(), nullable=True, metadata={"unit_status": "RESOLVED_BY_TS018_APPROVED_OPTION_B"}),
+        StructField("CRS_ELAPSED_TIME", DoubleType(), nullable=True, metadata={"unit_status": "RESOLVED_BY_TS018_APPROVED_OPTION_B"}),
+        StructField("ACTUAL_ELAPSED_TIME", DoubleType(), nullable=True, metadata={"unit_status": "RESOLVED_BY_TS018_APPROVED_OPTION_B"}),
+        StructField("AIR_TIME", DoubleType(), nullable=True, metadata={"unit_status": "RESOLVED_BY_TS018_APPROVED_OPTION_B"}),
 
         # Operational Count Flag (Preserved raw float64, prohibited as KPI weight)
         StructField(

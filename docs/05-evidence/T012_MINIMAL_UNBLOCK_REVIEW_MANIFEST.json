@@ -1,0 +1,146 @@
+{
+  "manifest_version": "1.0",
+  "package_name": "T012_MINIMAL_UNBLOCK_REVIEW.zip",
+  "package_sha256": "d2f506ab9f39008b6ad85bec1d3d6ae00d241ea276e7dea99002fdc4af30ba09",
+  "package_bytes": 127053,
+  "total_packaged_members": 23,
+  "task_id": "T012-MINIMAL-UNBLOCK",
+  "created_at": "2026-10-21T14:49:00Z",
+  "remediation_scope": [
+    "SCOPE_A: CLI preflight fail-closed guards and unblock",
+    "SCOPE_B: Production coordinator entrypoint wiring behind D5 gate",
+    "SCOPE_C: Operational documentation reconciliation (C1-C6)",
+    "SCOPE_D: Targeted test suite (10 mandatory scenarios, 97 passing tests)",
+    "SCOPE_E: Governance boundaries preserved (D1-D5, G5, G6, T-012)"
+  ],
+  "external_ground_truth_references": {
+    "canonical_2016_raw_csv": {
+      "path": "data/raw/tabular/2016/flight_with_weather_2016.csv",
+      "rows": 5537987,
+      "bytes": 1538427452,
+      "sha256": "4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34"
+    },
+    "bts_transtats_201901_zip": {
+      "path": "data/reference/bts_transtats/original/T_ONTIME_REPORTING_20261019_112232.zip",
+      "bytes": 29975383,
+      "sha256": "342de99f65561fb856b524c704f2ad3851f8015f52251668ece346dff1350ae6"
+    }
+  },
+  "members": [
+    {
+      "path": "src/flight_pipeline/ingestion/coordinator.py",
+      "bytes": 91180,
+      "sha256": "c7e71b28a085caf9ed194229ba96438e6c41387bbc41339d4a285ccaeb3f53bf"
+    },
+    {
+      "path": "tests/test_coordinator_preflight_unblock.py",
+      "bytes": 11538,
+      "sha256": "f8dee121089de1e3714da64b6c53bc26c06e73a36ac13606470fd28a266a3e5a"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_2016_CANONICAL_EXECUTION_RUNBOOK.md",
+      "bytes": 7248,
+      "sha256": "4454c1865893733779934610eaba512ef2716d894d6be2aed883c33e1f1b76c4"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_FINAL_EXECUTION_CHECKLIST_V2.md",
+      "bytes": 10397,
+      "sha256": "71f025c346442db3893e66a1c1f01fd7540e3068ae3f3b28206d098ed639a7a1"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_FIRST_YEAR_EXECUTION_READINESS.md",
+      "bytes": 6088,
+      "sha256": "51b66e149131b38dad3a549157cefc6f68be422826e1791f4e01ceb2a0a40bc7"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_FIRST_BATCH_PRESTART_DECISION_MATRIX.md",
+      "bytes": 5246,
+      "sha256": "9fca2330ff0ca82a47e2b9ca9f07ee481f5da5e05b63fa52b88f5828f7be6fcc"
+    },
+    {
+      "path": "docs/05-evidence/T012_MINIMAL_UNBLOCK_REPORT.md",
+      "bytes": 20301,
+      "sha256": "6e23f1e1ce4ff07159be56c4554ed95c7e07fcd659e75a8512a4aa43fca8ec23"
+    },
+    {
+      "path": "docs/05-evidence/T012_MINIMAL_UNBLOCK_TEST_LOG.txt",
+      "bytes": 32030,
+      "sha256": "a0e8b3de8ad8f543c9be03fcf8f1115afdc176d321ccfb36e996b137fe4792ad"
+    },
+    {
+      "path": "docs/05-evidence/T012_MINIMAL_UNBLOCK_CHANGES.patch",
+      "bytes": 53178,
+      "sha256": "2d66bc68bb64e2c55ad804d64f1eb69481d67d663b341446ae4cc640a2a72706"
+    },
+    {
+      "path": "src/flight_pipeline/ingestion/source_validator.py",
+      "bytes": 32991,
+      "sha256": "9c0f8da7c8433c98daba28a3ae16a657fe993ee53c0a09579d253fdfd07d8998"
+    },
+    {
+      "path": "src/flight_pipeline/storage/locking.py",
+      "bytes": 48340,
+      "sha256": "73212c39b2a1b1e18d0962492a6e94c4012382bcb36b3a6bff9b28059e6f6f9f"
+    },
+    {
+      "path": "src/flight_pipeline/storage/publication.py",
+      "bytes": 17096,
+      "sha256": "86dd8b233e6d8ccaab05a2fd7269d6be3b967b743d56c980e9503c24502b5cbd"
+    },
+    {
+      "path": "src/flight_pipeline/config/spark_config.py",
+      "bytes": 4964,
+      "sha256": "71e6ae6c70026e3e887fd7a88f0fc44e6ea3994f36480222cb51373dd919cdd4"
+    },
+    {
+      "path": "tools/qa/check_writer_preflight_safety.py",
+      "bytes": 8885,
+      "sha256": "5e231f8f957feb29af4f5e180ad41de8baf923b27a964055ca54a76f48a00ebe"
+    },
+    {
+      "path": "tools/qa/verify_staging_pointer.py",
+      "bytes": 15073,
+      "sha256": "a7f706bc8ec5d21bc128bdd5f53143c7fabefa4d6f6d56ff9ccde90c52c35830"
+    },
+    {
+      "path": "tools/qa/verify_multiyear_snapshot.py",
+      "bytes": 93583,
+      "sha256": "4a594705e9d5167d0e5c56dbb4621f2f62d1410350e2668d686699610e955131"
+    },
+    {
+      "path": "tests/test_multiyear_snapshot_policy.py",
+      "bytes": 61448,
+      "sha256": "432457bf411cfa190d1586b7c538e42be3cb97b7102344f2ad8c28253f23f0c7"
+    },
+    {
+      "path": "tests/test_lock_state_vs_pointer_state.py",
+      "bytes": 12285,
+      "sha256": "a4da146306347da12bad20e400660091c699f3686bc0b92c16e49df53fdb1920"
+    },
+    {
+      "path": "tests/test_verify_staging_pointer.py",
+      "bytes": 13631,
+      "sha256": "b2077f0b296768e2498c5878f381eb5a4f6f8802bcebce8558f66ceea7e92dca"
+    },
+    {
+      "path": "data/reference/bts_transtats/bts_transtats_201901.provenance.json",
+      "bytes": 1397,
+      "sha256": "2531472dcff06dfdaac96bbccf339a1bce511bc8b39afd5a753f38284fb7ae72"
+    },
+    {
+      "path": "docs/05-evidence/TS018_201901_ORIGINAL_AND_DERIVED_HASH_MANIFEST.json",
+      "bytes": 983,
+      "sha256": "b0838a1c2dd1e65a22f0c7597b9ea6d58314f06b543aacb59fd7947272b62109"
+    },
+    {
+      "path": "docs/05-evidence/G6_T012_RESOURCE_PRESTART_POLICY.md",
+      "bytes": 6591,
+      "sha256": "2dde9c2291dd3a2113e62f5efef5e71204c8da399b0626b88de862b63c5911d2"
+    },
+    {
+      "path": "docs/05-evidence/G6_R05_RECURSIVE_PARQUET_INVENTORY_AUDIT.md",
+      "bytes": 7854,
+      "sha256": "8f2578ad81476cf685f551595537404631534aa18e515f354fd448a043948266"
+    }
+  ]
+}

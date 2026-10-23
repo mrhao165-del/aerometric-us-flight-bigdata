@@ -1,0 +1,87 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+26/10/18 18:07:17 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://cwiki.apache.org/confluence/display/HADOOP2/WindowsProblems
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/18 18:07:18 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/18 18:07:18 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+[Stage 0:>                                                         (0 + 4) / 12]                                                                                26/10/18 18:07:25 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+[Stage 11:>                                                         (0 + 1) / 1]                                                                                [Stage 12:>                                                        (0 + 4) / 12][Stage 12:=========>                                               (2 + 5) / 12][Stage 12:===================>                                     (4 + 4) / 12][Stage 12:======================================>                  (8 + 4) / 12][Stage 12:==========================================>              (9 + 3) / 12]                                                                                [Stage 15:>                                                        (0 + 4) / 12][Stage 15:===================>                                     (4 + 4) / 12][Stage 15:======================================>                  (8 + 4) / 12][Stage 15:==========================================>              (9 + 3) / 12]                                                                                [Stage 18:>                                                        (0 + 4) / 12][Stage 18:==============>                                          (3 + 5) / 12][Stage 18:===================>                                     (4 + 4) / 12][Stage 18:=================================>                       (7 + 4) / 12][Stage 18:======================================>                  (8 + 4) / 12][Stage 18:==========================================>              (9 + 3) / 12]                                                                                [Stage 21:>                                                        (0 + 4) / 12][Stage 21:===================>                                     (4 + 4) / 12][Stage 21:======================================>                  (8 + 4) / 12][Stage 21:==========================================>              (9 + 3) / 12]                                                                                [Stage 24:>                                                        (0 + 4) / 12][Stage 24:===================>                                     (4 + 4) / 12][Stage 24:======================================>                  (8 + 4) / 12][Stage 24:==========================================>              (9 + 3) / 12]                                                                                [Stage 27:>                                                        (0 + 4) / 12][Stage 27:====>                                                    (1 + 4) / 12][Stage 27:=========>                                               (2 + 4) / 12][Stage 27:==============>                                          (3 + 4) / 12][Stage 27:===================>                                     (4 + 4) / 12][Stage 27:=======================>                                 (5 + 4) / 12][Stage 27:============================>                            (6 + 4) / 12][Stage 27:=================================>                       (7 + 4) / 12][Stage 27:======================================>                  (8 + 4) / 12][Stage 27:==========================================>              (9 + 3) / 12][Stage 27:==============================================>         (10 + 2) / 12]                                                                                [Stage 28:>                                                        (0 + 4) / 12][Stage 28:===================>                                     (4 + 4) / 12][Stage 28:======================================>                  (8 + 4) / 12][Stage 28:==========================================>              (9 + 3) / 12]                                                                                [Stage 31:>                                                        (0 + 4) / 12][Stage 31:===================>                                     (4 + 4) / 12][Stage 31:============================>                            (6 + 4) / 12][Stage 31:======================================>                  (8 + 4) / 12][Stage 31:==========================================>              (9 + 3) / 12]                                                                                [Stage 34:>                                                        (0 + 4) / 12][Stage 34:===================>                                     (4 + 4) / 12][Stage 34:======================================>                  (8 + 4) / 12][Stage 34:==========================================>              (9 + 3) / 12]                                                                                [Stage 37:>                                                        (0 + 4) / 12][Stage 37:===================>                                     (4 + 4) / 12][Stage 37:======================================>                  (8 + 4) / 12][Stage 37:==========================================>              (9 + 3) / 12]                                                                                [Stage 40:>                                                        (0 + 4) / 12][Stage 40:====>                                                    (1 + 4) / 12][Stage 40:=========>                                               (2 + 4) / 12][Stage 40:==============>                                          (3 + 4) / 12][Stage 40:===================>                                     (4 + 4) / 12][Stage 40:=======================>                                 (5 + 4) / 12][Stage 40:============================>                            (6 + 4) / 12][Stage 40:=================================>                       (7 + 4) / 12][Stage 40:======================================>                  (8 + 4) / 12][Stage 40:==========================================>              (9 + 3) / 12][Stage 40:==============================================>         (10 + 2) / 12][Stage 40:===================================================>    (11 + 1) / 12]                                                                                ================================================================================
+MASTER-G5-T010 � CONTROLLED REAL-DATA SMOKE & RESOURCE BENCHMARK
+================================================================================
+System: Windows-10-10.0.19045-SP0
+CPU: 16 logical cores (8 physical)
+Total RAM: 15.71 GB (Available: 4.17 GB)
+
+--- PHASE 1: PREFLIGHT VERIFICATION & SOURCE VALIDATION ---
+File: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\data\raw\tabular\2016\flight_with_weather_2016.csv
+Pre-execution bytes: 1538427452 (Audited expected: 1,538,427,452)
+Pre-execution mtime: 1787484809.8685696 (2026-08-23T11:33:29.868570+00:00)
+Computing pre-execution streaming SHA-256...
+Pre-execution SHA-256: 4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34
+SourceValidator State: LOCAL_HASH_COMPUTED_UNAPPROVED
+Upstream Identity Status: IDENTITY_UNVERIFIED
+Is Verified (Golden): False
+Physical header columns: 34 (BOM: False)
+[PASS] Phase 1: Preflight Verification Passed Cleanly.
+
+Initializing SparkSession (local[4], driver_memory=4g)...
+Apache Spark version: 4.0.1
+
+--- PHASE 3: MICRO-SMOKE ON 2016 REAL DATA (1,000 RECORDS) ---
+Micro-Smoke Duration: 7.19s
+Micro-Smoke Peak RSS: 110.04 MB
+Micro-Smoke Observed Raw: 1000
+Micro-Smoke Accepted: 1000
+Micro-Smoke Quarantined: 0
+Micro-Smoke Rejected: 0
+Micro-Smoke Parquet Files: 1, Readback Rows: 1000
+[PASS] Phase 3: Micro-Smoke Complete.
+
+--- PHASE 4: MONTH-SMOKE ON JANUARY 2016 REAL DATA ---
+January 2016 Observed Raw Records: 433298
+January Smoke Duration: 24.71s
+January Smoke Peak RSS: 119.63 MB
+January Smoke Accepted: 433298
+January Smoke Quarantined: 0
+January Smoke Rejected: 0
+January Parquet Files: 12, Total Bytes: 23124812, Readback Rows: 433298
+[PASS] Phase 4: Month-Smoke Complete.
+
+--- PHASE 5 & 6: BOUNDED FULL-YEAR 2016 SMOKE & RESOURCE BENCHMARK ---
+Running independent RFC-4180 logical record scan...
+Record scan duration: 247.60s
+Scanned logical records: 5537987
+Scanned physical data lines: 5537987
+Reading full 2016 CSV into Spark DataFrame...
+Executing QualityEngine.evaluate() across all 5,537,987 records...
+Writing curated Parquet (Snappy) to staging: D:\Study\Code\Apache\Flight_Analyzt\staging\smoke_2016_20261018_110720...
+Reading back Parquet files to verify row count and physical size...
+Full-Year Smoke Duration: 49.22s
+Processing Throughput: 112504 rows/s (29.81 MB/s)
+Peak Driver RSS: 211.36 MB
+JVM Heap Used: 468.60 MB / Max: 4096.00 MB
+Curated Parquet Size: 332,018,057 bytes (316.64 MB)
+Snappy Compression Ratio: 4.63:1
+Accepted: 5,537,987
+Quarantined: 0
+Rejected: 0
+Parquet Readback Rows: 5,537,987
+[PASS] Phase 5 & 6: Full-Year Smoke & Resource Benchmark Complete.
+
+Stopping SparkSession...
+
+--- PHASE 7: POST-EXECUTION RAW DATA INTEGRITY VERIFICATION ---
+Post-execution bytes: 1538427452
+Post-execution mtime: 1787484809.8685696
+Re-computing post-execution streaming SHA-256...
+Post-execution SHA-256: 4ed92ed732721a38ae28325135fad63436347613674ad96c1b273eb9d44cef34
+[PASS] Phase 7: Raw Data Untouched and Immutability 100% Verified.
+
+Wrote full metrics artifact: D:\Study\Code\Apache\Flight_Analyzt\US_FLIGHT_PERFORMANCE_DOCS_V1\docs\05-evidence\T010_REAL_DATA_SMOKE_METRICS.json (18797 bytes)
+================================================================================
+ALL T-010 REAL-DATA SMOKE PHASES EXECUTED SUCCESSFULLY.
+================================================================================
+SUCCESS: The process with PID 11364 (child process of PID 28928) has been terminated.
+SUCCESS: The process with PID 28928 (child process of PID 29632) has been terminated.
+SUCCESS: The process with PID 29632 (child process of PID 26136) has been terminated.
