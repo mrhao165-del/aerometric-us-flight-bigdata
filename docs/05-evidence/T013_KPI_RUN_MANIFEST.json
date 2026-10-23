@@ -1,0 +1,166 @@
+{
+  "run_id": "kpi_run_2016_2024_v1",
+  "kpi_version": "1.0.0",
+  "quality_version": "docs-v1.1",
+  "timestamp": "2026-10-21T16:01:38Z",
+  "snapshot_registry_path": "data/curated/snapshot_registry.json",
+  "snapshot_registry_sha256": "c3df4b2238ea3f0156d6f6f9c546a38fea5ac38276e732739286f030ecfeac66",
+  "input_total_rows": 54674003,
+  "output_total_rows": 684180,
+  "total_bytes": 11879782,
+  "file_count": 9,
+  "files": [
+    {
+      "relative_path": "data/year_2016/part-00000.parquet",
+      "file_name": "part-00000.parquet",
+      "num_rows": 62184,
+      "file_bytes": 1059700,
+      "sha256": "284bf8391572f5ce5b52e72769aff1da8d601e598bdc8369469709621c2489ac"
+    },
+    {
+      "relative_path": "data/year_2017/part-00000.parquet",
+      "file_name": "part-00000.parquet",
+      "num_rows": 64116,
+      "file_bytes": 1075449,
+      "sha256": "e7c3e5cb297043bb3c9d07886a917b943e18523790fe9f2a634d503a73d6a351"
+    },
+    {
+      "relative_path": "data/year_2018/part-00000.parquet",
+      "file_name": "part-00000.parquet",
+      "num_rows": 76980,
+      "file_bytes": 1379169,
+      "sha256": "99d167bf6da7d4583960bb0262941ab0280dab535538af27f66e532d678b14e9"
+    },
+    {
+      "relative_path": "data/year_2019/part-00000.parquet",
+      "file_name": "part-00000.parquet",
+      "num_rows": 78576,
+      "file_bytes": 1403981,
+      "sha256": "b76d382dabc86fb17b54111e2000d5fe8f2aa035428b559d355843392bdc3fc2"
+    },
+    {
+      "relative_path": "data/year_2020/part-00000.parquet",
+      "file_name": "part-00000.parquet",
+      "num_rows": 78180,
+      "file_bytes": 1315544,
+      "sha256": "48bd81c7272120baace8dd4cf7e218f11fe070cdfe78606da962fb7b95f65bf1"
+    },
+    {
+      "relative_path": "data/year_2021/part-00000.parquet",
+      "file_name": "part-00000.parquet",
+      "num_rows": 81804,
+      "file_bytes": 1402210,
+      "sha256": "c9015bd2d34b28aa0862d526c14a96c5e476d516ad34d41bc3c828edbb300a43"
+    },
+    {
+      "relative_path": "data/year_2022/part-00000.parquet",
+      "file_name": "part-00000.parquet",
+      "num_rows": 81528,
+      "file_bytes": 1421094,
+      "sha256": "4f3658558b98e12003bd96808a9759f9395c4fd52718e651b39099d542988f94"
+    },
+    {
+      "relative_path": "data/year_2023/part-00000.parquet",
+      "file_name": "part-00000.parquet",
+      "num_rows": 79356,
+      "file_bytes": 1414049,
+      "sha256": "316c839462655b4ff9487129dd673f54d3d926074d0389795b33d222bbf06af2"
+    },
+    {
+      "relative_path": "data/year_2024/part-00000.parquet",
+      "file_name": "part-00000.parquet",
+      "num_rows": 81456,
+      "file_bytes": 1408586,
+      "sha256": "9a3f2a4fa6b2878d7c9ff330b44583b38359890c698dbc7a360279d280c6f5c9"
+    }
+  ],
+  "execution_metrics": {
+    "run_id": "kpi_run_2016_2024_v1",
+    "start_time": "2026-10-21T15:53:07Z",
+    "years_processed": {
+      "2016": {
+        "input_rows": 5537987,
+        "kpi_rows": 62184,
+        "duration_seconds": 61.39,
+        "files": [
+          "part-00000.parquet"
+        ]
+      },
+      "2017": {
+        "input_rows": 5575872,
+        "kpi_rows": 64116,
+        "duration_seconds": 49.31,
+        "files": [
+          "part-00000.parquet"
+        ]
+      },
+      "2018": {
+        "input_rows": 6986842,
+        "kpi_rows": 76980,
+        "duration_seconds": 58.3,
+        "files": [
+          "part-00000.parquet"
+        ]
+      },
+      "2019": {
+        "input_rows": 7161827,
+        "kpi_rows": 78576,
+        "duration_seconds": 62.8,
+        "files": [
+          "part-00000.parquet"
+        ]
+      },
+      "2020": {
+        "input_rows": 4312091,
+        "kpi_rows": 78180,
+        "duration_seconds": 52.33,
+        "files": [
+          "part-00000.parquet"
+        ]
+      },
+      "2021": {
+        "input_rows": 5755666,
+        "kpi_rows": 81804,
+        "duration_seconds": 54.48,
+        "files": [
+          "part-00000.parquet"
+        ]
+      },
+      "2022": {
+        "input_rows": 6413416,
+        "kpi_rows": 81528,
+        "duration_seconds": 57.32,
+        "files": [
+          "part-00000.parquet"
+        ]
+      },
+      "2023": {
+        "input_rows": 6645461,
+        "kpi_rows": 79356,
+        "duration_seconds": 60.28,
+        "files": [
+          "part-00000.parquet"
+        ]
+      },
+      "2024": {
+        "input_rows": 6284841,
+        "kpi_rows": 81456,
+        "duration_seconds": 54.5,
+        "files": [
+          "part-00000.parquet"
+        ]
+      }
+    },
+    "total_output_rows": 684180,
+    "dimensions_computed": [
+      "year",
+      "year-month",
+      "carrier-year",
+      "origin-year",
+      "dest-year",
+      "route-year"
+    ],
+    "end_time": "2026-10-21T16:01:37Z",
+    "total_duration_seconds": 510.72
+  }
+}
